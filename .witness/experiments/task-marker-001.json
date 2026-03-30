@@ -1,0 +1,43 @@
+{
+  "finding_type": "synthesis",
+  "agent_role": "breast_cancer_marker_analyst",
+  "agent_id": "stem-cell-gen1-001",
+  "task_id": "task-marker-001",
+  "niche_id": "breast_cancer_marker_analysis",
+  "executed_at": "2026-03-30T01:04:32.891080Z",
+  "hypothesis": "Invasive lobular carcinoma (ILC) lacks validated subtype-specific early detection biomarkers because current TCGA-derived molecular classifiers are predominantly trained on invasive ductal carcinoma (IDC). Two orthogonal ILC-specific biosignatures \u2014 (1) ferroptosis-related gene signature (FRGS, 2-subtype consensus clustering from TCGA+METABRIC+GEO, n=490) and (2) TME-driven spatial transcriptomics subtypes (43 HR+/HER2- ILC tumors, PNAS 2026) \u2014 provide a foundation for a multi-modal ILC biomarker panel. Combining FRGS components as liquid biopsy markers (cell-free RNA / ctDNA methylation) with TME-subtype stratification may enable ILC-specific early detection and predict differential CDK4/6 inhibitor response by histology (as suggested by PALMARES-2 real-world data).",
+  "evidence": [
+    {
+      "source": "PMID:41815159",
+      "claim": "490-patient multi-dataset (TCGA+METABRIC+GEO) study identifies 2 ILC ferroptosis subtypes via consensus clustering; machine-learning FRGS shows prognostic significance and links to TME/mutation landscape",
+      "confidence": "high"
+    },
+    {
+      "source": "PMID:41637449",
+      "claim": "Spatial transcriptomics of 43 HR+/HER2- ILC tumors reveals TME-driven subtypes; PNAS 2026 confirms current molecular classifications overlook ILC spatial complexity",
+      "confidence": "high"
+    },
+    {
+      "source": "PMID:41619649",
+      "claim": "Real-world PALMARES-2 Italian cohort: CDK4/6 inhibitor effectiveness differs by tumor histology (ILC vs IDC), providing clinical validation that ILC requires subtype-specific treatment stratification",
+      "confidence": "medium"
+    }
+  ],
+  "novelty_claim": "The specific combination of ferroptosis-gene-signature classification with spatial TME subtyping as a composite liquid biopsy panel for ILC has not been proposed in the retrieved literature. Both components were published independently in early 2026. The link to differential CDK4/6 inhibitor response (PALMARES-2) adds a therapeutic prediction dimension not present in either source paper.",
+  "actionability": "Next experiment: test whether the FRGS genes (from Liu et al. TCGA model) show differential methylation signatures in ILC vs IDC cell-free DNA datasets (e.g., TCGA WGBS data or GEO cfDNA cohorts). Use biomedical-fetch clinicaltrials_search to identify active ILC-specific liquid biopsy trials as comparators. If FRGS methylation differs detectably in cfDNA, propose a validation study design for lobular-specific early detection.",
+  "candidate_biomarkers": [
+    "Ferroptosis-related gene expression panel (FRGS \u2014 specific genes TBD from full Liu et al. supplementary)",
+    "CDH1 (E-cadherin) \u2014 canonical ILC loss marker; already known but not yet in validated liquid biopsy format",
+    "TME subtype-defining spatial transcripts (from Serra et al. \u2014 immune cold vs immune hot ILC subtypes)",
+    "CDK4/6 inhibitor response stratification markers (histology-adjusted, from PALMARES-2)"
+  ],
+  "gap_identified": "No validated ILC-specific early detection or MRD (minimal residual disease) liquid biopsy panel exists. All 144 ILC papers returned by primary search use bulk tissue or TCGA datasets; none use cfRNA or ctDNA in ILC-specific contexts.",
+  "resource_cost_estimate": {
+    "pubmed_queries": 5,
+    "abstracts_fetched": 4,
+    "tokens_used_estimate": 3200,
+    "model": "claude-sonnet-4-6",
+    "biomedical_fetch_calls": 7
+  },
+  "confidence": 0.71
+}
