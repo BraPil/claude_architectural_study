@@ -1,0 +1,788 @@
+{
+  "cycle": 10,
+  "agents": {
+    "sc-g0-011": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.46
+      ]
+    },
+    "sc-g0-012": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.58
+      ]
+    },
+    "sc-g0-021": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.59
+      ]
+    },
+    "sc-g0-022": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.91
+      ]
+    },
+    "sc-g0-023": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.59
+      ]
+    },
+    "sc-g0-024": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.51
+      ]
+    },
+    "sc-g0-031": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.42
+      ]
+    },
+    "sc-g0-032": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.65
+      ]
+    },
+    "sc-g0-033": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.5
+      ]
+    },
+    "sc-g0-034": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.4
+      ]
+    },
+    "sc-g0-035": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.54
+      ]
+    },
+    "sc-g0-036": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.7
+      ]
+    },
+    "sc-g0-037": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.41
+      ]
+    },
+    "sc-g0-038": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.86
+      ]
+    },
+    "sc-g0-039": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.41
+      ]
+    },
+    "sc-g0-040": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.49
+      ]
+    },
+    "sc-g0-041": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.55
+      ]
+    },
+    "sc-g0-042": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.45
+      ]
+    },
+    "sc-g0-043": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.41
+      ]
+    },
+    "sc-g0-044": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.47
+      ]
+    },
+    "sc-g0-045": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.48
+      ]
+    },
+    "sc-g0-046": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.57
+      ]
+    },
+    "sc-g0-047": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.59
+      ]
+    },
+    "sc-g0-048": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.55
+      ]
+    },
+    "sc-g0-049": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.53
+      ]
+    },
+    "sc-g0-050": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.58
+      ]
+    },
+    "sc-g0-051": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.67
+      ]
+    },
+    "sc-g0-052": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.47
+      ]
+    },
+    "sc-g0-053": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.81
+      ]
+    },
+    "sc-g0-054": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.4
+      ]
+    },
+    "sc-g0-055": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.46
+      ]
+    },
+    "sc-g0-056": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.44
+      ]
+    },
+    "sc-g0-057": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.54
+      ]
+    },
+    "sc-g0-058": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.57
+      ]
+    },
+    "sc-g0-059": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.52
+      ]
+    },
+    "sc-g0-060": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.51
+      ]
+    },
+    "sc-g0-061": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.57
+      ]
+    },
+    "sc-g0-062": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.71
+      ]
+    },
+    "sc-g0-063": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.59
+      ]
+    },
+    "sc-g0-064": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.42
+      ]
+    },
+    "sc-g0-065": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.59
+      ]
+    },
+    "sc-g0-066": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.44
+      ]
+    },
+    "sc-g0-067": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.46
+      ]
+    },
+    "sc-g0-068": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.76
+      ]
+    },
+    "sc-g0-069": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.49
+      ]
+    },
+    "sc-g0-070": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.5
+      ]
+    },
+    "sc-g0-071": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.55
+      ]
+    },
+    "sc-g0-072": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.42
+      ]
+    },
+    "sc-g0-073": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.42
+      ]
+    },
+    "sc-g0-074": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.41
+      ]
+    },
+    "sc-g0-075": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.44
+      ]
+    },
+    "sc-g0-076": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.42
+      ]
+    },
+    "sc-g0-077": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.56
+      ]
+    },
+    "sc-g0-078": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.52
+      ]
+    },
+    "sc-g0-079": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.55
+      ]
+    },
+    "sc-g0-080": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.52
+      ]
+    },
+    "sc-g0-081": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.65
+      ]
+    },
+    "sc-g0-082": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.46
+      ]
+    },
+    "sc-g0-083": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.9
+      ]
+    },
+    "sc-g0-084": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.56
+      ]
+    },
+    "sc-g0-085": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.91
+      ]
+    },
+    "sc-g0-086": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.57
+      ]
+    },
+    "sc-g0-087": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.43
+      ]
+    },
+    "sc-g0-088": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.42
+      ]
+    },
+    "sc-g0-089": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.49
+      ]
+    },
+    "sc-g0-090": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.55
+      ]
+    },
+    "sc-g0-091": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.4
+      ]
+    },
+    "sc-g0-092": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.58
+      ]
+    },
+    "sc-g0-093": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.4
+      ]
+    },
+    "sc-g0-094": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.72
+      ]
+    },
+    "sc-g0-095": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.41
+      ]
+    },
+    "sc-g0-096": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.59
+      ]
+    },
+    "sc-g0-097": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.48
+      ]
+    },
+    "sc-g0-098": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.72
+      ]
+    },
+    "sc-g0-099": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.4
+      ]
+    },
+    "sc-g0-100": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.94
+      ]
+    },
+    "sc-g0-101": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.46
+      ]
+    },
+    "sc-g0-102": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.43
+      ]
+    },
+    "sc-g0-103": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.47
+      ]
+    },
+    "sc-g0-104": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.4
+      ]
+    },
+    "sc-g0-105": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.47
+      ]
+    },
+    "sc-g0-106": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.44
+      ]
+    },
+    "sc-g0-107": {
+      "niche": "literature_synthesis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.62
+      ]
+    },
+    "sc-g0-108": {
+      "niche": "hypothesis_generation",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.57
+      ]
+    },
+    "sc-g0-109": {
+      "niche": "pathway_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.68
+      ]
+    },
+    "sc-g0-110": {
+      "niche": "breast_cancer_marker_analysis",
+      "role_commitment": 0.12,
+      "tasks_completed": 1,
+      "generation": 0,
+      "efficiency_history": [
+        0.43
+      ]
+    }
+  },
+  "organs": {},
+  "total_findings": 86,
+  "niche_counts": {
+    "hypothesis_generation": 23,
+    "pathway_analysis": 18,
+    "breast_cancer_marker_analysis": 23,
+    "literature_synthesis": 22
+  },
+  "next_agent_num": 10
+}

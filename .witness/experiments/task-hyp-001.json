@@ -1,0 +1,89 @@
+{
+  "finding_type": "hypothesis",
+  "agent_id": "stem-cell-gen1-001",
+  "task_id": "task-hyp-001",
+  "executed_at": "2026-03-30T01:15:49.241348Z",
+  "method": "AI_Co-Scientist_4-agent_tournament",
+  "candidates_generated": 4,
+  "winner": {
+    "hyp_id": "hyp-ilc-003",
+    "niche": "hypothesis_generation",
+    "hypothesis": "The ferroptosis-sensitive ILC molecular subtype (FRGS-high from PMID 41815159) is characterized by elevated expression of SLC7A11 (xCT, the cystine transporter), GPX4, and ACSL4. Methylation of the SLC7A11 promoter \u2014 an ILC-subtype-specific epigenetic mark \u2014 is detectable in cell-free DNA and differentiates FRGS-high from FRGS-low ILC without tissue biopsy. FRGS-high ILC patients have elevated susceptibility to RSL3 (GPX4 inhibitor) and erastin class compounds, representing a druggable vulnerability specific to this subtype.",
+    "mechanism": "SLC7A11 promoter methylation is an established epigenetic silencing mark in ferroptosis resistance; ILC-subtype-specific methylation patterns propagate to cfDNA through ctDNA shedding",
+    "key_genes": [
+      "SLC7A11",
+      "GPX4",
+      "ACSL4",
+      "NCOA4"
+    ],
+    "testable_experiment": "Query TCGA WGBS data for SLC7A11/GPX4 promoter methylation differential between ILC ferroptosis subtypes; then check if signal appears in any cfDNA-WGBS public dataset",
+    "addresses_gap": "Gaps 1 & 4 \u2014 FRGS gene specificity and cross-cohort validation",
+    "estimated_novelty": 0.83
+  },
+  "runner_up": {
+    "hyp_id": "hyp-ilc-001",
+    "niche": "hypothesis_generation",
+    "hypothesis": "CDH1 loss-of-function mutations, which define ILC and are detectable in ctDNA via Guardant360 (PMID 36332363), are present at detectably higher variant allele frequencies in early-stage ILC pre-surgical plasma compared to matched IDC controls \u2014 making CDH1 the anchor marker for a non-personalized, biopsy-independent ILC liquid biopsy panel applicable at screening.",
+    "mechanism": "CDH1 somatic LOF is near-universal in ILC (~85% of cases) and creates a high-prior-probability target for ctDNA detection without requiring tumor-informed personalization",
+    "key_genes": [
+      "CDH1",
+      "E-cadherin"
+    ],
+    "testable_experiment": "Retrospective analysis of Guardant360 early-stage ILC samples vs age/stage-matched IDC; CDH1 VAF distribution comparison",
+    "addresses_gap": "Gap 3 \u2014 CDH1 early-stage ctDNA detectability",
+    "estimated_novelty": 0.71
+  },
+  "all_ranked": [
+    {
+      "id": "hyp-ilc-003",
+      "score": 0.2917
+    },
+    {
+      "id": "hyp-ilc-001",
+      "score": 0.2635
+    },
+    {
+      "id": "hyp-ilc-004",
+      "score": 0.2081
+    },
+    {
+      "id": "hyp-ilc-002",
+      "score": 0.1879
+    }
+  ],
+  "proximity_flags": [],
+  "tournament_scores": {
+    "hyp-ilc-003": {
+      "novelty": 0.83,
+      "importance": 0.76,
+      "plausibility": 0.68,
+      "actionability": 0.8,
+      "token_efficiency": 0.85,
+      "tournament_score": 0.2917
+    },
+    "hyp-ilc-002": {
+      "novelty": 0.78,
+      "importance": 0.82,
+      "plausibility": 0.72,
+      "actionability": 0.68,
+      "token_efficiency": 0.6,
+      "tournament_score": 0.1879
+    },
+    "hyp-ilc-004": {
+      "novelty": 0.76,
+      "importance": 0.78,
+      "plausibility": 0.65,
+      "actionability": 0.75,
+      "token_efficiency": 0.72,
+      "tournament_score": 0.2081
+    },
+    "hyp-ilc-001": {
+      "novelty": 0.55,
+      "importance": 0.72,
+      "plausibility": 0.88,
+      "actionability": 0.84,
+      "token_efficiency": 0.9,
+      "tournament_score": 0.2635
+    }
+  }
+}

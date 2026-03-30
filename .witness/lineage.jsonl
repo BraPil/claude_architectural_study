@@ -1,0 +1,3 @@
+{"ts":"2026-03-30T00:22:23.622Z","event_type":"AGENT_SPAWNED","dome_id":"exmorbus-v0.2","agent_id":"test-stem-001","parent_agent_id":null,"generation":0,"specialization_hint":null}
+{"ts":"2026-03-30T00:24:55.886Z","event_type":"AGENT_SPAWNED","dome_id":"exmorbus-v0.2","agent_id":"stem-e2e-001","parent_agent_id":null,"generation":0,"specialization_hint":"literature_synthesis"}
+{"ts":"2026-03-30T01:02:30.541Z","event_type":"AGENT_SPAWNED","dome_id":"exmorbus-v0.2","agent_id":"stem-cell-gen1-001","parent_agent_id":null,"generation":1,"specialization_hint":"breast_cancer_marker_analysis"}

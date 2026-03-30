@@ -1,0 +1,93 @@
+{
+  "node_id": "autorun-slc7a11-001",
+  "parent_hypothesis": "hyp-ilc-003",
+  "experiment_type": "pathway_enrichment_simulation",
+  "executed_at": "2026-03-30T00:00:00Z",
+  "executor_model": "claude-sonnet-4-6",
+  "result": "INCONCLUSIVE",
+  "summary": "No direct evidence found for differential SLC7A11/GPX4/ACSL4 methylation between ILC subtypes, nor for cfDNA/ctDNA methylation of these genes in breast cancer. However, partial supporting evidence exists: (1) ACSL4 and GPX4 show subtype-differential expression across PAM50 breast cancer subtypes (Basal-like: ACSL4 up, GPX4 down), and (2) SLC7A11/xCT (the protein encoded by SLC7A11) is functionally linked to ferroptosis resistance in TNBC via MUC1-C/CD44v axis, with evidence that xCT inhibition increases histone and DNA methylation at the MUC1 promoter — suggesting epigenetic feedback coupling to xCT activity. ILC-specific data is absent from the literature indexed by PubMed for these gene-methylation combinations.",
+  "queries_run": [
+    {
+      "query": "SLC7A11 GPX4 ACSL4 methylation invasive lobular carcinoma",
+      "result_count": 0,
+      "pmids": []
+    },
+    {
+      "query": "SLC7A11 xCT methylation breast cancer ferroptosis",
+      "result_count": 1,
+      "pmids": ["26930718"]
+    },
+    {
+      "query": "ferroptosis GPX4 ACSL4 breast cancer subtype differential expression",
+      "result_count": 1,
+      "pmids": ["41681697"]
+    },
+    {
+      "query": "cfDNA ctDNA methylation breast cancer SLC7A11 GPX4 liquid biopsy",
+      "result_count": 0,
+      "pmids": []
+    },
+    {
+      "query": "invasive lobular carcinoma ferroptosis sensitivity CDH1 E-cadherin",
+      "result_count": 0,
+      "pmids": []
+    },
+    {
+      "query": "SLC7A11 promoter methylation epigenetic silencing cancer",
+      "result_count": 1,
+      "pmids": ["26930718"]
+    },
+    {
+      "query": "invasive lobular carcinoma ILC methylation epigenome TCGA differential",
+      "result_count": 0,
+      "pmids": []
+    },
+    {
+      "query": "ferroptosis lobular breast cancer GPX4 lipid peroxidation subtype",
+      "result_count": 0,
+      "pmids": []
+    }
+  ],
+  "evidence_items": [
+    {
+      "pmid": "41681697",
+      "source": "Buta M et al., Diagnostics (Basel), 2026 Jan 23. PMID 41681697",
+      "excerpt": "Basal-like tumors exhibited the strongest ferroptosis-associated transcriptional shift, characterized by upregulation of ACSL4 and EZH2 and downregulation of AR, GPX4, and CIRBP. Sixteen ferroptosis-related genes were associated with overall survival, forming a ferroptosis-associated signature. The FI [Ferroptosis Index] was significantly higher in Basal-like tumors, indicating elevated ferroptosis-associated activity. Using transcriptomic (METABRIC, TCGA, GEO) and proteomic (CPTAC) datasets, ferroptosis-related genes were profiled across PAM50 breast cancer subtypes.",
+      "supports_hypothesis": "PARTIAL",
+      "rationale": "Confirms ACSL4 up and GPX4 down in Basal-like TNBC vs other PAM50 subtypes using multi-cohort data. Does NOT include ILC-specific analysis (ILC spans Luminal A/B and HER2-E in PAM50 but is a distinct histological entity not separated here). No methylation data reported — expression only."
+    },
+    {
+      "pmid": "26930718",
+      "source": "Hasegawa M et al., Oncotarget, 2016 Mar 15. PMID 26930718",
+      "excerpt": "Targeting xCT with silencing or the inhibitor sulfasalazine suppresses MUC1 gene transcription by increasing histone and DNA methylation on the MUC1 promoter. MUC1-C forms a complex with xCT and CD44v, which controls GSH levels. MUC1-C protects against treatment with erastin, an inhibitor of XC- and inducer of ferroptosis.",
+      "supports_hypothesis": "PARTIAL",
+      "rationale": "SLC7A11/xCT inhibition causes epigenetic (DNA methylation) changes at a downstream locus (MUC1), not a direct report of SLC7A11 promoter methylation. Demonstrates mechanistic link between xCT activity and epigenetic state in TNBC, suggesting bidirectional epigenetic-ferroptosis coupling. Not ILC-specific."
+    },
+    {
+      "source": "ClinicalTrials.gov search — sulfasalazine breast cancer (RECRUITING)",
+      "excerpt": "No recruiting trials found for sulfasalazine in breast cancer. No trials found for xCT-targeted therapy in breast cancer.",
+      "supports_hypothesis": "NEUTRAL",
+      "rationale": "Therapeutic gap confirmed: SLC7A11/xCT inhibition in breast cancer (including ILC) has no active trial, representing an unoccupied clinical niche."
+    }
+  ],
+  "key_genes": ["SLC7A11", "GPX4", "ACSL4", "MUC1", "CD44v", "EZH2"],
+  "key_finding": "Subtype-differential ferroptosis gene expression (ACSL4 up, GPX4 down in Basal/TNBC) is established at the transcriptomic level across PAM50 subtypes. Direct SLC7A11/GPX4/ACSL4 methylation data in ILC or cfDNA contexts is absent from indexed literature — this is a genuine data gap, not evidence of absence. The xCT/SLC7A11 axis shows epigenetic feedback coupling (xCT inhibition -> MUC1 promoter methylation) but ILC-specific promoter methylation of SLC7A11 itself has not been reported.",
+  "gaps_identified": [
+    "No published study has characterized SLC7A11 or GPX4 promoter methylation specifically in ILC vs IDC",
+    "No cfDNA/ctDNA methylation data for ferroptosis pathway genes in breast cancer identified",
+    "No clinical trials targeting SLC7A11/xCT in breast cancer (including ILC) — unoccupied niche",
+    "ILC is not separated as a histological subtype in PAM50-based ferroptosis studies"
+  ],
+  "recommended_next_node": {
+    "node_id": "autorun-slc7a11-002",
+    "rationale": "Query TCGA BRCA methylation array data (450k/EPIC) directly for SLC7A11, GPX4, ACSL4 beta-values stratified by histology (ILC vs IDC), via GEO or cBioPortal API. This requires a bioinformatics execution node, not a PubMed search node.",
+    "suggested_query_strategy": "cBioPortal API or GEO accession GSE72245/GSE60185 for ILC methylation; alternatively query MethSurv or MethBank for SLC7A11 CpG island methylation in BRCA cohort stratified by histology",
+    "experiment_type": "tcga_methylation_query",
+    "priority": "HIGH"
+  },
+  "protocol_evaluation": {
+    "success_metric_met": false,
+    "failure_criterion_met": false,
+    "verdict_rationale": "INCONCLUSIVE because: methylation data for these genes in ILC does not appear in PubMed literature, but there is suggestive transcriptomic evidence of ferroptosis gene dysregulation across breast cancer subtypes that does not exclude ILC-specific methylation. The hypothesis remains biologically plausible and untested in ILC specifically."
+  }
+}
