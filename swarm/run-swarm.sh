@@ -334,6 +334,18 @@ for cycle in $(seq 1 "$MAX_CYCLES"); do
   cycle_verdicts=()
   cycle_efficiency_sum=0
 
+  # Load existing agents from state for persistence across cycles
+  existing_agents=()
+  if python3 -c "
+import json
+with open('$STATE_FILE') as f: s = json.load(f)
+agents = [a for a,d in s.get('agents',{}).items()
+          if d.get('lifecycle_state') not in ('dormant','apoptosis')]
+print('\n'.join(agents[:$MAX_AGENTS]))
+" 2>/dev/null > /tmp/swarm_agents.txt; then
+    mapfile -t existing_agents < /tmp/swarm_agents.txt
+  fi
+
   for i in $(seq 1 "$n_agents"); do
     # Select task (round-robin with jitter)
     task_idx=$(( (cycle * n_agents + i - 1) % TASK_COUNT ))
@@ -341,10 +353,15 @@ for cycle in $(seq 1 "$MAX_CYCLES"); do
     niche="${task_entry%%:*}"
     query="${task_entry#*:}"
 
-    agent_id="sc-g0-$(printf '%03d' $((cycle * 10 + i)))"
-
-    # Register agent if new
-    register_agent "$agent_id" "null" 0 "$niche" 2>/dev/null || true
+    # Reuse existing agent if available, otherwise spawn new
+    if [[ ${#existing_agents[@]} -gt 0 ]]; then
+      agent_idx=$(( (i - 1) % ${#existing_agents[@]} ))
+      agent_id="${existing_agents[$agent_idx]}"
+    else
+      agent_id="sc-g0-$(printf '%03d' $((cycle * 10 + i)))"
+      # Register new agent
+      register_agent "$agent_id" "null" 0 "$niche" 2>/dev/null || true
+    fi
 
     # Run task
     result=$(run_agent_task "$agent_id" "$niche" "$query" "$cycle" 0 2>/dev/null || echo "ACCEPT_WEAK|0.500|0")
