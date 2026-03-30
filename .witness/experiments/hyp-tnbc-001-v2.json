@@ -1,0 +1,60 @@
+{
+  "hyp_id": "hyp-tnbc-001-v2",
+  "parent_hyp_id": "hyp-tnbc-001",
+  "refinement_basis": "reflexion-tnbc-001",
+  "agent_id": "refinement-tnbc-001-v2",
+  "dome_id": "exmorbus-v0.2",
+  "lineage_id": "exmorbus-oncology-v2",
+  "ts": "2026-03-30T15:00:00Z",
+  "hypothesis": "Constitutional BRCA1 promoter methylation (12.4%–33.9% of TNBC depending on cohort age-selection; WHI 12.4%, Institut Curie 20.6%, early-onset ≤30yr 33.9%) produces HRD genomic scars (LOH, TAI, LST) and pre-treatment RAD51 foci failure functionally equivalent to germline BRCA1 mutation, and this population — currently excluded from PARPi eligibility criteria — derives olaparib benefit specifically in the TREATMENT-NAIVE setting before epigenetic reversion of BRCA1 silencing can occur. Unlike stable germline BRCA1 mutations, constitutional methylation-driven HRD is reversible: neoadjuvant chemotherapy exposure is sufficient to induce BRCA1 re-expression and RAD51 restoration, conferring acquired olaparib resistance. PARPi eligibility expansion for constitutional methylation-positive TNBC is therefore contingent on first-line (chemotherapy-naive) treatment context.",
+  "additional_claim": "Constitutional BRCA1 methylation-positive TNBC undergoes BRCA1 re-expression via RAD51 restoration after chemotherapy exposure, conferring PARPi resistance — suggesting a race-to-treatment window analogous to platinum-sensitive ovarian cancer: early-line PARPi maximizes benefit before re-expression occurs",
+  "key_targets": [
+    "BRCA1_promoter_CpG_island",
+    "RAD51_foci_pre_treatment",
+    "HRD_scar_score",
+    "LOH",
+    "TAI",
+    "LST",
+    "BRCA1_re_expression_post_chemo",
+    "treatment_naive_window",
+    "epigenetic_reversibility"
+  ],
+  "testable_experiment": "Two-arm prospective-translational pilot study in TNBC patients with confirmed constitutional BRCA1 methylation (allele-specific blood-based pyrosequencing): Arm A (treatment-naive) — first-line olaparib monotherapy with pre-treatment biopsy RAD51 foci assay (IF, FFPE-compatible); Arm B (post-neoadjuvant) — olaparib after standard NACT with paired baseline/post-NACT biopsies for BRCA1 mRNA (RT-qPCR), BRCA1 protein (IHC), and RAD51 foci quantification. Primary endpoint: olaparib IC50 shift between Arm A and Arm B. Secondary: RAD51 positivity rate (>10% nuclei = HR-restored threshold) as predictor of olaparib non-response. Companion: BRCA1 methylation allele fraction in blood pre/post NACT to test epigenetic reversion at germline level. This directly tests the treatment-naive window hypothesis and establishes RAD51 restoration as the actionable biomarker gating re-treatment eligibility.",
+  "revised_novelty_claim": "No published PARPi trial has (1) enrolled constitutional BRCA1 methylation-positive TNBC as a distinct eligibility stratum, nor (2) tested the treatment-naive vs pre-treated distinction as a predictor of PARPi benefit in this population. The HR reversibility finding (Frontiers Oncol 2023) is established for methylated TNBC generically; its specific application to CONSTITUTIONAL (blood-confirmed, not tumor-somatic) methylation carriers as a therapeutic scoping criterion is a novel clinical inference. The race-to-treatment window framing — analogous to platinum-sensitive ovarian relapse — is not present in any published PARPi-TNBC trial design.",
+  "refinement_changes_from_v1": [
+    "Prevalence updated from single-point 20.6% to range 12.4%–33.9% across four independent cohorts (WHI JAMA Oncol 2022, Institut Curie PMID 41654537, Clinical Epigenetics 2025, Genome Medicine 2023)",
+    "Hypothesis now explicitly scoped to treatment-naive TNBC — removes applicability to post-NACT setting",
+    "Added epigenetic reversibility mechanism: BRCA1 re-expression via RAD51 foci restoration post-chemotherapy (Frontiers Oncol 2023 evidence)",
+    "Added race-to-treatment window framing as the clinical implication of reversibility",
+    "Key targets expanded to include RAD51_foci_pre_treatment and BRCA1_re_expression_post_chemo as mechanistic endpoints",
+    "Testable experiment redesigned to directly compare treatment-naive vs post-NACT arms rather than retrospective biobank re-analysis only"
+  ],
+  "evidence_basis": [
+    {"source": "JAMA Oncol 2022 PMID 36074460", "role": "Independent prevalence replication — WHI US population 12.4%"},
+    {"source": "PMID 41654537 Institut Curie", "role": "Founding prevalence study — 20.6% constitutional methylation in TNBC, HRD scar association"},
+    {"source": "Clinical Epigenetics 2025", "role": "Age-enriched prevalence upper bound — 33.9% in early-onset TNBC"},
+    {"source": "Genome Medicine 2023 s13073-023-01262-8", "role": "Population-level ~20% TNBC attribution, prenatal origin"},
+    {"source": "Frontiers Oncol 2023 10.3389/fonc.2023.1125021", "role": "CRITICAL reversibility evidence: RAD51 foci restored in methylated TNBC post-NACT; HR is reversible unlike germline mutation"},
+    {"source": "Nat Commun 2020 s41467-020-17537-2", "role": "HRD scar equivalence (LOH/TAI/LST) methylated vs mutated BRCA1 TNBC confirmed"},
+    {"source": "ESMO Open 2024 S2059-7029(24)01398-X", "role": "RAD51 foci assay feasibility in TNBC FFPE tissue confirmed"}
+  ],
+  "composite_v2": 0.810,
+  "composite_breakdown": {
+    "novelty": 0.86,
+    "importance": 0.91,
+    "plausibility": 0.84,
+    "actionability": 0.85,
+    "evidential_quality": 0.76,
+    "specificity": 0.88
+  },
+  "prior_composite_v1": 0.835,
+  "composite_delta": -0.025,
+  "composite_delta_rationale": "Plausibility slightly elevated (0.82 → 0.84) because reversibility mechanism strengthens mechanistic coherence of the scoped hypothesis. Actionability slightly reduced (0.88 → 0.85) because treatment-naive arm requires prospective design rather than retrospective biobank re-analysis. Evidential quality improves from single-source to multi-cohort but olaparib response in treatment-naive constitutional methylation carriers is still unpublished data. Net composite: 0.810 as per reflexion-tnbc-001 revised estimate.",
+  "scope_boundary": "This hypothesis applies ONLY to treatment-naive (chemotherapy-unexposed) TNBC at time of PARPi administration. For post-NACT patients with constitutional BRCA1 methylation, olaparib benefit is NOT predicted — RAD51 restoration must be explicitly tested by functional assay before re-enrollment.",
+  "therapeutic_analogy": "Platinum-sensitive ovarian cancer relapse window: benefit is time/exposure-bounded, not genotype-permanent. Methylation-positive TNBC should be treated as an 'epigenetically sensitive' window analogous to platinum-free interval.",
+  "next_steps": [
+    "Prioritize: experiment-design-tnbc-001v2 — SUM149PT vs HCC1937 cisplatin/olaparib reversibility assay (see companion experiment file)",
+    "Biobank query: OlympiAD/EMBRACA — stratify by treatment-naive vs post-NACT at time of PARPi enrollment for constitutional methylation carriers",
+    "Clinical trial design: first-in-class arm for treatment-naive constitutional methylation TNBC in ongoing PARPi maintenance trials"
+  ]
+}

@@ -4,35 +4,19 @@
   "niche_id": "literature_synthesis",
   "task_id": "swarm-sc-g0-055-c5",
   "cycle": 5,
-  "executed_at": "2026-03-30T01:30:08.400487Z",
-  "query": "HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast biomarker 2024",
-  "papers_found": 3,
-  "efficiency_score": 0.46,
+  "executed_at": "2026-03-30T01:43:29.940347Z",
+  "query": "PTEN loss breast cancer PI3K pathway biomarker clinical trial 2023 2024",
+  "papers_found": 0,
+  "efficiency_score": 0.51,
   "verdict": "ACCEPT_WEAK",
-  "evidence": [
-    {
-      "source": "PMID:40976668",
-      "claim": "?",
-      "confidence": "medium"
-    },
-    {
-      "source": "PMID:40634519",
-      "claim": "?",
-      "confidence": "medium"
-    },
-    {
-      "source": "PMID:39724961",
-      "claim": "?",
-      "confidence": "medium"
-    }
-  ],
-  "hypothesis": "Based on 3 papers for 'HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast': ?",
-  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
-  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
+  "evidence": [],
+  "hypothesis": "Based on 0 papers for 'PTEN loss breast cancer PI3K pathway biomarker clinical tria': No results \u2014 gap identified",
+  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
+  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
   "resource_cost_estimate": {
     "pubmed_queries": 1,
-    "results": 3,
+    "results": 0,
     "model": "haiku"
   },
-  "confidence": 0.46
+  "confidence": 0.51
 }

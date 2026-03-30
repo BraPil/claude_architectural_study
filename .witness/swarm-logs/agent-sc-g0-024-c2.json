@@ -4,10 +4,10 @@
   "niche_id": "pathway_analysis",
   "task_id": "swarm-sc-g0-024-c2",
   "cycle": 2,
-  "executed_at": "2026-03-30T01:29:48.383051Z",
+  "executed_at": "2026-03-30T01:43:10.815400Z",
   "query": "CDH1 E-cadherin loss signaling downstream consequences ILC specific pathways",
   "papers_found": 0,
-  "efficiency_score": 0.51,
+  "efficiency_score": 0.46,
   "verdict": "ACCEPT_WEAK",
   "evidence": [],
   "hypothesis": "Based on 0 papers for 'CDH1 E-cadherin loss signaling downstream consequences ILC s': No results \u2014 gap identified",
@@ -18,5 +18,5 @@
     "results": 0,
     "model": "haiku"
   },
-  "confidence": 0.51
+  "confidence": 0.46
 }

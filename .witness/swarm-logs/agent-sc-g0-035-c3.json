@@ -1,22 +1,28 @@
 {
   "finding_type": "synthesis",
   "agent_id": "sc-g0-035",
-  "niche_id": "breast_cancer_marker_analysis",
+  "niche_id": "literature_synthesis",
   "task_id": "swarm-sc-g0-035-c3",
   "cycle": 3,
-  "executed_at": "2026-03-30T01:29:52.727067Z",
-  "query": "TCGA invasive lobular carcinoma ferroptosis FRGS subtype methylation",
-  "papers_found": 0,
-  "efficiency_score": 0.54,
+  "executed_at": "2026-03-30T01:43:16.213552Z",
+  "query": "spatial transcriptomics tumor microenvironment breast cancer immune cold hot",
+  "papers_found": 1,
+  "efficiency_score": 0.74,
   "verdict": "ACCEPT_WEAK",
-  "evidence": [],
-  "hypothesis": "Based on 0 papers for 'TCGA invasive lobular carcinoma ferroptosis FRGS subtype met': No results \u2014 gap identified",
-  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
-  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
+  "evidence": [
+    {
+      "source": "PMID:41766877",
+      "claim": "Reprogramming the immunosuppressive breast cancer microenvironment: integrating ",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 1 papers for 'spatial transcriptomics tumor microenvironment breast cancer': Reprogramming the immunosuppressive breast cancer microenvironment: integrating ",
+  "novelty_claim": "Identified 1 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 1 PMIDs and run /evaluate",
   "resource_cost_estimate": {
     "pubmed_queries": 1,
-    "results": 0,
+    "results": 1,
     "model": "haiku"
   },
-  "confidence": 0.54
+  "confidence": 0.74
 }

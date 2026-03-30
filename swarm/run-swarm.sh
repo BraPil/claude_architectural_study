@@ -269,13 +269,16 @@ agent = state["agents"][agent_id]
 agent["niche"] = niche
 agent["tasks_completed"] = agent.get("tasks_completed", 0) + 1
 agent["efficiency_history"] = (agent.get("efficiency_history", []) + [efficiency])[-5:]
-agent["role_commitment"] = min(1.0, agent.get("role_commitment", 0) + 0.12)
+agent["role_commitment"] = min(1.0, agent.get("role_commitment", 0) + 0.25)
 state["total_findings"] = state.get("total_findings", 0) + 1
 state["niche_counts"][niche] = state["niche_counts"].get(niche, 0) + 1
 
-# Mitosis check
+# Mitosis check — only fire after 3+ tasks with consistently low avg efficiency
+# (prevents premature fragmentation that blocks differentiation)
 mitosis_triggered = False
-if efficiency < 0.65 and agent["tasks_completed"] >= 2:
+history = agent["efficiency_history"]
+avg_eff = sum(history) / len(history) if history else efficiency
+if avg_eff < 0.65 and agent["tasks_completed"] >= 3:
     mitosis_triggered = True
     agent["lifecycle_state"] = "dormant"
     ts = __import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat().replace('+00:00','Z')
@@ -334,14 +337,23 @@ for cycle in $(seq 1 "$MAX_CYCLES"); do
   cycle_verdicts=()
   cycle_efficiency_sum=0
 
-  # Load existing agents from state for persistence across cycles
+  # Load existing agents from state for persistence across cycles.
+  # Priority: (1) sc-p1-* persistent gen-1 agents, (2) highest role_commitment agents.
+  # Keeps pool tight (MAX_AGENTS) so each agent accumulates tasks → differentiation.
   existing_agents=()
   if python3 -c "
 import json
 with open('$STATE_FILE') as f: s = json.load(f)
-agents = [a for a,d in s.get('agents',{}).items()
-          if d.get('lifecycle_state') not in ('dormant','apoptosis')]
-print('\n'.join(agents[:$MAX_AGENTS]))
+all_agents = {a: d for a,d in s.get('agents',{}).items()
+              if d.get('lifecycle_state') not in ('dormant','apoptosis')}
+# Prefer persistent p1 agents first
+p1 = sorted([a for a in all_agents if a.startswith('sc-p1-')],
+            key=lambda a: all_agents[a].get('role_commitment', 0), reverse=True)
+# Then highest-rc other agents
+others = sorted([a for a in all_agents if not a.startswith('sc-p1-')],
+                key=lambda a: all_agents[a].get('role_commitment', 0), reverse=True)
+pool = (p1 + others)[:$MAX_AGENTS]
+print('\n'.join(pool))
 " 2>/dev/null > /tmp/swarm_agents.txt; then
     mapfile -t existing_agents < /tmp/swarm_agents.txt
   fi

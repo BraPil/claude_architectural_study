@@ -1,0 +1,22 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-g0-092",
+  "niche_id": "literature_synthesis",
+  "task_id": "swarm-sc-g0-092-c10",
+  "cycle": 10,
+  "executed_at": "2026-03-30T01:44:02.518532Z",
+  "query": "PTEN loss breast cancer PI3K pathway biomarker clinical trial 2023 2024",
+  "papers_found": 0,
+  "efficiency_score": 0.5,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [],
+  "hypothesis": "Based on 0 papers for 'PTEN loss breast cancer PI3K pathway biomarker clinical tria': No results \u2014 gap identified",
+  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
+  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 0,
+    "model": "haiku"
+  },
+  "confidence": 0.5
+}

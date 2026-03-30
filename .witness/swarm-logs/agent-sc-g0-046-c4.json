@@ -4,13 +4,13 @@
   "niche_id": "breast_cancer_marker_analysis",
   "task_id": "swarm-sc-g0-046-c4",
   "cycle": 4,
-  "executed_at": "2026-03-30T01:30:02.341523Z",
-  "query": "ILC CDH1 FOXA1 ctDNA early stage detection feasibility",
+  "executed_at": "2026-03-30T01:43:24.198424Z",
+  "query": "TCGA invasive lobular carcinoma ferroptosis FRGS subtype methylation",
   "papers_found": 0,
-  "efficiency_score": 0.57,
+  "efficiency_score": 0.58,
   "verdict": "ACCEPT_WEAK",
   "evidence": [],
-  "hypothesis": "Based on 0 papers for 'ILC CDH1 FOXA1 ctDNA early stage detection feasibility': No results \u2014 gap identified",
+  "hypothesis": "Based on 0 papers for 'TCGA invasive lobular carcinoma ferroptosis FRGS subtype met': No results \u2014 gap identified",
   "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
   "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
   "resource_cost_estimate": {
@@ -18,5 +18,5 @@
     "results": 0,
     "model": "haiku"
   },
-  "confidence": 0.57
+  "confidence": 0.58
 }

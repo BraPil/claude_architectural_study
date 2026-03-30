@@ -4,10 +4,10 @@
   "niche_id": "hypothesis_generation",
   "task_id": "swarm-sc-g0-011-c1",
   "cycle": 1,
-  "executed_at": "2026-03-30T01:29:42.081958Z",
+  "executed_at": "2026-03-30T01:43:06.085772Z",
   "query": "CDK4/6 inhibitor resistance ILC immune microenvironment escape mechanism",
   "papers_found": 0,
-  "efficiency_score": 0.46,
+  "efficiency_score": 0.4,
   "verdict": "ACCEPT_WEAK",
   "evidence": [],
   "hypothesis": "Based on 0 papers for 'CDK4/6 inhibitor resistance ILC immune microenvironment esca': No results \u2014 gap identified",
@@ -18,5 +18,5 @@
     "results": 0,
     "model": "haiku"
   },
-  "confidence": 0.46
+  "confidence": 0.4
 }

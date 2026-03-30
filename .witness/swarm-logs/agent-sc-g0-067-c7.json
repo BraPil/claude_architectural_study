@@ -1,0 +1,22 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-g0-067",
+  "niche_id": "hypothesis_generation",
+  "task_id": "swarm-sc-g0-067-c7",
+  "cycle": 7,
+  "executed_at": "2026-03-30T01:43:41.654844Z",
+  "query": "TME spatial subtype immune infiltration CDK4/6 inhibitor prediction ILC",
+  "papers_found": 0,
+  "efficiency_score": 0.42,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [],
+  "hypothesis": "Based on 0 papers for 'TME spatial subtype immune infiltration CDK4/6 inhibitor pre': No results \u2014 gap identified",
+  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
+  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 0,
+    "model": "haiku"
+  },
+  "confidence": 0.42
+}

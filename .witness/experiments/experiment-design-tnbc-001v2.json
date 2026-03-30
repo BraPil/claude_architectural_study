@@ -1,0 +1,154 @@
+{
+  "experiment_id": "experiment-design-tnbc-001v2",
+  "hypothesis_id": "hyp-tnbc-001-v2",
+  "parent_hypothesis_id": "hyp-tnbc-001",
+  "agent_id": "refinement-tnbc-001-v2",
+  "dome_id": "exmorbus-v0.2",
+  "lineage_id": "exmorbus-oncology-v2",
+  "ts": "2026-03-30T15:00:00Z",
+  "title": "Cisplatin-induced BRCA1 re-expression and PARPi resistance in constitutionally methylated vs. mutated BRCA1 TNBC",
+  "rationale": "The reflexion finding establishes that BRCA1-methylated TNBC can restore RAD51 foci and HR capacity after chemotherapy exposure — unlike stable germline BRCA1 mutations. This experiment directly tests the causal chain: cisplatin exposure → BRCA1 epigenetic derepression → RAD51 restoration → olaparib IC50 shift. The two cell lines provide an isogenic-like comparison between epigenetically silenced (SUM149PT) and genetically inactivated (HCC1937) BRCA1.",
+  "key_question": "Does cisplatin exposure selectively restore BRCA1 expression and HR capacity in constitutionally methylated BRCA1 TNBC (SUM149PT) but NOT in BRCA1-null mutated TNBC (HCC1937), and does this restoration confer measurable olaparib resistance?",
+  "cell_lines": [
+    {
+      "line": "SUM149PT",
+      "BRCA1_status": "Constitutional BRCA1 promoter methylation — not mutated; silenced epigenetically",
+      "rationale": "Models the methylated, HR-deficient state pre-chemotherapy. BRCA1 methylation is retained in this line, enabling measurement of epigenetic reversion upon cisplatin exposure.",
+      "source_note": "American Type Culture Collection (ATCC) or Asterand Bioscience; confirm BRCA1 methylation status by pyrosequencing before experiment start"
+    },
+    {
+      "line": "HCC1937",
+      "BRCA1_status": "BRCA1 null — homozygous frameshift mutation (exon 20 5382insC equivalent); no functional BRCA1 protein",
+      "rationale": "Models stable genetic BRCA1 inactivation. Any cisplatin-induced change in HR capacity in this line is mutation-independent and cannot reflect BRCA1 re-expression — serves as the negative control for the reversibility mechanism.",
+      "source_note": "Confirm BRCA1 protein absence by Western blot before experiment start (anti-BRCA1, D-9 clone)"
+    }
+  ],
+  "treatment_protocol": {
+    "step_1_cisplatin_challenge": {
+      "agent": "Cisplatin",
+      "concentration": "5 µM",
+      "duration": "72 hours",
+      "vehicle": "Sterile water (1 mg/mL stock, diluted in complete medium)",
+      "medium_volume": "Standard 6-well or 10 cm dish, 70-80% confluency at treatment start",
+      "rationale": "5 µM × 72h is an established sub-lethal BRCAness-relevant dose in TNBC cell lines (consistent with prior SUM149PT cisplatin studies); induces sufficient DNA damage stress to trigger epigenetic response without >50% cell death"
+    },
+    "step_2_wash_recovery": {
+      "washes": 3,
+      "wash_agent": "PBS (calcium/magnesium-free)",
+      "recovery_medium": "Complete medium (DMEM/RPMI + 10% FBS as per line requirements)",
+      "recovery_duration": "7 days",
+      "medium_change": "Every 48 hours during recovery period",
+      "rationale": "7-day recovery mirrors clinical post-NACT interval before adjuvant therapy decision. Allows epigenetic reversion to manifest without acute cisplatin effects on HR protein levels"
+    },
+    "step_3_olaparib_challenge": {
+      "agent": "Olaparib (AZD2281)",
+      "dose_range": "0.001 µM to 100 µM (9-point half-log dose-response)",
+      "duration": "72 hours",
+      "readout_timing": "IC50 by CellTiter-Glo luminescent viability at 72h post-olaparib",
+      "rationale": "Full dose-response captures IC50 shift as the primary pharmacological endpoint. Expected outcome: SUM149PT IC50 shifts right (resistance) post-cisplatin+recovery; HCC1937 IC50 unchanged"
+    }
+  },
+  "experimental_arms": [
+    {
+      "arm_id": "A",
+      "label": "SUM149PT — Naive (no cisplatin)",
+      "description": "SUM149PT cells treated with vehicle (water) × 72h, then 7-day recovery in complete medium, then olaparib challenge",
+      "expected_IC50": "Low (< 5 µM) — BRCA1 methylated, HR-deficient, PARPi sensitive"
+    },
+    {
+      "arm_id": "B",
+      "label": "SUM149PT — Cisplatin-exposed (reversibility test)",
+      "description": "SUM149PT cells treated with cisplatin 5 µM × 72h, washed × 3, 7-day recovery, then olaparib challenge",
+      "expected_IC50": "Elevated (> 20 µM, shift >= 4-fold vs Arm A) — BRCA1 re-expressed, HR restored, PARPi resistant"
+    },
+    {
+      "arm_id": "C",
+      "label": "HCC1937 — Naive (no cisplatin)",
+      "description": "HCC1937 cells treated with vehicle × 72h, then 7-day recovery, then olaparib challenge",
+      "expected_IC50": "Low (< 1 µM) — BRCA1 null, constitutively HR-deficient"
+    },
+    {
+      "arm_id": "D",
+      "label": "HCC1937 — Cisplatin-exposed (negative control for reversibility)",
+      "description": "HCC1937 cells treated with cisplatin 5 µM × 72h, washed × 3, 7-day recovery, then olaparib challenge",
+      "expected_IC50": "Unchanged vs Arm C (< 2-fold shift) — BRCA1 mutation cannot be reversed by epigenetic mechanism"
+    }
+  ],
+  "readouts": [
+    {
+      "readout_id": "R1",
+      "name": "BRCA1 protein expression — Western blot",
+      "method": "Western blot; anti-BRCA1 antibody (D-9 clone, Santa Cruz; or MS110, Calbiochem); loading control GAPDH or β-actin",
+      "timepoints": ["Pre-cisplatin (Day 0)", "End of cisplatin (Day 3)", "Post-recovery Day 7 (before olaparib)", "Post-olaparib Day 10"],
+      "expected_result": "SUM149PT: BRCA1 band appears/increases after cisplatin and remains elevated through recovery. HCC1937: No BRCA1 band at any timepoint.",
+      "quantification": "Densitometry normalized to loading control; fold-change vs Day 0 per cell line"
+    },
+    {
+      "readout_id": "R2",
+      "name": "BRCA1 mRNA expression — RT-qPCR",
+      "method": "RNA extraction (RNeasy), cDNA synthesis, TaqMan or SYBR Green qPCR; primers spanning exon 4-5 junction to avoid genomic DNA amplification; reference genes: GAPDH, RPLP0",
+      "timepoints": ["Pre-cisplatin (Day 0)", "Post-recovery Day 7"],
+      "expected_result": "SUM149PT: BRCA1 mRNA increases after cisplatin+recovery (epigenetic derepression at transcriptional level). HCC1937: No detectable full-length BRCA1 mRNA.",
+      "quantification": "2^(-ΔΔCt) method; statistical comparison by paired t-test (Day 0 vs Day 7) per cell line"
+    },
+    {
+      "readout_id": "R3",
+      "name": "BRCA1 promoter methylation — pyrosequencing",
+      "method": "Bisulfite conversion (EpiTect kit), PCR amplification of BRCA1 promoter CpG island (target CpGs including cg21490561), pyrosequencing on PyroMark Q24",
+      "timepoints": ["Pre-cisplatin (Day 0)", "Post-recovery Day 7"],
+      "expected_result": "SUM149PT: Methylation fraction decreases after cisplatin+recovery (epigenetic reversion mechanism). HCC1937: No signal (methylation assay not informative for mutant allele — confirm N/A at baseline).",
+      "quantification": "% methylation per CpG site; plot as methylation heatmap Day 0 vs Day 7; paired t-test on mean methylation % across targeted CpGs"
+    },
+    {
+      "readout_id": "R4",
+      "name": "RAD51 foci — immunofluorescence",
+      "method": "Cells plated on coverslips or Lab-Tek chamber slides; 6 Gy ionizing radiation (IR) 1h before fixation to induce DSBs; 4% PFA fixation; permeabilization (0.5% Triton X-100); anti-RAD51 antibody (ab63801, Abcam); DAPI nuclear counterstain; confocal or widefield fluorescence microscopy; automated foci counting (ImageJ CellProfiler pipeline)",
+      "timepoints": ["Pre-cisplatin (Day 0, post-IR)", "Post-recovery Day 7 (post-IR)"],
+      "threshold": ">10 RAD51 foci per nucleus = HR-proficient (BRCAness negative); <=10 foci per nucleus = HR-deficient (BRCAness positive)",
+      "expected_result": "SUM149PT Arm A: <= 10 foci/nucleus (HR-deficient pre-treatment). SUM149PT Arm B Day 7: >10 foci/nucleus (HR restored post-cisplatin). HCC1937 Arms C and D: <= 10 foci/nucleus at both timepoints (BRCA1 mutation cannot be reversed).",
+      "quantification": "Count >= 50 nuclei per condition; report % HR-proficient cells (>10 foci); statistical comparison by Mann-Whitney U test; Fisher's exact test for proportion above threshold",
+      "technical_note": "Use the Castroviejo-Bermejo 2018 (PMID 30171200) pre-extraction protocol (CSK buffer wash before fixation) to reduce soluble nuclear RAD51 background and increase foci specificity"
+    },
+    {
+      "readout_id": "R5",
+      "name": "Olaparib IC50 — viability dose-response",
+      "method": "CellTiter-Glo 2.0 luminescent cell viability assay (Promega); 96-well plate format; 9-point olaparib dose-response (0.001–100 µM, half-log dilutions); 72h drug exposure; GraphPad Prism nonlinear regression (log[inhibitor] vs. normalized response, variable slope 4-parameter Hill equation)",
+      "timing": "Performed after 7-day recovery (Day 7–10)",
+      "expected_result": "SUM149PT Arm A IC50: 1–5 µM. SUM149PT Arm B IC50: >20 µM (minimum 4-fold shift to confirm resistance). HCC1937 Arms C and D IC50: <1 µM with <2-fold shift between arms.",
+      "primary_endpoint": "IC50 fold-change Arm B / Arm A in SUM149PT; IC50 fold-change Arm D / Arm C in HCC1937",
+      "statistical_analysis": "Three independent biological replicates; IC50 values log-transformed before analysis; two-way ANOVA (cell line × treatment) with Tukey post-hoc correction; p < 0.05 threshold"
+    }
+  ],
+  "controls": [
+    {"control": "Vehicle control (water) for cisplatin — Arms A and C"},
+    {"control": "DMSO vehicle control for olaparib — 0.1% v/v maximum"},
+    {"control": "Positive control for HR-deficiency: BRCA2 siRNA-transfected SUM149PT (48h siRNA knockdown before olaparib, not after cisplatin) — confirms foci assay sensitivity"},
+    {"control": "DNMT inhibitor control: 5-azacytidine (5-AZA, 1 µM × 72h) in SUM149PT — confirms BRCA1 promoter methylation is the mechanism driving re-expression (5-AZA should phenocopy cisplatin on BRCA1 expression without DNA damage)"}
+  ],
+  "timeline": {
+    "week_minus_1": "Cell line validation — BRCA1 status confirmation (Western blot, pyrosequencing baseline), mycoplasma testing, cisplatin dose-response pilot (establish 5 µM achieves 20-40% viability reduction without complete kill)",
+    "week_1_days_0_to_3": "Cisplatin 5 µM treatment (or vehicle) — Arms A/B (SUM149PT), Arms C/D (HCC1937). Collect Day 0 baseline samples (RNA, protein, pyrosequencing) before drug addition.",
+    "week_1_days_3_to_10": "3× PBS wash, recovery in complete medium (change medium Day 5). No drug.",
+    "week_2_day_7": "Collect post-recovery samples: R1 Western blot, R2 RT-qPCR, R3 pyrosequencing, R4 RAD51 foci (IR stimulus same day).",
+    "week_2_days_7_to_10": "Olaparib 9-point dose-response (R5). CellTiter-Glo readout Day 10.",
+    "week_3": "Data analysis, IC50 curve fitting, statistical testing. Prepare second biological replicate."
+  },
+  "sample_size_rationale": "n=3 independent biological replicates per arm (12 total conditions). For expected IC50 shift of >= 4-fold (large effect size, Cohen's d >= 1.5 based on pilot data from Frontiers 2023), power analysis (alpha=0.05, power=0.80) requires n=3 biological replicates minimum. Pre-register upgrade to n=6 if pilot effect size is d < 1.0.",
+  "novelty_of_experiment": "No published study has used the cisplatin-washout-recovery paradigm specifically to test BRCA1 epigenetic reversion in SUM149PT vs HCC1937 as a paired comparison of methylated vs mutated BRCA1 TNBC. The 5-AZA positive control design (mechanistic confirmation arm) and the paired pyrosequencing (methylation fraction change as mechanism readout) are not present in Frontiers 2023 — this design goes beyond the original reversibility observation to establish the epigenetic mechanism as causal.",
+  "expected_outcomes": {
+    "confirm_hypothesis": "SUM149PT: BRCA1 re-expressed (Western + RT-qPCR), methylation reduced (pyrosequencing), RAD51 foci restored (>10/nucleus, Day 7), olaparib IC50 >= 4-fold shift. HCC1937: No changes in any readout.",
+    "partial_support": "BRCA1 mRNA increases but olaparib IC50 shift is < 4-fold — suggests partial HR restoration insufficient for full resistance; implies a threshold effect requiring additional recovery time or multiple cisplatin cycles.",
+    "reject_hypothesis": "No IC50 shift in SUM149PT OR equivalent IC50 shift in HCC1937 — would require re-evaluation of HR reversibility mechanism or dose/timing parameters.",
+    "unexpected_finding_flag": "If SUM149PT shows IC50 increase WITHOUT BRCA1 re-expression: suggests BRCA1-independent resistance mechanism post-cisplatin (e.g., MDR upregulation, PARP1 loss) — must be reported and differentiates from the epigenetic reversibility mechanism"
+  },
+  "clinical_implication": "If SUM149PT shows selective BRCA1 re-expression and olaparib resistance post-cisplatin while HCC1937 does not, this provides in vitro mechanistic support for: (1) restricting PARPi eligibility for constitutional BRCA1 methylation-positive TNBC to the treatment-naive setting; (2) using RAD51 foci assay as a dynamic biomarker of PARPi eligibility at each treatment decision point; (3) designing the prospective clinical arm proposed in hyp-tnbc-001-v2 testable_experiment.",
+  "regulatory_path": "This in vitro experiment is a preclinical proof-of-concept. Successful results would support an IND amendment to an existing olaparib TNBC trial to add a constitutional methylation arm with treatment-naive enrollment restriction and mandatory pre-treatment RAD51 foci assay.",
+  "bfts_nodes": [
+    {"node_id": "n1", "label": "Cisplatin dose optimization pilot", "EIG": 3.5, "status": "PREREQUISITE"},
+    {"node_id": "n2", "label": "Western blot BRCA1 re-expression SUM149PT vs HCC1937", "EIG": 8.0, "status": "READY", "critical_path": true},
+    {"node_id": "n3", "label": "RAD51 foci IR assay Day 0 vs Day 7", "EIG": 9.2, "status": "READY", "critical_path": true},
+    {"node_id": "n4", "label": "Olaparib IC50 shift SUM149PT Arm A vs B", "EIG": 10.0, "status": "READY", "critical_path": true},
+    {"node_id": "n5", "label": "5-AZA mechanistic control — BRCA1 promoter demethylation", "EIG": 5.5, "status": "READY"},
+    {"node_id": "n6", "label": "Pyrosequencing methylation fraction change Day 0 vs Day 7", "EIG": 7.0, "status": "READY"}
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-gen1-302",
+  "niche_id": "literature_synthesis",
+  "task_id": "swarm-sc-gen1-302-c15",
+  "cycle": 15,
+  "executed_at": "2026-03-30T03:04:21.911798Z",
+  "query": "HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast biomarker 2024",
+  "papers_found": 3,
+  "efficiency_score": 0.71,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [
+    {
+      "source": "PMID:40976668",
+      "claim": "Canadian real-world hybrid longitudinal cohort study of treatment discontinuatio",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:40634519",
+      "claim": "Concordance of HER2-low scoring in breast carcinomas among pathologists.",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:39724961",
+      "claim": "Independent Validation of a HER2-Low Focused Immunohistochemistry Scoring System",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 3 papers for 'HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast': Canadian real-world hybrid longitudinal cohort study of treatment discontinuatio",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 3,
+    "model": "haiku"
+  },
+  "confidence": 0.71
+}
