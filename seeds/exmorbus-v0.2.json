@@ -1,0 +1,96 @@
+{
+  "contract_version": "2.0.0",
+  "lineage_id": "exmorbus-oncology-v2",
+  "domain": "oncological_research",
+  "created_at": "2026-03-29T00:00:00Z",
+  "parent_contract_id": "exmorbus-oncology-v1",
+
+  "ancestor_performance": {
+    "successful_niches": [
+      {
+        "niche_id": "breast_cancer_marker_analysis",
+        "description": "Analysis of biomarkers associated with breast cancer subtypes",
+        "peak_karma_achieved": 85,
+        "token_efficiency": 0.72,
+        "outcome": "successful",
+        "lessons": "Literature synthesis agents achieved high quality. Broad initial sweep then narrowing specialization worked well. ~140 agents fired in first run, produced breast cancer marker output."
+      }
+    ],
+    "failed_niches": [],
+    "peak_efficiency_agent_size": 12,
+    "optimal_organ_size": 8,
+    "best_organ_functions": ["literature_synthesis", "pathway_analysis", "marker_identification"],
+    "documented_failure_modes": [
+      "insufficient_domain_grounding_for_simulation_tasks",
+      "agents_not_graded_consistently_in_v0.1"
+    ]
+  },
+
+  "resource_priorities": [
+    "pubmed_api",
+    "arxiv_cs_AI",
+    "clinical_trials_gov",
+    "tcga_pathway_data",
+    "drugbank",
+    "uniprot",
+    "reactome_pathways"
+  ],
+
+  "compute_budget": {
+    "haiku_pct": 70,
+    "sonnet_pct": 25,
+    "opus_pct": 5
+  },
+
+  "required_output_format": {
+    "type": "object",
+    "required": ["finding_type", "hypothesis", "evidence", "novelty_claim", "actionability", "resource_cost_estimate"],
+    "properties": {
+      "finding_type": { "type": "string", "enum": ["hypothesis", "synthesis", "experiment_result", "pathway_insight"] },
+      "hypothesis": { "type": "string" },
+      "evidence": { "type": "array", "items": { "type": "string" } },
+      "novelty_claim": { "type": "string" },
+      "actionability": { "type": "string" },
+      "resource_cost_estimate": { "type": "object" },
+      "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+    }
+  },
+
+  "forbidden_actions": [
+    "fabricate_clinical_data",
+    "make_treatment_recommendations_to_humans",
+    "access_patient_records",
+    "claim_certainty_without_evidence"
+  ],
+
+  "diversity_enforcement": {
+    "max_hypothesis_semantic_overlap": 0.35,
+    "min_active_niches": 4
+  },
+
+  "mitosis_threshold": 0.65,
+  "apoptosis_threshold": 10,
+  "differentiation_threshold": 0.60,
+  "tendril_ttl_hours": 48,
+  "sensing_duration_hours": 24,
+
+  "fitness_function": "novel_insight_rate_per_token_cost",
+  "fitness_evaluation_criteria": {
+    "novelty": "Finding is not a direct restatement of content in the seeded literature corpus",
+    "plausibility": "Consistent with known cancer biology; cites supporting evidence",
+    "actionability": "Suggests a specific, testable experiment or intervention with named targets",
+    "specificity": "Names specific genes, pathways, compounds, or tumor subtypes"
+  },
+
+  "communication_contracts": {
+    "can_receive_from": [],
+    "can_send_to": ["mouseion-registry"],
+    "published_skills": []
+  },
+
+  "evolution": {
+    "mutation_prompt": "Review the ancestor_performance section. Identify the lesson most likely to improve the next generation's token efficiency or output quality. Propose one targeted mutation to this contract's thresholds or resource_priorities that addresses it. Return only the mutation as a JSON patch object.",
+    "crossover_fields": ["resource_priorities", "fitness_evaluation_criteria", "diversity_enforcement", "compute_budget"],
+    "merge_recipe_id": null
+  }
+}

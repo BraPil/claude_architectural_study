@@ -1,0 +1,97 @@
+{
+  "contract_version": "0.1.0",
+  "lineage_id": "toxicity-vectors-v0.1",
+  "parent_contract_id": "disease-vectors-v0.1",
+  "domain": "toxicity_vector_research",
+  "created_at": "2026-03-29T00:00:00Z",
+  "description": "Toxicity Vectors dome — spawned from Disease Vectors CAPACITY_SATURATED signal. Focuses on toxicological mechanisms, drug toxicity prediction, environmental carcinogen interactions, and cancer-toxin intersections.",
+  "ancestor_performance": {
+    "successful_niches": [],
+    "failed_niches": [],
+    "peak_efficiency_agent_size": 0,
+    "optimal_organ_size": 6,
+    "best_organ_functions": [],
+    "documented_failure_modes": [],
+    "parent_domain_lessons": [
+      "Disease Vectors: pathogen-driven immune evasion mechanisms transfer well to toxin-driven evasion",
+      "ExMorbus (grandparent): literature synthesis at Haiku tier achieves >0.7 token efficiency",
+      "Diversity enforcement prevents convergence on single compound class"
+    ],
+    "grandparent_contract_id": "exmorbus-oncology-v2"
+  },
+  "resource_priorities": [
+    "pubmed_api",
+    "chembl_database",
+    "toxcast_epa",
+    "drugbank",
+    "ctd_comparative_toxicogenomics",
+    "hmdb_metabolomics",
+    "reactome_pathways",
+    "arxiv_q_bio"
+  ],
+  "compute_budget": {
+    "haiku_pct": 65,
+    "sonnet_pct": 28,
+    "opus_pct": 7
+  },
+  "forbidden_actions": [
+    "fabricate_toxicological_data",
+    "make_safety_recommendations_to_humans",
+    "access_patient_records",
+    "claim_certainty_without_evidence",
+    "recommend_chemical_synthesis_without_safety_review"
+  ],
+  "diversity_enforcement": {
+    "max_hypothesis_semantic_overlap": 0.35,
+    "min_active_niches": 4,
+    "required_niche_coverage": [
+      "environmental_carcinogens",
+      "drug_toxicity_mechanisms",
+      "metabolic_activation_pathways",
+      "dna_damage_toxins"
+    ]
+  },
+  "mitosis_threshold": 0.65,
+  "apoptosis_threshold": 10,
+  "differentiation_threshold": 0.60,
+  "tendril_ttl_hours": 48,
+  "sensing_duration_hours": 24,
+  "fitness_function": "novel_toxicity_mechanism_rate_per_token_cost",
+  "fitness_evaluation_criteria": {
+    "novelty": "Not present in provided toxicology literature corpus",
+    "plausibility": "Consistent with known toxicological mechanisms and dose-response relationships",
+    "actionability": "Suggests a testable in-silico experiment or literature gap to fill",
+    "specificity": "Names specific compounds, metabolites, genes, or molecular pathways"
+  },
+  "communication_contracts": {
+    "can_receive_from": ["exmorbus-v0.2", "disease-vectors-v0.1"],
+    "can_send_to": ["mouseion-registry", "exmorbus-v0.2", "disease-vectors-v0.1"],
+    "published_skills": ["toxin_pathway_analysis", "drug_toxicity_literature_synthesis"]
+  },
+  "inter_dome_knowledge_transfer": {
+    "receive_from_exmorbus": [
+      "cancer_drug_mechanisms",
+      "oncogene_pathway_data",
+      "chemotherapy_resistance_patterns"
+    ],
+    "receive_from_disease_vectors": [
+      "pathogen_toxin_interactions",
+      "immune_evasion_patterns"
+    ],
+    "send_to_exmorbus": [
+      "environmental_carcinogen_mechanisms",
+      "drug_toxicity_cancer_risk"
+    ],
+    "send_to_disease_vectors": [
+      "toxin_vector_interactions",
+      "metabolic_activation_patterns"
+    ]
+  },
+  "evolution": {
+    "mutation_prompt": "Review ancestor_performance. This is generation 2 (grandchild of ExMorbus oncology). Identify which inherited oncology/disease-vector lessons most directly apply to toxicity research. Propose one mutation that would maximize the synergy between this dome's toxicity focus and the cancer research done in the ExMorbus grandparent dome.",
+    "crossover_fields": ["resource_priorities", "fitness_evaluation_criteria", "diversity_enforcement", "inter_dome_knowledge_transfer"],
+    "merge_recipe_id": null,
+    "inherited_from": "disease-vectors-v0.1",
+    "grandparent_lineage": "exmorbus-oncology-v2"
+  }
+}

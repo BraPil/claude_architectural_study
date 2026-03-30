@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "mouseion": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["mouseion/mcp-server.js"],
+      "env": {
+        "CLAUDE_PROJECT_DIR": ".",
+        "DOME_ID": "exmorbus-v0.2"
+      }
+    },
+    "biomedical-fetch": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/biomedical-fetch/server.js"],
+      "env": {
+        "CLAUDE_PROJECT_DIR": "."
+      }
+    }
+  }
+}

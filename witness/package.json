@@ -1,0 +1,13 @@
+{
+  "name": "witness-dashboard",
+  "version": "0.1.0",
+  "description": "Read-only Witness Observer dashboard for Organic Agentic AutoDev domes",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

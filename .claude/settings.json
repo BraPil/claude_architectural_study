@@ -1,0 +1,68 @@
+{
+  "hooks": {
+    "SubagentStart": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/dna-inject.sh",
+            "timeout": 10,
+            "statusMessage": "Injecting DNA contract..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/witness.sh",
+            "async": true,
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/karma-update.sh",
+            "timeout": 15,
+            "statusMessage": "Updating karma and checking mitosis threshold..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/efficiency-check.sh",
+            "timeout": 10,
+            "statusMessage": "Running efficiency check..."
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Organic Agentic AutoDev dome session started.' && if [ -n \"$CLAUDE_ENV_FILE\" ]; then echo 'export DOME_ID=exmorbus-v0.2' >> \"$CLAUDE_ENV_FILE\"; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

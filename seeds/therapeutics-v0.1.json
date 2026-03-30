@@ -1,0 +1,155 @@
+{
+  "contract_version": "0.1.0",
+  "lineage_id": "therapeutics-v0.1",
+  "parent_contract_id": "exmorbus-oncology-v2",
+  "domain": "therapeutics_research",
+  "created_at": "2026-03-30T00:00:00Z",
+  "description": "Therapeutics dome — receives high-confidence hypotheses from ExMorbus and translates them into actionable therapeutic strategies. Covers drug repurposing, targeted therapy, immunotherapy, combination therapy, and clinical trial gap analysis.",
+  "ancestor_performance": {
+    "successful_niches": [
+      {
+        "niche_id": "drug_repurposing",
+        "description": "Inherited signal from ExMorbus: known compounds targeting cancer pathways",
+        "peak_karma_achieved": 0,
+        "token_efficiency": 0.0,
+        "outcome": "inherited_not_yet_validated",
+        "lessons": "ExMorbus identified pathway targets; Therapeutics translates these into druggable interventions"
+      }
+    ],
+    "failed_niches": [],
+    "peak_efficiency_agent_size": 0,
+    "optimal_organ_size": 6,
+    "best_organ_functions": [],
+    "documented_failure_modes": [
+      "inherited: insufficient_domain_grounding_for_simulation",
+      "drug_toxicity_underestimation_in_silico"
+    ],
+    "parent_domain_lessons": [
+      "Hypothesis quality gate (evaluator) prevents wasted compute on implausible targets",
+      "Proximity enforcement critical — avoid clustering on single drug class",
+      "Haiku sufficient for DrugBank/ChEMBL queries; Opus needed for multi-target combination design"
+    ]
+  },
+  "resource_priorities": [
+    "drugbank",
+    "chembl_database",
+    "clinicaltrials_gov",
+    "pubmed_api",
+    "fda_drug_labels",
+    "opentargets_platform",
+    "uniprot",
+    "reactome_pathways",
+    "tcga_pathway_data",
+    "arxiv_q_bio"
+  ],
+  "compute_budget": {
+    "haiku_pct": 60,
+    "sonnet_pct": 30,
+    "opus_pct": 10
+  },
+  "forbidden_actions": [
+    "make_treatment_recommendations_to_humans",
+    "claim_clinical_efficacy_without_trial_data",
+    "access_patient_records",
+    "claim_certainty_without_evidence",
+    "recommend_off_label_use_without_disclaimer",
+    "fabricate_clinical_trial_data"
+  ],
+  "diversity_enforcement": {
+    "max_hypothesis_semantic_overlap": 0.35,
+    "min_active_niches": 4,
+    "required_niche_coverage": [
+      "drug_repurposing",
+      "targeted_therapy",
+      "immunotherapy",
+      "combination_therapy",
+      "clinical_trial_gap_analysis"
+    ]
+  },
+  "mitosis_threshold": 0.65,
+  "apoptosis_threshold": 10,
+  "differentiation_threshold": 0.60,
+  "tendril_ttl_hours": 48,
+  "sensing_duration_hours": 24,
+  "fitness_function": "novel_actionable_therapeutic_hypothesis_rate_per_token_cost",
+  "fitness_evaluation_criteria": {
+    "novelty": "Therapeutic strategy not currently in active clinical trials for this indication",
+    "plausibility": "Mechanism of action consistent with known pharmacology and cancer biology",
+    "actionability": "Drug or compound exists, has known safety profile, and a clinical trial could be designed",
+    "specificity": "Names specific drug, target, cancer subtype, and patient population",
+    "translational_relevance": "Supported by preclinical evidence (cell line, animal model, or human tissue data)"
+  },
+  "communication_contracts": {
+    "can_receive_from": ["exmorbus-v0.2", "disease-vectors-v0.1"],
+    "can_send_to": ["mouseion-registry", "exmorbus-v0.2", "preventatives-v0.1"],
+    "published_skills": [
+      "drug_target_interaction_analysis",
+      "clinical_trial_gap_identification",
+      "combination_therapy_design"
+    ]
+  },
+  "inter_dome_knowledge_transfer": {
+    "receive_from_exmorbus": [
+      "high_confidence_pathway_hypotheses",
+      "novel_biomarker_findings",
+      "mechanism_of_resistance_findings"
+    ],
+    "receive_from_disease_vectors": [
+      "viral_oncogenesis_targets",
+      "pathogen_drug_interactions"
+    ],
+    "send_to_exmorbus": [
+      "validated_drug_mechanisms",
+      "drug_resistance_patterns",
+      "target_druggability_assessments"
+    ],
+    "send_to_preventatives": [
+      "chemopreventive_compound_candidates",
+      "lifestyle_drug_interaction_signals"
+    ]
+  },
+  "organ_target_structure": [
+    {
+      "organ_function": "drug_repurposing_mining",
+      "description": "Query DrugBank and ChEMBL for existing compounds hitting novel ExMorbus targets",
+      "model_tier": "claude-haiku-4-5-20251001",
+      "target_agent_count": "3-4"
+    },
+    {
+      "organ_function": "targeted_therapy_design",
+      "description": "Design targeted therapy strategies for high-confidence pathway hypotheses",
+      "model_tier": "claude-sonnet-4-6",
+      "target_agent_count": "2-3"
+    },
+    {
+      "organ_function": "combination_therapy_optimizer",
+      "description": "Design multi-drug combination strategies to overcome resistance mechanisms",
+      "model_tier": "claude-opus-4-6",
+      "target_agent_count": "1-2"
+    },
+    {
+      "organ_function": "clinical_trial_analyst",
+      "description": "Identify gaps in current clinical trial landscape for novel targets",
+      "model_tier": "claude-sonnet-4-6",
+      "target_agent_count": "2"
+    },
+    {
+      "organ_function": "translational_bridge",
+      "description": "Synthesize findings for reporting back to ExMorbus and Preventatives",
+      "model_tier": "claude-sonnet-4-6",
+      "target_agent_count": "1-2"
+    }
+  ],
+  "evaluation_policy": {
+    "evaluator_model": "claude-opus-4-6",
+    "evaluation_required_before_queue": true,
+    "minimum_composite_score_for_queue": 0.55,
+    "auto_reject_below": 0.35
+  },
+  "evolution": {
+    "mutation_prompt": "Review ancestor_performance. This Therapeutics dome inherits high-confidence hypotheses from ExMorbus. Identify which drug repurposing niches have the highest translation potential based on ExMorbus-validated targets. Propose one mutation to resource_priorities or fitness_evaluation_criteria that maximizes the ratio of clinically-actionable findings per token spent.",
+    "crossover_fields": ["resource_priorities", "fitness_evaluation_criteria", "diversity_enforcement", "mitosis_threshold"],
+    "merge_recipe_id": null,
+    "inherited_from": "exmorbus-oncology-v2"
+  }
+}

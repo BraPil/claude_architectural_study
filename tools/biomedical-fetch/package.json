@@ -1,0 +1,13 @@
+{
+  "name": "biomedical-fetch",
+  "version": "0.1.0",
+  "description": "Biomedical data MCP server — PubMed, ClinicalTrials.gov, DrugBank for ExMorbus agents",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

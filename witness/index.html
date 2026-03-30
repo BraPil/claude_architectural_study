@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Witness Observer — Organic Agentic AutoDev</title>
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --surface2: #1c2535;
+      --border: #2d3748;
+      --text: #e2e8f0;
+      --muted: #718096;
+      --green: #48bb78;
+      --blue: #63b3ed;
+      --yellow: #f6e05e;
+      --red: #fc8181;
+      --purple: #b794f4;
+      --orange: #f6ad55;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 13px; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+    header h1 { font-size: 16px; color: var(--blue); letter-spacing: 1px; }
+    .dome-id { color: var(--green); font-size: 12px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; margin-right: 6px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; padding: 16px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+    .card h2 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 10px; }
+    .metric { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .metric-label { color: var(--muted); }
+    .metric-value { color: var(--text); font-weight: bold; }
+    .metric-value.green { color: var(--green); }
+    .metric-value.yellow { color: var(--yellow); }
+    .metric-value.red { color: var(--red); }
+    .metric-value.blue { color: var(--blue); }
+
+    .event-log { grid-column: 1 / -1; }
+    .log-container { height: 280px; overflow-y: auto; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 8px; font-size: 11px; }
+    .log-entry { margin-bottom: 4px; line-height: 1.5; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 4px; }
+    .log-entry .ts { color: var(--muted); margin-right: 8px; }
+    .log-entry .event-type { font-weight: bold; margin-right: 8px; }
+
+    .event-AGENT_SPAWNED .event-type { color: var(--green); }
+    .event-AGENT_DIFFERENTIATED .event-type { color: var(--blue); }
+    .event-MITOSIS .event-type { color: var(--yellow); }
+    .event-APOPTOSIS .event-type { color: var(--red); }
+    .event-ORGAN_FORMED .event-type { color: var(--purple); }
+    .event-ORGAN_SATURATED .event-type { color: var(--orange); }
+    .event-CAPACITY_SATURATED .event-type { color: var(--red); }
+    .event-TASK_COMPLETED .event-type { color: var(--green); }
+    .event-TASK_POSTED .event-type { color: var(--blue); }
+    .event-HORIZONTAL_GENE_TRANSFER .event-type { color: var(--purple); }
+    .event-SPAWN_REQUEST .event-type { color: var(--orange); }
+    .event-KNOWLEDGE_TRANSFER .event-type { color: var(--blue); }
+
+    .lineage { grid-column: span 2; }
+    .lineage-tree { font-size: 11px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 8px; max-height: 180px; overflow-y: auto; }
+
+    .lessons-panel { }
+    .lesson-entry { background: var(--surface2); border-left: 3px solid var(--blue); margin-bottom: 8px; padding: 8px 10px; border-radius: 0 4px 4px 0; font-size: 11px; }
+    .lesson-entry.success { border-left-color: var(--green); }
+    .lesson-entry.failure { border-left-color: var(--red); }
+    .lesson-entry.insight { border-left-color: var(--purple); }
+    .lesson-meta { color: var(--muted); font-size: 10px; margin-bottom: 3px; }
+
+    .spawn-queue { }
+    .spawn-item { background: var(--surface2); border: 1px solid var(--orange); border-radius: 4px; padding: 8px; margin-bottom: 6px; font-size: 11px; }
+    .spawn-item .domain { color: var(--orange); font-weight: bold; }
+
+    button { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 12px; }
+    button:hover { border-color: var(--blue); color: var(--blue); }
+    .refresh-bar { display: flex; gap: 8px; align-items: center; padding: 8px 16px; background: var(--surface); border-bottom: 1px solid var(--border); font-size: 11px; color: var(--muted); }
+    .live-indicator { color: var(--green); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>⬡ WITNESS OBSERVER</h1>
+    <div class="dome-id" id="dome-id">Loading...</div>
+  </div>
+  <div>
+    <span class="status-dot" id="status-dot"></span>
+    <span id="connection-status">Connecting...</span>
+  </div>
+</header>
+
+<div class="refresh-bar">
+  <span class="live-indicator">● LIVE</span>
+  <span>Read-only observer. No agent control possible.</span>
+  <span style="margin-left: auto">Last update: <span id="last-update">—</span></span>
+  <button onclick="loadAll()">Refresh</button>
+</div>
+
+<div class="grid">
+
+  <!-- Summary metrics -->
+  <div class="card" id="summary-card">
+    <h2>Dome Health</h2>
+    <div class="metric"><span class="metric-label">Agents Total</span><span class="metric-value blue" id="m-agents">—</span></div>
+    <div class="metric"><span class="metric-label">Organs Formed</span><span class="metric-value purple" id="m-organs">—</span></div>
+    <div class="metric"><span class="metric-label">Tasks Completed</span><span class="metric-value green" id="m-tasks">—</span></div>
+    <div class="metric"><span class="metric-label">Mitosis Events</span><span class="metric-value yellow" id="m-mitosis">—</span></div>
+    <div class="metric"><span class="metric-label">Lessons Recorded</span><span class="metric-value blue" id="m-lessons">—</span></div>
+    <div class="metric"><span class="metric-label">Capacity Signals</span><span class="metric-value red" id="m-capacity">—</span></div>
+    <div class="metric"><span class="metric-label">Spawn Requests</span><span class="metric-value orange" id="m-spawns">—</span></div>
+    <div class="metric"><span class="metric-label">Status</span><span class="metric-value green" id="m-health">—</span></div>
+  </div>
+
+  <!-- Event type breakdown -->
+  <div class="card">
+    <h2>Event Types (Last 500)</h2>
+    <div id="event-breakdown">Loading...</div>
+  </div>
+
+  <!-- Spawn queue -->
+  <div class="card spawn-queue">
+    <h2>Spawn Queue</h2>
+    <div id="spawn-queue-list">No pending spawns</div>
+  </div>
+
+  <!-- DNA Lessons -->
+  <div class="card lessons-panel">
+    <h2>Recent DNA Lessons</h2>
+    <div id="lessons-list">No lessons yet</div>
+  </div>
+
+  <!-- Live event log -->
+  <div class="card event-log">
+    <h2>Live Event Log <span id="event-count" style="color:var(--muted)"></span></h2>
+    <div class="log-container" id="event-log"></div>
+  </div>
+
+  <!-- Agent lineage -->
+  <div class="card lineage">
+    <h2>Agent Lineage</h2>
+    <div class="lineage-tree" id="lineage-tree">Loading...</div>
+  </div>
+
+  <!-- Evaluation leaderboard -->
+  <div class="card" style="grid-column: span 2">
+    <h2>Evaluation Leaderboard <span id="eval-count" style="color:var(--muted)"></span></h2>
+    <div id="leaderboard-list" style="font-size:11px">No evaluations yet</div>
+  </div>
+
+  <!-- Evaluation verdict distribution -->
+  <div class="card">
+    <h2>Verdict Distribution</h2>
+    <div id="verdict-dist">No evaluations yet</div>
+  </div>
+
+</div>
+
+<script>
+const API = '';
+
+function fmt(ts) {
+  if (!ts) return '—';
+  return new Date(ts).toISOString().replace('T',' ').slice(0,19);
+}
+
+async function get(path) {
+  try {
+    const r = await fetch(API + path);
+    return r.ok ? r.json() : null;
+  } catch { return null; }
+}
+
+async function loadSummary() {
+  const s = await get('/api/summary');
+  if (!s) return;
+  document.getElementById('dome-id').textContent = s.dome_id;
+  document.getElementById('m-agents').textContent = s.agents.total;
+  document.getElementById('m-organs').textContent = s.organs_formed;
+  document.getElementById('m-tasks').textContent = s.tasks_completed;
+  document.getElementById('m-mitosis').textContent = s.mitosis_events;
+  document.getElementById('m-lessons').textContent = s.lessons_recorded;
+  document.getElementById('m-capacity').textContent = s.capacity_signals;
+  document.getElementById('m-spawns').textContent = s.spawn_requests;
+  document.getElementById('m-health').textContent = s.health.toUpperCase();
+  document.getElementById('m-health').className = 'metric-value ' + (s.health === 'active' ? 'green' : 'yellow');
+  document.getElementById('last-update').textContent = fmt(s.timestamp);
+}
+
+async function loadEvents() {
+  const events = await get('/api/events?limit=200');
+  if (!events) return;
+  document.getElementById('event-count').textContent = `(${events.length})`;
+
+  // Event type breakdown
+  const counts = {};
+  events.forEach(e => { counts[e.event_type] = (counts[e.event_type]||0)+1; });
+  const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+  document.getElementById('event-breakdown').innerHTML = sorted.map(([k,v]) =>
+    `<div class="metric"><span class="metric-label">${k}</span><span class="metric-value">${v}</span></div>`
+  ).join('') || 'No events yet';
+
+  // Event log
+  const log = document.getElementById('event-log');
+  log.innerHTML = [...events].reverse().map(e => {
+    const payload = e.payload ? JSON.stringify(e.payload).slice(0,80) : '';
+    return `<div class="log-entry event-${e.event_type}">
+      <span class="ts">${fmt(e.ts || e.recorded_at)}</span>
+      <span class="event-type">${e.event_type}</span>
+      <span style="color:var(--muted)">${payload}</span>
+    </div>`;
+  }).join('');
+}
+
+async function loadLineage() {
+  const lineage = await get('/api/lineage?limit=50');
+  if (!lineage) return;
+  document.getElementById('lineage-tree').innerHTML = lineage.map(a => {
+    const parent = a.parent_agent_id ? `← ${a.parent_agent_id.toString().slice(0,8)}` : '(genesis)';
+    return `<div style="margin-bottom:3px"><span style="color:var(--green)">${a.agent_id||'?'}</span> <span style="color:var(--muted)">gen${a.generation||0} ${parent}</span> <span style="color:var(--blue)">${a.dome_id||''}</span></div>`;
+  }).join('') || 'No agents registered yet';
+}
+
+async function loadLessons() {
+  const lessons = await get('/api/lessons?limit=5');
+  if (!lessons || !lessons.length) return;
+  document.getElementById('lessons-list').innerHTML = lessons.reverse().map(l =>
+    `<div class="lesson-entry ${l.lesson_type||'general'}">
+      <div class="lesson-meta">${l.lesson_type||'general'} · ${l.niche_id||''} · ${fmt(l.ts)}</div>
+      <div>${l.lesson}</div>
+    </div>`
+  ).join('');
+}
+
+async function loadSpawnQueue() {
+  const queue = await get('/api/spawn-queue?limit=10');
+  if (!queue || !queue.length) return;
+  const pending = queue.filter(q => q.status === 'pending_human_review');
+  if (!pending.length) { document.getElementById('spawn-queue-list').textContent = 'No pending spawns'; return; }
+  document.getElementById('spawn-queue-list').innerHTML = pending.map(q =>
+    `<div class="spawn-item">
+      <div class="domain">${q.suggested_domain || q.event_type}</div>
+      <div style="color:var(--muted);font-size:10px">Triggered by: ${q.triggering_dome||'?'} · ${fmt(q.ts)}</div>
+    </div>`
+  ).join('');
+}
+
+async function loadEvaluations() {
+  const lb = await get('/api/evaluations?limit=8&min_score=0.4');
+  if (!lb) return;
+  const evals = lb.evaluations || [];
+  document.getElementById('eval-count').textContent = `(${evals.length})`;
+
+  const verdictColor = { ACCEPT_HIGH: 'green', ACCEPT_MEDIUM: 'blue', ACCEPT_WEAK: 'yellow', REJECT_UNIMPORTANT: 'orange', REJECT_IMPLAUSIBLE: 'red', REJECT_UNORIGINAL: 'red', REJECT_UNEVIDENCED: 'red' };
+  document.getElementById('leaderboard-list').innerHTML = evals.length ? evals.map(e =>
+    `<div style="display:flex;gap:12px;margin-bottom:6px;border-bottom:1px solid var(--border);padding-bottom:5px">
+      <span class="metric-value ${verdictColor[e.verdict]||''}" style="min-width:130px;font-size:10px">${e.verdict||'?'}</span>
+      <span style="color:var(--yellow);min-width:36px">${e.composite_score?.toFixed(2)||'?'}</span>
+      <span style="color:var(--muted);min-width:100px">${e.finding_type||'?'}</span>
+      <span style="color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${(e.finding?.hypothesis||e.hypothesis_preview||'').slice(0,80)}</span>
+    </div>`
+  ).join('') : 'No evaluations yet';
+
+  // Verdict distribution
+  const all = await get('/api/evaluations?limit=200');
+  if (all && all.evaluations) {
+    const counts = {};
+    all.evaluations.forEach(e => { counts[e.verdict] = (counts[e.verdict]||0)+1; });
+    document.getElementById('verdict-dist').innerHTML = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,v]) =>
+      `<div class="metric"><span class="metric-label" style="font-size:10px">${k}</span><span class="metric-value ${verdictColor[k]||''}">${v}</span></div>`
+    ).join('') || 'No evaluations yet';
+  }
+}
+
+async function loadAll() {
+  await Promise.all([loadSummary(), loadEvents(), loadLineage(), loadLessons(), loadSpawnQueue(), loadEvaluations()]);
+}
+
+// Live SSE stream
+function connectStream() {
+  const evtSource = new EventSource('/stream');
+  evtSource.onopen = () => {
+    document.getElementById('connection-status').textContent = 'Live';
+    document.getElementById('status-dot').style.background = 'var(--green)';
+  };
+  evtSource.onmessage = (e) => {
+    const data = JSON.parse(e.data);
+    if (data.type !== 'connected') loadAll();
+  };
+  evtSource.onerror = () => {
+    document.getElementById('connection-status').textContent = 'Reconnecting...';
+    document.getElementById('status-dot').style.background = 'var(--yellow)';
+    setTimeout(connectStream, 3000);
+  };
+}
+
+// Init
+loadAll();
+connectStream();
+setInterval(loadAll, 15000);
+</script>
+</body>
+</html>

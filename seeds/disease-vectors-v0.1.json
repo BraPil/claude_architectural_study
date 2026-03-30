@@ -1,0 +1,96 @@
+{
+  "contract_version": "0.1.0",
+  "lineage_id": "disease-vectors-v0.1",
+  "parent_contract_id": "exmorbus-oncology-v2",
+  "domain": "disease_vector_research",
+  "created_at": "2026-03-29T00:00:00Z",
+  "description": "Disease Vectors dome — spawned from ExMorbus CAPACITY_SATURATED signal. Focuses on vector biology, pathogen transmission, and cross-domain cancer/infection intersections.",
+  "ancestor_performance": {
+    "successful_niches": [
+      {
+        "niche_id": "oncovirus_mechanisms",
+        "description": "Inherited from ExMorbus: viral oncogenesis mechanisms (HPV, HBV, EBV, HTLV-1)",
+        "peak_karma_achieved": 0,
+        "token_efficiency": 0.0,
+        "outcome": "inherited_not_yet_validated",
+        "lessons": "ExMorbus found strong signal in immune evasion — virus-driven immune evasion likely high-value niche"
+      }
+    ],
+    "failed_niches": [],
+    "peak_efficiency_agent_size": 0,
+    "optimal_organ_size": 6,
+    "best_organ_functions": [],
+    "documented_failure_modes": ["inherited: insufficient_domain_grounding_for_simulation"],
+    "parent_domain_lessons": [
+      "Literature synthesis agents achieve high quality with focused PubMed queries",
+      "Proximity enforcement essential — avoid monoculture on single pathogen",
+      "Haiku sufficient for literature ingestion; Opus needed for novel mechanism hypothesis"
+    ]
+  },
+  "resource_priorities": [
+    "pubmed_api",
+    "who_disease_data",
+    "ncbi_pathogen_db",
+    "vector_base",
+    "clinicaltrials_gov",
+    "arxiv_q_bio",
+    "drugbank",
+    "uniprot"
+  ],
+  "compute_budget": {
+    "haiku_pct": 70,
+    "sonnet_pct": 25,
+    "opus_pct": 5
+  },
+  "forbidden_actions": [
+    "fabricate_epidemiological_data",
+    "make_treatment_recommendations_to_humans",
+    "access_patient_records",
+    "claim_certainty_without_evidence",
+    "design_gain_of_function_experiments"
+  ],
+  "diversity_enforcement": {
+    "max_hypothesis_semantic_overlap": 0.35,
+    "min_active_niches": 4,
+    "required_niche_coverage": [
+      "vector_biology",
+      "pathogen_transmission",
+      "oncovirus_mechanisms",
+      "immune_vector_interaction"
+    ]
+  },
+  "mitosis_threshold": 0.65,
+  "apoptosis_threshold": 10,
+  "differentiation_threshold": 0.60,
+  "tendril_ttl_hours": 48,
+  "sensing_duration_hours": 24,
+  "fitness_function": "novel_vector_mechanism_rate_per_token_cost",
+  "fitness_evaluation_criteria": {
+    "novelty": "Not present in provided disease vector literature corpus",
+    "plausibility": "Consistent with known pathogen biology and epidemiology",
+    "actionability": "Suggests a testable experiment or surveillance strategy",
+    "specificity": "Names specific vectors, pathogens, genes, or transmission pathways"
+  },
+  "communication_contracts": {
+    "can_receive_from": ["exmorbus-v0.2"],
+    "can_send_to": ["mouseion-registry", "exmorbus-v0.2"],
+    "published_skills": ["oncovirus_literature_synthesis", "vector_pathway_analysis"]
+  },
+  "inter_dome_knowledge_transfer": {
+    "receive_from_exmorbus": [
+      "immune_evasion_mechanisms",
+      "cancer_biomarker_patterns",
+      "drug_target_interactions"
+    ],
+    "send_to_exmorbus": [
+      "oncovirus_transmission_pathways",
+      "vector_immune_evasion_patterns"
+    ]
+  },
+  "evolution": {
+    "mutation_prompt": "Review the ancestor_performance section. This is generation 1 of the Disease Vectors dome, seeded from ExMorbus oncology lessons. Identify the niche most likely to benefit from the inherited oncology knowledge. Propose one targeted mutation to this contract's resource_priorities or diversity_enforcement that would maximize cross-domain knowledge transfer from the parent dome.",
+    "crossover_fields": ["resource_priorities", "fitness_evaluation_criteria", "diversity_enforcement", "mitosis_threshold"],
+    "merge_recipe_id": null,
+    "inherited_from": "exmorbus-oncology-v2"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "contract_version": "0.1.0",
+  "lineage_id": "preventatives-v0.1",
+  "parent_contract_id": "exmorbus-oncology-v2",
+  "domain": "preventatives_research",
+  "created_at": "2026-03-30T00:00:00Z",
+  "description": "Preventatives dome — maps the upstream landscape of cancer risk modification. Covers healthy and unhealthy lifestyles, environments, and diets. Identifies modifiable risk factors, protective behaviors, screening efficacy, and chemopreventive strategies. Feeds upstream signals back to ExMorbus and Therapeutics.",
+  "ancestor_performance": {
+    "successful_niches": [
+      {
+        "niche_id": "dietary_cancer_risk",
+        "description": "Inherited signal from ExMorbus: metabolic and epigenetic effects of dietary compounds on cancer pathways",
+        "peak_karma_achieved": 0,
+        "token_efficiency": 0.0,
+        "outcome": "inherited_not_yet_validated",
+        "lessons": "ExMorbus found epigenetic regulation niche productive — dietary epigenetic modifiers likely high-value"
+      }
+    ],
+    "failed_niches": [],
+    "peak_efficiency_agent_size": 0,
+    "optimal_organ_size": 5,
+    "best_organ_functions": [],
+    "documented_failure_modes": [
+      "inherited: insufficient_domain_grounding_for_simulation",
+      "confounding_factor_underestimation_in_epidemiological_analysis"
+    ],
+    "parent_domain_lessons": [
+      "Diversity enforcement essential — healthy and unhealthy factors must both be represented",
+      "Evaluation calibration important — population-level findings have different novelty baselines than molecular findings",
+      "Causation vs correlation distinction critical in epidemiology — evaluator must flag correlational findings explicitly"
+    ]
+  },
+  "resource_priorities": [
+    "pubmed_api",
+    "who_risk_factor_data",
+    "iarc_carcinogen_classifications",
+    "nhanes_dietary_data",
+    "wcrf_cancer_prevention_recommendations",
+    "clinicaltrials_gov",
+    "toxcast_epa",
+    "ctd_comparative_toxicogenomics",
+    "arxiv_q_bio",
+    "drugbank"
+  ],
+  "compute_budget": {
+    "haiku_pct": 65,
+    "sonnet_pct": 28,
+    "opus_pct": 7
+  },
+  "forbidden_actions": [
+    "make_dietary_recommendations_to_humans",
+    "claim_causation_from_correlational_data_without_explicit_caveats",
+    "access_patient_records",
+    "claim_certainty_without_evidence",
+    "fabricate_epidemiological_data",
+    "dismiss_established_risk_factors_without_strong_contradictory_evidence"
+  ],
+  "diversity_enforcement": {
+    "max_hypothesis_semantic_overlap": 0.35,
+    "min_active_niches": 5,
+    "required_niche_coverage": [
+      "dietary_cancer_risk",
+      "lifestyle_cancer_risk",
+      "environmental_cancer_risk",
+      "screening_and_early_detection",
+      "chemopreventive_strategies",
+      "protective_factors"
+    ],
+    "balance_requirement": "At least 40% of active hypotheses must address PROTECTIVE factors (not just risk factors)"
+  },
+  "mitosis_threshold": 0.65,
+  "apoptosis_threshold": 10,
+  "differentiation_threshold": 0.60,
+  "tendril_ttl_hours": 48,
+  "sensing_duration_hours": 24,
+  "fitness_function": "novel_modifiable_risk_factor_rate_per_token_cost",
+  "fitness_evaluation_criteria": {
+    "novelty": "Risk factor association or protective mechanism not yet in mainstream cancer prevention guidelines",
+    "plausibility": "Biologically plausible mechanism linking the factor to cancer incidence or progression",
+    "actionability": "Modifiable by individual behavior, policy intervention, or clinical screening protocol",
+    "specificity": "Names specific dietary compounds, environmental agents, behavioral patterns, or screening methods",
+    "population_relevance": "Applicable to a definable population segment (age group, geographic region, genetic subgroup)",
+    "causation_clarity": "Clearly distinguishes correlational from mechanistic evidence"
+  },
+  "communication_contracts": {
+    "can_receive_from": ["exmorbus-v0.2", "toxicity-vectors-v0.1", "therapeutics-v0.1"],
+    "can_send_to": ["mouseion-registry", "exmorbus-v0.2", "therapeutics-v0.1"],
+    "published_skills": [
+      "dietary_risk_factor_analysis",
+      "environmental_exposure_mapping",
+      "screening_efficacy_evaluation",
+      "lifestyle_intervention_design"
+    ]
+  },
+  "inter_dome_knowledge_transfer": {
+    "receive_from_exmorbus": [
+      "molecular_mechanisms_for_dietary_epigenetics",
+      "metabolic_pathway_cancer_links",
+      "novel_biomarkers_for_early_detection"
+    ],
+    "receive_from_toxicity_vectors": [
+      "environmental_carcinogen_exposure_data",
+      "dose_response_relationships",
+      "metabolic_activation_pathways"
+    ],
+    "receive_from_therapeutics": [
+      "chemopreventive_drug_candidates",
+      "lifestyle_drug_interaction_signals"
+    ],
+    "send_to_exmorbus": [
+      "upstream_risk_factor_context",
+      "population_level_exposure_patterns",
+      "protective_compound_mechanisms"
+    ],
+    "send_to_therapeutics": [
+      "chemopreventive_intervention_candidates",
+      "behavioral_risk_modification_targets"
+    ]
+  },
+  "organ_target_structure": [
+    {
+      "organ_function": "dietary_risk_mining",
+      "description": "Systematic analysis of dietary patterns and specific compounds linked to cancer risk/protection",
+      "model_tier": "claude-haiku-4-5-20251001",
+      "target_agent_count": "3-4",
+      "example_niches": ["cruciferous_vegetables", "processed_meats", "alcohol", "omega3_fatty_acids", "dietary_fiber"]
+    },
+    {
+      "organ_function": "environmental_exposure_mapping",
+      "description": "Map environmental carcinogens, pollutants, occupational hazards, and radiation exposure patterns",
+      "model_tier": "claude-haiku-4-5-20251001",
+      "target_agent_count": "2-3",
+      "example_niches": ["air_pollution", "pesticides", "UV_radiation", "microplastics", "endocrine_disruptors"]
+    },
+    {
+      "organ_function": "lifestyle_risk_synthesizer",
+      "description": "Synthesize lifestyle factor evidence: physical activity, sleep, stress, smoking, alcohol",
+      "model_tier": "claude-sonnet-4-6",
+      "target_agent_count": "2-3"
+    },
+    {
+      "organ_function": "screening_protocol_analyst",
+      "description": "Evaluate screening method efficacy and identify early detection gaps",
+      "model_tier": "claude-sonnet-4-6",
+      "target_agent_count": "1-2"
+    },
+    {
+      "organ_function": "protective_factor_explorer",
+      "description": "Identify and characterize protective lifestyle factors and chemopreventive compounds",
+      "model_tier": "claude-sonnet-4-6",
+      "target_agent_count": "2"
+    }
+  ],
+  "evaluation_policy": {
+    "evaluator_model": "claude-opus-4-6",
+    "evaluation_required_before_queue": true,
+    "minimum_composite_score_for_queue": 0.55,
+    "auto_reject_below": 0.35,
+    "special_rule": "Causal claims from epidemiological evidence must score evidential_quality >= 0.6 or be auto-downgraded to ACCEPT_WEAK"
+  },
+  "evolution": {
+    "mutation_prompt": "Review ancestor_performance. This Preventatives dome covers healthy and unhealthy lifestyle, environmental, and dietary factors. Review the balance_requirement in diversity_enforcement. Identify which of the 6 required niches has the lowest active coverage. Propose one mutation to resource_priorities that would best surface evidence for the underrepresented niche.",
+    "crossover_fields": ["resource_priorities", "fitness_evaluation_criteria", "diversity_enforcement", "organ_target_structure"],
+    "merge_recipe_id": null,
+    "inherited_from": "exmorbus-oncology-v2",
+    "note": "The 40% protective factor balance requirement is a hard constraint — do not evolve it below 30%"
+  }
+}

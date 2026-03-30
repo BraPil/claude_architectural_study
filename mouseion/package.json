@@ -1,0 +1,13 @@
+{
+  "name": "mouseion",
+  "version": "0.1.0",
+  "description": "Mouseion MCP Server — Organic Agentic AutoDev shared substrate",
+  "type": "module",
+  "main": "mcp-server.js",
+  "scripts": {
+    "start": "node mcp-server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,156 @@
+version: "3.9"
+
+# Organic Agentic AutoDev — Full Dome Stack
+# Usage: docker compose up -d
+# Dome: ExMorbus v0.2 (Oncological Research)
+
+services:
+
+  # ──────────────────────────────────────────
+  # PostgreSQL — dome database
+  # ──────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: dome-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-dome}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-domepass}
+      POSTGRES_DB: ${POSTGRES_DB:-moltbook}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./dome/api/scripts/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./dome/api/scripts/schema-organic-extension.sql:/docker-entrypoint-initdb.d/02-extension.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-dome}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ──────────────────────────────────────────
+  # Redis — rate limiting + pressure field hot cache
+  # ──────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: dome-redis
+    restart: unless-stopped
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ──────────────────────────────────────────
+  # Dome API — extended Moltbook API
+  # ──────────────────────────────────────────
+  dome-api:
+    build:
+      context: ./dome/api
+      dockerfile: Dockerfile
+    container_name: dome-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 3001
+      DATABASE_URL: postgresql://${POSTGRES_USER:-dome}:${POSTGRES_PASSWORD:-domepass}@postgres:5432/${POSTGRES_DB:-moltbook}
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      DOME_ID: ${DOME_ID:-exmorbus-v0.2}
+      DOME_DOMAIN: oncological_research
+    volumes:
+      - ./seeds:/app/seeds:ro
+      - witness_data:/app/.witness
+    ports:
+      - "3001:3001"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3001/health || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+  # ──────────────────────────────────────────
+  # Dome Web — Moltbook frontend (agent social UI)
+  # ──────────────────────────────────────────
+  dome-web:
+    build:
+      context: ./dome/web
+      dockerfile: Dockerfile
+    container_name: dome-web
+    restart: unless-stopped
+    depends_on:
+      - dome-api
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+      NODE_ENV: ${NODE_ENV:-development}
+    ports:
+      - "3000:3000"
+
+  # ──────────────────────────────────────────
+  # Mouseion MCP Server — shared substrate
+  # Exposes: query_dna_contract, write_dna_lessons,
+  #          register_agent_lineage, emit_dome_event,
+  #          query_merge_recipe_archive
+  # ──────────────────────────────────────────
+  mouseion:
+    build:
+      context: ./mouseion
+      dockerfile: Dockerfile
+    container_name: mouseion
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-dome}:${POSTGRES_PASSWORD:-domepass}@postgres:5432/${POSTGRES_DB:-moltbook}
+      MOUSEION_PORT: 4000
+      DOME_ID: ${DOME_ID:-exmorbus-v0.2}
+    volumes:
+      - ./seeds:/app/seeds:ro
+    ports:
+      - "4000:4000"
+
+  # ──────────────────────────────────────────
+  # Witness Observer — read-only dashboard server
+  # Humans connect here: http://localhost:9000
+  # SSE live feed: http://localhost:9000/stream
+  # API: http://localhost:9000/api/summary
+  # ──────────────────────────────────────────
+  witness:
+    build:
+      context: ./witness
+      dockerfile: Dockerfile
+    container_name: witness-observer
+    restart: unless-stopped
+    environment:
+      WITNESS_PORT: 9000
+      DOME_ID: ${DOME_ID:-exmorbus-v0.2}
+      CLAUDE_PROJECT_DIR: /app
+    volumes:
+      - witness_data:/app/.witness:ro
+    ports:
+      - "9000:9000"
+
+volumes:
+  postgres_data:
+    name: dome-postgres-data
+  redis_data:
+    name: dome-redis-data
+  witness_data:
+    name: dome-witness-data
+
+networks:
+  default:
+    name: dome-network
