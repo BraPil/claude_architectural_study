@@ -1,0 +1,28 @@
+{
+  "experiment_id": "ILC-EXP-002",
+  "hypothesis_id": "hyp-ilc-006-v3",
+  "sub_question": "SQ-2: SOLAR-1 + BYLieve + EPIK-B3 ILC enrollment fraction and histology outcomes",
+  "executed_ts": "2026-03-31T01:12:00Z",
+  "status": "GAP_CONFIRMED",
+
+  "query_log": [
+    {"query": "BYLIEVE alpelisib breast cancer", "results": 5, "tool_ok": true, "relevant_pmids": ["39637900", "38142701"]},
+    {"query": "alpelisib lobular ductal breast cancer subtype outcome", "results": 0, "tool_ok": true},
+    {"query": "SOLAR-1 alpelisib histology subgroup breast cancer", "results": 0, "tool_ok": true}
+  ],
+
+  "bylieve_finding": {
+    "pmid": "39637900",
+    "citation": "Rugo HS et al. Lancet Oncol. 2024 Dec;25(12):e629-e638.",
+    "title": "Alpelisib + fulvestrant after CDK4/6i in PIK3CA-mutated HR+/HER2- breast cancer (BYLieve CDK4/6i cohort)",
+    "relevance": "DIRECTLY relevant — this is the alpelisib post-CDK4/6i trial. No histology stratification (ILC vs IDC) reported in abstract or found in PubMed-indexed analyses.",
+    "expression_of_concern": "PMID 38142701 (Lancet Oncol Editors, Feb 2024) issued Expression of Concern about data integrity. This may affect trial credibility.",
+    "gap": "No published ILC vs IDC outcome breakdown in BYLieve CDK4/6i cohort"
+  },
+
+  "gap_summary": "No published ILC vs IDC outcome data for alpelisib in CDK4/6i-progressed patients from any trial (SOLAR-1, BYLieve, BYLIEVE, EPIK-B3, French early access). The gap is confirmed clean.",
+
+  "expression_of_concern_note": "PMID 38142701 expression of concern may indicate data reliability issues with BYLieve CDK4/6i cohort. This does NOT invalidate the hypothesis — it further underscores why an ILC-specific prospective analysis is needed.",
+
+  "impact_on_hypothesis": "GAP CONFIRMED clean. No evidence weakening or strengthening beyond what ILC-EXP-001 already established. BYLieve expression of concern is a regulatory/data integrity issue, not a scientific challenge to the hypothesis mechanism."
+}

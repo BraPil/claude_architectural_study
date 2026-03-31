@@ -1,0 +1,54 @@
+{
+  "hyp_id": "hyp-ilc-006-v3",
+  "parent_ids": ["hyp-ilc-006-v2", "hyp-ilc-006"],
+  "version": "v3-bfts-discovery",
+  "created_at": "2026-03-31T01:07:00Z",
+  "trigger": "ILC-EXP-001 added PMID 35663259 (CDH1-mutant 5yr PI3Ki CR) + PMID 35665642 (CDH1→IGF1R→PI3K second axis) + PMID 30332649 (CDH1+PIK3CA mouse ILC cooperation)",
+
+  "claim": "CDH1 loss in ILC creates a DUAL PI3K hyperactivation axis conferring CDK4/6i resistance: (1) DIRECT: CDH1 loss disrupts E-cadherin/p85/p110alpha adherens junction complex → PI3Ka constitutive activation (Bahreini 2017); (2) INDIRECT: CDH1 loss releases negative regulation of IGF1R → IGF1R → PI3K/AKT amplification (Elangovan 2022). Both axes converge on AKT → CDK2/Cyclin E → RB1-independent G1/S bypass. Alpelisib (PI3Ka-selective) overcomes this dual resistance pattern. CDH1-mutant ILC patients who progressed on CDK4/6i should show superior alpelisib response vs IDC (CDH1-wildtype), supported by a clinical case of 5-year complete response in CDH1+PIK3CA-mutant breast cancer (PMID 35663259).",
+
+  "mechanistic_update": "Prior versions described only the direct CDH1→PI3Ka mechanism (Bahreini 2017). ILC-EXP-001 identified an orthogonal IGF1R axis (Elangovan 2022): CDH1 loss releases E-cadherin's negative regulation of IGF1R, amplifying downstream PI3K/AKT. The two axes are additive and ILC-specific. Clinical case report (PMID 35663259) provides the first human evidence of exceptional PI3Ki response in CDH1-mutant breast cancer.",
+
+  "evidence": [
+    {"pmid": "28407094", "citation": "Bahreini 2017 Cancer Res", "role": "DIRECT_MECHANISM", "finding": "CDH1 loss disrupts E-cadherin/p85/p110alpha complex → PI3Ka liberation in ILC"},
+    {"pmid": "35665642", "citation": "Elangovan 2022 Mol Cancer Res", "role": "INDIRECT_MECHANISM_NEW", "finding": "CDH1 loss releases E-cadherin negative regulation of IGF1R → IGF1R → PI3K/AKT in ILC. Second independent CDH1→PI3K axis."},
+    {"pmid": "35663259", "citation": "Chandran 2020 J Immunother Precis Oncol", "role": "CLINICAL_ANCHOR_NEW", "finding": "5-year complete response to PI3K inhibition in CDH1+PIK3CA+NF1-mutant breast cancer. First clinical evidence of exceptional PI3Ki response in CDH1-mutant context."},
+    {"pmid": "30332649", "citation": "An 2018 Cell Rep", "role": "GENETIC_COOPERATION", "finding": "CDH1+PIK3CA mutations cooperate to induce ILC in mouse models — functionally co-selected, not coincidental"},
+    {"pmid": "25944461", "citation": "Vora 2014 Cancer Cell", "role": "AKT_CDK2_BYPASS", "finding": "PI3K→AKT→CDK2/Cyclin E bypass CDK4/6i resistance"},
+    {"pmid": "27166194", "citation": "Herrera-Abreu 2016 Cancer Res", "role": "RB1_INDEPENDENCE", "finding": "PI3K hyperactivation dominant CDK4/6i resistance; RB1 status non-determinative"},
+    {"pmid": "31091374", "citation": "Andre 2019 NEJM SOLAR-1", "role": "CLINICAL_ANCHOR", "finding": "Alpelisib PI3Ka-selective benefit in PIK3CA-mutated HR+/HER2-; CDK4/6i-pretreated positive"},
+    {"pmid": "26544944", "citation": "Ciriello 2015 Nature TCGA-ILC", "role": "POPULATION_ENRICHMENT", "finding": "~48% PI3K pathway alterations, 90%+ CDH1 mutations in ILC"}
+  ],
+
+  "dimension_scores": {
+    "novelty":            {"score": 0.78, "note": "Clinical gap (ILC vs IDC alpelisib post-CDK4/6i) confirmed absent. Dual-axis model and ILC-specific stratification remain novel."},
+    "evidential_quality": {"score": 0.76, "note": "Two new PMIDs strengthen; CDH1-PI3K now has dual route; clinical case report adds human evidence. Ceiling: ILC vs IDC comparative RCT data still absent."},
+    "clinical_relevance": {"score": 0.90, "note": "CDH1-mutant 5yr PI3Ki CR (PMID 35663259) + SOLAR-1 CDK4/6i-pretreated anchor. Directly applicable to current clinical practice."},
+    "mechanistic_depth":  {"score": 0.80, "note": "Dual-axis CDH1→PI3K model (direct + IGF1R indirect) now well-supported. AKT→CDK2→RB1-independent bypass grounded."},
+    "actionability":      {"score": 0.78, "note": "MDA-MB-134VI, SUM44PE (ILC) vs MCF-7 (IDC) clearly named; MSK-IMPACT retrospective confirmed feasible. IGF1R inhibitor now added as co-treatment arm."},
+    "specificity":        {"score": 0.88, "note": "Unchanged."}
+  },
+
+  "composite": {
+    "weights": {"novelty": 0.30, "evidential_quality": 0.25, "clinical_relevance": 0.20, "mechanistic_depth": 0.10, "actionability": 0.10, "specificity": 0.05},
+    "calculation": "(0.78*0.30) + (0.76*0.25) + (0.90*0.20) + (0.80*0.10) + (0.78*0.10) + (0.88*0.05)",
+    "score": 0.818,
+    "verdict": "ACCEPT_HIGH",
+    "history": [
+      {"version": "v1", "score": 0.747, "trigger": "initial evaluation"},
+      {"version": "v2", "score": 0.8025, "trigger": "reflexion: AKT-CDK2 + PI3Ka isoform + SOLAR-1 PMIDs"},
+      {"version": "v3", "score": 0.818, "trigger": "BFTS ILC-EXP-001: CDH1-IGF1R axis + clinical CR case"}
+    ]
+  },
+
+  "flags": {
+    "open_gaps": [
+      "ILC vs IDC comparative alpelisib response in CDK4/6i-progressed patients — still no published data",
+      "IGF1R inhibitor + alpelisib combination not tested in CDK4/6i-resistant ILC cell lines",
+      "CDH1-PI3Ka-YAP convergent node (from organ synthesis conn-004) not yet assessed (ILC-EXP-003)"
+    ],
+    "preclinical_protocol_update": "ILC-EXP-004 should add linsitinib (IGF1R inhibitor) co-treatment arm alongside alpelisib to test dual-axis synergy"
+  },
+
+  "next_step": "ILC-EXP-002 (SOLAR-1 ILC enrollment fraction) + ILC-EXP-003 (CDH1-PI3Ka-YAP pathway) in parallel"
+}

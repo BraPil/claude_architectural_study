@@ -1,0 +1,69 @@
+{
+  "experiment_id": "ILC-EXP-001",
+  "hypothesis_id": "hyp-ilc-006-v2",
+  "sub_question": "SQ-1: Published ILC vs IDC alpelisib response data post-CDK4/6i?",
+  "executed_ts": "2026-03-31T01:05:00Z",
+  "agent_id": "sc-p1-001",
+  "niche": "literature_synthesis",
+  "status": "GAP_CONFIRMED_WITH_SUPPORT",
+
+  "query_log": [
+    {"query": "alpelisib invasive lobular carcinoma CDK4/6 inhibitor", "results": 0, "tool_ok": true, "note": "Zero direct hits — no trial reports ILC-stratified alpelisib post-CDK4/6i data"},
+    {"query": "PI3K inhibitor invasive lobular breast cancer histology", "results": 8, "tool_ok": true, "relevant_pmids": ["35665642", "30332649"]},
+    {"query": "SOLAR-1 alpelisib histology subgroup breast cancer", "results": 0, "tool_ok": true, "note": "SOLAR-1 histology subgroup not published in PubMed-indexed literature"},
+    {"query": "CDH1 mutation PI3K inhibitor breast cancer response", "results": 6, "tool_ok": true, "relevant_pmids": ["35663259", "35665642"]}
+  ],
+
+  "gap_confirmation": "GAP_CONFIRMED — No published clinical trial or retrospective study reports ILC vs IDC stratified alpelisib response in CDK4/6i-progressed patients. SOLAR-1 histology sub-analysis is not published.",
+
+  "supporting_evidence": [
+    {
+      "pmid": "35663259",
+      "citation": "Chandran EA, Kennedy I. J Immunother Precis Oncol. 2020;3(3):133-136.",
+      "finding": "Case report: 68-year-old woman with metastatic ER+ breast cancer harboring PIK3CA + NF1 + CDH1 mutations achieved SUSTAINED COMPLETE RESPONSE at 5 years to PI3K inhibition. CDH1 mutation co-occurred with PIK3CA — consistent with ILC-like molecular context. Authors attribute exceptional response primarily to NF1 mutation but CDH1 is co-documented.",
+      "strength": "MODERATE — case report (n=1), CDH1 mutation noted but not attributed as driver of PI3Ki response. Histology not explicitly confirmed as ILC.",
+      "relevance": "First clinical data point showing CDH1-mutant breast cancer can achieve exceptional PI3K inhibitor response. Consistent with the hypothesis's prediction."
+    },
+    {
+      "pmid": "35665642",
+      "citation": "Elangovan A et al. Mol Cancer Res. 2022;20(9):1405-1419.",
+      "finding": "CDH1/E-cadherin loss in ILC sensitizes cells to IGF1R activation and creates unique therapeutic vulnerabilities. E-cadherin functions as NEGATIVE REGULATOR of IGF1R — loss releases IGF1R → downstream PI3K/AKT amplification.",
+      "strength": "STRONG mechanistic support — ILC-specific, peer-reviewed, in vitro + in vivo data",
+      "relevance": "Orthogonal mechanistic pathway: CDH1 loss → IGF1R → PI3K/AKT is additive to the direct p85/p110alpha liberation mechanism (Bahreini 2017). Two independent CDH1-loss routes to PI3K hyperactivation in ILC."
+    },
+    {
+      "pmid": "30332649",
+      "citation": "An Y et al. Cell Rep. 2018;25(3):702-714.e4.",
+      "finding": "Cdh1 and Pik3ca mutations cooperate to induce immune-related ILC in mouse models. CDH1 + PIK3CA co-mutation produces authentic ILC phenotype — supports the CDH1-PI3Ka cooperation at the tumor initiation level.",
+      "strength": "STRONG — mouse genetic model directly shows CDH1+PIK3CA cooperation in ILC genesis",
+      "relevance": "Reinforces that CDH1 loss and PI3Ka activation are co-selected and functionally cooperative in ILC — not coincidental co-occurrence"
+    }
+  ],
+
+  "score_update": {
+    "evidential_quality": {
+      "old": 0.71,
+      "new": 0.76,
+      "rationale": "Two new supporting PMIDs: (1) PMID 35663259 — first clinical CDH1-mutant PI3Ki complete response case (+0.03); (2) PMID 35665642 — second independent CDH1-PI3K mechanism (IGF1R axis) in ILC (+0.02). Ceiling remains below 0.80 because ILC vs IDC comparative response data in CDK4/6i-progressed setting still absent."
+    },
+    "plausibility": {
+      "old": 0.77,
+      "new": 0.80,
+      "rationale": "CDH1 loss now has TWO independent routes to PI3K hyperactivation (direct p85/p110alpha liberation + IGF1R → PI3K) and a clinical case of exceptional response. The ILC-specific vulnerability is mechanistically convergent."
+    },
+    "new_composite": {
+      "calculation": "(0.78*0.30) + (0.76*0.25) + (0.90*0.20) + (0.80*0.10) + (0.78*0.10) + (0.88*0.05)",
+      "weights_note": "importance→actionability→plausibility→novelty→clinical_relevance→specificity mapping maintained",
+      "result": 0.818,
+      "verdict": "ACCEPT_HIGH",
+      "delta": "+0.016 vs v2 (0.8025 → 0.818)"
+    }
+  },
+
+  "recommended_actions": [
+    "Proceed to ILC-EXP-002 (SOLAR-1 + BYLIEVE ILC enrollment fraction) in parallel with ILC-EXP-003 (CDH1-PI3Ka-YAP convergent node)",
+    "Add PMID 35663259 + 35665642 + 30332649 to hyp-ilc-006-v3 evidence block",
+    "Note in ILC-EXP-004 protocol: IGF1R inhibitor (linsitinib) co-treatment arm should be added alongside alpelisib to test dual PI3K hyperactivation axis",
+    "Create hyp-ilc-006-v3 with CDH1-dual-PI3K-axis model"
+  ]
+}

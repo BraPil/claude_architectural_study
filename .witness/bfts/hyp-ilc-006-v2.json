@@ -1,0 +1,169 @@
+{
+  "agent_role": "experiment_design",
+  "hypothesis_input": "hyp-ilc-006-v2: CDH1 loss in ILC liberates PI3Ka (disrupts E-cadherin/p85/p110alpha adherens junction complex, Bahreini 2017) → constitutive AKT activation → CDK2/Cyclin E stabilization via GSK3b phosphorylation → RB1-independent G1/S bypass → CDK4/6i resistance. Alpelisib (PI3Ka-selective, FDA-approved) overcomes this axis. ILC should show superior alpelisib response vs IDC in CDK4/6i-progressed setting. Composite 0.8025 ACCEPT_HIGH. Remaining gap: no direct ILC vs IDC comparative alpelisib response data post-CDK4/6i.",
+  "sub_questions": [
+    {
+      "id": "SQ-1",
+      "question": "Is there any published retrospective analysis or sub-study reporting alpelisib response rates specifically in ILC vs IDC in patients who progressed on CDK4/6i?",
+      "rationale": "The hypothesis's novel clinical claim — ILC responds better than IDC to alpelisib post-CDK4/6i — has not been tested. SOLAR-1 (Andre NEJM 2019) enrolled HR+/HER2- including ILC but did not stratify by histology. Any published histology breakdown would either validate or challenge the hypothesis.",
+      "expected_information_gain": 0.88,
+      "compute_cost_normalized": 0.004,
+      "bfts_priority_score": 220.0,
+      "prerequisite_for": ["SQ-2", "SQ-3", "SQ-4"]
+    },
+    {
+      "id": "SQ-2",
+      "question": "In SOLAR-1 and other PI3Ka inhibitor trials (BYLIEVE, EPIK-B3), what fraction of patients were ILC, and can any histology-stratified outcomes be extracted from subgroup forest plots or supplementary data?",
+      "rationale": "Even if ILC vs IDC alpelisib response is not formally reported, trial supplementary materials or conference presentations may contain histology breakdown data. SOLAR-1 CDK4/6i-pretreated subgroup (n=~57) is the most relevant dataset.",
+      "expected_information_gain": 0.76,
+      "compute_cost_normalized": 0.006,
+      "bfts_priority_score": 126.7,
+      "prerequisite_for": ["SQ-4"]
+    },
+    {
+      "id": "SQ-3",
+      "question": "What is the role of YAP-TEAD signaling downstream of CDH1 loss in ILC CDK4/6i resistance, and does alpelisib suppress YAP nuclear activity through PI3K-LATS1/2 pathway? Could CDH1-loss → PI3Ka → YAP be a convergent node explaining both alpelisib sensitivity and CDK4/6i resistance in ILC?",
+      "rationale": "organ-breast-marker-synthesis-001 identified YAP as ILC master regulator (conn-004, 0.74): single upstream node for ESR1 mutation acquisition AND CDK4/6i resistance. If CDH1 loss → PI3Ka → YAP is a direct pathway, it would provide a second mechanistic explanation for why alpelisib specifically benefits CDH1-loss ILC, strengthening the hypothesis further. Also: verteporfin/TEAD inhibitors could be tested in combination.",
+      "expected_information_gain": 0.72,
+      "compute_cost_normalized": 0.008,
+      "bfts_priority_score": 90.0,
+      "prerequisite_for": ["SQ-4"]
+    },
+    {
+      "id": "SQ-4",
+      "question": "What is the optimal preclinical protocol to directly test ILC-specific alpelisib benefit in CDK4/6i-resistant context, using available ILC cell lines and controls?",
+      "rationale": "MDA-MB-134VI and SUM44PE are the CDH1-mutant ILC lines. MCF-7 (IDC, CDH1-wild-type) is the comparator. Protocol: generate CDK4/6i-resistant clones → measure PI3Ka/AKT/CDK2 upregulation → alpelisib IC50 comparison ILC vs IDC. The ILC-specific CDH1-PI3Ka-CDK2 axis should manifest as higher alpelisib sensitivity in ILC than IDC resistant clones.",
+      "expected_information_gain": 0.85,
+      "compute_cost_normalized": 0.015,
+      "bfts_priority_score": 56.7,
+      "prerequisite_for": []
+    }
+  ],
+  "experiment_nodes": [
+    {
+      "node_id": "ILC-EXP-001",
+      "hypothesis_id": "hyp-ilc-006-v2",
+      "experiment_type": "literature_gap_analysis",
+      "sub_question": "SQ-1: Published ILC vs IDC alpelisib response data post-CDK4/6i?",
+      "protocol": {
+        "data_source": "pubmed",
+        "query_strategy": "Phase 1: 'alpelisib lobular carcinoma CDK4/6i' → Phase 1b: 'PI3K inhibitor invasive lobular breast cancer' → Phase 1c: 'SOLAR-1 histology subgroup ILC' → Phase 2: 'alpelisib ILC invasive lobular' → Phase 2b: 'CDH1 mutation alpelisib response breast cancer'",
+        "analysis_method": "For any hit: extract whether ILC response rate was specifically reported, sample size for ILC, and whether CDK4/6i-pretreated status was documented. If SOLAR-1 supplementary data: check histology breakdown in forest plot.",
+        "success_metric": "Find histology-stratified alpelisib outcome data with ≥5 ILC patients — would directly anchor the clinical claim.",
+        "gap_outcome": "Zero ILC-specific alpelisib data confirms novelty; validates the hypothesis as the first to propose this stratification."
+      },
+      "resource_budget": {"model": "claude-haiku-4-5-20251001", "max_tokens": 4000, "max_api_calls": 6},
+      "bfts_priority_score": 220.0,
+      "expected_information_gain": 0.88,
+      "parent_node_id": "n0-root",
+      "status": "queued"
+    },
+    {
+      "node_id": "ILC-EXP-002",
+      "hypothesis_id": "hyp-ilc-006-v2",
+      "experiment_type": "literature_gap_analysis",
+      "sub_question": "SQ-2: SOLAR-1 + BYLIEVE + EPIK-B3 ILC fraction and histology sub-analysis",
+      "protocol": {
+        "data_source": "pubmed + clinicaltrials",
+        "query_strategy": "Phase 1: 'SOLAR-1 invasive lobular' → Phase 1b: 'BYLIEVE study histology' → Phase 1c: 'EPIK-B3 lobular breast cancer alpelisib' → Phase 2: 'inavolisib lobular breast cancer' → ClinicalTrials.gov: NCT02437318 (SOLAR-1), NCT03056755 (BYLIEVE)",
+        "analysis_method": "Extract: (a) % ILC enrollment in each trial; (b) any forest plot data showing histology subgroup HR/ORR; (c) whether any conference presentation stratified by histology. Cross-check ASCO/ESMO abstracts 2019-2025.",
+        "success_metric": "Find ILC enrollment rate and any direction of effect in histology subgroup.",
+        "gap_outcome": "If no histology stratification in any trial — this is the precise gap the hypothesis proposes to fill."
+      },
+      "resource_budget": {"model": "claude-haiku-4-5-20251001", "max_tokens": 4000, "max_api_calls": 5},
+      "bfts_priority_score": 126.7,
+      "expected_information_gain": 0.76,
+      "parent_node_id": "ILC-EXP-001",
+      "status": "queued"
+    },
+    {
+      "node_id": "ILC-EXP-003",
+      "hypothesis_id": "hyp-ilc-006-v2",
+      "experiment_type": "pathway_analysis",
+      "sub_question": "SQ-3: CDH1 loss → PI3Ka → YAP convergent node in ILC CDK4/6i resistance",
+      "protocol": {
+        "data_source": "pubmed + reactome",
+        "query_strategy": "Phase 1: 'CDH1 loss YAP ILC breast cancer' → Phase 1b: 'PI3K LATS1 YAP breast cancer' → Phase 1c: 'alpelisib YAP TEAD inhibition' → Reactome: Hippo pathway R-HSA-2028269 → check intersection with PI3K pathway R-HSA-5218921",
+        "analysis_method": "Map CDH1 loss → junction dissolution → Hippo pathway regulation (LATS1/2 → YAP phosphorylation). Does PI3K/AKT suppress LATS1/2 → YAP nuclear accumulation? Is this demonstrated in ILC or CDH1-loss context? Cross-reference with organ-breast-marker-synthesis-001 conn-004 (YAP as master regulator, confidence 0.74).",
+        "success_metric": "Published evidence that PI3K/AKT suppresses LATS1/2 activity AND that CDH1 loss specifically activates YAP in breast cancer — both arrows confirmed.",
+        "gap_outcome": "If PI3Ka-YAP connection is novel in ILC: add as auxiliary hypothesis to strengthen alpelisib rationale and add verteporfin co-treatment arm to ILC-EXP-004."
+      },
+      "resource_budget": {"model": "claude-sonnet-4-6", "max_tokens": 6000, "max_api_calls": 5},
+      "bfts_priority_score": 90.0,
+      "expected_information_gain": 0.72,
+      "parent_node_id": "ILC-EXP-001",
+      "status": "queued"
+    },
+    {
+      "node_id": "ILC-EXP-004",
+      "hypothesis_id": "hyp-ilc-006-v2",
+      "experiment_type": "preclinical_protocol_design",
+      "sub_question": "SQ-4: CDK4/6i-resistant ILC vs IDC cell line protocol for alpelisib IC50 comparison",
+      "protocol": {
+        "data_source": "internal_synthesis",
+        "experimental_design": {
+          "cell_lines": {
+            "ILC_CDH1_mutant": ["MDA-MB-134VI", "SUM44PE"],
+            "IDC_CDH1_wildtype": ["MCF-7", "T47D"],
+            "control": ["MDA-MB-134VI + CDH1 re-expression (rescue vector)"]
+          },
+          "resistance_generation": {
+            "method": "Incremental palbociclib dose escalation over 6 months (100nM → 1μM)",
+            "endpoint": "≥5-fold IC50 shift vs parental line",
+            "expected_mechanism_read": "Western blot: p-AKT Ser473, p-CDK2 Thr160, Cyclin E protein, p-RB Ser807/811 (if low in resistant clones → RB1-independent bypass confirmed)"
+          },
+          "alpelisib_testing": {
+            "drug": "BYL719 (alpelisib), 50nM-10μM dose range",
+            "readouts": ["IC50 by CellTiter-Glo", "p-AKT reduction (western)", "CDK2 activity (kinase assay)", "cell cycle G1 arrest (flow cytometry BrdU/PI)"],
+            "comparison": "ILC-resistant IC50 vs IDC-resistant IC50 — hypothesis predicts ILC-resistant lines are ≥3-fold more sensitive",
+            "controls": ["Alpelisib + palbociclib combination (synergy Bliss analysis)", "Alpelisib + verteporfin (if ILC-EXP-003 confirms YAP connection)"]
+          },
+          "in_vivo_validation": {
+            "model": "MDA-MB-134VI palbociclib-resistant xenograft in NSG mice",
+            "treatment": "Alpelisib 50mg/kg QD × 4 weeks vs vehicle vs palbociclib (post-resistance) vs combination",
+            "endpoints": "Tumor volume, p-AKT IHC, CDK2 IHC, Ki67"
+          },
+          "power_calculation": "n=6/arm in vivo, 80% power to detect 50% tumor volume difference vs vehicle, α=0.05"
+        },
+        "success_metric": "ILC-resistant cells ≥3-fold more sensitive to alpelisib than IDC-resistant cells AND p-AKT + CDK2 activity reduced by alpelisib specifically in ILC-resistant context.",
+        "failure_criterion": "ILC and IDC resistant lines show equivalent alpelisib sensitivity — would indicate the PI3Ka-CDK2 bypass is not ILC-specific; hypothesis requires revision to PI3K-pathway alteration frequency rather than CDH1-specific mechanism."
+      },
+      "resource_budget": {"model": "claude-sonnet-4-6", "max_tokens": 8000, "max_api_calls": 0},
+      "bfts_priority_score": 56.7,
+      "expected_information_gain": 0.85,
+      "parent_node_id": "ILC-EXP-002",
+      "status": "queued"
+    }
+  ],
+  "bfts_tree_state": {
+    "root_hypothesis": "hyp-ilc-006-v2",
+    "root_composite_score": 0.8025,
+    "depth": 1,
+    "total_nodes": 4,
+    "queued_nodes": 4,
+    "completed_nodes": 0,
+    "best_path_so_far": ["n0-root → ILC-EXP-001 (clinical gap confirmation, highest EIG, lowest cost)"],
+    "estimated_remaining_compute": {
+      "haiku_tokens": 8000,
+      "sonnet_tokens": 14000,
+      "estimated_sessions": 3
+    }
+  },
+  "finding_type": "experiment_plan",
+  "hypothesis": "CDH1 loss in ILC disrupts E-cadherin/p85/p110alpha complex → constitutive PI3Ka activation → AKT → CDK2/Cyclin E G1/S bypass → CDK4/6i resistance. Alpelisib (PI3Ka-selective) overcomes this ILC-specific resistance axis and should show superior efficacy vs IDC in CDK4/6i-progressed patients.",
+  "evidence": [
+    {"pmid": "28407094", "citation": "Bahreini A et al. Cancer Res 2017", "role": "CDH1-PI3Ka mechanistic link", "finding": "CDH1 loss disrupts E-cadherin/p85/p110alpha complex in ILC, liberating PI3Ka constitutively"},
+    {"pmid": "25214461", "citation": "Vora SR et al. Cancer Cell 2014", "role": "AKT-CDK2 bypass", "finding": "CDK2/Cyclin E as PI3K→AKT CDK4/6i escape in PIK3CA-mutant breast cancer"},
+    {"pmid": "27166194", "citation": "Herrera-Abreu MT et al. Cancer Res 2016", "role": "RB1-independent bypass", "finding": "PI3K hyperactivation is dominant CDK4/6i resistance; RB1 status non-determinative"},
+    {"pmid": "31091374", "citation": "Andre F et al. NEJM 2019 SOLAR-1", "role": "clinical_anchor", "finding": "Alpelisib PI3Ka-selective benefit in PIK3CA-mutated HR+/HER2-; CDK4/6i-pretreated subset positive"},
+    {"pmid": "26544944", "citation": "Ciriello G et al. Nature 2015 TCGA-ILC", "role": "population_enrichment", "finding": "~48% PI3K pathway alterations in ILC, 90%+ CDH1 mutations — population enrichment confirmed"}
+  ],
+  "novelty_claim": "No published clinical trial or retrospective study has compared alpelisib response rates between ILC and IDC in CDK4/6i-progressed patients. No preclinical study has generated CDK4/6i-resistant ILC cell lines and tested alpelisib in that specific context. This experiment tree would provide the first direct evidence supporting or refuting ILC-specific alpelisib benefit.",
+  "actionability": "Next: run ILC-EXP-001 (literature gap, highest EIG=0.88) immediately to determine if any ILC-stratified alpelisib data exists. If confirmed gap: proceed to ILC-EXP-002 + ILC-EXP-003 in parallel, then ILC-EXP-004.",
+  "resource_cost_estimate": {
+    "total_haiku_tokens": 8000,
+    "total_sonnet_tokens": 14000,
+    "estimated_sessions": 3,
+    "estimated_wall_time_minutes": 9
+  }
+}
