@@ -24,5 +24,33 @@
 
   "expression_of_concern_note": "PMID 38142701 expression of concern may indicate data reliability issues with BYLieve CDK4/6i cohort. This does NOT invalidate the hypothesis — it further underscores why an ILC-specific prospective analysis is needed.",
 
-  "impact_on_hypothesis": "GAP CONFIRMED clean. No evidence weakening or strengthening beyond what ILC-EXP-001 already established. BYLieve expression of concern is a regulatory/data integrity issue, not a scientific challenge to the hypothesis mechanism."
+  "impact_on_hypothesis": "GAP CONFIRMED clean. No evidence weakening or strengthening beyond what ILC-EXP-001 already established. BYLieve expression of concern is a regulatory/data integrity issue, not a scientific challenge to the hypothesis mechanism.",
+
+  "supplementary_search": {
+    "executed_date": "2026-03-31",
+    "note": "Extended search to CAPItello-291 and INAVO120 — gap is class-level across all PI3K/AKT inhibitor trials",
+    "additional_trials": [
+      {
+        "trial": "CAPItello-291",
+        "pmid": "37256976",
+        "drug": "Capivasertib (AKT inhibitor) + fulvestrant",
+        "population": "PIK3CA/AKT1/PTEN-altered HR+/HER2- mBC post-CDK4/6i",
+        "ilc_subgroup": "NOT PUBLISHED. Multiple geographic subgroup analyses (Japan, China) — none stratify by ILC vs IDC."
+      },
+      {
+        "trial": "INAVO120",
+        "pmid": "39476340",
+        "drug": "Inavolisib (PI3Ka degrader) + palbociclib + fulvestrant",
+        "population": "PIK3CA-mutated HR+/HER2- mBC post-1st-line CDK4/6i",
+        "ilc_subgroup": "NOT PUBLISHED in primary (NEJM 2024) or OS update (PMID 40454641, NEJM 2025).",
+        "ilc_relevance": "HIGHEST — triplet inavolisib+palbociclib+fulvestrant directly tests PI3Ki+CDK4/6i rechallenge, the exact mechanism predicted to benefit CDH1-loss ILC. An ILC subgroup from INAVO120 would be the definitive clinical test."
+      }
+    ],
+    "class_level_gap_confirmed": "SOLAR-1, BYLieve, CAPItello-291, INAVO120 — zero ILC histology subgroup data published across 4 major PI3K/AKT inhibitor trials totaling thousands of patients.",
+    "score_update": {
+      "from": 0.818,
+      "to": 0.847,
+      "reason": "Gap is class-level (all 4 trials), not just alpelisib. INAVO120 triplet is highest-impact target for ILC subgroup analysis. Score raised on novelty (0.78→0.81), clinical_relevance (0.93→0.95), actionability (0.85→0.88)."
+    }
+  }
 }

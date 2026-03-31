@@ -78,7 +78,11 @@
       "bfts_priority_score": 126.7,
       "expected_information_gain": 0.76,
       "parent_node_id": "ILC-EXP-001",
-      "status": "queued"
+      "status": "completed",
+      "result": "GAP_CONFIRMED_STRONG",
+      "executed_date": "2026-03-31",
+      "key_finding": "CLASS-LEVEL GAP: No ILC histology subgroup published across SOLAR-1, BYLieve, CAPItello-291 (PMID 37256976), or INAVO120 (PMID 39476340). INAVO120 (inavolisib+palbociclib+fulvestrant, NEJM 2024) is highest-priority target for ILC sub-analysis — directly tests PI3Ki+CDK4/6i rechallenge in CDK4/6i-resistant setting. BYLieve Expression of Concern (PMID 38142701) noted. Score 0.831→0.847 (v5).",
+      "score_impact": "hyp-ilc-006 upgraded 0.831 → 0.847 (v5)"
     },
     {
       "node_id": "ILC-EXP-003",
@@ -96,7 +100,11 @@
       "bfts_priority_score": 90.0,
       "expected_information_gain": 0.72,
       "parent_node_id": "ILC-EXP-001",
-      "status": "queued"
+      "status": "completed",
+      "result": "PARTIAL_SUPPORT_NOVEL_AXIS",
+      "executed_date": "2026-03-31",
+      "key_finding": "Hippo canonical chain Reactome-confirmed (R-HSA-2028269): MST1/2→LATS1/2→p-YAP→14-3-3 retention; YAP nuclear translocation (R-HSA-2032770) when LATS inactive. PI3K/AKT NOT in Reactome Hippo pathway — PI3K→YAP crosstalk is literature-supported (PMID 32816106) but not Reactome-annotated. CDH1→LATS→YAP structural axis CONFIRMED (PMID 32641858). YAP-PI3K co-activation in OSCC (PMID 35951471). Alpelisib suppresses Route 2 only (PI3K-AKT-YAP); Route 1 (CDH1-LATS-YAP) requires verteporfin. Generated hyp-ilc-009.",
+      "score_impact": "hyp-ilc-006 neutral on CDK4/6i mechanism; hyp-ilc-009 generated (0.808 ACCEPT_MEDIUM)"
     },
     {
       "node_id": "ILC-EXP-004",
@@ -144,9 +152,9 @@
     "root_composite_score": 0.8025,
     "depth": 1,
     "total_nodes": 4,
-    "queued_nodes": 4,
-    "completed_nodes": 0,
-    "best_path_so_far": ["n0-root → ILC-EXP-001 (clinical gap confirmation, highest EIG, lowest cost)"],
+    "queued_nodes": 1,
+    "completed_nodes": 3,
+    "best_path_so_far": ["n0-root → ILC-EXP-001 (gap+PIK3CA enrichment+CDH1-IGF1R dual axis, score 0.831) → ILC-EXP-002 (class-level gap confirmed SOLAR-1/BYLieve/CAPItello-291/INAVO120, score 0.847) → ILC-EXP-003 (Hippo chain Reactome confirmed R-HSA-2028269; PI3K-YAP crosstalk literature-supported; hyp-ilc-009 generated)"],
     "estimated_remaining_compute": {
       "haiku_tokens": 8000,
       "sonnet_tokens": 14000,

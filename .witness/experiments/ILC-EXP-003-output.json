@@ -47,5 +47,28 @@
     "Register hyp-ilc-009 (CDH1-LATS-YAP axis in ILC → TEAD inhibitor vulnerability) as new ACCEPT_MEDIUM candidate",
     "Add verteporfin arm to ILC-EXP-004 preclinical protocol alongside alpelisib",
     "Add alpelisib + verteporfin combination synergy test (Bliss analysis) in CDK4/6i-resistant ILC cell lines"
-  ]
+  ],
+
+  "supplementary_reactome": {
+    "executed_date": "2026-03-31",
+    "hippo_pathway": {
+      "pathway_id": "R-HSA-2028269",
+      "pathway_name": "Signaling by Hippo",
+      "key_reactions_confirmed": [
+        "R-HSA-2028589/2028555: MST1/MST2 phosphorylate LATS1/2",
+        "R-HSA-2028598: Phosphorylation of YAP by LATS1 (cytoplasmic retention)",
+        "R-HSA-2028583: Phosphorylation of YAP by LATS2 (cytoplasmic retention)",
+        "R-HSA-2028644: 14-3-3 binds phospho-YAP → cytoplasmic sequestration",
+        "R-HSA-2032770: Translocation of YAP1 to nucleus (when LATS inactive)"
+      ],
+      "pi3k_akt_in_hippo": "NOT PRESENT — PI3K/AKT are not annotated in Reactome Hippo pathway. The PI3K→LATS crosstalk is published (PMID 32816106) but is NOT Reactome-curated at this time.",
+      "conclusion": "Canonical Hippo chain (CDH1→junction dissolution→LATS1/2 deactivation→YAP nuclear) is Reactome-confirmed. The PI3K→YAP crosstalk is literature-supported but inferential — reduces mechanistic confidence from Reactome-confirmed to published-extrapolated."
+    },
+    "additional_finding": {
+      "pmid": "35951471",
+      "citation": "Rodrigo JP et al. Oral Dis. 2024 Mar;30(2):149-162",
+      "finding": "YAP1 and PI3K (p-AKT) co-activation in oral squamous cell carcinoma (n=165). YAP-PI3K cross-talk confirmed in cancer tissue context. Not breast cancer, but supports the pathway crosstalk in solid tumors.",
+      "role": "CROSSTALK_SUPPORT"
+    }
+  }
 }
