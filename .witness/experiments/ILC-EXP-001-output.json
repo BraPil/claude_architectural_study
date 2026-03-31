@@ -60,10 +60,40 @@
     }
   },
 
+  "supplementary_search": {
+    "executed_date": "2026-03-31",
+    "note": "Second search pass found 3 additional real-world evidence papers not in original run",
+    "new_pmids": [
+      {
+        "pmid": "36539444",
+        "citation": "Mouabbi JA et al. NPJ Breast Cancer. 2022;8(1):131",
+        "finding": "MD Anderson real-world histology analysis, n=3784 HR+/HER2- mBC. Compares CDK4/6i, mTORi, and PI3Ki outcomes by histology (IDC vs ILC vs mixed). Largest published histology-stratified TT comparison. PI3Ki arm limited by early alpelisib adoption period but provides first real-world ILC vs IDC framework.",
+        "role": "REAL_WORLD_FRAMEWORK"
+      },
+      {
+        "pmid": "41619649",
+        "citation": "Mazzoli G et al. (PALMARES-2). Breast. 2026 Apr;86:104692",
+        "finding": "PALMARES-2 multicenter Italian real-world study: CDK4/6i effectiveness by histology (ILC vs IDC) in HR+/HER2- advanced BC. 2026 publication. CDK4/6i-focused (not post-CDK4/6i alpelisib), but demonstrates field is now producing histology-stratified targeted therapy comparisons.",
+        "role": "FIELD_VALIDATION"
+      },
+      {
+        "pmid": "40513789",
+        "citation": "Kavazis C et al. Crit Rev Oncol Hematol. 2025;214:104805",
+        "finding": "Systematic review: PIK3CA mutations in 30-50% of ILC (10 cohorts), higher than IDC. No significant prognostic impact of PIK3CA mutation in ILC studies. Limited data on alpelisib predictive value in ILC specifically.",
+        "role": "MOLECULAR_ENRICHMENT"
+      }
+    ],
+    "updated_score": {
+      "from_first_run": 0.818,
+      "to_final": 0.831,
+      "reason": "Mouabbi 2022 (n=3784) + PALMARES-2 2026 confirm that histology-stratified TT analysis is clinically established. PIK3CA enrichment in ILC (30-50% vs IDC) via systematic review. These increase clinical relevance (ILC now established as having possibly inferior CDK4/6i benefit, per PALMARES-2 signal) and actionability (Mouabbi framework immediately extendable to PI3Ki arm)."
+    }
+  },
+
   "recommended_actions": [
-    "Proceed to ILC-EXP-002 (SOLAR-1 + BYLIEVE ILC enrollment fraction) in parallel with ILC-EXP-003 (CDH1-PI3Ka-YAP convergent node)",
-    "Add PMID 35663259 + 35665642 + 30332649 to hyp-ilc-006-v3 evidence block",
-    "Note in ILC-EXP-004 protocol: IGF1R inhibitor (linsitinib) co-treatment arm should be added alongside alpelisib to test dual PI3K hyperactivation axis",
-    "Create hyp-ilc-006-v3 with CDH1-dual-PI3K-axis model"
+    "Proceed to ILC-EXP-002 (SOLAR-1 + BYLIEVE ILC enrollment fraction + conference abstract search)",
+    "Add PMID 35663259 + 35665642 + 30332649 + 36539444 + 40513789 to hyp-ilc-006-v3 evidence block",
+    "Note in ILC-EXP-004 protocol: IGF1R inhibitor (linsitinib) co-treatment arm alongside alpelisib to test dual PI3K hyperactivation axis",
+    "Create hyp-ilc-006-v3 with CDH1-dual-PI3K-axis model and updated score 0.831"
   ]
 }

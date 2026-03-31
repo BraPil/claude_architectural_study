@@ -56,7 +56,11 @@
       "bfts_priority_score": 220.0,
       "expected_information_gain": 0.88,
       "parent_node_id": "n0-root",
-      "status": "queued"
+      "status": "completed",
+      "result": "GAP_CONFIRMED_WITH_PARTIAL_REAL_WORLD_SUPPORT",
+      "executed_date": "2026-03-31",
+      "key_finding": "GAP CONFIRMED: No ILC-specific alpelisib response data post-CDK4/6i in any trial (SOLAR-1, BYLieve, EPIK-B3). Real-world support: Mouabbi 2022 (n=3784, histology-stratified TT), PALMARES-2 2026 (CDK4/6i ILC vs IDC). PIK3CA enriched in ILC 30-50% (systematic review PMID 40513789). CDH1-dual-PI3K axis: IGF1R→PI3K (PMID 35665642) + direct p85 liberation. Exceptional CDH1-mutant PI3Ki response case (PMID 35663259). Score updated 0.8025→0.831.",
+      "score_impact": "hyp-ilc-006 upgraded 0.8025 → 0.831 (v3)"
     },
     {
       "node_id": "ILC-EXP-002",
