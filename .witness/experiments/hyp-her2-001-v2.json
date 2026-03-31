@@ -1,0 +1,54 @@
+{
+  "hypothesis_id": "hyp-her2-001-v2",
+  "parent_id": "hyp-her2-001",
+  "version": "v2-reflexion",
+  "created_at": "2026-03-31T00:31:08.120759Z",
+  "claim": "T-DXd (trastuzumab deruxtecan) co-activates ferroptosis via its DXd payload (a camptothecin-class topoisomerase I inhibitor). Mechanistic chain: DXd poisons TOP1mt \u2192 mtDNA protein-linked breaks \u2192 mitochondrial dysfunction \u2192 ROS/lipid peroxidation \u2192 ferroptosis sensitization. Concurrent HER2 internalization reduces PI3K-NRF2-SLC7A11 transcription. Tumors with constitutively high SLC7A11 (confirmed TCGA CV=59.4% within HER2-enriched, Q1=104 vs Q3=276 RSEM) escape this window. SLC7A11 IHC stratifies T-DXd responders vs early-resistance patients.",
+  "mechanistic_correction": "Evaluator noted 'post-translational SLC7A11 suppression' was mechanistically overspecified. Corrected to: PI3K-NRF2-SLC7A11 TRANSCRIPTIONAL downregulation (NRF2 is the transcription factor for SLC7A11 per PMID 30867592) \u2014 not post-translational. This is the supported pathway.",
+  "evidence_additions": {
+    "slc7a11_her2_heterogeneity": {
+      "source": "TCGA PanCan Atlas 2018, n=78 HER2-enriched",
+      "finding": "SLC7A11 CV=59.4% within HER2-enriched (Q1=104, Q3=276 RSEM). 2.7-fold IQR spread confirms meaningful high/low subgroups for IHC stratification.",
+      "verdict": "STRATIFICATION_PREMISE_CONFIRMED"
+    },
+    "dxd_ferroptosis_mechanistic_chain": {
+      "pmids_supporting_class_analogy": [
+        "37735740",
+        "40513923",
+        "28508041",
+        "31723605",
+        "40245475"
+      ],
+      "key_finding": "CPT-11/irinotecan (same pharmacological class as DXd) directly induces ferroptosis via ALOX15/GPX4/SLC7A11 axis with measured lipid peroxidation (PMID 37735740). TOP1mt poisoning by SN-38 causes mtDNA breaks and mitochondrial dysfunction (PMID 31723605).",
+      "remaining_gap": "No study directly tests DXd/exatecan \u2192 mitochondrial ROS \u2192 ferroptosis. Evidence is by structural class analogy. Ferrostatin-1 rescue in T-DXd-treated HER2+ cells would be the definitive experiment.",
+      "confidence": 0.68
+    }
+  },
+  "revised_scores": {
+    "evidential_quality": {
+      "old": 0.58,
+      "new": 0.72,
+      "rationale": "Two gaps closed: (1) SLC7A11 within-HER2+ heterogeneity confirmed by TCGA (CV=59.4%, n=78) \u2014 IHC stratification premise data-supported. (2) Mechanistic chain for topo-I \u2192 ferroptosis supported by 5 PMIDs for CPT/SN-38 class (PMID 37735740, 40513923 directly name ferroptosis). Ceiling remains at 0.72 because DXd-specific mechanistic data is absent \u2014 class analogy only. Post-translational mechanistic error corrected to transcriptional NRF2-SLC7A11."
+    },
+    "plausibility": {
+      "old": 0.68,
+      "new": 0.74,
+      "rationale": "Mechanistic overspecification (post-translational) corrected. CPT-class ferroptosis now directly evidenced."
+    }
+  },
+  "revised_composite": {
+    "calculation": "(0.89*0.30) + (0.72*0.25) + (0.82*0.20) + (0.74*0.10) + (0.84*0.10) + (0.88*0.05)",
+    "breakdown": [
+      0.267,
+      0.18,
+      0.164,
+      0.074,
+      0.084,
+      0.044
+    ],
+    "composite": 0.813,
+    "verdict": "ACCEPT_HIGH",
+    "delta": "+0.041 vs v1 (0.772 \u2192 0.813)"
+  },
+  "next_step": "experiment_design \u2014 hyp-her2-001-v2 exceeds 0.80, proceed to /experiment-design"
+}

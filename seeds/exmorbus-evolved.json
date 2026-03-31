@@ -1,0 +1,200 @@
+{
+  "contract_version": "2.1.0",
+  "lineage_id": "exmorbus-oncology-v2",
+  "domain": "oncological_research",
+  "created_at": "2026-03-30T23:20:00Z",
+  "parent_contract_id": "exmorbus-oncology-v2.0.1",
+  "ancestor_performance": {
+    "successful_niches": [
+      {
+        "niche_id": "breast_cancer_marker_analysis",
+        "description": "Analysis of biomarkers associated with breast cancer subtypes",
+        "peak_karma_achieved": 85,
+        "token_efficiency": 0.72,
+        "outcome": "successful",
+        "lessons": "Literature synthesis agents achieved high quality. Broad initial sweep then narrowing specialization worked well. ~140 agents fired in first run, produced breast cancer marker output. papers_found=3 tasks consistently outperformed papers_found=0 tasks (avg 0.83 vs 0.72 efficiency)."
+      }
+    ],
+    "failed_niches": [],
+    "peak_efficiency_agent_size": 12,
+    "optimal_organ_size": 8,
+    "best_organ_functions": [
+      "literature_synthesis",
+      "pathway_analysis",
+      "marker_identification"
+    ],
+    "documented_failure_modes": [
+      "insufficient_domain_grounding_for_simulation_tasks",
+      "agents_not_graded_consistently_in_v0.1",
+      "tissue_to_liquid_biopsy_inferential_leap",
+      "functional_equivalence_inferred_from_scars_not_assay",
+      "complex_pubmed_query_collapses_to_zero_results",
+      "agent_id_fresh_spawn_blocking_differentiation",
+      "bc_unavailable_in_environment_use_python3_for_float_comparison"
+    ]
+  },
+  "resource_priorities": [
+    "pubmed_api",
+    "reactome_pathways",
+    "uniprot",
+    "tcga_pathway_data",
+    "cbioportal",
+    "clinical_trials_gov",
+    "arxiv_cs_AI",
+    "drugbank"
+  ],
+  "compute_budget": {
+    "haiku_pct": 70,
+    "sonnet_pct": 25,
+    "opus_pct": 5
+  },
+  "required_output_format": {
+    "type": "object",
+    "required": [
+      "finding_type",
+      "hypothesis",
+      "evidence",
+      "novelty_claim",
+      "actionability",
+      "resource_cost_estimate"
+    ],
+    "properties": {
+      "finding_type": {
+        "type": "string",
+        "enum": [
+          "hypothesis",
+          "synthesis",
+          "experiment_result",
+          "pathway_insight"
+        ]
+      },
+      "hypothesis": {
+        "type": "string"
+      },
+      "evidence": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "novelty_claim": {
+        "type": "string"
+      },
+      "actionability": {
+        "type": "string"
+      },
+      "resource_cost_estimate": {
+        "type": "object"
+      },
+      "confidence": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  },
+  "forbidden_actions": [
+    "fabricate_clinical_data",
+    "make_treatment_recommendations_to_humans",
+    "access_patient_records",
+    "claim_certainty_without_evidence"
+  ],
+  "diversity_enforcement": {
+    "max_hypothesis_semantic_overlap": 0.35,
+    "min_active_niches": 4
+  },
+  "mitosis_threshold": 0.65,
+  "apoptosis_threshold": 10,
+  "differentiation_threshold": 0.6,
+  "tendril_ttl_hours": 48,
+  "sensing_duration_hours": 24,
+  "fitness_function": "novel_insight_rate_per_token_cost",
+  "fitness_evaluation_criteria": {
+    "novelty": "Finding is not a direct restatement of content in the seeded literature corpus",
+    "plausibility": "Consistent with known cancer biology; cites supporting evidence",
+    "actionability": "Suggests a specific, testable experiment or intervention with named targets",
+    "specificity": "Names specific genes, pathways, compounds, or tumor subtypes"
+  },
+  "communication_contracts": {
+    "can_receive_from": [],
+    "can_send_to": [
+      "mouseion-registry"
+    ],
+    "published_skills": []
+  },
+  "evolution": {
+    "mutation_prompt": "Review the ancestor_performance section. Identify the lesson most likely to improve the next generation's token efficiency or output quality. Propose one targeted mutation to this contract's thresholds or resource_priorities that addresses it. Return only the mutation as a JSON patch object.",
+    "crossover_fields": [
+      "resource_priorities",
+      "fitness_evaluation_criteria",
+      "diversity_enforcement",
+      "compute_budget"
+    ],
+    "merge_recipe_id": null
+  },
+  "behavioral_constraints": {
+    "query_strategy": {
+      "rule": "two_phase_required",
+      "description": "Always issue a broad single-concept sweep (first 2 words) before synthesizing multi-concept queries. Only proceed to synthesis if phase 1 returns count > 0. If phase 1 returns 0 and tool is confirmed up, flag as gap_confirmed \u2014 do not issue further PubMed queries.",
+      "rationale": "Complex multi-concept queries reliably collapse to 0 results. Phase 1 is cheap; the synthesis call is only earned.",
+      "source_lesson": "task-lit-001, autorun-slc7a11-002"
+    },
+    "gap_routing": {
+      "rule": "gap_confirmed_twice_routes_to_bioinformatics",
+      "description": "When a gap is confirmed by two independent orthogonal search strategies, stop searching PubMed and route to direct database query: TCGA 450k methylation array via cBioPortal, cBioPortal REST API, or GEO. The absence confirmed twice is a first-mover research opportunity, not a dead end.",
+      "known_gaps": [
+        {
+          "target": "SLC7A11 promoter methylation ILC vs IDC",
+          "route": "cBioPortal brca_tcga_methylation_hm450, entrez_gene_id=23533, probes cg21877274 cg24869834, ILC n~201 vs IDC n~780",
+          "confirmed_by": [
+            "autorun-slc7a11-001",
+            "autorun-slc7a11-002"
+          ]
+        }
+      ],
+      "source_lesson": "autorun-slc7a11-002 (gap_confirmed_second_pass)"
+    },
+    "tool_fallback": {
+      "rule": "degraded_mode_on_tool_unavailable",
+      "description": "When biomedical-fetch or WebFetch returns empty/error: (1) record status as tool_error not gap_confirmed, (2) score efficiency 0.50\u20130.55 (neutral, not penalized), (3) ground findings from verified dome memory only, (4) mark evidence entries with status: unavailable, (5) reduce plausibility by 0.05, (6) preserve BFTS node as READY for retry \u2014 do not mark INCONCLUSIVE.",
+      "rationale": "Tool downtime is not a finding. Conflating tool errors with literature gaps inflates false gap signals.",
+      "source_lesson": "lesson-tnbc-001-bfts (tool_constraint_adaptation)"
+    },
+    "date_range_parameter": {
+      "rule": "omit_date_range_from_pubmed_queries",
+      "description": "Do not append date_range parameter to biomedical-fetch pubmed_search calls. It causes zero results on long queries. Recent papers surface naturally by relevance ranking.",
+      "source_lesson": "task-lit-001"
+    },
+    "hypothesis_archetypes": {
+      "generation_order": [
+        "clinical_trial_expansion",
+        "biomarker_development",
+        "drug_combination",
+        "mechanistic_connection"
+      ],
+      "rationale": "clinical_trial_expansion scores highest when grounded in named cohort prevalence. mechanistic_connection produces highest novelty but lowest plausibility \u2014 generate last, hold as second-pass after basic mechanistic validation.",
+      "clinical_trial_expansion_rule": "Hypothesis is strongest when: (1) prevalence figure from named cohort anchors the excluded population, (2) biological equivalence argument is mechanistically tight, (3) proposed correction uses existing trial infrastructure. Always probe whether functional equivalence is demonstrated (direct assay) vs inferred (scar correlation) \u2014 if inferred, flag for reflexion.",
+      "source_lesson": "task-hyp-002 tournament lesson, eval-hyp-tnbc-001"
+    },
+    "reflexion_triggers": {
+      "mandatory": [
+        "evidential_quality < 0.70 on ACCEPT_HIGH verdict \u2014 trigger targeted reflexion before experiment design",
+        "functional_equivalence claimed from genomic scars only \u2014 search for (a) direct functional assay data and (b) counter-evidence for reversibility",
+        "single_source prevalence estimate \u2014 resolve via orthogonal population replication before finalizing hypothesis statement; report range not point estimate",
+        "tissue_to_liquid_biopsy_inferential_leap \u2014 verify blood-based detectability evidence before claiming liquid biopsy applicability"
+      ],
+      "source_lesson": "reflexion-tnbc-001, task-marker-001-v2, eval-hyp-tnbc-001"
+    },
+    "mitosis_rules": {
+      "parent_stays_active": "Parent agent is NOT set to dormant on mitosis. Parent continues accumulating tasks and role_commitment. Mitosis fires once per parent (mitosis_fired flag). Dormancy only when rc < 0.30 after 8+ tasks.",
+      "gate": "avg_efficiency < 0.65 over last 3+ tasks AND mitosis_fired is not set",
+      "rationale": "Original bug: parent dormanted after 3 tasks, blocking differentiation. Fix validated in swarm run 2026-03-30.",
+      "source_lesson": "swarm persistence fix, feedback_swarm_persistence.md"
+    },
+    "experiment_design_rules": {
+      "highest_eig_first": "Always put the trials-gap query (is this gap already addressed by a clinical trial?) as BFTS node n1 \u2014 cheapest query, maximum clinical impact for eligibility-expansion hypotheses.",
+      "mechanistic_decoupling": "For multi-drug combinations targeting convergent mechanisms, include a 24h Western + RT-qPCR mechanistic decoupling timepoint before the 72h pharmacological endpoint.",
+      "source_lesson": "lesson-tnbc-001-bfts, experiment-design-tnbc-002"
+    }
+  }
+}

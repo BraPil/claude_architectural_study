@@ -1,0 +1,23 @@
+{
+  "ts": "2026-03-30T23:41:39.834810Z",
+  "lineage_id": "exmorbus-oncology-v2",
+  "lesson_type": "null_result_with_redirect",
+  "niche_id": "breast_cancer_marker_analysis",
+  "task_id": "tcga-slc7a11-expression-001",
+  "hypothesis_id": "hyp-ilc-003",
+  "lesson": "SLC7A11 expression in ILC is HIGHER than IDC (+22.7%, t=3.81, n=234 ILC vs 812 IDC, TCGA RNA-seq RSEM). This directly contradicts the ferroptosis sensitivity axis of hyp-ilc-003. ILC has more SLC7A11 expression, meaning ILC is MORE ferroptosis RESISTANT than IDC \u2014 not a ferroptosis therapy target via this mechanism. Methylation data also showed no ILC-IDC difference (delta_beta=-0.005). CONCLUSION: hyp-ilc-003 (SLC7A11/ILC ferroptosis sensitivity) is CLOSED \u2014 the data shows the opposite biology. NEW HYPOTHESIS GENERATED: ILC's elevated SLC7A11 expression is a RESISTANCE mechanism \u2014 ILC specifically UPREGULATES ferroptosis defense. This makes SLC7A11 INHIBITION (sulfasalazine, erastin) a potential ILC vulnerability \u2014 but via overexpression-driven dependence, NOT methylation-driven sensitivity. This is a clinically significant inversion: the research vector shifts from 'ILC is already sensitive' to 'ILC is resistant and DEPENDENT on SLC7A11 \u2014 inhibit it to induce synthetic lethality.'",
+  "evidence": [
+    "TCGA brca_tcga_rna_seq_v2_mrna: SLC7A11 ILC mean=237.6 vs IDC mean=193.7 RSEM (+22.7%, t=3.81)",
+    "TCGA brca_tcga_methylation_hm450: delta_beta ILC-IDC = -0.005 (NS)",
+    "Direction: high SLC7A11 = ferroptosis resistant = DEPENDENCY on cystine import pathway"
+  ],
+  "new_hypothesis": {
+    "id": "hyp-ilc-008",
+    "claim": "ILC overexpresses SLC7A11 (+22.7% vs IDC, t=3.81) creating a cystine-import dependency \u2014 sulfasalazine or erastin-mediated SLC7A11 inhibition would selectively induce ferroptosis in ILC relative to IDC.",
+    "subtype": "ILC",
+    "mechanism": "oncogene_dependency",
+    "actionability": "sulfasalazine (FDA-approved for RA), erastin (research tool), imidazole ketone erastin (IKE)",
+    "testable_prediction": "sulfasalazine IC50 lower in CDH1-null ILC cell lines (MDA-MB-134, SUM44PE) than IDC (MCF7, T47D)",
+    "priority": "ACCEPT_MEDIUM_CANDIDATE"
+  }
+}
