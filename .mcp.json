@@ -15,7 +15,14 @@
       "args": ["tools/biomedical-fetch/server.js"],
       "env": {
         "CLAUDE_PROJECT_DIR": ".",
-        "HF_TOKEN": ""
+        "HF_TOKEN": "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"
+      }
+    },
+    "huggingface": {
+      "type": "http",
+      "url": "https://huggingface.co/mcp",
+      "headers": {
+        "Authorization": "Bearer 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"
       }
     }
   }

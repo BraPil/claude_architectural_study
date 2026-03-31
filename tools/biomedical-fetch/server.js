@@ -368,13 +368,13 @@ async function huggingfaceInference({ model_key, task, input, options = {} }) {
   }
 
   const modelId = HF_MODELS[model_key] || model_key;
-  const url = `https://api-inference.huggingface.co/models/${modelId}`;
+  const url = `https://router.huggingface.co/hf-inference/models/${modelId}/pipeline/${task}`;
 
   const body = task === "feature-extraction"
-    ? { inputs: input, options: { wait_for_model: true, ...options } }
+    ? { inputs: input }
     : task === "text-generation"
-    ? { inputs: input, parameters: { max_new_tokens: options.max_tokens || 256, temperature: options.temperature || 0.3, return_full_text: false }, options: { wait_for_model: true } }
-    : { inputs: input, options: { wait_for_model: true, ...options } };
+    ? { inputs: input, parameters: { max_new_tokens: options.max_tokens || 256, temperature: options.temperature || 0.3, return_full_text: false } }
+    : { inputs: input };
 
   try {
     const resp = await fetch(url, {
