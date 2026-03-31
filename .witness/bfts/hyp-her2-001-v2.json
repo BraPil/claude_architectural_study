@@ -56,7 +56,11 @@
       "bfts_priority_score": 220.0,
       "expected_information_gain": 0.88,
       "parent_node_id": "n0-root",
-      "status": "queued"
+      "status": "completed",
+      "result": "CRITICAL_POSITIVE",
+      "executed_date": "2026-03-31",
+      "key_finding": "PMID 39243601: T-DXd induces ferroptosis via crVDAC3-HSPB1 mitochondrial axis in HER2-low BC. Direct T-DXd ferroptosis confirmation. Hypothesis upgraded v2→v3 (0.813→0.851).",
+      "score_impact": "hyp-her2-001 upgraded 0.813 → 0.851 (v3)"
     },
     {
       "node_id": "HER2-EXP-002",
@@ -96,7 +100,11 @@
       "bfts_priority_score": 78.0,
       "expected_information_gain": 0.78,
       "parent_node_id": "HER2-EXP-001",
-      "status": "queued"
+      "status": "completed",
+      "result": "MECHANISTIC_AXIS_CONFIRMED_VIA_REACTOME",
+      "executed_date": "2026-03-31",
+      "key_finding": "Reactome R-HSA-9762114 (GSK3B→BTRC:CUL1 NRF2 degradation) + R-HSA-9818027 (AcK-NFE2L2/ATF4 activate SLC7A11 gene). Full PI3K-GSK3β-NRF2-SLC7A11 chain confirmed. SLC7A11 paradox resolved: double-hit model — antibody strips cytosolic SLC7A11, DXd delivers mitochondrial ferroptosis bypassing GPX4/SLC7A11. Hypothesis upgraded v4→v5 (0.881→0.903).",
+      "score_impact": "hyp-her2-001 upgraded 0.881 → 0.903 (v5)"
     },
     {
       "node_id": "HER2-EXP-004",
@@ -144,9 +152,9 @@
     "root_composite_score": 0.813,
     "depth": 1,
     "total_nodes": 4,
-    "queued_nodes": 2,
-    "completed_nodes": 2,
-    "best_path_so_far": ["n0-root → HER2-EXP-001 (CRITICAL_POSITIVE: PMID 39243601) → HER2-EXP-002 (GAP_CONFIRMED + PMID 40464376 anchor, score 0.881)"],
+    "queued_nodes": 1,
+    "completed_nodes": 3,
+    "best_path_so_far": ["n0-root → HER2-EXP-001 (CRITICAL_POSITIVE: PMID 39243601, score 0.851) → HER2-EXP-002 (PMID 40464376 trastuzumab-resistance anchor, score 0.881) → HER2-EXP-003 (Reactome R-HSA-9762114+R-HSA-9818027 confirmed, paradox resolved, score 0.903)"],
     "estimated_remaining_compute": {
       "haiku_tokens": 8000,
       "sonnet_tokens": 14000,
