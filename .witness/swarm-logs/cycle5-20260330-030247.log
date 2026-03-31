@@ -1,0 +1,233 @@
+[03:02:47] ═══ SWARM START: max_agents=10 max_cycles=15 ═══
+[03:02:47] Dome: exmorbus-v0.2 | Mitosis threshold: 0.65 | Diff threshold: 0.60
+[03:02:48] 
+[03:02:48] ─── CYCLE 1 / 15 ───────────────────────────────
+[03:02:48] Running 2 agents this cycle
+[03:02:48]   Agent sc-gen1-254 [hypothesis_generation] → ACCEPT_WEAK (eff=0.420) MITOSIS:sc-gen1-254->sc-gen2-520,sc-gen2-521
+[03:02:48]   Agent sc-gen1-255 [pathway_analysis] → ACCEPT_WEAK (eff=0.630) MITOSIS:sc-gen1-255->sc-gen2-522,sc-gen2-523
+[03:02:48]   Organ check: Closest to organ: hypothesis_generation (13/3 agents committed)
+[03:02:48]   Cycle 1 summary: avg_eff=0.525 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 2
+[03:02:50] 
+[03:02:50] ─── CYCLE 2 / 15 ───────────────────────────────
+[03:02:50] Running 4 agents this cycle
+[03:02:51]   Agent sc-gen1-256 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.470) MITOSIS:sc-gen1-256->sc-gen2-524,sc-gen2-525
+[03:02:51]   Agent sc-gen1-257 [literature_synthesis] → ACCEPT_WEAK (eff=0.870) OK:rc=0.50
+[03:02:52]   Agent sc-gen1-258 [hypothesis_generation] → ACCEPT_WEAK (eff=0.590) OK:rc=0.50
+[03:02:52]   Agent sc-gen1-259 [pathway_analysis] → ACCEPT_WEAK (eff=0.570) OK:rc=0.50
+[03:02:52]   Organ check: Closest to organ: hypothesis_generation (13/3 agents committed)
+[03:02:52]   Cycle 2 summary: avg_eff=0.625 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 4
+[03:02:54] 
+[03:02:54] ─── CYCLE 3 / 15 ───────────────────────────────
+[03:02:54] Running 10 agents this cycle
+[03:02:55]   Agent sc-gen1-257 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.550) OK:rc=0.75
+[03:02:55]   Agent sc-gen1-258 [literature_synthesis] → ACCEPT_WEAK (eff=0.560) MITOSIS:sc-gen1-258->sc-gen2-526,sc-gen2-527
+[03:02:55]   Agent sc-gen1-259 [hypothesis_generation] → ACCEPT_WEAK (eff=0.400) MITOSIS:sc-gen1-259->sc-gen2-528,sc-gen2-529
+[03:02:56]   Agent sc-gen1-260 [pathway_analysis] → ACCEPT_WEAK (eff=0.570) OK:rc=0.25
+[03:02:56]   Agent sc-gen1-261 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.460) OK:rc=0.25
+[03:02:57]   Agent sc-gen1-262 [literature_synthesis] → ACCEPT_WEAK (eff=0.630) OK:rc=0.25
+[03:02:57]   Agent sc-gen1-263 [hypothesis_generation] → ACCEPT_WEAK (eff=0.590) OK:rc=0.25
+[03:02:58]   Agent sc-gen1-264 [pathway_analysis] → ACCEPT_WEAK (eff=0.430) OK:rc=0.25
+[03:02:58]   Agent sc-gen1-265 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.520) OK:rc=0.25
+[03:02:58]   Agent sc-gen1-266 [literature_synthesis] → ACCEPT_WEAK (eff=0.430) OK:rc=0.25
+[03:02:58]   Organ check: Closest to organ: hypothesis_generation (14/3 agents committed)
+[03:02:58]   Cycle 3 summary: avg_eff=0.514 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:03:00] 
+[03:03:00] ─── CYCLE 4 / 15 ───────────────────────────────
+[03:03:00] Running 10 agents this cycle
+[03:03:01]   Agent sc-gen1-257 [hypothesis_generation] → ACCEPT_WEAK (eff=0.550) OK:rc=1.00
+[03:03:01]   Agent sc-gen1-260 [pathway_analysis] → ACCEPT_WEAK (eff=0.460) OK:rc=0.50
+[03:03:02]   Agent sc-gen1-261 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.410) OK:rc=0.50
+[03:03:02]   Agent sc-gen1-262 [literature_synthesis] → ACCEPT_WEAK (eff=0.400) OK:rc=0.50
+[03:03:02]   Agent sc-gen1-263 [hypothesis_generation] → ACCEPT_WEAK (eff=0.400) OK:rc=0.50
+[03:03:03]   Agent sc-gen1-264 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.520) OK:rc=0.50
+[03:03:03]   Agent sc-gen1-265 [literature_synthesis] → ACCEPT_WEAK (eff=0.510) OK:rc=0.50
+[03:03:04]   Agent sc-gen1-266 [hypothesis_generation] → ACCEPT_WEAK (eff=0.500) OK:rc=0.50
+[03:03:04]   Agent sc-gen1-267 [pathway_analysis] → ACCEPT_WEAK (eff=0.470) OK:rc=0.25
+[03:03:05]   Agent sc-gen1-268 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.560) OK:rc=0.25
+[03:03:05]   Organ check: Closest to organ: hypothesis_generation (15/3 agents committed)
+[03:03:05]   Cycle 4 summary: avg_eff=0.478 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:03:07] 
+[03:03:07] ─── CYCLE 5 / 15 ───────────────────────────────
+[03:03:07] Running 10 agents this cycle
+[03:03:07]   Agent sc-gen1-257 [literature_synthesis] → ACCEPT_WEAK (eff=0.550) OK:rc=1.00
+[03:03:08]   Agent sc-gen1-260 [hypothesis_generation] → ACCEPT_WEAK (eff=0.460) MITOSIS:sc-gen1-260->sc-gen2-530,sc-gen2-531
+[03:03:08]   Agent sc-gen1-261 [pathway_analysis] → ACCEPT_WEAK (eff=0.560) MITOSIS:sc-gen1-261->sc-gen2-532,sc-gen2-533
+[03:03:08]   Agent sc-gen1-262 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.570) MITOSIS:sc-gen1-262->sc-gen2-534,sc-gen2-535
+[03:03:09]   Agent sc-gen1-263 [literature_synthesis] → ACCEPT_WEAK (eff=0.770) MITOSIS:sc-gen1-263->sc-gen2-536,sc-gen2-537
+[03:03:10]   Agent sc-gen1-264 [hypothesis_generation] → ACCEPT_WEAK (eff=0.440) MITOSIS:sc-gen1-264->sc-gen2-538,sc-gen2-539
+[03:03:12]   Agent sc-gen1-265 [pathway_analysis] → ACCEPT_WEAK (eff=0.420) MITOSIS:sc-gen1-265->sc-gen2-540,sc-gen2-541
+[03:03:12]   Agent sc-gen1-266 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.410) MITOSIS:sc-gen1-266->sc-gen2-542,sc-gen2-543
+[03:03:13]   Agent sc-gen1-267 [literature_synthesis] → ACCEPT_WEAK (eff=0.450) OK:rc=0.50
+[03:03:13]   Agent sc-gen1-268 [hypothesis_generation] → ACCEPT_WEAK (eff=0.420) OK:rc=0.50
+[03:03:13]   Organ check: Closest to organ: hypothesis_generation (16/3 agents committed)
+[03:03:13]   Cycle 5 summary: avg_eff=0.505 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:03:15] 
+[03:03:15] ─── CYCLE 6 / 15 ───────────────────────────────
+[03:03:15] Running 10 agents this cycle
+[03:03:16]   Agent sc-gen1-257 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.530) MITOSIS:sc-gen1-257->sc-gen2-544,sc-gen2-545
+[03:03:16]   Agent sc-gen1-267 [literature_synthesis] → ACCEPT_WEAK (eff=0.630) MITOSIS:sc-gen1-267->sc-gen2-546,sc-gen2-547
+[03:03:17]   Agent sc-gen1-268 [hypothesis_generation] → ACCEPT_WEAK (eff=0.470) MITOSIS:sc-gen1-268->sc-gen2-548,sc-gen2-549
+[03:03:17]   Agent sc-gen1-269 [pathway_analysis] → ACCEPT_WEAK (eff=0.740) OK:rc=0.25
+[03:03:18]   Agent sc-gen1-270 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.410) OK:rc=0.25
+[03:03:18]   Agent sc-gen1-271 [literature_synthesis] → ACCEPT_WEAK (eff=0.560) OK:rc=0.25
+[03:03:18]   Agent sc-gen1-272 [hypothesis_generation] → ACCEPT_WEAK (eff=0.550) OK:rc=0.25
+[03:03:19]   Agent sc-gen1-273 [pathway_analysis] → ACCEPT_WEAK (eff=0.930) OK:rc=0.25
+[03:03:19]   Agent sc-gen1-274 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.430) OK:rc=0.25
+[03:03:20]   Agent sc-gen1-275 [literature_synthesis] → ACCEPT_WEAK (eff=0.420) OK:rc=0.25
+[03:03:20]   Organ check: Closest to organ: hypothesis_generation (17/3 agents committed)
+[03:03:20]   Cycle 6 summary: avg_eff=0.567 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:03:22] 
+[03:03:22] ─── CYCLE 7 / 15 ───────────────────────────────
+[03:03:22] Running 10 agents this cycle
+[03:03:22]   Agent sc-gen1-269 [hypothesis_generation] → ACCEPT_WEAK (eff=0.420) OK:rc=0.50
+[03:03:23]   Agent sc-gen1-270 [pathway_analysis] → ACCEPT_WEAK (eff=0.520) OK:rc=0.50
+[03:03:23]   Agent sc-gen1-271 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.590) OK:rc=0.50
+[03:03:23]   Agent sc-gen1-272 [literature_synthesis] → ACCEPT_WEAK (eff=0.420) OK:rc=0.50
+[03:03:24]   Agent sc-gen1-273 [hypothesis_generation] → ACCEPT_WEAK (eff=0.430) OK:rc=0.50
+[03:03:24]   Agent sc-gen1-274 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.530) OK:rc=0.50
+[03:03:25]   Agent sc-gen1-275 [literature_synthesis] → ACCEPT_WEAK (eff=0.650) OK:rc=0.50
+[03:03:25]   Agent sc-gen1-276 [hypothesis_generation] → ACCEPT_WEAK (eff=0.520) OK:rc=0.25
+[03:03:25]   Agent sc-gen1-277 [pathway_analysis] → ACCEPT_WEAK (eff=0.570) OK:rc=0.25
+[03:03:26]   Agent sc-gen1-278 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.560) OK:rc=0.25
+[03:03:26]   Organ check: Closest to organ: hypothesis_generation (17/3 agents committed)
+[03:03:26]   Cycle 7 summary: avg_eff=0.521 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:03:28] 
+[03:03:28] ─── CYCLE 8 / 15 ───────────────────────────────
+[03:03:28] Running 10 agents this cycle
+[03:03:29]   Agent sc-gen1-269 [literature_synthesis] → ACCEPT_WEAK (eff=0.670) MITOSIS:sc-gen1-269->sc-gen2-550,sc-gen2-551
+[03:03:29]   Agent sc-gen1-270 [hypothesis_generation] → ACCEPT_WEAK (eff=0.580) MITOSIS:sc-gen1-270->sc-gen2-552,sc-gen2-553
+[03:03:30]   Agent sc-gen1-271 [pathway_analysis] → ACCEPT_WEAK (eff=0.910) OK:rc=0.75
+[03:03:30]   Agent sc-gen1-272 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.440) MITOSIS:sc-gen1-272->sc-gen2-554,sc-gen2-555
+[03:03:31]   Agent sc-gen1-273 [literature_synthesis] → ACCEPT_WEAK (eff=0.550) MITOSIS:sc-gen1-273->sc-gen2-556,sc-gen2-557
+[03:03:31]   Agent sc-gen1-274 [hypothesis_generation] → ACCEPT_WEAK (eff=0.570) MITOSIS:sc-gen1-274->sc-gen2-558,sc-gen2-559
+[03:03:32]   Agent sc-gen1-275 [pathway_analysis] → ACCEPT_WEAK (eff=0.490) MITOSIS:sc-gen1-275->sc-gen2-560,sc-gen2-561
+[03:03:32]   Agent sc-gen1-276 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.510) OK:rc=0.50
+[03:03:32]   Agent sc-gen1-277 [literature_synthesis] → ACCEPT_WEAK (eff=0.490) OK:rc=0.50
+[03:03:33]   Agent sc-gen1-278 [hypothesis_generation] → ACCEPT_WEAK (eff=0.570) OK:rc=0.50
+[03:03:33]   Organ check: Closest to organ: hypothesis_generation (19/3 agents committed)
+[03:03:33]   Cycle 8 summary: avg_eff=0.578 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:03:35] 
+[03:03:35] ─── CYCLE 9 / 15 ───────────────────────────────
+[03:03:35] Running 10 agents this cycle
+[03:03:36]   Agent sc-gen1-271 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.490) MITOSIS:sc-gen1-271->sc-gen2-562,sc-gen2-563
+[03:03:36]   Agent sc-gen1-276 [literature_synthesis] → ACCEPT_WEAK (eff=0.610) MITOSIS:sc-gen1-276->sc-gen2-564,sc-gen2-565
+[03:03:37]   Agent sc-gen1-277 [hypothesis_generation] → ACCEPT_WEAK (eff=0.500) MITOSIS:sc-gen1-277->sc-gen2-566,sc-gen2-567
+[03:03:37]   Agent sc-gen1-278 [pathway_analysis] → ACCEPT_WEAK (eff=0.740) MITOSIS:sc-gen1-278->sc-gen2-568,sc-gen2-569
+[03:03:38]   Agent sc-gen1-279 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.420) OK:rc=0.25
+[03:03:38]   Agent sc-gen1-280 [literature_synthesis] → ACCEPT_WEAK (eff=0.540) OK:rc=0.25
+[03:03:38]   Agent sc-gen1-281 [hypothesis_generation] → ACCEPT_WEAK (eff=0.510) OK:rc=0.25
+[03:03:39]   Agent sc-gen1-282 [pathway_analysis] → ACCEPT_WEAK (eff=0.730) OK:rc=0.25
+[03:03:40]   Agent sc-gen1-283 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.440) OK:rc=0.25
+[03:03:40]   Agent sc-gen1-284 [literature_synthesis] → ACCEPT_WEAK (eff=0.920) OK:rc=0.25
+[03:03:40]   Organ check: Closest to organ: hypothesis_generation (20/3 agents committed)
+[03:03:40]   Cycle 9 summary: avg_eff=0.59 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:03:42] 
+[03:03:42] ─── CYCLE 10 / 15 ───────────────────────────────
+[03:03:42] Running 10 agents this cycle
+[03:03:43]   Agent sc-gen1-279 [hypothesis_generation] → ACCEPT_WEAK (eff=0.440) OK:rc=0.50
+[03:03:43]   Agent sc-gen1-280 [pathway_analysis] → ACCEPT_WEAK (eff=0.410) OK:rc=0.50
+[03:03:44]   Agent sc-gen1-281 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.570) OK:rc=0.50
+[03:03:44]   Agent sc-gen1-282 [literature_synthesis] → ACCEPT_WEAK (eff=0.490) OK:rc=0.50
+[03:03:45]   Agent sc-gen1-283 [hypothesis_generation] → ACCEPT_WEAK (eff=0.580) OK:rc=0.50
+[03:03:45]   Agent sc-gen1-284 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.580) OK:rc=0.50
+[03:03:45]   Agent sc-gen1-285 [literature_synthesis] → ACCEPT_WEAK (eff=0.420) OK:rc=0.25
+[03:03:46]   Agent sc-gen1-286 [hypothesis_generation] → ACCEPT_WEAK (eff=0.580) OK:rc=0.25
+[03:03:46]   Agent sc-gen1-287 [pathway_analysis] → ACCEPT_WEAK (eff=0.610) OK:rc=0.25
+[03:03:47]   Agent sc-gen1-288 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.570) OK:rc=0.25
+[03:03:47]   Organ check: Closest to organ: hypothesis_generation (20/3 agents committed)
+[03:03:47]   Cycle 10 summary: avg_eff=0.525 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:03:49] 
+[03:03:49] ─── CYCLE 11 / 15 ───────────────────────────────
+[03:03:49] Running 10 agents this cycle
+[03:03:50]   Agent sc-gen1-279 [literature_synthesis] → ACCEPT_WEAK (eff=0.670) MITOSIS:sc-gen1-279->sc-gen2-570,sc-gen2-571
+[03:03:50]   Agent sc-gen1-280 [hypothesis_generation] → ACCEPT_WEAK (eff=0.510) MITOSIS:sc-gen1-280->sc-gen2-572,sc-gen2-573
+[03:03:50]   Agent sc-gen1-281 [pathway_analysis] → ACCEPT_WEAK (eff=0.590) MITOSIS:sc-gen1-281->sc-gen2-574,sc-gen2-575
+[03:03:51]   Agent sc-gen1-282 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.590) MITOSIS:sc-gen1-282->sc-gen2-576,sc-gen2-577
+[03:03:51]   Agent sc-gen1-283 [literature_synthesis] → ACCEPT_WEAK (eff=0.720) MITOSIS:sc-gen1-283->sc-gen2-578,sc-gen2-579
+[03:03:52]   Agent sc-gen1-284 [hypothesis_generation] → ACCEPT_WEAK (eff=0.530) OK:rc=0.75
+[03:03:52]   Agent sc-gen1-285 [pathway_analysis] → ACCEPT_WEAK (eff=0.590) OK:rc=0.50
+[03:03:53]   Agent sc-gen1-286 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.460) OK:rc=0.50
+[03:03:53]   Agent sc-gen1-287 [literature_synthesis] → ACCEPT_WEAK (eff=0.420) OK:rc=0.50
+[03:03:53]   Agent sc-gen1-288 [hypothesis_generation] → ACCEPT_WEAK (eff=0.520) OK:rc=0.50
+[03:03:53]   Organ check: Closest to organ: hypothesis_generation (22/3 agents committed)
+[03:03:53]   Cycle 11 summary: avg_eff=0.56 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:03:55] 
+[03:03:55] ─── CYCLE 12 / 15 ───────────────────────────────
+[03:03:55] Running 10 agents this cycle
+[03:03:56]   Agent sc-gen1-284 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.560) MITOSIS:sc-gen1-284->sc-gen2-580,sc-gen2-581
+[03:03:56]   Agent sc-gen1-285 [literature_synthesis] → ACCEPT_WEAK (eff=0.670) MITOSIS:sc-gen1-285->sc-gen2-582,sc-gen2-583
+[03:03:57]   Agent sc-gen1-286 [hypothesis_generation] → ACCEPT_WEAK (eff=0.400) MITOSIS:sc-gen1-286->sc-gen2-584,sc-gen2-585
+[03:03:57]   Agent sc-gen1-287 [pathway_analysis] → ACCEPT_WEAK (eff=0.640) MITOSIS:sc-gen1-287->sc-gen2-586,sc-gen2-587
+[03:03:58]   Agent sc-gen1-288 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.430) MITOSIS:sc-gen1-288->sc-gen2-588,sc-gen2-589
+[03:03:58]   Agent sc-gen1-289 [literature_synthesis] → ACCEPT_WEAK (eff=0.430) OK:rc=0.25
+[03:03:58]   Agent sc-gen1-290 [hypothesis_generation] → ACCEPT_WEAK (eff=0.530) OK:rc=0.25
+[03:03:59]   Agent sc-gen1-291 [pathway_analysis] → ACCEPT_WEAK (eff=0.890) OK:rc=0.25
+[03:04:00]   Agent sc-gen1-292 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.570) OK:rc=0.25
+[03:04:00]   Agent sc-gen1-293 [literature_synthesis] → ACCEPT_WEAK (eff=0.880) OK:rc=0.25
+[03:04:00]   Organ check: Closest to organ: hypothesis_generation (22/3 agents committed)
+[03:04:00]   Cycle 12 summary: avg_eff=0.6 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:04:02] 
+[03:04:02] ─── CYCLE 13 / 15 ───────────────────────────────
+[03:04:02] Running 10 agents this cycle
+[03:04:03]   Agent sc-gen1-289 [hypothesis_generation] → ACCEPT_WEAK (eff=0.590) OK:rc=0.50
+[03:04:03]   Agent sc-gen1-290 [pathway_analysis] → ACCEPT_WEAK (eff=0.580) OK:rc=0.50
+[03:04:04]   Agent sc-gen1-291 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.440) OK:rc=0.50
+[03:04:04]   Agent sc-gen1-292 [literature_synthesis] → ACCEPT_WEAK (eff=0.490) OK:rc=0.50
+[03:04:05]   Agent sc-gen1-293 [hypothesis_generation] → ACCEPT_WEAK (eff=0.460) OK:rc=0.50
+[03:04:05]   Agent sc-gen1-294 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.540) OK:rc=0.25
+[03:04:05]   Agent sc-gen1-295 [literature_synthesis] → ACCEPT_WEAK (eff=0.430) OK:rc=0.25
+[03:04:06]   Agent sc-gen1-296 [hypothesis_generation] → ACCEPT_WEAK (eff=0.540) OK:rc=0.25
+[03:04:06]   Agent sc-gen1-297 [pathway_analysis] → ACCEPT_WEAK (eff=0.580) OK:rc=0.25
+[03:04:07]   Agent sc-gen1-298 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.460) OK:rc=0.25
+[03:04:07]   Organ check: Closest to organ: hypothesis_generation (22/3 agents committed)
+[03:04:07]   Cycle 13 summary: avg_eff=0.511 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:04:09] 
+[03:04:09] ─── CYCLE 14 / 15 ───────────────────────────────
+[03:04:09] Running 10 agents this cycle
+[03:04:10]   Agent sc-gen1-289 [literature_synthesis] → ACCEPT_WEAK (eff=0.590) MITOSIS:sc-gen1-289->sc-gen2-590,sc-gen2-591
+[03:04:10]   Agent sc-gen1-290 [hypothesis_generation] → ACCEPT_WEAK (eff=0.540) MITOSIS:sc-gen1-290->sc-gen2-592,sc-gen2-593
+[03:04:11]   Agent sc-gen1-291 [pathway_analysis] → ACCEPT_WEAK (eff=0.870) OK:rc=0.75
+[03:04:11]   Agent sc-gen1-292 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.520) MITOSIS:sc-gen1-292->sc-gen2-594,sc-gen2-595
+[03:04:11]   Agent sc-gen1-293 [literature_synthesis] → ACCEPT_WEAK (eff=0.490) MITOSIS:sc-gen1-293->sc-gen2-596,sc-gen2-597
+[03:04:12]   Agent sc-gen1-294 [hypothesis_generation] → ACCEPT_WEAK (eff=0.490) OK:rc=0.50
+[03:04:12]   Agent sc-gen1-295 [pathway_analysis] → ACCEPT_WEAK (eff=0.550) OK:rc=0.50
+[03:04:13]   Agent sc-gen1-296 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.530) OK:rc=0.50
+[03:04:13]   Agent sc-gen1-297 [literature_synthesis] → ACCEPT_WEAK (eff=0.540) OK:rc=0.50
+[03:04:13]   Agent sc-gen1-298 [hypothesis_generation] → ACCEPT_WEAK (eff=0.520) OK:rc=0.50
+[03:04:13]   Organ check: Closest to organ: hypothesis_generation (23/3 agents committed)
+[03:04:13]   Cycle 14 summary: avg_eff=0.564 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:04:15] 
+[03:04:15] ─── CYCLE 15 / 15 ───────────────────────────────
+[03:04:15] Running 10 agents this cycle
+[03:04:16]   Agent sc-gen1-291 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.580) OK:rc=1.00
+[03:04:16]   Agent sc-gen1-294 [literature_synthesis] → ACCEPT_WEAK (eff=0.740) MITOSIS:sc-gen1-294->sc-gen2-598,sc-gen2-599
+[03:04:17]   Agent sc-gen1-295 [hypothesis_generation] → ACCEPT_WEAK (eff=0.520) MITOSIS:sc-gen1-295->sc-gen2-600,sc-gen2-601
+[03:04:17]   Agent sc-gen1-296 [pathway_analysis] → ACCEPT_WEAK (eff=0.500) MITOSIS:sc-gen1-296->sc-gen2-602,sc-gen2-603
+[03:04:18]   Agent sc-gen1-297 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.540) MITOSIS:sc-gen1-297->sc-gen2-604,sc-gen2-605
+[03:04:18]   Agent sc-gen1-298 [literature_synthesis] → ACCEPT_WEAK (eff=0.430) MITOSIS:sc-gen1-298->sc-gen2-606,sc-gen2-607
+[03:04:19]   Agent sc-gen1-299 [hypothesis_generation] → ACCEPT_WEAK (eff=0.470) OK:rc=0.25
+[03:04:20]   Agent sc-gen1-300 [pathway_analysis] → ACCEPT_WEAK (eff=0.820) OK:rc=0.25
+[03:04:21]   Agent sc-gen1-301 [breast_cancer_marker_analysis] → ACCEPT_WEAK (eff=0.400) OK:rc=0.25
+[03:04:21]   Agent sc-gen1-302 [literature_synthesis] → ACCEPT_WEAK (eff=0.710) OK:rc=0.25
+[03:04:22]   Organ check: Closest to organ: literature_synthesis (24/3 agents committed)
+[03:04:22]   Cycle 15 summary: avg_eff=0.571 | ACCEPT_HIGH=0 ACCEPT_MEDIUM=0 / 10
+[03:04:24] 
+[03:04:24] ═══ SWARM COMPLETE ═══
+
+══════════════════════════════════════════════════
+FINAL DOME STATE
+══════════════════════════════════════════════════
+Total agents spawned:   504
+  committed (rc≥0.60): 89
+  differentiating:     15
+  sensing:             400
+Total tasks completed:  551
+Mitosis events:         204
+Organs formed:          4 ['breast_cancer_marker_analysis', 'literature_synthesis', 'hypothesis_generation', 'pathway_analysis']
+Total findings:         530
+
+Niche distribution:
+  hypothesis_generation                  147 agents  ██████████████████████████████  (24 committed)
+  breast_cancer_marker_analysis          143 agents  ██████████████████████████████  (23 committed)
+  literature_synthesis                   120 agents  ██████████████████████████████  (24 committed)
+  pathway_analysis                        94 agents  ██████████████████████████████  (18 committed)

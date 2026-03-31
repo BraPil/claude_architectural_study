@@ -1,0 +1,17 @@
+{
+  "hyp_id": "hyp-ilc-009",
+  "version": "v1-generated",
+  "created_at": "2026-03-31T01:05:55.767286Z",
+  "source": "ILC-EXP-003 pathway analysis",
+  "parent_hypothesis": "hyp-ilc-006-v3",
+  "claim": "CDH1 loss in ILC activates YAP nuclear accumulation via dual mechanism: (1) LATS deactivation (CDH1/p190A RhoGAP complex disrupted, PMID 32641858); (2) PI3K-AKT-YAP crosstalk amplification (PMID 32816106). YAP-TEAD inhibition (verteporfin, IAG933) should show ILC-specific efficacy greater than IDC. Alpelisib + verteporfin combination may show synergy in CDH1-loss CDK4/6i-resistant ILC.",
+  "subtype": "ILC",
+  "finding_type": "hypothesis",
+  "verdict": "ACCEPT_MEDIUM",
+  "composite_estimate": 0.72,
+  "supporting_pmids": [
+    "32641858",
+    "32816106"
+  ],
+  "gap": "CDH1\u2192LATS\u2192YAP not directly demonstrated in ILC breast cancer; verteporfin + alpelisib combination not tested in ILC"
+}

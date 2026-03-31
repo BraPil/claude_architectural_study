@@ -1,0 +1,38 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-gen1-308",
+  "niche_id": "hypothesis_generation",
+  "task_id": "swarm-sc-gen1-308-c3",
+  "cycle": 3,
+  "executed_at": "2026-03-31T00:43:12.294485Z",
+  "query": "YAP TEAD ILC master regulator ESR1 acquired CDK4/6 resistance verteporfin",
+  "papers_found": 3,
+  "efficiency_score": 0.78,
+  "verdict": "ACCEPT_MEDIUM",
+  "evidence": [
+    {
+      "source": "PMID:41899597",
+      "claim": "An FAK Kinase/Scaffold Mode-Switch in Dormancy and Resistance.",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41890083",
+      "claim": "A Fragment Screen Identifies Acrylamide Covalent Inhibitors of the TEAD\u2022YAP Prot",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41881086",
+      "claim": "SiO(2) dust induces the transformation of lung fibroblasts to myofibroblasts by ",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 3 papers for 'YAP TEAD ILC master regulator ESR1 acquired CDK4/6 resistanc': An FAK Kinase/Scaffold Mode-Switch in Dormancy and Resistance.",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 3,
+    "model": "haiku"
+  },
+  "confidence": 0.78
+}

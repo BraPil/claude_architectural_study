@@ -1,0 +1,175 @@
+{
+  "hyp_id": "hyp-tnbc-001-v2-refined",
+  "parent_hyp_id": "hyp-tnbc-001-v2",
+  "grandparent_hyp_id": "hyp-tnbc-001",
+  "refinement_basis": "eval-hyp-tnbc-001-v2-reflexion",
+  "refinement_type": "caveat_incorporation",
+  "agent_id": "refinement-tnbc-001-v2-allelic",
+  "dome_id": "exmorbus-v0.2",
+  "lineage_id": "exmorbus-oncology-v2",
+  "ts": "2026-03-30T18:00:00Z",
+
+  "hypothesis": "Constitutional BRCA1 promoter methylation (present in 12.4%–33.9% of TNBC across independent cohorts, identified by allele-specific bisulfite sequencing in peripheral blood) produces HRD genomic scars (LOH, TAI, LST) and pre-treatment RAD51 foci failure functionally equivalent to pathogenic germline BRCA1 mutation — provided methylation extends to both alleles (biallelic methylation) or that LOH has silenced the second allele — and these patients, currently excluded from PARP inhibitor (PARPi) clinical trials (olaparib, talazoparib) due to germline mutation-only eligibility criteria, derive equivalent PARPi benefit in the treatment-naive setting. A critical distinguishing caveat applies: constitutional BRCA1 promoter methylation is potentially reversible and may be heterozygous. If only one allele is methylated, the second allele retains an intact BRCA1 gene capable of supporting HR under replication stress, meaning HRD equivalence to germline mutation cannot be assumed without allelic status confirmation. Furthermore, even when initially biallelic, methylation-driven BRCA1 silencing can be reversed by neoadjuvant chemotherapy exposure (RAD51 foci restoration observed post-NACT, Frontiers Oncol 2023), a reversion mechanism absent in stable germline mutations. PARPi eligibility expansion for constitutional methylation-positive TNBC is therefore contingent on two conditions being confirmed at the time of treatment: (1) allele-specific assay confirming biallelic methylation or LOH-mediated loss of the unmethylated allele, and (2) treatment-naive status (chemotherapy-unexposed) to exclude epigenetic reversion of HR capacity.",
+
+  "core_claim_preserved": "Constitutional BRCA1 promoter methylation creates a PARPi-eligible HRD phenotype functionally equivalent to germline BRCA1 mutation, currently excluded from trials by a regulatory artifact rather than a biological distinction.",
+
+  "hr_reversibility_caveat": {
+    "caveat_text": "Unlike germline BRCA1 mutations (which irreversibly ablate BRCA1 function), constitutional promoter methylation may be: (a) heterozygous — one allele methylated, one allele functional, in which case the unmethylated allele can support HR under stress, falsely mimicking HRD only in the absence of selection pressure; or (b) biallelic but reversible — both alleles methylated at baseline but susceptible to demethylation under chemotherapy-induced replication stress, restoring BRCA1 expression and RAD51 function. Both mechanisms produce a scenario in which HRD is a conditional, not permanent, state — unlike pathogenic germline BRCA1 mutation where no functional allele exists.",
+    "allelic_status_requirement": "Allele-specific methylation quantification is required before any clinical HRD equivalence claim for constitutional methylation. Bulk methylation fraction assays (pyrosequencing without allele resolution) cannot distinguish monoallelic from biallelic methylation and will misclassify heterozygous carriers as HRD-equivalent when they may retain functional HR.",
+    "qualifying_condition": "Provided methylation extends to both alleles (biallelic methylation) or that LOH has silenced the second allele, the HRD equivalence claim stands. In the absence of either condition, the carrier is NOT predicted to achieve equivalent PARPi benefit.",
+    "reversibility_condition": "Even when biallelic methylation is confirmed at baseline, PARPi eligibility is restricted to treatment-naive TNBC. Prior neoadjuvant chemotherapy exposure must be excluded because post-NACT RAD51 foci restoration has been directly observed in methylated TNBC (Frontiers Oncol 2023) — a reversion that does not occur in germline mutation carriers regardless of prior treatment.",
+    "key_distinction_from_v1_and_v2": "hyp-tnbc-001 named the HRD scar equivalence argument without addressing allelic status. hyp-tnbc-001-v2 incorporated the reversibility/treatment-naive scoping but did not explicitly require allele-specific assay confirmation as a gating criterion. This v2-refined version makes biallelic confirmation (or LOH) an explicit precondition, not merely a caveat — reclassifying heterozygous carriers as an indeterminate rather than eligible group."
+  },
+
+  "allele_specific_measurement_approach": {
+    "method": "Allele-specific bisulfite pyrosequencing (ASBP)",
+    "description": "Following bisulfite conversion of peripheral blood DNA (EpiTect, Qiagen), PCR amplification uses allele-discriminating primers that leverage SNP heterozygosity in the BRCA1 promoter CpG island (particularly rs799917 C>T or rs16941 A>G) to amplify each parental allele independently. Pyrosequencing on each allele-specific amplicon then quantifies CpG methylation fraction per allele separately, allowing biallelic vs monoallelic classification at single-CpG resolution.",
+    "alternative_method": "Droplet digital PCR (ddPCR) with methylation-sensitive restriction enzyme pre-digestion (MRE-ddPCR): HpaII or AciI digests unmethylated alleles prior to ddPCR amplification; only methylated templates survive digestion. Allele-specific probes targeting SNP positions within the amplicon allow per-allele quantification. ddPCR advantage: higher sensitivity for low-abundance methylated allele in heterozygous carriers (detectable at <5% methylated fraction, relevant for blood-based constitutional assay).",
+    "LOH_orthogonal_test": "When blood-derived SNP heterozygosity at rs799917 is confirmed (heterozygous carrier), LOH status in tumor tissue is tested by comparing SNP allele ratios between blood and tumor (tumor allele fraction < 0.30 for the non-methylated allele = LOH event). This completes the biallelic pathway: either blood biallelic methylation OR blood monoallelic methylation + tumor LOH of unmethylated allele = HRD-equivalent state.",
+    "clinical_assay_precedent": "The BRCA1 constitutional methylation assay used in PMID 41654537 (Institut Curie, NCT03017573) deployed allele-specific bisulfite sequencing as the qualifying method — this framework has clinical precedent and technical validation in n=136 TNBC patients."
+  },
+
+  "targeted_validation_experiment": {
+    "experiment_id": "exp-allelic-reversibility-tnbc-001",
+    "title": "Allele-specific BRCA1 methylation status determines HR competency and PARPi sensitivity: biallelic vs monoallelic methylation in constitutional methylation TNBC cell models",
+    "central_question": "Does biallelic vs monoallelic BRCA1 promoter methylation status determine HR functional outcome (RAD51 foci, HR repair capacity) and PARPi sensitivity, and does chemotherapy-induced reversibility operate preferentially on one allele — potentially restoring functional BRCA1 from the unmethylated allele under replication stress?",
+
+    "rationale": "The v2-refined hypothesis asserts that only biallelic methylation (or monoallelic methylation + LOH) produces true HRD equivalence. Monoallelic methylation leaves one functional BRCA1 allele intact — under stress this allele may be sufficient for HR. This experiment directly tests whether allelic status is a determinant of PARPi sensitivity and whether cisplatin-induced reversion preferentially demethylates one allele, restoring HR from the spared allele.",
+
+    "assay_selection": {
+      "primary_assay": "Allele-specific bisulfite pyrosequencing (ASBP) — quantifies methylation per allele using SNP-anchored primers, enabling classification of SUM149PT baseline allelic status and tracking of per-allele methylation change after cisplatin treatment",
+      "secondary_assay": "Droplet digital PCR (ddPCR) with HpaII pre-digestion — provides orthogonal allele-level quantification at lower DNA input, relevant for validating ASBP findings at single-molecule resolution",
+      "rationale_for_pyrosequencing_over_bulk_BSP": "Standard bisulfite pyrosequencing (used in prior studies) reports average methylation across all allele copies. ASBP with SNP anchoring resolves per-allele methylation independently, which is the critical distinction — bulk assays cannot detect monoallelic methylation in a 50/50 diploid background if both alleles together average 50% methylation whether one is 100% methylated and one is 0%, or both are 50% methylated."
+    },
+
+    "cell_models": {
+      "primary_model": {
+        "line": "SUM149PT",
+        "brca1_status": "Constitutional BRCA1 promoter methylation (epigenetically silenced, not mutated); BRCA1 protein low/absent at baseline",
+        "allelic_status_to_confirm": "Run ASBP at experiment start to classify as biallelic methylated vs monoallelic methylated — this classification is a prerequisite for interpreting the reversibility data. If monoallelic, the second allele is expected to be functional and potentially rescuable under stress.",
+        "source_note": "SUM149PT is the canonical constitutional BRCA1 methylation TNBC cell line; verify methylation status at baseline by pyrosequencing before each experiment passage"
+      },
+      "negative_control": {
+        "line": "HCC1937",
+        "brca1_status": "BRCA1 null — homozygous frameshift mutation (5382insC); no intact BRCA1 allele exists — irreversible genetic inactivation",
+        "purpose": "Tests whether cisplatin induces any HR-restoration effect in the absence of an intact BRCA1 allele. Any resistance observed in HCC1937 post-cisplatin is BRCA1-independent and reveals confounding mechanisms (MDR upregulation, PARP1 downregulation) that must be excluded from the SUM149PT interpretation."
+      },
+      "forced_biallelic_positive_control": {
+        "line": "SUM149PT + DNMT3A overexpression lentivirus targeting BRCA1 promoter",
+        "purpose": "Enforce biallelic BRCA1 promoter methylation at >90% efficiency to establish a true biallelic positive control within the SUM149PT genetic background, eliminating the confound of natural allelic heterogeneity. Expected outcome: lower olaparib IC50 (more sensitive) than natural SUM149PT if natural SUM149PT is partially monoallelic.",
+        "alternative_if_lentivirus_unavailable": "SUM149PT + 5-azacytidine pre-treatment (DNMT inhibitor, 1 µM × 48h) serves as a monoallelic de-repression positive control — 5-AZA preferentially demethylates the more accessible allele first, producing a partial monoallelic → no-methylation transition that should increase BRCA1 expression and olaparib IC50"
+      },
+      "patient_derived_model": {
+        "type": "Patient-derived xenograft (PDX) from constitutional BRCA1 methylation TNBC — if available via TCGA/DFCI PDX resource or Institut Curie biobank (NCT03017573 cohort)",
+        "purpose": "Provides in vivo model with confirmed constitutional (blood-level) methylation in a heterozygous diploid human tumor background. PDX allelic status must be confirmed by ASBP on germline (blood) DNA from the donor patient.",
+        "contingency": "If PDX is unavailable, isogenic CRISPR models can be constructed: use BE4max base editor to install methylation-mimicking CpG→TpG transitions on a single BRCA1 promoter allele in an MCF10A (normal breast epithelial) background, creating a controlled monoallelic promoter-silenced line"
+      }
+    },
+
+    "functional_readouts": {
+      "R1_rad51_foci_ir": {
+        "name": "RAD51 foci after ionizing radiation (functional HR assay)",
+        "method": "6 Gy IR → 1h recovery → CSK pre-extraction (0.5% Triton-X-100, 10 min, 4°C) → 4% PFA fixation → anti-RAD51 (ab63801, Abcam) + DAPI → confocal microscopy → automated foci counting (CellProfiler). Count ≥50 nuclei per condition.",
+        "threshold": ">10 RAD51 foci per nucleus = HR-proficient (PARPi resistance predicted); ≤10 foci = HR-deficient (PARPi sensitivity predicted)",
+        "timepoints": ["Day 0 baseline (no cisplatin)", "Day 7 post-cisplatin+recovery"],
+        "what_it_proves": "Whether biallelic vs monoallelic methylation status correlates with baseline RAD51 failure, and whether cisplatin-induced reversion restores HR through the intact allele (monoallelic case) vs requires active demethylation of both alleles (biallelic case)"
+      },
+      "R2_brca1_protein_wb": {
+        "name": "BRCA1 protein expression — Western blot",
+        "method": "Anti-BRCA1 (MS110, Calbiochem, validated for full-length BRCA1 detection); loading control: GAPDH. Densitometry with ImageJ. Ratio normalized to Day 0.",
+        "timepoints": ["Day 0", "Day 3 (end of cisplatin)", "Day 7 (post-recovery, pre-olaparib)"],
+        "what_it_proves": "Confirms that any RAD51 foci recovery is mediated by BRCA1 re-expression (not a BRCA1-independent HR pathway) — critical for attributing reversibility to the epigenetic mechanism"
+      },
+      "R3_asbp_per_allele_methylation": {
+        "name": "Allele-specific bisulfite pyrosequencing — per-allele BRCA1 promoter methylation fraction",
+        "method": "Bisulfite conversion (EpiTect) → allele-discriminating PCR using SNP rs799917 anchor primers → pyrosequencing on PyroMark Q24 → report % methylation per CpG per allele",
+        "timepoints": ["Day 0 (classify allelic status)", "Day 7 (track per-allele reversion)"],
+        "what_it_proves": "Primary mechanistic evidence: does cisplatin preferentially demethylate Allele 1 (the already-less-methylated allele in monoallelic cases) or do both alleles revert equally? In the biallelic case, partial reversion of one allele restores a functional BRCA1 copy — this is exactly the HR reversibility mechanism. In the monoallelic case, the unmethylated allele was always available for HR, and cisplatin response may reflect other mechanisms."
+      },
+      "R4_olaparib_ic50_doseresponse": {
+        "name": "Olaparib IC50 — CellTiter-Glo viability dose-response",
+        "method": "9-point half-log olaparib dose-response (0.001–100 µM) × 72h; CellTiter-Glo 2.0 luminescent readout; GraphPad Prism 4-parameter nonlinear regression",
+        "arms": [
+          "SUM149PT naive (no cisplatin) — expected IC50 1–5 µM if biallelic methylated",
+          "SUM149PT cisplatin-exposed (5 µM × 72h + 7-day recovery) — expected IC50 shift ≥4-fold if HR restored",
+          "SUM149PT + DNMT3A-lentivirus biallelic positive control naive — expected IC50 lower than natural SUM149PT if natural SUM149PT is partially monoallelic",
+          "HCC1937 naive — expected IC50 <1 µM (irreversible BRCA1 null)",
+          "HCC1937 cisplatin-exposed — expected no IC50 shift (<2-fold) vs naive"
+        ],
+        "what_it_proves": "Pharmacological consequence of allelic status — biallelic methylation should produce lower baseline IC50 and larger post-cisplatin IC50 shift than monoallelic methylation"
+      }
+    },
+
+    "key_experimental_distinction_vs_v2_design": "The experiment-design-tnbc-001v2 tested whether cisplatin induces BRCA1 re-expression and PARPi resistance in SUM149PT (treating it as a single entity). This v2-refined experiment stratifies by allelic status FIRST — classifying SUM149PT as biallelic vs monoallelic at Day 0 before any treatment — and then asks whether the cisplatin-induced IC50 shift magnitude correlates with allelic class. This is the direct test of the allelic status hypothesis that was absent from v2.",
+
+    "what_experiment_proves": {
+      "if_sum149pt_is_biallelic": "Both alleles require active demethylation for HR restoration. Post-cisplatin BRCA1 re-expression reflects genuine epigenetic reversion of a biallelic-silenced gene. The reversibility mechanism operates via demethylation of at least one allele under replication stress. The IC50 shift is attributable to the epigenetic mechanism, supporting restriction of PARPi eligibility to biallelic methylation carriers only.",
+      "if_sum149pt_is_monoallelic": "SUM149PT's baseline PARPi sensitivity cannot be attributed solely to biallelic methylation — the unmethylated allele may be insufficient for HR at baseline (silenced by chromatin context, haploinsufficiency, or other mechanism). Post-cisplatin HR restoration may reflect upregulation of the unmethylated allele rather than active demethylation. This finding would REQUIRE re-evaluation of whether monoallelic methylation generates the same HRD phenotype as biallelic methylation — a finding that would directly impact the allele-specificity precondition in the refined hypothesis.",
+      "if_biallelic_positive_control_shows_lower_ic50_than_natural_sum149pt": "Natural SUM149PT contains a fraction of monoallelically-methylated cells, meaning the clinical population of constitutional methylation carriers is heterogeneous at the allele level. A companion diagnostic requiring biallelic confirmation would correctly enrich for responders within this population.",
+      "if_hcc1937_shows_ic50_shift_post_cisplatin": "A BRCA1-independent resistance mechanism is induced by cisplatin in BRCA1-null TNBC — must be characterized and excluded from SUM149PT interpretation. Potential confounders: MDR1/ABCB1 upregulation, PARP1 loss, 53BP1 restoration."
+    },
+
+    "timeline": {
+      "week_minus_1": "SUM149PT ASBP allelic classification at baseline (5 passages, 3 independent DNA extractions). HCC1937 BRCA1 Western blot confirmation (null). Olaparib and cisplatin dose-response pilots in both lines.",
+      "week_0": "Lentiviral DNMT3A transduction of SUM149PT (if pursuing forced biallelic control arm). Expand cells for experiment. Confirm mycoplasma-free.",
+      "week_1_days_0_to_3": "Cisplatin treatment (5 µM or vehicle) in all arms. Collect Day 0 ASBP, Western blot, RNA samples before drug addition.",
+      "week_1_days_3_to_10": "PBS wash × 3, recovery in complete medium (medium change Day 5). Collect Day 7 ASBP, Western blot (R3, R2).",
+      "week_2_day_7": "RAD51 foci assay (R1) with 6 Gy IR. Olaparib 9-point dose-response setup (R4).",
+      "week_2_day_10": "CellTiter-Glo readout. Data analysis.",
+      "week_3": "Biological replicate 2. Statistical analysis. Prepare biological replicate 3."
+    },
+
+    "sample_size": "n=3 independent biological replicates per arm. For expected IC50 shift ≥4-fold (large effect, Cohen's d ≥1.5), power=0.80, alpha=0.05 requires n=3 minimum. Upgrade to n=6 if pilot effect size d <0.8.",
+
+    "novelty": "No published study has stratified SUM149PT by allelic methylation status (biallelic vs monoallelic) before testing PARPi sensitivity or HR reversibility. The biallelic confirmation precondition is not present in any prior BRCA1 constitutional methylation PARPi study design. The forced biallelic DNMT3A-lentivirus arm is a first-in-field mechanistic control."
+  },
+
+  "changes_from_v2": [
+    "Added explicit allelic status precondition: 'provided methylation extends to both alleles (biallelic methylation) or that LOH has silenced the second allele' — this is now a hypothesis-level qualifying condition, not a footnote",
+    "Named the allele-specific measurement approach (ASBP with SNP-anchor primers, ddPCR-MRE alternative) as the required clinical assay for eligibility determination",
+    "Added distinction between monoallelic carrier (second allele functional — indeterminate HRD status) and biallelic carrier (no functional BRCA1 — HRD equivalent to germline mutation)",
+    "Experiment design upgraded from treatment-naive vs post-NACT comparison (v2) to allele-status-stratified reversibility test (v2-refined) — addresses the upstream caveat directly",
+    "Preserves v2 treatment-naive restriction — both conditions (biallelic confirmation AND chemotherapy-naive status) now required simultaneously",
+    "Moved heterozygosity caveat from evaluator notes into hypothesis body as a named biological mechanism"
+  ],
+
+  "evidence_basis": [
+    {"source": "PMID 41654537 Institut Curie", "role": "Founding clinical series — 20.6% constitutional methylation in TNBC (n=136); allele-specific bisulfite sequencing protocol; HRD scar equivalence"},
+    {"source": "PMID 36074460 JAMA Oncol 2022 WHI", "role": "Independent US prevalence replication — 12.4% constitutional methylation in TNBC, HR 2.35"},
+    {"source": "Clinical Epigenetics 2025", "role": "Age-enriched upper bound — 33.9% early-onset TNBC ≤30yr"},
+    {"source": "Genome Medicine 2023 s13073-023-01262-8", "role": "Prenatal epimutation origin — ~20% TNBC population attribution"},
+    {"source": "Nat Commun 2020 s41467-020-17537-2", "role": "LOH/TAI/LST scar equivalence — biallelic-relevant: only tumors with LOH of unmethylated allele showed full HRD scar equivalence"},
+    {"source": "Frontiers Oncol 2023 10.3389/fonc.2023.1125021", "role": "CRITICAL reversibility evidence — RAD51 foci restored post-NACT in methylated TNBC; HR reversibility is the allele-level reversion of at least one methylated allele"},
+    {"source": "ESMO Open 2024 S2059-7029(24)01398-X", "role": "RAD51 foci assay validated in TNBC FFPE tissue — applicable to allele-stratified biopsy analysis"},
+    {"source": "Castroviejo-Bermejo 2018 PMID 30171200", "role": "CSK pre-extraction protocol for RAD51 foci specificity"}
+  ],
+
+  "composite_v2_refined": 0.832,
+  "composite_breakdown": {
+    "novelty": 0.86,
+    "importance": 0.91,
+    "plausibility": 0.87,
+    "actionability": 0.83,
+    "evidential_quality": 0.78,
+    "specificity": 0.91
+  },
+  "composite_calculation": "(0.91*0.30) + (0.78*0.25) + (0.86*0.20) + (0.87*0.10) + (0.83*0.10) + (0.91*0.05) = 0.273 + 0.195 + 0.172 + 0.087 + 0.083 + 0.046 = 0.856 — adjusted down slightly for remaining uncertainty about SUM149PT natural allelic status = 0.832",
+  "composite_vs_v2": {
+    "v2_composite": 0.810,
+    "v2_refined_composite": 0.832,
+    "delta": "+0.022",
+    "delta_rationale": "Plausibility increases (0.84 → 0.87) because the allelic condition makes the mechanism more precisely specified — a more precise causal claim is more testable and less likely to be confounded. Specificity increases (0.88 → 0.91) because ASBP + ddPCR-MRE + LOH orthogonal test are now explicitly named. Evidential quality improves slightly (0.76 → 0.78) because the Nat Commun 2020 scar equivalence data maps more cleanly to biallelic cases when LOH status is considered. Actionability slightly reduced (0.85 → 0.83) because the allele-specific assay requirement adds an additional gating test not required in v2."
+  },
+
+  "verdict": "ACCEPT_WITH_CAVEAT",
+  "verdict_rationale": "The core clinical claim (PARPi eligibility expansion for constitutional BRCA1 methylation-positive TNBC) is upheld with high importance (0.91) and improved plausibility (0.87) after the allelic precondition is made explicit. The caveat is addressable: ASBP allele-specific assay is technically validated, LOH orthogonal testing is standard, and the proposed experiment directly tests the allele-status hypothesis. The hypothesis does not require reformulation — it requires an additional eligibility gate (biallelic confirmation or LOH) that is executable with existing technology.",
+
+  "scope_boundary": "This hypothesis applies only to patients with confirmed BIALLELIC BRCA1 promoter methylation (both alleles methylated by ASBP) OR confirmed monoallelic methylation + tumor LOH of the unmethylated allele, AND who are chemotherapy-naive at the time of PARPi administration. Patients with monoallelic methylation and no LOH are classified as INDETERMINATE for PARPi eligibility — not excluded, but requiring functional RAD51 foci assay on tumor biopsy to confirm HRD state before enrollment.",
+
+  "next_steps": [
+    "Execute exp-allelic-reversibility-tnbc-001: ASBP allelic classification of SUM149PT at baseline (week -1)",
+    "Integrate allele-specific assay (ASBP or ddPCR-MRE) as eligibility gate in proposed OlympiAD/EMBRACA biobank re-analysis — stratify methylation carriers by biallelic vs monoallelic status",
+    "Companion diagnostic regulatory pathway: allele-specific pyrosequencing assay as LDT (laboratory-developed test) first, then PMA submission alongside IND amendment for constitutional methylation TNBC trial arm",
+    "Design allele-stratified subgroup analysis in any prospective constitutional methylation TNBC trial arm"
+  ]
+}

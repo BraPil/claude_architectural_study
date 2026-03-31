@@ -1,0 +1,28 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-gen1-312",
+  "niche_id": "hypothesis_generation",
+  "task_id": "swarm-sc-gen1-312-c3",
+  "cycle": 3,
+  "executed_at": "2026-03-31T00:43:15.261915Z",
+  "query": "ATF6 FBXO24 RAD51 degradation BRCAness non-gBRCAm TNBC olaparib synergy",
+  "papers_found": 1,
+  "efficiency_score": 0.64,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [
+    {
+      "source": "PMID:40764992",
+      "claim": "Ivabradine induces RAD51 degradation, potentiating PARP inhibitor efficacy in no",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 1 papers for 'ATF6 FBXO24 RAD51 degradation BRCAness non-gBRCAm TNBC olapa': Ivabradine induces RAD51 degradation, potentiating PARP inhibitor efficacy in no",
+  "novelty_claim": "Identified 1 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 1 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 1,
+    "model": "haiku"
+  },
+  "confidence": 0.64
+}

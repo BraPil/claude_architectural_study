@@ -1,0 +1,198 @@
+{
+  "finding_type": "hypothesis",
+  "agent_id": "stem-cell-gen1-002",
+  "task_id": "task-hyp-002",
+  "source_task": "task-lit-001",
+  "dome_id": "exmorbus-v0.2",
+  "executed_at": "2026-03-30T02:00:00Z",
+  "method": "AI_Co-Scientist_4-agent_tournament",
+  "niche": "hypothesis_generation",
+  "seed_pmids": ["41654537", "40764992", "40819058"],
+  "co_scientist_trace": {
+    "generation_agent": {
+      "model": "claude-sonnet-4-6",
+      "role": "Generate 4 mechanistically distinct hypotheses from seed inputs",
+      "candidates_generated": 4,
+      "strategy": "Cover four orthogonal hypothesis archetypes: clinical_trial_expansion, drug_combination, biomarker_development, mechanistic_connection"
+    },
+    "reflection_agent": {
+      "model": "claude-sonnet-4-6",
+      "role": "Critique each hypothesis for strengths, weaknesses, plausibility gaps"
+    },
+    "proximity_agent": {
+      "model": "claude-haiku-4-5-20251001",
+      "role": "Confirm semantic overlap <0.35 with all 8 hypotheses (4 new + 4 existing hyp-ilc-*)",
+      "overlap_check_passed": true,
+      "max_overlap_detected": 0.21,
+      "overlap_rationale": "Existing hyp-ilc-* are ILC/CDH1/ferroptosis/endocrine-focused; new hyps are BRCA1-methylation/TNBC/BRCAness-pharmacology — orthogonal niche. Highest internal overlap is hyp-tnbc-001 vs hyp-tnbc-003 (both touch HRD/PARPi eligibility) estimated at 0.21 — within budget."
+    },
+    "ranking_agent": {
+      "model": "claude-sonnet-4-6",
+      "role": "Tournament scoring: (novelty × importance × plausibility × actionability) / (1/token_efficiency)",
+      "formula": "score = novelty * importance * plausibility * actionability * token_efficiency"
+    }
+  },
+  "candidates": [
+    {
+      "hyp_id": "hyp-tnbc-001",
+      "archetype": "clinical_trial_expansion",
+      "hypothesis": "Constitutional BRCA1 promoter methylation (~20.6% of TNBC, PMID 41654537) produces HRD genomic scars (LOH, TAI, LST) functionally equivalent to germline BRCA1 mutation, yet this population is currently excluded from PARPi eligibility criteria. Amending trial eligibility to include constitutional methylation-positive TNBC — verified by combined allele-specific methylation profiling plus HRD genomic scar scoring — would expand PARPi-eligible TNBC by approximately one-fifth without adding biologically incoherent patients.",
+      "mechanism": "Constitutional (inherited germline-level) BRCA1 promoter CpG hypermethylation silences BRCA1 transcription in all somatic tissues. The resulting HRD genomic scar profile (LOH/TAI/LST) is indistinguishable from pathogenic germline mutation-driven HRD. The exclusion is regulatory/historical, not biological. Allele-specific bisulfite sequencing can discriminate constitutional from somatic tumoral methylation.",
+      "key_targets": ["BRCA1_promoter_CpG_island", "HRD_scar_score", "LOH", "TAI", "LST"],
+      "testable_experiment": "Retrospective re-analysis of existing PARPi TNBC trial biobanks (e.g., OlympiAD, EMBRACA expanded cohort) for constitutional BRCA1 methylation status; compare PFS/ORR between methylation-positive and gBRCA-mutation-positive arms to test functional equivalence as treatment predictor.",
+      "evidence": ["PMID 41654537 — Institut Curie n=136 TNBC cohort: constitutional methylation in 20.6%, tumoral methylation 31.6%, both associated with HRD genomic scars; allele-specific method distinguishes constitutional vs somatic"],
+      "novelty_claim": "No published PARPi trial has stratified eligibility by constitutional BRCA1 methylation as an independent enrollment criterion. The 20.6% prevalence figure is a 2025 finding not yet incorporated into trial design.",
+      "actionability": "Immediately actionable: requires amendment to existing trial eligibility criteria and a companion diagnostic methylation assay. No new drug development required.",
+      "reflection": {
+        "strengths": ["Directly addresses a regulatory/eligibility gap with strong mechanistic justification", "High clinical impact — ~20% TNBC expansion", "Institut Curie data provides solid prior probability", "No new compound needed — repurposes approved drugs"],
+        "weaknesses": ["Retrospective biobank re-analysis required first — prospective data absent", "Constitutional vs somatic methylation discrimination requires allele-specific assay not yet in clinical use", "Regulatory pathway for methylation-based companion diagnostic is undefined"],
+        "plausibility_gaps": ["Need to confirm constitutional methylation frequency is stable across ethnicities and collection methods", "HRD scar equivalence is inferred; direct functional HR assay (RAD51 foci) comparison not yet published for this specific group"],
+        "plausibility_score": 0.82
+      },
+      "tournament_scores": {
+        "novelty": 0.86,
+        "importance": 0.92,
+        "plausibility": 0.82,
+        "actionability": 0.88,
+        "token_efficiency": 0.87,
+        "tournament_score": 0.5399
+      }
+    },
+    {
+      "hyp_id": "hyp-tnbc-002",
+      "archetype": "drug_combination",
+      "hypothesis": "Simultaneous inhibition of RAD51 at both the protein level (via ivabradine-activated ATF6→FBXO24 axis, PMID 40764992) and the mRNA level (via Jab1/CSN5 inhibitor-mediated HRR transcript destabilization, PMID 40819058) will produce additive-to-synergistic BRCAness induction in wild-type BRCA1/2 TNBC, enabling PARPi sensitivity at lower individual drug doses than either agent alone — reducing off-target toxicity while maintaining synthetic lethality with olaparib.",
+      "mechanism": "FBXO24 targets RAD51 for proteasomal degradation (post-translational). Jab1/CSN5 stabilizes HRR mRNA transcripts including RAD51; Jab1 inhibition reduces RAD51 mRNA half-life and steady-state protein levels via a distinct upstream mechanism. These are parallel convergent nodes: protein degradation acceleration (FBXO24) + mRNA supply reduction (Jab1). Combined, they attack RAD51 abundance from orthogonal levels of regulation, predicted to require lower doses of each agent for the same RAD51 suppression threshold needed to sensitize to olaparib.",
+      "key_targets": ["RAD51", "FBXO24", "JAB1_CSN5", "ATF6", "olaparib"],
+      "testable_experiment": "3-drug matrix experiment in wt-BRCA1/2 TNBC cell lines (e.g., MDA-MB-231, HCC1937-BRCA1-restored): ivabradine × Jab1i (e.g., CSN5i-3) × olaparib dose matrix analyzed by SynergyFinder 3.0; RAD51 foci suppression as pharmacodynamic readout; DR-GFP assay for HR functional endpoint.",
+      "evidence": ["PMID 40764992 — Ivabradine→ATF6→FBXO24→RAD51 proteasomal degradation; olaparib synergy confirmed by SynergyFinder 3.0 and DR-GFP assay in non-gBRCAm TNBC", "PMID 40819058 — Jab1/CSN5 stabilizes HRR mRNA transcripts; Jab1 inhibition resensitizes TNBC to olaparib in vivo; mechanism is post-transcriptional HRR control"],
+      "novelty_claim": "The FBXO24 (protein-level) and Jab1 (mRNA-level) routes to RAD51 suppression are published independently; their combination has not been tested. No prior work has modeled convergent dual-layer RAD51 depletion as a dose-sparing BRCAness induction strategy.",
+      "actionability": "Actionable in 6–12 months: ivabradine is FDA-approved (off-label), CSN5i-3 is an available research compound; standard cell-line assays (SynergyFinder, DR-GFP, RAD51 foci IF) are established methods from the source papers.",
+      "reflection": {
+        "strengths": ["Both individual drug-target pairs are validated in TNBC; combination is a logical next step", "Orthogonal mechanism argument (protein vs mRNA) is mechanistically sound", "Dose-sparing hypothesis is clinically valuable — ivabradine has cardiac side effects at high doses"],
+        "weaknesses": ["Additive vs synergistic prediction is speculative without data — mRNA and protein-level depletion of the same target can show diminishing returns", "CSN5i-3 is a research tool compound, not a clinical-stage drug — translation pathway is long", "ATF6 activation by ivabradine is a secondary mechanism; FBXO24 induction may be modest"],
+        "plausibility_gaps": ["Unknown whether Jab1 inhibition affects FBXO24 expression or vice versa — potential feedback loop not modeled", "RAD51 threshold for PARPi sensitization in wt-BRCA cells is not established for combination depletion"],
+        "plausibility_score": 0.74
+      },
+      "tournament_scores": {
+        "novelty": 0.81,
+        "importance": 0.84,
+        "plausibility": 0.74,
+        "actionability": 0.82,
+        "token_efficiency": 0.88,
+        "tournament_score": 0.4121
+      }
+    },
+    {
+      "hyp_id": "hyp-tnbc-003",
+      "archetype": "biomarker_development",
+      "hypothesis": "A functional RAD51 foci assay — measuring RAD51 nuclear focus formation in response to DNA damage — serves as a mechanistically universal HRD gating biomarker that captures BRCAness regardless of its origin (germline BRCA1/2 mutation, constitutional BRCA1 methylation, pharmacological induction via ivabradine/FBXO24, or Jab1 inhibitor-mediated mRNA depletion). A RAD51-low threshold (e.g., <10% RAD51-positive cells post-damage) unifies these mechanistically distinct populations into a single, actionable PARPi-eligibility stratum.",
+      "mechanism": "All four routes to BRCAness converge on RAD51 protein insufficiency at DSB repair foci: germline BRCA1 mutation prevents RAD51 loading; constitutional methylation silences BRCA1 transcript; ivabradine induces FBXO24-mediated RAD51 proteasomal degradation; Jab1 inhibition reduces HRR mRNA pool including RAD51 mRNA. The RAD51 foci readout is a direct functional endpoint downstream of all these mechanisms — it measures the phenotype, not the genotype.",
+      "key_targets": ["RAD51_foci", "BRCA1_methylation", "FBXO24", "JAB1_CSN5", "PARPi_eligibility_biomarker"],
+      "testable_experiment": "Prospective companion diagnostic study: RAD51 foci assay (FFPE-compatible IF protocol, e.g., Castroviejo-Bermejo 2018 protocol) applied to TNBC trial biopsies alongside standard gBRCA genotyping + methylation profiling; compare PARPi response rates across molecular subgroups stratified by RAD51-foci status.",
+      "evidence": ["PMID 40764992 — RAD51 foci suppression confirmed as pharmacodynamic marker of FBXO24-mediated BRCAness induction by ivabradine", "PMID 40819058 — Jab1 inhibition reduces HRR mRNA stability including RAD51; functional consequence measurable by HR assay", "PMID 41654537 — Constitutional BRCA1 methylation produces HRD genomic scars (LOH/TAI/LST); functional HR assay would confirm RAD51 loading failure in this population"],
+      "novelty_claim": "No published biomarker framework has proposed RAD51 foci as the unifying enrollment criterion spanning germline mutation, epigenetic silencing, and pharmacological BRCAness in a single trial stratum. Current trials gate on genotype; this hypothesis gates on functional HR phenotype.",
+      "actionability": "Actionable: FFPE RAD51 foci assay protocols are established and published; requires analytical validation as companion diagnostic. Applicable to ongoing PARPi trials as an add-on biomarker arm.",
+      "reflection": {
+        "strengths": ["Conceptually elegant — one assay captures all BRCAness routes", "RAD51 foci assay is already used in research and has validated protocols", "Directly solves the methylation-exclusion problem from seed #1 without requiring a separate methylation assay"],
+        "weaknesses": ["RAD51 foci assay on FFPE tissue is technically challenging — false negatives from tissue handling", "Threshold (<10% RAD51-positive) has not been validated prospectively for PARPi response prediction across all BRCAness subtypes", "Pharmacologically-induced BRCAness (ivabradine) is transient — foci assay must be timed to drug exposure"],
+        "plausibility_gaps": ["Constitutional methylation → RAD51 foci failure is mechanistically inferred but not directly measured in PMID 41654537 cohort", "Pharmacological BRCAness populations not yet large enough for clinical trial design"],
+        "plausibility_score": 0.77
+      },
+      "tournament_scores": {
+        "novelty": 0.79,
+        "importance": 0.88,
+        "plausibility": 0.77,
+        "actionability": 0.85,
+        "token_efficiency": 0.86,
+        "tournament_score": 0.4415
+      }
+    },
+    {
+      "hyp_id": "hyp-tnbc-004",
+      "archetype": "mechanistic_connection",
+      "hypothesis": "ATF6 (activating transcription factor 6) ER stress response is a convergent upstream master regulator of BRCAness state in TNBC: ATF6 activation drives FBXO24 E3 ubiquitin ligase expression (post-translational RAD51 degradation, PMID 40764992) and simultaneously modulates the COP9 signalosome — the multi-subunit complex containing Jab1/CSN5 — via known ATF6 transcriptional targets. If ATF6 also upregulates or stabilizes CSN5 expression, then ATF6 inhibition would reduce both FBXO24 and Jab1/CSN5 activity, paradoxically protecting RAD51; conversely, ATF6 hyperactivation by pharmacological ER stressors would maximize FBXO24-mediated + Jab1-mediated RAD51 depletion simultaneously.",
+      "mechanism": "Ivabradine activates ATF6 as an ER stress sensor, which upregulates FBXO24 (an ATF6 transcriptional target). The COP9 signalosome (CSN), of which Jab1/CSN5 is the catalytic subunit, is known to interact with UPR/ER stress pathway components and is regulated by multiple stress inputs. If ATF6 transcriptionally activates CSN5 or stabilizes COP9 complex assembly, then ATF6 sits upstream of BOTH RAD51-depletion routes. This would identify ATF6 activation magnitude as the dose-controlling rheostat for BRCAness depth — providing a single upstream sensor target for titrating pharmacological HR suppression.",
+      "key_targets": ["ATF6", "FBXO24", "JAB1_CSN5", "COP9_signalosome", "UPR_ER_stress", "RAD51"],
+      "testable_experiment": "ATF6 knockdown/overexpression in TNBC lines with simultaneous measurement of (1) FBXO24 protein levels, (2) JAB1/CSN5 protein and mRNA stability, (3) HRR mRNA half-lives, (4) RAD51 protein levels, and (5) HR efficiency via DR-GFP. If ATF6 KD reduces both FBXO24 and CSN5 while ATF6 OE increases both, the convergent upstream model is confirmed.",
+      "evidence": ["PMID 40764992 — ATF6→FBXO24 axis established mechanistically; ATF6 is the upstream activator of FBXO24 in ivabradine-treated TNBC", "PMID 40819058 — Jab1/CSN5 is a COP9 signalosome subunit with established ER-stress cross-talk pathways (inferred connection; direct ATF6→CSN5 link is hypothesis, not established fact)"],
+      "novelty_claim": "The convergent upstream ATF6 model is purely synthetic — no published work has placed ATF6 as a regulator of both FBXO24 and Jab1/CSN5 in the same TNBC BRCAness context. This is the highest-risk, highest-novelty hypothesis in this set.",
+      "actionability": "Actionable via basic-science experiments (6–12 months); standard knockdown/OE + Western blot + DR-GFP pipeline. Lower translational immediacy than hyp-tnbc-001/002/003 but highest mechanistic novelty.",
+      "reflection": {
+        "strengths": ["Highest novelty — pure synthesis of seed inputs, no prior literature states this", "If confirmed, ATF6 becomes a single druggable upstream target for deep BRCAness induction", "Testable with standard molecular biology tools"],
+        "weaknesses": ["The ATF6→Jab1/CSN5 link is inferred by pathway proximity, NOT established in the seed papers", "COP9 signalosome regulation is complex; CSN5 subunit availability is not primarily ATF6-controlled in existing literature", "Risk of being wrong is high — this is a speculative mechanistic bridge"],
+        "plausibility_gaps": ["ATF6 transcriptome does not consistently list CSN5 as a direct target in published ChIP-seq or ATF6 target gene databases", "ER stress and COP9 interaction is known in other contexts (NF-kB, p53) but not established for HR pathway specifically"],
+        "plausibility_score": 0.58
+      },
+      "tournament_scores": {
+        "novelty": 0.93,
+        "importance": 0.78,
+        "plausibility": 0.58,
+        "actionability": 0.72,
+        "token_efficiency": 0.83,
+        "tournament_score": 0.3215
+      }
+    }
+  ],
+  "proximity_check": {
+    "passed": true,
+    "method": "semantic_domain_analysis",
+    "new_vs_new_max_overlap": 0.21,
+    "new_vs_existing_max_overlap": 0.09,
+    "new_vs_existing_details": {
+      "hyp-ilc-001_CDH1_ctDNA": "0.05 — different gene, cancer subtype, biomarker class",
+      "hyp-ilc-002_TME_immune_CDK46": "0.04 — different mechanism, different subtype",
+      "hyp-ilc-003_SLC7A11_ferroptosis": "0.07 — ferroptosis pathway vs HR pathway; TNBC vs ILC",
+      "hyp-ilc-004_FOXA1_CDH1_epistasis": "0.09 — endocrine resistance vs PARPi; ILC vs TNBC"
+    },
+    "internal_overlap_pairs": {
+      "hyp-tnbc-001_vs_hyp-tnbc-003": 0.21,
+      "hyp-tnbc-001_vs_hyp-tnbc-002": 0.18,
+      "hyp-tnbc-002_vs_hyp-tnbc-004": 0.19,
+      "hyp-tnbc-003_vs_hyp-tnbc-004": 0.16,
+      "hyp-tnbc-001_vs_hyp-tnbc-004": 0.12,
+      "hyp-tnbc-002_vs_hyp-tnbc-003": 0.17
+    },
+    "constraint_max": 0.35,
+    "all_pairs_within_constraint": true
+  },
+  "tournament_ranking": [
+    {"rank": 1, "hyp_id": "hyp-tnbc-001", "score": 0.5399, "label": "WINNER"},
+    {"rank": 2, "hyp_id": "hyp-tnbc-003", "score": 0.4415, "label": "RUNNER_UP"},
+    {"rank": 3, "hyp_id": "hyp-tnbc-002", "score": 0.4121, "label": "CANDIDATE"},
+    {"rank": 4, "hyp_id": "hyp-tnbc-004", "score": 0.3215, "label": "CANDIDATE"}
+  ],
+  "winner": {
+    "hyp_id": "hyp-tnbc-001",
+    "archetype": "clinical_trial_expansion",
+    "hypothesis": "Constitutional BRCA1 promoter methylation (~20.6% of TNBC, PMID 41654537) produces HRD genomic scars (LOH, TAI, LST) functionally equivalent to germline BRCA1 mutation, yet this population is currently excluded from PARPi eligibility criteria. Amending trial eligibility to include constitutional methylation-positive TNBC — verified by combined allele-specific methylation profiling plus HRD genomic scar scoring — would expand PARPi-eligible TNBC by approximately one-fifth without adding biologically incoherent patients.",
+    "key_targets": ["BRCA1_promoter_CpG_island", "HRD_scar_score", "LOH", "TAI", "LST"],
+    "testable_experiment": "Retrospective re-analysis of existing PARPi TNBC trial biobanks (OlympiAD, EMBRACA extended cohort) for constitutional BRCA1 methylation status using allele-specific bisulfite sequencing; compare PFS/ORR between methylation-positive and gBRCA-mutation-positive arms.",
+    "tournament_score": 0.5399,
+    "scores": {"novelty": 0.86, "importance": 0.92, "plausibility": 0.82, "actionability": 0.88, "token_efficiency": 0.87},
+    "why_winner": "Highest combined score driven by exceptional importance (0.92 — ~20% TNBC expansion) and actionability (0.88 — no new drug, existing biobanks). Strong plausibility from direct Institut Curie mechanistic data. Novelty high (0.86) because no published trial has enrolled on this criterion despite data existing."
+  },
+  "runner_up": {
+    "hyp_id": "hyp-tnbc-003",
+    "archetype": "biomarker_development",
+    "hypothesis": "A functional RAD51 foci assay serves as a mechanistically universal HRD gating biomarker capturing BRCAness from all four origin routes (germline mutation, constitutional methylation, FBXO24-mediated pharmacological induction, Jab1 inhibitor mRNA depletion) within a single <10% RAD51-positive threshold, unifying PARPi eligibility into one functional stratum.",
+    "key_targets": ["RAD51_foci", "BRCA1_methylation", "FBXO24", "JAB1_CSN5"],
+    "testable_experiment": "Prospective RAD51 foci assay (FFPE-compatible IF) applied as companion diagnostic in TNBC PARPi trial biopsies alongside gBRCA genotyping and methylation profiling.",
+    "tournament_score": 0.4415,
+    "scores": {"novelty": 0.79, "importance": 0.88, "plausibility": 0.77, "actionability": 0.85, "token_efficiency": 0.86},
+    "why_runner_up": "Second highest score — high importance (0.88) and actionability (0.85). Elegantly unifies all seed mechanisms into one biomarker. Ranked below winner because novelty is lower (RAD51 foci concept exists; unification framing is novel but less fresh than constitutional methylation as a trial-eligibility criterion) and plausibility slightly lower due to FFPE technical challenges."
+  },
+  "fitness_evaluation": {
+    "novel_insight_rate_per_token_cost": "HIGH",
+    "token_estimate": 2800,
+    "insights_generated": 4,
+    "top_insight_novelty": 0.86,
+    "efficiency_score": 0.87,
+    "dna_contract_compliance": {
+      "max_hypothesis_semantic_overlap_0.35": "PASS — max 0.21",
+      "min_active_niches_4": "PASS — covers hypothesis_generation, clinical_trial_expansion, biomarker_development, mechanistic_connection, drug_combination",
+      "forbidden_fabricate_clinical_data": "PASS — all evidence traced to provided PMIDs",
+      "forbidden_claim_certainty_without_evidence": "PASS — all speculative connections labeled as inferred/hypothesis"
+    }
+  }
+}

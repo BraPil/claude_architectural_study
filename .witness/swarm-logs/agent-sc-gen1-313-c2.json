@@ -1,0 +1,38 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-gen1-313",
+  "niche_id": "breast_cancer_marker_analysis",
+  "task_id": "swarm-sc-gen1-313-c2",
+  "cycle": 2,
+  "executed_at": "2026-03-31T00:50:18.366302Z",
+  "query": "ESR1 mutation liquid biopsy endocrine resistance ILC YAP TEAD",
+  "papers_found": 3,
+  "efficiency_score": 0.72,
+  "verdict": "ACCEPT_MEDIUM",
+  "evidence": [
+    {
+      "source": "PMID:41876547",
+      "claim": "Regulation of physical activity and energy expenditure through Phf6 in the media",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41866773",
+      "claim": "Insights Into Vepdegestrant (ARV-471): The First-in-Class Estrogen Receptor Prot",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41836676",
+      "claim": "Revolutionary ctDNA-Guided Therapy Adaptation in ESR1-Mutated Advanced Breast Ca",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 3 papers for 'ESR1 mutation liquid biopsy endocrine resistance ILC YAP TEA': Regulation of physical activity and energy expenditure through Phf6 in the media",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 3,
+    "model": "haiku"
+  },
+  "confidence": 0.72
+}

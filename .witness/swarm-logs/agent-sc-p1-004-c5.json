@@ -1,0 +1,38 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-p1-004",
+  "niche_id": "breast_cancer_marker_analysis",
+  "task_id": "swarm-sc-p1-004-c5",
+  "cycle": 5,
+  "executed_at": "2026-03-30T22:47:21.997699Z",
+  "query": "lobular breast cancer ctDNA Guardant360 early stage vs metastatic",
+  "papers_found": 3,
+  "efficiency_score": 0.92,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [
+    {
+      "source": "PMID:41909317",
+      "claim": "Breast Cancer Metastasis to the Gastrointestinal Tract After Nine Years of Remis",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41891419",
+      "claim": "Post-Neoadjuvant Chemotherapy Axillary Ultrasound in cN+ Breast Cancer: Can It R",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41890029",
+      "claim": "Estrogen receptor-positive cell line xenograft models recapitulate metastatic di",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 3 papers for 'lobular breast cancer ctDNA Guardant360 early stage vs metas': Breast Cancer Metastasis to the Gastrointestinal Tract After Nine Years of Remis",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 3,
+    "model": "haiku"
+  },
+  "confidence": 0.92
+}

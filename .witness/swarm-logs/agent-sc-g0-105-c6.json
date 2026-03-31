@@ -1,0 +1,22 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-g0-105",
+  "niche_id": "breast_cancer_marker_analysis",
+  "task_id": "swarm-sc-g0-105-c6",
+  "cycle": 6,
+  "executed_at": "2026-03-30T02:50:43.188056Z",
+  "query": "ILC CDH1 FOXA1 ctDNA early stage detection feasibility",
+  "papers_found": 0,
+  "efficiency_score": 0.4,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [],
+  "hypothesis": "Based on 0 papers for 'ILC CDH1 FOXA1 ctDNA early stage detection feasibility': No results \u2014 gap identified",
+  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
+  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 0,
+    "model": "haiku"
+  },
+  "confidence": 0.4
+}

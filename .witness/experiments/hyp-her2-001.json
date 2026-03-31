@@ -1,0 +1,103 @@
+{
+  "hyp_id": "hyp-her2-001",
+  "generated_from_task": "task-hyp-004",
+  "eval_id": "eval-hyp-her2-001",
+  "verdict": "ACCEPT_HIGH",
+  "composite_score": 0.772,
+  "written_at": "2026-03-30T17:30:00.000000Z",
+  "written_by": "eval-agent-claude-sonnet-4-6",
+  "dome": "exmorbus-v0.2",
+  "niche": "HER2_positive_breast_cancer",
+  "title": "T-DXd ferroptosis co-lethality via SLC7A11 suppression: a predictive biomarker hypothesis for trastuzumab deruxtecan in HER2+ breast cancer",
+  "hypothesis_statement": "Trastuzumab deruxtecan (T-DXd) payload delivery of topoisomerase I inhibitor (DXd) to HER2+ breast cancer cells induces ferroptosis as a co-lethal mechanism alongside its established DNA damage/apoptosis pathway — specifically by depleting GSH precursors through DXd-induced mitochondrial dysfunction that suppresses the cystine/glutamate transporter SLC7A11 (xCT) via the HER2-PI3K-NRF2 transcriptional axis (with a note that post-translational specificity claimed in the generator output is not supported; transcriptional mechanism via NRF2 is the supported pathway). HER2+ tumors with low baseline SLC7A11 expression are therefore disproportionately sensitive to T-DXd, while HER2+ tumors with high SLC7A11 expression (the ferroptosis-escape phenotype) acquire partial T-DXd resistance via ferroptosis evasion independent of topoisomerase I mutation or drug efflux. SLC7A11 protein expression by IHC in pre-treatment HER2+ biopsies predicts T-DXd clinical benefit, stratifying HER2+ patients into ferroptosis-competent (SLC7A11-low, high T-DXd sensitivity) versus ferroptosis-escaped (SLC7A11-high, lower T-DXd sensitivity and early resistance) populations.",
+  "mechanism": "DXd inhibits topoisomerase I → DNA replication fork collapse + mitochondrial DNA damage (via mitochondrial topoisomerase I) → Complex I/III ROS increase → lipid peroxidation → ferroptosis window opens when HER2 is internalized (HER2→PI3K→NRF2→SLC7A11/GPX4 signaling reduced transcriptionally). Cells with constitutively high SLC7A11 (independent of HER2/PI3K, driven by alternative KEAP1/NRF2, ATF4, or STAT3 axes) escape this window. EVALUATOR NOTE: post-translational SLC7A11 suppression claim in generator output is not mechanistically supported; transcriptional NRF2-mediated downregulation is the supported mechanism.",
+  "key_genes": ["ERBB2", "SLC7A11", "GPX4", "NFE2L2", "ACSL4", "PTGS2", "KEAP1", "PIK3CA", "AKT1"],
+  "key_drugs": ["T-DXd (trastuzumab deruxtecan)", "DXd (exatecan derivative, topoisomerase I inhibitor payload)", "RSL3 (GPX4 inhibitor probe)", "ferrostatin-1 (ferroptosis rescue)"],
+  "evidence_base": [
+    {
+      "pmid": "32940922",
+      "citation": "Modi S et al., NEJM 2020, DESTINY-Breast01",
+      "role": "clinical_importance_and_gap",
+      "directness": "indirect",
+      "note": "T-DXd ORR 60.9% in HER2+ refractory BC; resistance mechanism not fully characterized — establishes the clinical gap"
+    },
+    {
+      "pmid": "35668195",
+      "citation": "Cortes J et al., NEJM 2022, DESTINY-Breast03",
+      "role": "clinical_importance_and_gap",
+      "directness": "indirect",
+      "note": "T-DXd vs T-DM1 PFS benefit confirmed; predictive biomarkers explicitly stated as undefined — establishes unmet need for biomarker development"
+    },
+    {
+      "pmid": "30867592",
+      "citation": "Koppula P et al., Mol Cancer Res 2021",
+      "role": "direct_mechanistic_support",
+      "directness": "direct",
+      "note": "SLC7A11/xCT regulated by NRF2 and suppressed by PI3K pathway inhibition; HER2 signaling maintains NRF2-driven SLC7A11 in HER2+ breast cancer — the single direct mechanistic citation for the HER2-PI3K-NRF2-SLC7A11 axis"
+    },
+    {
+      "pmid": "27159390",
+      "citation": "Yang WS et al., Cell 2016",
+      "role": "ferroptosis_framework",
+      "directness": "indirect",
+      "note": "GPX4 inhibition triggers ferroptosis; lipid peroxidation as executor — supports the ferroptosis biology framework but not T-DXd specific"
+    }
+  ],
+  "evidential_gaps": [
+    "DXd causing mitochondrial ROS or Complex I/III dysfunction — inferred, not directly cited in any cancer model",
+    "Topoisomerase I inhibition driving mitochondrial DNA damage specifically — plausible (mitochondrial TOP1 exists) but not demonstrated for DXd",
+    "HER2 internalization reducing NRF2-SLC7A11 specifically in T-DXd-treated cells — inferential chain across 3 steps",
+    "SLC7A11 baseline expression heterogeneity in TCGA-BRCA HER2+ subset — not systematically published; must be verified before biomarker premise is valid"
+  ],
+  "proposed_experiments": {
+    "arm_1_in_vitro_ferroptosis": {
+      "description": "T-DXd dose-response in HER2+ cell lines correlated with baseline SLC7A11 expression; ferrostatin-1 rescue to isolate ferroptotic component from apoptotic/DNA damage components",
+      "cell_lines": ["BT-474", "SKBR3", "HCC1954", "AU565"],
+      "readouts": ["C11-BODIPY (lipid peroxidation)", "MitoSOX (mitochondrial ROS)", "cell viability (CellTiter-Glo)"],
+      "controls": ["ferrostatin-1 rescue arm", "DMSO vehicle control"],
+      "gaps_to_close_first": "Confirm SLC7A11 expression rank order across these 4 cell lines by Western blot before committing to dose-response matrix"
+    },
+    "arm_2_genetic_overexpression": {
+      "description": "SLC7A11-OE via lentiviral transduction in T-DXd-sensitive lines (expected: BT-474, SKBR3) to test whether SLC7A11 elevation is sufficient to confer partial T-DXd resistance",
+      "readouts": ["T-DXd IC50 shift", "C11-BODIPY rescue", "GPX4 activity assay"],
+      "note": "This is the causal test of the biomarker premise — OE must shift T-DXd IC50 to validate SLC7A11 as a resistance driver"
+    },
+    "arm_3_clinical_retrospective": {
+      "description": "DESTINY-Breast01 and DESTINY-Breast03 biobank pre-treatment biopsies: SLC7A11 IHC H-score vs PFS/ORR",
+      "biobanks": ["DESTINY-Breast01 (PMID 32940922)", "DESTINY-Breast03 (PMID 35668195)"],
+      "primary_endpoint": "SLC7A11 IHC H-score correlation with PFS",
+      "secondary_endpoint": "SLC7A11 H-score correlation with ORR",
+      "prerequisite": "Biobank access and collaboration agreement with AstraZeneca/Daiichi Sankyo",
+      "gap": "No H-score dichotomization threshold defined — must be determined empirically from cohort distribution or literature precedent for SLC7A11 IHC in breast cancer"
+    }
+  },
+  "reflexion_recommended": {
+    "priority": "high",
+    "query_1": "Topoisomerase I inhibitor (camptothecin/SN-38/irinotecan/DXd) induced mitochondrial ROS and ferroptotic signatures in any cancer model — would close the mitochondrial-ROS step",
+    "query_2": "SLC7A11 expression heterogeneity in HER2+ breast cancer (TCGA-BRCA HER2-amplified subset) — would validate the biomarker stratification premise",
+    "estimated_composite_after_reflexion": "0.79-0.83 if both queries confirm mechanistic links"
+  },
+  "dome_context": {
+    "slc7a11_prior_work": "hyp-ilc-003 confirmed SLC7A11 methylation as a publication gap in ILC (orthogonal histology); this hypothesis is orthogonal — drug-induced functional suppression in HER2+ is a distinct mechanism from basal methylation-driven silencing in ILC. No overlap.",
+    "calibration_relative_to_dome": "Composite 0.772 is below dome mean (0.785) but above ACCEPT_HIGH threshold; evidential_quality (0.58) is dome minimum — same floor as eval-hyp-ilc-006 before reflexion upgrade"
+  },
+  "tournament_generator_scores": {
+    "novelty": 0.87,
+    "importance": 0.88,
+    "plausibility": 0.74,
+    "actionability": 0.91,
+    "token_efficiency": 0.88,
+    "tournament_total": 0.451,
+    "tournament_result": "winner"
+  },
+  "independent_evaluator_scores": {
+    "importance": 0.89,
+    "evidential_quality": 0.58,
+    "novelty": 0.82,
+    "plausibility": 0.68,
+    "actionability": 0.84,
+    "specificity": 0.88,
+    "composite": 0.772
+  },
+  "key_evaluator_disagreement": "Generator plausibility 0.74 vs evaluator plausibility 0.68 — the post-translational SLC7A11 suppression claim is likely mechanistically incorrect; NRF2 is a transcription factor and the PI3K-NRF2 axis would suppress SLC7A11 transcriptionally. This overspecification reduces plausibility without evidence."
+}

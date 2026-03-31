@@ -1,28 +1,22 @@
 {
   "finding_type": "synthesis",
   "agent_id": "sc-g0-036",
-  "niche_id": "literature_synthesis",
+  "niche_id": "hypothesis_generation",
   "task_id": "swarm-sc-g0-036-c3",
   "cycle": 3,
-  "executed_at": "2026-03-30T01:29:53.572152Z",
-  "query": "spatial transcriptomics tumor microenvironment breast cancer immune cold hot",
-  "papers_found": 1,
-  "efficiency_score": 0.7,
+  "executed_at": "2026-03-30T01:43:16.601274Z",
+  "query": "FOXA1 pioneer transcription factor CDH1 epistasis endocrine resistance ILC",
+  "papers_found": 0,
+  "efficiency_score": 0.46,
   "verdict": "ACCEPT_WEAK",
-  "evidence": [
-    {
-      "source": "PMID:41766877",
-      "claim": "Reprogramming the immunosuppressive breast cancer microenvironment: integrating ",
-      "confidence": "medium"
-    }
-  ],
-  "hypothesis": "Based on 1 papers for 'spatial transcriptomics tumor microenvironment breast cancer': Reprogramming the immunosuppressive breast cancer microenvironment: integrating ",
-  "novelty_claim": "Identified 1 relevant papers; novel synthesis from recent literature",
-  "actionability": "Next: fetch abstracts for top 1 PMIDs and run /evaluate",
+  "evidence": [],
+  "hypothesis": "Based on 0 papers for 'FOXA1 pioneer transcription factor CDH1 epistasis endocrine ': No results \u2014 gap identified",
+  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
+  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
   "resource_cost_estimate": {
     "pubmed_queries": 1,
-    "results": 1,
+    "results": 0,
     "model": "haiku"
   },
-  "confidence": 0.7
+  "confidence": 0.46
 }

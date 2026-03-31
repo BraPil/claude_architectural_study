@@ -1,0 +1,38 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-p1-010",
+  "niche_id": "breast_cancer_marker_analysis",
+  "task_id": "swarm-sc-p1-010-c4",
+  "cycle": 4,
+  "executed_at": "2026-03-30T22:47:16.268538Z",
+  "query": "TCGA invasive lobular carcinoma ferroptosis FRGS subtype methylation",
+  "papers_found": 3,
+  "efficiency_score": 0.84,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [
+    {
+      "source": "PMID:41909699",
+      "claim": "D-xylose suppresses hepatocellular carcinoma progression by regulating dihydrodi",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41909196",
+      "claim": "Identification of a Calcium-Related Prognostic Signature and Validation of CACNA",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41908094",
+      "claim": "Glycosylation-Related Gene Signature Identifies MFNG as a Key Driver of Prolifer",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 3 papers for 'TCGA invasive lobular carcinoma ferroptosis FRGS subtype met': D-xylose suppresses hepatocellular carcinoma progression by regulating dihydrodi",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 3,
+    "model": "haiku"
+  },
+  "confidence": 0.84
+}

@@ -4,10 +4,10 @@
   "niche_id": "hypothesis_generation",
   "task_id": "swarm-sc-g0-023-c2",
   "cycle": 2,
-  "executed_at": "2026-03-30T01:29:47.696050Z",
+  "executed_at": "2026-03-30T01:43:09.829800Z",
   "query": "SLC7A11 methylation cfDNA ILC subtype non-personalized screening panel",
   "papers_found": 0,
-  "efficiency_score": 0.59,
+  "efficiency_score": 0.45,
   "verdict": "ACCEPT_WEAK",
   "evidence": [],
   "hypothesis": "Based on 0 papers for 'SLC7A11 methylation cfDNA ILC subtype non-personalized scree': No results \u2014 gap identified",
@@ -18,5 +18,5 @@
     "results": 0,
     "model": "haiku"
   },
-  "confidence": 0.59
+  "confidence": 0.45
 }

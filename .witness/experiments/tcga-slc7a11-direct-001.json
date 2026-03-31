@@ -1,0 +1,43 @@
+{
+  "finding_type": "experiment_result",
+  "agent_id": "tcga-slc7a11-direct-001",
+  "task_id": "tcga-slc7a11-direct-001",
+  "niche_id": "breast_cancer_marker_analysis",
+  "executed_at": "2026-03-30T23:35:42.012766Z",
+  "hypothesis_id": "hyp-ilc-003",
+  "bfts_node": "n2c-tcga-wgbs-direct",
+  "method": "cBioPortal REST API \u2014 brca_tcga_methylation_hm450 \u2014 entrez_gene_id=23533 (SLC7A11)",
+  "result": "NULL \u2014 no significant ILC vs IDC differential methylation",
+  "verdict": "REJECT_HYPOTHESIS_DIFFERENTIAL_METHYLATION_AXIS",
+  "data": {
+    "ILC": {
+      "n": 208,
+      "mean_beta": 0.6243,
+      "median_beta": 0.6245,
+      "stdev": 0.1153,
+      "pct_hypermethylated_gt0p70": 25.5
+    },
+    "IDC": {
+      "n": 530,
+      "mean_beta": 0.6295,
+      "median_beta": 0.6461,
+      "stdev": 0.1572,
+      "pct_hypermethylated_gt0p70": 35.7
+    },
+    "delta_beta_ILC_minus_IDC": -0.0053,
+    "t_statistic": -0.501,
+    "df": 512,
+    "SE": 0.0105,
+    "spawn_trigger_threshold": 0.1,
+    "spawn_trigger_met": false
+  },
+  "interpretation": "SLC7A11 promoter methylation (HM450 gene-level aggregate) does NOT differ significantly between ILC (n=208) and IDC (n=530) in TCGA-BRCA. delta_beta = -0.005 (20x below the 0.10 spawn threshold). t=-0.50, p>>0.05. Direction is opposite to hypothesis: ILC has LOWER hypermethylation (25.5%) than IDC (35.7%), meaning ILC if anything has higher SLC7A11 expression (more ferroptosis RESISTANT, not more sensitive). The hypothesis of ILC-specific SLC7A11 methylation as a therapeutic vulnerability is NOT supported by TCGA data.",
+  "caveats": [
+    "cBioPortal reports one beta value per gene (probe most negatively correlated with expression) \u2014 not probe-specific (cg21877274, cg24869834)",
+    "Gene-level aggregate may mask probe-specific CpG island differences; raw GDC probe-level query would be definitive",
+    "n=208 ILC samples is adequate power for delta_beta > 0.10 detection"
+  ],
+  "redirected_hypothesis": "ILC ferroptosis vulnerability may exist at the EXPRESSION level (low SLC7A11 mRNA), not the METHYLATION level. Query TCGA gene expression: brca_tcga_rna_seq_v2_mrna, SLC7A11 TPM in ILC vs IDC. If ILC shows lower SLC7A11 expression despite lower methylation, the silencing mechanism is transcriptional (FOSL1, YAP, CDH1-loss downstream) not epigenetic \u2014 different therapeutic target (FOSL1/YAP inhibitors, not DNMT inhibitors).",
+  "spawn_queue_update": "exmorbus-v0.3-methylation-panel spawn CANCELLED \u2014 delta_beta threshold not met",
+  "next_bfts_node": "n3-expression-slc7a11-ilc \u2014 query TCGA RNA-seq TPM for SLC7A11 in ILC vs IDC"
+}

@@ -1,0 +1,17 @@
+{
+  "agent_id": "sc-p1-001",
+  "niche": "pathway_analysis",
+  "skill_tier": "differentiated",
+  "skill_data": {
+    "action": "bfts_node_selected",
+    "target": "bfts-tnbc-brca1-001",
+    "hypothesis_id": "hyp-tnbc-001",
+    "priority_score": 50,
+    "sub_question": "pending experiment",
+    "ts": "2026-03-31T00:50:14.474862Z"
+  },
+  "efficiency_score": 0.91,
+  "verdict": "ACCEPT_HIGH",
+  "cycle": 1,
+  "executed_at": "2026-03-31T00:50:14.534081Z"
+}

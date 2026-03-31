@@ -1,0 +1,28 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-gen1-227",
+  "niche_id": "literature_synthesis",
+  "task_id": "swarm-sc-gen1-227-c6",
+  "cycle": 6,
+  "executed_at": "2026-03-30T02:56:12.935646Z",
+  "query": "spatial transcriptomics tumor microenvironment breast cancer immune cold hot",
+  "papers_found": 1,
+  "efficiency_score": 0.4,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [
+    {
+      "source": "PMID:41766877",
+      "claim": "?",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 1 papers for 'spatial transcriptomics tumor microenvironment breast cancer': ?",
+  "novelty_claim": "Identified 1 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 1 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 1,
+    "model": "haiku"
+  },
+  "confidence": 0.4
+}

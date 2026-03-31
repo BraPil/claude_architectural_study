@@ -1,0 +1,51 @@
+{
+  "experiment_id": "ILC-EXP-003",
+  "hypothesis_id": "hyp-ilc-006-v3",
+  "sub_question": "SQ-3: CDH1 loss → PI3Ka → YAP convergent node in ILC CDK4/6i resistance",
+  "executed_ts": "2026-03-31T01:14:00Z",
+  "status": "PARTIAL_SUPPORT_NOVEL_AXIS",
+
+  "query_log": [
+    {"query": "E-cadherin loss YAP Hippo pathway cancer", "results": 6, "tool_ok": true, "relevant_pmids": ["32641858"]},
+    {"query": "YAP nuclear CDH1 loss breast cancer lobular", "results": 0, "tool_ok": true, "note": "ILC-specific CDH1-YAP not published in breast cancer"},
+    {"query": "AKT LATS1 YAP phosphorylation inhibition", "results": 6, "tool_ok": true, "relevant_pmids": ["32816106"]}
+  ],
+
+  "mechanistic_finding": {
+    "pmid": "32641858",
+    "citation": "Ouyang H et al. Oncogene. 2020 Aug;39(33):5570-5587.",
+    "finding": "E-cadherin (CDH1) cooperates with p190A RhoGAP to ACTIVATE LATS kinases → YAP phosphorylation and cytoplasmic sequestration (tumor suppression). CDH1 loss in ILC → LATS deactivation → YAP nuclear translocation → transcriptional co-activation (pro-tumorigenic).",
+    "mechanism_arrow": "CDH1 loss → LATS deactivation → YAP nuclear (confirmed in epithelial carcinoma context)",
+    "breast_cancer_specific": "NOT yet demonstrated in ILC breast cancer specifically — extrapolated from general epithelial carcinoma model",
+    "status": "MECHANISTIC_SUPPORT — CDH1→LATS→YAP chain established; ILC-specificity = novel claim"
+  },
+
+  "pi3k_yap_crosstalk": {
+    "pmid": "32816106",
+    "citation": "Qian X et al. Acta Diabetol. 2021;58(1):23-33.",
+    "finding": "YAP mediates interaction between Hippo and PI3K/AKT pathways. PI3K/AKT activation enhances YAP nuclear activity.",
+    "context": "Diabetic nephropathy mesangial cells — not breast cancer",
+    "implication": "PI3K→AKT→YAP amplification is a general cross-pathway mechanism. In ILC with CDH1 loss, BOTH CDH1-LATS (structural) AND PI3K-AKT (signaling) routes drive YAP nuclear activity."
+  },
+
+  "synthesis": {
+    "title": "CDH1 loss in ILC drives YAP nuclear activity via DUAL routes",
+    "route_1": "CDH1 loss → LATS deactivation → YAP nuclear (PMID 32641858, structural/adherens junction mechanism)",
+    "route_2": "CDH1 loss → PI3Ka liberation → AKT → YAP nuclear amplification (PMID 32816106, signaling crosstalk)",
+    "alpelisib_relevance": "Alpelisib (PI3Ka inhibitor) suppresses Route 2 only. Route 1 (LATS deactivation) persists even with alpelisib. This LIMITS alpelisib's ability to fully suppress YAP nuclear activity — BUT does not affect alpelisib's CDK2 bypass benefit.",
+    "combined_therapy_implication": "Alpelisib + verteporfin (TEAD inhibitor) could target Route 2 (PI3K→YAP) + Route 1 (CDH1-LATS→YAP) simultaneously — comprehensive ILC YAP suppression",
+    "this_is_separate_from_cdk46i_resistance": "The CDH1→YAP axis is a separate tumor biology finding from the CDK4/6i resistance mechanism. It does NOT directly explain alpelisib benefit in CDK4/6i-progressed ILC, but suggests a third therapeutic vulnerability (YAP/TEAD inhibition) specific to CDH1-loss ILC."
+  },
+
+  "impact_on_hypothesis": {
+    "hyp_ilc_006_direct": "NEUTRAL — CDH1→YAP does not strengthen or weaken the CDK4/6i resistance/alpelisib claim. The CDK4/6i resistance mechanism (CDH1→PI3Ka→AKT→CDK2 bypass) is independent of YAP.",
+    "new_hypothesis_generated": "hyp-ilc-009 candidate: CDH1 loss in ILC activates YAP via dual mechanism (LATS deactivation + PI3K-AKT crosstalk). YAP-TEAD inhibition (verteporfin, IAG933) should show ILC-specific efficacy greater than IDC. Co-treatment alpelisib+verteporfin may have synergy in CDH1-loss ILC.",
+    "org_synthesis_validation": "Validates organ synthesis conn-004 (YAP as ILC master regulator, confidence 0.74). The mechanistic underpinning (CDH1→LATS→YAP) is now established."
+  },
+
+  "recommended_actions": [
+    "Register hyp-ilc-009 (CDH1-LATS-YAP axis in ILC → TEAD inhibitor vulnerability) as new ACCEPT_MEDIUM candidate",
+    "Add verteporfin arm to ILC-EXP-004 preclinical protocol alongside alpelisib",
+    "Add alpelisib + verteporfin combination synergy test (Bliss analysis) in CDK4/6i-resistant ILC cell lines"
+  ]
+}

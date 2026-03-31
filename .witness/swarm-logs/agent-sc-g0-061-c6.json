@@ -1,16 +1,16 @@
 {
   "finding_type": "synthesis",
   "agent_id": "sc-g0-061",
-  "niche_id": "breast_cancer_marker_analysis",
+  "niche_id": "hypothesis_generation",
   "task_id": "swarm-sc-g0-061-c6",
   "cycle": 6,
-  "executed_at": "2026-03-30T01:30:13.082315Z",
-  "query": "ILC CDH1 FOXA1 ctDNA early stage detection feasibility",
+  "executed_at": "2026-03-30T01:43:35.941037Z",
+  "query": "FOXA1 pioneer transcription factor CDH1 epistasis endocrine resistance ILC",
   "papers_found": 0,
-  "efficiency_score": 0.57,
+  "efficiency_score": 0.41,
   "verdict": "ACCEPT_WEAK",
   "evidence": [],
-  "hypothesis": "Based on 0 papers for 'ILC CDH1 FOXA1 ctDNA early stage detection feasibility': No results \u2014 gap identified",
+  "hypothesis": "Based on 0 papers for 'FOXA1 pioneer transcription factor CDH1 epistasis endocrine ': No results \u2014 gap identified",
   "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
   "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
   "resource_cost_estimate": {
@@ -18,5 +18,5 @@
     "results": 0,
     "model": "haiku"
   },
-  "confidence": 0.57
+  "confidence": 0.41
 }

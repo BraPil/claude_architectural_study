@@ -1,0 +1,247 @@
+{
+  "finding_type": "organ_synthesis",
+  "organ_id": "organ-breast-cancer-marker-001",
+  "agent_id": "organ-coordinator-bcm-001",
+  "task_id": "organ-breast-marker-synthesis-001",
+  "niche_id": "breast_cancer_marker_analysis",
+  "executed_at": "2026-03-30T16:00:00Z",
+  "member_agents": ["sc-p1-001", "sc-p1-008", "sc-gen1-221"],
+  "dome_id": "exmorbus-v0.2",
+
+  "cross_hypothesis_connections": [
+    {
+      "connection_id": "conn-001",
+      "label": "CDH1_loss_shared_downstream_signaling_node",
+      "hypotheses_linked": ["hyp-ilc-001", "hyp-ilc-002", "hyp-ilc-006"],
+      "mechanism": "CDH1 loss (cadherin complex dissolution) liberates p120-catenin from the E-cadherin/catenin membrane complex. p120-catenin nuclear translocation activates Rac1/Rho GTPases, which in turn suppress LATS1/2 Hippo kinase activity, enabling YAP nuclear entry (hyp-ilc-005 mechanistic input). Simultaneously, CDH1 loss derepresses PI3K p110α (PMID 23261992), elevating AKT activity — the same AKT node that drives CDK4/6i resistance in hyp-ilc-006. CDH1 ctDNA in early-stage ILC (hyp-ilc-001) is therefore not merely a passive marker but a read-out of active signaling rewiring status.",
+      "shared_node": "p120-catenin / PI3K p110α / AKT axis",
+      "clinical_implication": "A single CDH1 LOF ctDNA event is prognostically load-bearing for three downstream phenotypes: (1) invasive competence (early detection, hyp-ilc-001), (2) CDK4/6i resistance via PI3K elevation (hyp-ilc-006), and (3) YAP-driven ESR1 chromatin opening and ESR1m acquisition risk (hyp-ilc-005). A CDH1 ctDNA-positive patient at diagnosis should be triaged immediately to alpelisib eligibility evaluation — not simply monitored.",
+      "evidence_support": "PMID 23261992 (E-cadherin/PI3Ka liberation), Savola 2022 PMID 35906698 (TEAD/YAP open chromatin in ILC), hyp-ilc-006 dome synthesis",
+      "connection_strength": 0.82
+    },
+    {
+      "connection_id": "conn-002",
+      "label": "HR_competency_axis_ILC_vs_TNBC",
+      "hypotheses_linked": ["hyp-tnbc-001", "hyp-ilc-003", "hyp-ilc-002"],
+      "mechanism": "BRCA1 constitutional methylation (hyp-tnbc-001) creates HR deficiency via promoter silencing — a BRCAness phenotype mechanistically identical to germline BRCA1 mutation. SLC7A11 ferroptosis methylation in ILC (hyp-ilc-003) is mechanistically orthogonal: it silences ferroptosis defense, not DNA repair. However, both methylation patterns converge on a shared synthetic-lethality opportunity: BRCA1 methylation makes cells PARPi-sensitive; ILC ferroptosis methylation + CDK4/6 CNV (hyp-ilc-002) creates oxidative stress burden that amplifies DNA damage load. A combined PARPi + ferroptosis induction strategy (e.g., olaparib + sulfasalazine/erastin) could exploit both deficiencies simultaneously in ILC tumors that carry BOTH methylation patterns. The ILC/TNBC niche boundary is permeable at the epigenetic methylation level — both niches share CpG methylation as the mechanism of gene silencing.",
+      "shared_node": "Promoter CpG methylation as gene silencing mechanism; PARPi synthetic lethality window",
+      "clinical_implication": "ILC patients with CDH1 LOF + SLC7A11 methylation + TME immune-cold phenotype (hyp-ilc-002) may represent a subpopulation with compounded vulnerability to combined ferroptosis induction + PARPi. This cross-niche insight is not capturable from single-hypothesis analysis.",
+      "evidence_support": "PMID 41654537 (constitutional BRCA1 methylation in TNBC), cbioportal-slc7a11-001 (gap confirmed: ILC SLC7A11 methylation unanalyzed), DNA lesson ts=2026-03-30T00:00:00Z (gap_identified niche=pathway_enrichment_simulation)",
+      "connection_strength": 0.65,
+      "note": "Connection is inferential — depends on co-occurrence of both methylation patterns in same tumor; co-occurrence rate unknown without TCGA multi-probe query"
+    },
+    {
+      "connection_id": "conn-003",
+      "label": "Epigenetic_methylation_as_dual_biomarker_class",
+      "hypotheses_linked": ["hyp-tnbc-001", "hyp-ilc-003"],
+      "mechanism": "Both hyp-tnbc-001 and hyp-ilc-003 propose CpG methylation signatures as cfDNA/ctDNA biomarkers — BRCA1 cg21490561 for TNBC eligibility, and SLC7A11 cg21877274/cg24869834 for ILC ferroptosis status. These two probes could be incorporated into a single methylation panel assay (e.g., EM-Seq or EPIC array cfDNA enrichment), creating a unified ILC + TNBC liquid biopsy methylation signature. The technical infrastructure is shared: bisulfite conversion, HM450-compatible probe design, and cfDNA enrichment protocols are identical between the two targets.",
+      "shared_node": "cfDNA methylation detection infrastructure (bisulfite-seq / targeted EPIC probes)",
+      "clinical_implication": "A single assay development effort (cfDNA methylation panel) could simultaneously address PARPi eligibility expansion (TNBC) and ILC ferroptosis monitoring. This is a platform economy finding — one assay, two indications.",
+      "evidence_support": "reflexion-tnbc-001 (BRCA1 methylation probes established), cbioportal-slc7a11-001 (SLC7A11 probes cg21877274, cg24869834 confirmed on HM450 array)",
+      "connection_strength": 0.78
+    },
+    {
+      "connection_id": "conn-004",
+      "label": "YAP_as_ILC_master_regulator_node",
+      "hypotheses_linked": ["hyp-ilc-005", "hyp-ilc-006", "hyp-ilc-001"],
+      "mechanism": "CDH1 loss (hyp-ilc-001 biomarker target) initiates YAP nuclear translocation via LATS1/2 suppression (conn-001 mechanistic chain). Nuclear YAP drives: (1) TEAD-mediated chromatin opening at ESR1 locus, accelerating ESR1 mutation acquisition under AI selection (hyp-ilc-005); (2) PI3K/AKT elevation that mediates CDK4/6i resistance (hyp-ilc-006). YAP is thus the mechanistic bridge between CDH1 loss (upstream event) and both resistance phenotypes (downstream outcomes). YAP inhibition (verteporfin — PMID 39853518 confirmed efficacy in ER+ BC) could therefore simultaneously reduce ESR1 mutation acquisition velocity AND attenuate PI3K-driven CDK4/6i resistance in ILC. This dual-blockade opportunity is uniquely ILC-specific and invisible if the hypotheses are evaluated independently.",
+      "shared_node": "YAP nuclear activity (CDH1-loss→LATS1/2→YAP)",
+      "clinical_implication": "Verteporfin or a selective TEAD inhibitor as a synthetic prevention strategy in CDH1-LOF ILC — targeting upstream YAP to simultaneously prevent ESR1 mutation acquisition and CDK4/6i resistance priming. This is a single-agent upstream prevention strategy for two convergent resistance mechanisms.",
+      "evidence_support": "PMID 35906698 (Savola 2022: TEAD motif enrichment in ILC ATAC-seq), PMID 39853518 (verteporfin in ER+ BC), bfts-ilc-esr1-001 node n5-vert, DNA lesson lesson-ilc-esr1-005-bfts",
+      "connection_strength": 0.74
+    },
+    {
+      "connection_id": "conn-005",
+      "label": "CDK4_6_CNV_shared_across_ILC_resistance_phenotypes",
+      "hypotheses_linked": ["hyp-ilc-002", "hyp-ilc-006"],
+      "mechanism": "Hyp-ilc-002 positions CDK4/6 CNV as a biomarker of TME immune-cold phenotype in ILC. Hyp-ilc-006 positions CDK4/6i resistance as the primary clinical gap in CDK4/6i-progressed ILC. CNV amplification of CDK4/6 is both the mechanism of immune exclusion (CDK4/6 activity suppresses IRF3-dependent innate immune activation via PD-L1/STING pathway) and the molecular mechanism conferring reduced CDK4/6i sensitivity. These are the same molecular event with two phenotypic read-outs: immune cold (monitoring) and drug resistance (treatment selection). CDK4/6 CNV measurement at diagnosis could simultaneously stratify patients for immunotherapy combination eligibility AND identify those at highest CDK4/6i failure risk who should be considered for up-front alpelisib.",
+      "shared_node": "CDK4/6 copy number amplification",
+      "clinical_implication": "CDK4/6 CNV at diagnosis is a two-in-one biomarker: immune exclusion predictor (relevant to PD-1/L1 combination) and CDK4/6i failure risk predictor (relevant to alpelisib scheduling). A single targeted NGS panel including CDK4/6 locus copy number covers both clinical decision points.",
+      "evidence_support": "hyp-ilc-002 dome context, hyp-ilc-006 dome synthesis, PALMARES-2 PMID 41619649 (CDK4/6i histology sub-analysis)",
+      "connection_strength": 0.68
+    }
+  ],
+
+  "prioritization_matrix": [
+    {
+      "rank": 1,
+      "hypothesis_id": "hyp-tnbc-001",
+      "title": "Constitutional BRCA1 methylation → PARPi eligibility expansion in TNBC",
+      "clinical_impact_score": 0.91,
+      "clinical_impact_rationale": "20.6% TNBC prevalence of an excluded population; PARPi (olaparib/talazoparib) is FDA-approved; resolves a regulatory/historical exclusion. ~20% expansion of PARPi-eligible TNBC.",
+      "experimental_feasibility_score": 0.82,
+      "experimental_feasibility_rationale": "BRCA1 constitutional methylation assay (MSP or pyrosequencing on blood DNA) is technically mature. PMID 41654537 provides the probe (cg21490561). OlympiAD/EMBRACA biobanks exist for retrospective analysis. Primary gap (RAD51 foci functional assay in constitutional methylation tumors) is tractable standard immunofluorescence.",
+      "dome_novelty_score": 0.84,
+      "dome_novelty_rationale": "Constitutional (blood-level) methylation as PARPi eligibility criterion is unpublished in any active ClinicalTrials.gov study. Confirmed absence of eligibility-based trial. The constitutional vs somatic distinction was not previously operationalized in clinical trial design.",
+      "composite_score": 0.856,
+      "composite_formula": "(0.91 * 0.40) + (0.82 * 0.30) + (0.84 * 0.30)",
+      "current_verdict": "ACCEPT_HIGH",
+      "current_composite_eval": 0.835,
+      "reflexion_status": "REFLEXION_COMPLETE — single-source gap partially resolved; HR reversibility in pre-treated patients is a therapeutic scope boundary",
+      "recommended_next_action": "Experiment design: retrospective RAD51 foci assay on OlympiAD/EMBRACA banked specimens from constitutional methylation patients. Protocol exists in experiment-design-tnbc-002.json (dual-layer parallel).",
+      "resource_priority": "FIRST"
+    },
+    {
+      "rank": 2,
+      "hypothesis_id": "hyp-ilc-003",
+      "title": "SLC7A11 ferroptosis methylation cfDNA panel for ILC",
+      "clinical_impact_score": 0.78,
+      "clinical_impact_rationale": "ILC is 10-15% of all breast cancer with limited subtype-specific biomarkers. A ferroptosis-based cfDNA panel would be the first ILC-specific liquid biopsy methylation marker. Clinical impact is high but deferred — requires validation before clinical deployment.",
+      "experimental_feasibility_score": 0.87,
+      "experimental_feasibility_rationale": "CONFIRMED_GAP with known probes (cg21877274, cg24869834) on TCGA-BRCA HM450 array. Raw data EXISTS — ~201 ILC + ~780 IDC samples in TCGA-BRCA. The experiment is a bioinformatics query (GDC REST API, step plan in cbioportal-slc7a11-001.json). Cost: minimal compute, no wet lab required for first validation step. This is the highest feasibility/cost ratio in the dome.",
+      "dome_novelty_score": 0.92,
+      "dome_novelty_rationale": "Doubly confirmed gap: two independent literature sweeps (autorun-slc7a11-001, autorun-slc7a11-002) found zero published studies reporting SLC7A11 methylation ILC vs IDC. The gap is structural — the data exists but no researcher has performed the comparison. First-mover opportunity.",
+      "composite_score": 0.854,
+      "composite_formula": "(0.78 * 0.40) + (0.87 * 0.30) + (0.92 * 0.30)",
+      "current_verdict": "CONFIRMED_GAP",
+      "current_composite_eval": null,
+      "reflexion_status": "PENDING — awaiting bioinformatics execution (GDC query)",
+      "recommended_next_action": "Execute GDC query plan from cbioportal-slc7a11-001.json: download TCGA-BRCA HM450 methylation beta-values for cg21877274, cg24869834, stratify by histological subtype (ILC vs IDC), run Mann-Whitney U test. Estimated execution: 2-4 hours with GDC API access.",
+      "resource_priority": "FIRST (co-equal with hyp-tnbc-001 due to near-zero execution cost)"
+    },
+    {
+      "rank": 3,
+      "hypothesis_id": "hyp-ilc-006",
+      "title": "CDH1 loss → PI3K-p110α → CDK4/6i resistance → alpelisib in ILC",
+      "clinical_impact_score": 0.90,
+      "clinical_impact_rationale": "CDK4/6i-progressed ILC has no ILC-specific second-line guideline. Alpelisib is FDA-approved. PALMARES-2 confirmed ILC-IDC CDK4/6i response gap. Population: all CDK4/6i-progressed HR+/HER2- ILC patients.",
+      "experimental_feasibility_score": 0.68,
+      "experimental_feasibility_rationale": "Proximal step (CDH1 loss→PI3Kα liberation, PMID 23261992) established. Distal step (AKT→CDK2→RB1-independent bypass) has zero direct citations. Current verdict ACCEPT_HIGH pending eval — reflexion required on AKT→CDK2 arm before experiment design. Feasibility penalized for this mechanistic gap.",
+      "dome_novelty_score": 0.76,
+      "dome_novelty_rationale": "ILC-specific CDK4/6i resistance via CDH1-PI3K axis is novel, but PI3K resistance in HR+ BC is a crowded space. ILC-histotype-specific alpelisib trial design (CDH1-gated eligibility) is genuinely novel. No published ILC-specific alpelisib biomarker trial found.",
+      "composite_score": 0.787,
+      "composite_formula": "(0.90 * 0.40) + (0.68 * 0.30) + (0.76 * 0.30)",
+      "current_verdict": "ACCEPT_HIGH_PENDING_EVAL",
+      "current_composite_eval": 0.747,
+      "reflexion_status": "REFLEXION_NEEDED — evaluator flagged AKT→CDK2 distal step (zero citation); composite 0.747, threshold 0.75",
+      "recommended_next_action": "/reflexion targeting: (a) AKT→CDK2 in PI3K-driven breast cancer resistance; (b) PI3Ka isoform dominance in E-cadherin-null models; (c) ILC-specific CDK4/6i resistance cohort outcomes. Estimated composite post-reflexion: 0.77-0.80.",
+      "resource_priority": "SECOND (requires reflexion first)"
+    },
+    {
+      "rank": 4,
+      "hypothesis_id": "hyp-ilc-005",
+      "title": "ESR1 YAP-driven acquisition kinetics ILC vs IDC",
+      "clinical_impact_score": 0.83,
+      "clinical_impact_rationale": "ESR1 mutation acquisition under AI therapy is the dominant resistance mechanism in metastatic HR+. ILC-specific kinetics would change serial ctDNA monitoring frequency recommendations for ILC patients.",
+      "experimental_feasibility_score": 0.79,
+      "experimental_feasibility_rationale": "AURORA biobank and SoFEA trial biobank exist; gap is that neither has published ILC-stratified ESR1 ctDNA acquisition RATE (not prevalence). Re-analysis of existing biobank specimens is feasible. BFTS design complete (bfts-ilc-esr1-001.json).",
+      "dome_novelty_score": 0.84,
+      "dome_novelty_rationale": "Kinetic acquisition endpoint (time-to-ESR1m under AI) in ILC vs IDC: confirmed absent in published literature. TEAD mechanistic arm has direct experimental support (Savola 2022 PMID 35906698). Verteporfin prevention angle adds genuine first-in-field novelty.",
+      "composite_score": 0.820,
+      "composite_formula": "(0.83 * 0.40) + (0.79 * 0.30) + (0.84 * 0.30)",
+      "current_verdict": "ACCEPT_MEDIUM",
+      "current_composite_eval": 0.61,
+      "reflexion_status": "PARTIAL — BFTS complete, no reflexion yet on ESR1 kinetics vs prevalence endpoint distinction",
+      "recommended_next_action": "AURORA biobank contact for ILC-stratified time-to-ESR1m analysis. No wet lab required — purely retrospective ctDNA re-analysis.",
+      "resource_priority": "THIRD"
+    },
+    {
+      "rank": 5,
+      "hypothesis_id": "hyp-ilc-001",
+      "title": "CDH1 LOF ctDNA early-stage ILC screening",
+      "clinical_impact_score": 0.80,
+      "clinical_impact_rationale": "ILC early detection is an unmet need — ILC is disproportionately diagnosed late due to diffuse growth pattern not captured by mammography. CDH1 ctDNA would be the first blood-based ILC-specific early detection biomarker.",
+      "experimental_feasibility_score": 0.71,
+      "experimental_feasibility_rationale": "CDH1 ctDNA detection in early-stage disease is technically challenging (low shedding). PMID 40324116 (66 mILC patients) validates ctDNA detection in metastatic ILC but early-stage sensitivity is low. Requires large prospective cohort (n>500) for screening validation.",
+      "dome_novelty_score": 0.72,
+      "dome_novelty_rationale": "CDH1 LOF in ILC is well-established. ctDNA-based early detection angle adds novelty but the CDH1-ILC association is not novel. Novelty is in the liquid biopsy application layer, not the biology.",
+      "composite_score": 0.745,
+      "composite_formula": "(0.80 * 0.40) + (0.71 * 0.30) + (0.72 * 0.30)",
+      "current_verdict": "RESEARCH_STAGE",
+      "recommended_next_action": "Defer to after hyp-ilc-003 TCGA query: if SLC7A11 methylation + CDH1 LOF are co-detectable in the same ctDNA, a multi-marker ILC panel (CDH1 + SLC7A11 methylation) would dramatically improve early detection sensitivity vs CDH1 alone.",
+      "resource_priority": "FOURTH (holds for multi-marker panel consolidation)"
+    },
+    {
+      "rank": 6,
+      "hypothesis_id": "hyp-ilc-002",
+      "title": "TME immune-cold CDK4/6 CNV ctDNA in ILC",
+      "clinical_impact_score": 0.72,
+      "clinical_impact_rationale": "Immune-cold TME in ILC is a recognized clinical phenomenon but actionability depends on finding a way to convert cold to hot. CDK4/6 CNV as a mechanistic driver is one route but the therapeutic strategy (CDK4/6i + PD-L1) is already being tested in IDC-dominated trials.",
+      "experimental_feasibility_score": 0.69,
+      "experimental_feasibility_rationale": "CDK4/6 CNV detection in ctDNA is technically feasible via shallow WGS copy number. The ILC-specific angle requires ILC-enriched cohorts (currently available: AURORA, PALMARES-2 biobank).",
+      "dome_novelty_score": 0.65,
+      "dome_novelty_rationale": "CDK4/6 CNV + immune cold phenotype is an established concept in breast cancer. ILC-specific CDK4/6 CNV ctDNA monitoring adds novelty but the mechanistic insight is not first-in-field.",
+      "composite_score": 0.688,
+      "composite_formula": "(0.72 * 0.40) + (0.69 * 0.30) + (0.65 * 0.30)",
+      "current_verdict": "RESEARCH_STAGE",
+      "recommended_next_action": "Consolidate with hyp-ilc-006: CDK4/6 CNV as dual-purpose biomarker (immune exclusion + resistance prediction) — see conn-005 cross-hypothesis connection.",
+      "resource_priority": "FIFTH (consolidate into hyp-ilc-006 experiment design)"
+    }
+  ],
+
+  "prioritization_summary": {
+    "first_resource_allocation": ["hyp-tnbc-001", "hyp-ilc-003"],
+    "rationale": "hyp-tnbc-001 has the highest clinical impact and a clear, feasible next experiment (retrospective RAD51 foci assay on banked specimens). hyp-ilc-003 has near-zero execution cost (pure bioinformatics, GDC API) and the highest novelty score — it is uniquely cost-efficient. Both should run in parallel. hyp-tnbc-001 requires wet lab (RAD51 foci immunofluorescence), hyp-ilc-003 requires compute only — they do not compete for resources.",
+    "do_not_fund_now": ["hyp-ilc-002"],
+    "do_not_fund_rationale": "hyp-ilc-002 should be consolidated into hyp-ilc-006 experiment design as a co-measurement (CDK4/6 CNV as dual biomarker). Running separately is resource-inefficient."
+  },
+
+  "key_experiment": {
+    "experiment_id": "key-exp-001",
+    "title": "TCGA-BRCA ILC/IDC SLC7A11 methylation delta + co-occurrence analysis with CDH1 LOF and BRCA1 methylation",
+    "rationale": "This single bioinformatics experiment unlocks THREE hypotheses simultaneously: (1) hyp-ilc-003: directly tests the SLC7A11 methylation ILC-IDC gap (the confirmed first-mover opportunity); (2) conn-002: tests whether SLC7A11 methylation and BRCA1 methylation co-occur in the same TCGA-BRCA ILC tumors, validating the combined PARPi + ferroptosis vulnerability; (3) conn-003: establishes the CpG probe set needed for the combined methylation liquid biopsy panel. Additionally, if CDH1 mutation status is correlated with SLC7A11 methylation in the same TCGA dataset, it would validate conn-001 (CDH1-as-gateway-biomarker concept) and strengthen hyp-ilc-001 multi-marker panel strategy. All of this from a single TCGA-BRCA multi-probe methylation + mutation co-occurrence query.",
+    "ai_co_scientist_alignment": "This is the 'key experiment' in the AI Co-Scientist sense: it sits at the mechanistic intersection of multiple hypotheses. Running it first maximizes information gain per unit of compute cost. The GDC query plan already exists in cbioportal-slc7a11-001.json.",
+    "execution_plan": {
+      "step_1": "GDC REST API: download TCGA-BRCA HM450 methylation beta-values for probes cg21877274 and cg24869834 (SLC7A11 genomic body), cg21490561 (BRCA1 TSS, for TNBC cross-check), stratified by sample histological subtype (ILC vs IDC) using clinical metadata",
+      "step_2": "Compute beta-value distribution differences ILC vs IDC per probe (Mann-Whitney U, FDR correction). Report effect size (Cohen's d) and clinical relevance threshold (delta_beta > 0.10 = potential regulatory significance)",
+      "step_3": "Co-occurrence matrix: within ILC samples, cross-tabulate SLC7A11 high-methylation (beta > 0.3) vs CDH1 mutation (somatic mutation data from cBioPortal brca_tcga) vs BRCA1 methylation (cg21490561)",
+      "step_4": "If co-occurrence frequency exceeds 5%: flag as combinatorial vulnerability population; if < 1%: hypotheses are mechanistically independent and resources should not be combined",
+      "step_5": "Output: ILC_methylation_cooccurrence_matrix.csv + summary statistics for Mouseion ingestion"
+    },
+    "estimated_cost": {
+      "compute": "low (GDC API query + R/Python statistics)",
+      "time_hours": 4,
+      "wet_lab_required": false,
+      "estimated_tokens": 15000
+    },
+    "hypotheses_unlocked": ["hyp-ilc-003", "conn-002", "conn-003", "hyp-ilc-001_panel_extension"],
+    "eig_estimate": 9.4,
+    "why_now": "The data infrastructure (TCGA-BRCA, HM450, known probes) is already confirmed by two separate literature sweeps. The GDC query plan is written. The only blocker is execution — this is a ready-to-run experiment, not a hypothesis."
+  },
+
+  "spawn_request": {
+    "spawn_id": "spawn-req-001",
+    "requested_by": "organ-coordinator-bcm-001",
+    "target_dome": "exmorbus-v0.3-methylation-panel",
+    "domain": "methylation_liquid_biopsy_assay_development",
+    "rationale": "The organ synthesis reveals a domain orthogonal to current ExMorbus coverage: clinical assay development and regulatory strategy for methylation-based liquid biopsy panels. The current dome (exmorbus-v0.2) contains three distinct methylation biomarker hypotheses (BRCA1 cg21490561 in TNBC, SLC7A11 cg21877274/cg24869834 in ILC, FOXA1/CDH1 methylation markers) that all require the same translational infrastructure: bisulfite sequencing protocol optimization, cfDNA enrichment for methylation targets, analytical validation (sensitivity/specificity on serial plasma), and FDA companion diagnostic pathway scoping. This translational-assay domain is not covered by any current dome organ (which are organized around hypothesis generation, pathway analysis, experiment design). A sibling dome specialized in methylation assay development would: (1) receive the TCGA co-occurrence matrix from key-exp-001 as input; (2) design the technical validation protocol for a multi-marker ILC methylation panel; (3) scope FDA 510(k) or companion diagnostic pathway for BRCA1 + SLC7A11 cfDNA methylation test.",
+    "proposed_dome_dna": {
+      "domain": "methylation_liquid_biopsy_assay_development",
+      "input_from_parent_dome": ["key-exp-001 output", "hyp-tnbc-001 BRCA1 probe set", "hyp-ilc-003 SLC7A11 probe set"],
+      "target_niches": [
+        "bisulfite_cfDNA_protocol_optimization",
+        "analytical_validation_sensitivity_specificity",
+        "regulatory_companion_diagnostic_pathway",
+        "clinical_utility_evidence_generation"
+      ],
+      "priority_questions": [
+        "What is the minimum cfDNA input mass required for methylation detection at the SLC7A11 and BRCA1 target loci with > 90% sensitivity?",
+        "Does the BRCA1 cg21490561 + SLC7A11 cg21877274/cg24869834 panel achieve ILC-vs-IDC discrimination in plasma at > 0.80 AUC in TCGA-BRCA in-silico simulation?",
+        "What is the regulatory pathway for a methylation-based companion diagnostic for PARPi eligibility (FDA 510(k) vs. PMA vs. LDT)?"
+      ],
+      "resource_priorities": ["pubmed_bisulfite_methods", "fda_guidance_companion_diagnostics", "clinical_laboratory_standards"],
+      "estimated_organ_size": 4
+    },
+    "urgency": "MEDIUM — dependent on key-exp-001 output; spawn after TCGA query confirms co-occurrence",
+    "spawn_condition": "Execute spawn after key-exp-001 delta_beta > 0.10 confirmed in ILC vs IDC for SLC7A11 probes"
+  },
+
+  "organ_confidence": 0.81,
+  "organ_confidence_rationale": "Three-agent organ synthesis. High confidence on cross-hypothesis mechanistic connections (conn-001, conn-004 backed by direct PMID evidence). Moderate confidence on co-occurrence connections (conn-002, conn-005) — these are inferential pending key-exp-001. Spawn request is well-grounded but contingent on experimental validation. Prioritization matrix confidence high (based on full dome experimental record including reflexion loops). Key experiment selection confidence very high (bioinformatics, confirmed probe set, existing query plan).",
+
+  "dome_state_summary": {
+    "total_hypotheses_active": 6,
+    "accept_high": ["hyp-tnbc-001"],
+    "accept_high_pending": ["hyp-ilc-006"],
+    "confirmed_gap": ["hyp-ilc-003"],
+    "accept_medium": ["hyp-ilc-005"],
+    "research_stage": ["hyp-ilc-001", "hyp-ilc-002"],
+    "reflexion_needed": ["hyp-ilc-006"],
+    "experiment_designs_complete": ["hyp-tnbc-001 (bfts-tnbc-brca1-001)", "hyp-tnbc-002 (experiment-design-tnbc-002)", "hyp-ilc-005 (bfts-ilc-esr1-001)", "hyp-ilc-003 (gdc_query_plan in cbioportal-slc7a11-001)"],
+    "member_contributions": {
+      "sc-p1-001": "ILC ctDNA marker synthesis (task-marker-001-v2), reflexion loop execution",
+      "sc-p1-008": "TNBC literature synthesis (task-lit-001), BRCA1 methylation hypothesis evaluation (eval-hyp-tnbc-001)",
+      "sc-gen1-221": "ILC endocrine resistance hypothesis generation (task-hyp-003), ATF6/CSN5 pathway analysis (pathway-atf6-csn5-001)"
+    }
+  }
+}

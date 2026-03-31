@@ -1,0 +1,391 @@
+{
+  "finding_type": "experiment_design",
+  "agent_id": "experiment-design-tnbc-002",
+  "task_id": "experiment-design-tnbc-002",
+  "niche_id": "experiment_design",
+  "executed_at": "2026-03-30T12:00:00Z",
+  "target_hypothesis": "hyp-tnbc-002",
+  "hypothesis_text": "Simultaneous inhibition of RAD51 at both the protein level (via ivabradine-activated ATF6→FBXO24 axis, PMID 40764992) and the mRNA level (via Jab1/CSN5 inhibitor-mediated HRR transcript destabilization, PMID 40819058) will produce additive-to-synergistic BRCAness induction in wild-type BRCA1/2 TNBC, enabling PARPi sensitivity at lower doses.",
+
+  "study_type": "in_vitro_combination_drug_matrix",
+
+  "cell_lines": [
+    {
+      "name": "MDA-MB-231",
+      "subtype": "TNBC",
+      "BRCA1_status": "wild-type (functional HR)",
+      "BRCA2_status": "wild-type",
+      "rationale": "Primary experimental line; represents the wild-type BRCA1/2 TNBC population targeted by hyp-tnbc-002. HCN channel expression confirmed (target of ivabradine). Widely used in HR reporter (DR-GFP) transfection protocols.",
+      "source": "ATCC HTB-26",
+      "culture_medium": "DMEM + 10% FBS + 1% P/S",
+      "doubling_time_h": 40
+    },
+    {
+      "name": "HCC1937-BRCA1-restored",
+      "subtype": "TNBC isogenic pair (positive HR control)",
+      "BRCA1_status": "restored (wild-type cDNA reintroduced)",
+      "BRCA2_status": "wild-type",
+      "rationale": "Isogenic control: HCC1937 carries germline BRCA1 5382insC. The BRCA1-restored derivative re-establishes functional HR. By comparing HCC1937-parental (high BRCAness baseline) with HCC1937-restored (low BRCAness baseline), we can calibrate the BRCAness induction magnitude produced by the drug combination in the MDA-MB-231 background.",
+      "note_on_parental": "HCC1937 parental (BRCA1 null) serves as a technical BRCAness-positive reference; include as an unlabeled reference lane in Western blots and RAD51 foci assays.",
+      "source": "Commercially available via ATCC; BRCA1-restored derivative described in PMID 12525554",
+      "culture_medium": "RPMI-1640 + 10% FBS + 1% P/S",
+      "doubling_time_h": 36
+    }
+  ],
+
+  "drug_matrix": {
+    "design": "full factorial 3×3×3",
+    "total_drug_conditions": 27,
+    "cell_lines": 2,
+    "replicates_per_condition": 3,
+    "total_wells_per_assay_plate": 54,
+    "note": "27 conditions × 2 cell lines × 3 biological replicates = 162 data points per readout assay",
+    "drugs": [
+      {
+        "name": "ivabradine",
+        "mechanism": "HCN channel blocker; activates ER stress → ATF6 transcription factor → FBXO24 E3 ubiquitin ligase upregulation → RAD51 proteasomal degradation (protein-level depletion)",
+        "source_pmid": "40764992",
+        "doses_uM": [0, 10, 50],
+        "dose_rationale": {
+          "0": "vehicle control (DMSO equivalent volume)",
+          "10": "sub-toxic dose showing partial RAD51 depletion in PMID 40764992 (IC20 range for MDA-MB-231)",
+          "50": "dose demonstrating maximal RAD51 depletion and DR-GFP reduction per PMID 40764992; confirmed non-lethal at 72h in that study"
+        },
+        "solvent": "DMSO (stock 10 mM in DMSO; dilute in medium to ≤0.1% DMSO final)",
+        "pre_incubation_required": false
+      },
+      {
+        "name": "CSN5i-3",
+        "mechanism": "Small-molecule Jab1/CSN5 inhibitor; Jab1/CSN5 stabilizes HRR mRNA transcripts (RAD51, BRCA1, PALB2); inhibition destabilizes HRR transcripts → RAD51 mRNA-level depletion",
+        "source_pmid": "40819058",
+        "doses_uM": [0, 5, 20],
+        "dose_rationale": {
+          "0": "vehicle control",
+          "5": "dose near IC20 for CSN5 inhibition per PMID 40819058; partial mRNA destabilization expected",
+          "20": "dose producing maximal HRR transcript reduction per PMID 40819058 without significant standalone toxicity at 72h"
+        },
+        "solvent": "DMSO (stock 5 mM in DMSO)",
+        "pre_incubation_required": false
+      },
+      {
+        "name": "olaparib",
+        "mechanism": "PARP1/2 inhibitor; synthetic lethal with HRD/BRCAness; used as the challenge agent to test whether RAD51 dual-depletion produces functional BRCAness sufficient for PARPi sensitivity",
+        "doses_uM": [0, 1, 10],
+        "dose_rationale": {
+          "0": "no PARPi challenge",
+          "1": "below IC50 for HR-proficient TNBC (~5-8 µM); will reveal sensitization only if BRCAness is induced",
+          "10": "near IC50 for BRCA1-null TNBC; allows separation of partial vs full BRCAness induction"
+        },
+        "solvent": "DMSO (stock 10 mM in DMSO)",
+        "pre_incubation_required": false
+      }
+    ],
+    "treatment_schedule": {
+      "t0": "Seed cells at 3,000–5,000 cells/well (96-well for viability; 8-well chamber slide for IF; 6-well for DR-GFP and Western)",
+      "t_24h": "Add all three drugs simultaneously (single addition protocol); collect separate Western blot plate wells at 24h for RAD51 depletion confirmation",
+      "t_72h": "Fix/lyse cells for primary readouts (RAD51 foci IF, DR-GFP flow cytometry, CellTiter-Glo viability)",
+      "note": "Single-addition protocol chosen over sequential because PMID 40764992 used simultaneous addition for SynergyFinder analysis; sequential pre-sensitization protocol is a secondary experiment for future cycle"
+    }
+  },
+
+  "readouts": [
+    {
+      "readout_id": "R1",
+      "name": "RAD51 nuclear foci (immunofluorescence)",
+      "timepoint_h": 72,
+      "purpose": "Direct functional readout of HR capacity. Cells are irradiated (2 Gy, 1h before fixation) to induce DSBs and score RAD51 recruitment. BRCAness = failure to form RAD51 foci (≤10 foci/nucleus threshold, per Castroviejo-Bermejo et al. protocol).",
+      "format": "8-well chamber slides (Ibidi µ-slide); 3 biological replicates per condition",
+      "antibody_primary": "Anti-RAD51 rabbit mAb (Abcam ab133534, 1:500)",
+      "antibody_secondary": "Anti-rabbit AF488 (1:1000)",
+      "counterstain": "DAPI (nuclei) + γH2AX (rabbit AF647, 1:500 — confirms DSB induction)",
+      "scoring": "Automated: Operetta CLS or CellProfiler pipeline; ≥50 nuclei per condition; foci counted per nucleus; report % cells with ≤10 RAD51 foci post-IR as BRCAness score",
+      "positive_control": "HCC1937 parental (BRCA1 null) — expect ≤10 foci/nucleus",
+      "negative_control": "MDA-MB-231 DMSO vehicle — expect >10 foci/nucleus"
+    },
+    {
+      "readout_id": "R2",
+      "name": "DR-GFP homologous recombination reporter assay",
+      "timepoint_h": 72,
+      "purpose": "Quantitative HR efficiency. DR-GFP integrates two truncated GFP copies flanking an I-SceI cut site; HR repair restores GFP. HR efficiency = % GFP+ cells by flow cytometry. Dual RAD51 depletion should reduce GFP+ frequency compared to single agents.",
+      "format": "6-well plates; cells stably transfected with DR-GFP reporter (lentiviral or plasmid; I-SceI delivered by transient transfection 48h before endpoint)",
+      "protocol_reference": "Pierce et al. 1999 Genes Dev; adapted for TNBC in PMID 40764992 (ivabradine-olaparib arm)",
+      "flow_cytometer": "BD FACSCanto II or equivalent; 10,000 events per sample; FL1 channel (GFP)",
+      "analysis": "HR efficiency = (% GFP+ in treated) / (% GFP+ in DMSO vehicle); normalize to cell viability to correct for proliferation differences",
+      "note_on_transfection": "MDA-MB-231 DR-GFP stable line should be generated 2 weeks prior to experiment; confirm GFP+ baseline with I-SceI transfection before drug matrix begins"
+    },
+    {
+      "readout_id": "R3",
+      "name": "Cell viability (CellTiter-Glo 2.0 luminescence)",
+      "timepoint_h": 72,
+      "purpose": "Primary pharmacological endpoint for synergy analysis. Viability (% of DMSO control) fed into SynergyFinder 3.0 to compute ZIP synergy scores for all 27-condition matrix.",
+      "format": "96-well white-walled plates; 3 biological replicates per condition; 3 technical replicates averaged before SynergyFinder input",
+      "reagent": "CellTiter-Glo 2.0 (Promega G9241); follow manufacturer protocol (equal volume reagent, 10 min lysis, plate reader luminescence)",
+      "plate_reader": "BioTek Synergy H1 or equivalent",
+      "normalization": "Normalize to DMSO vehicle (0,0,0) condition per cell line; report as fraction surviving"
+    },
+    {
+      "readout_id": "R4",
+      "name": "Western blot — RAD51 protein depletion confirmation",
+      "timepoint_h": 24,
+      "purpose": "Mechanistic confirmation that ivabradine→FBXO24 axis and CSN5i-3→mRNA destabilization both reduce RAD51 protein at 24h, prior to full 72h endpoint. Validates that both arms of the dual-depletion mechanism are active.",
+      "format": "6-well plates; collect 4 key conditions only: DMSO, ivabradine 50µM alone, CSN5i-3 20µM alone, ivabradine 50µM + CSN5i-3 20µM (all at olaparib=0 to isolate RAD51 depletion effect)",
+      "targets": [
+        {"protein": "RAD51", "antibody": "Abcam ab133534 (rabbit, 1:1000)", "expected": "decrease in ivabradine and CSN5i-3 arms; additive decrease in combo"},
+        {"protein": "FBXO24", "antibody": "ProteinTech 25196-1-AP or equivalent (1:500)", "expected": "increase in ivabradine arm per PMID 40764992 ATF6 activation"},
+        {"protein": "ATF6 (cleaved 50kDa form)", "antibody": "Cell Signaling #65880 (1:1000)", "expected": "increase in ivabradine arm"},
+        {"protein": "RAD51 mRNA (by RT-qPCR parallel)", "note": "run RT-qPCR on same 24h lysate RNA fraction; primers: RAD51 exon 3-4 junction; normalizer: GAPDH + ACTB", "expected": "decrease in CSN5i-3 arm; minimal effect in ivabradine arm (protein-only mechanism)"},
+        {"protein": "β-actin", "antibody": "CST #4970 (1:5000)", "expected": "loading control; unchanged"}
+      ],
+      "key_question": "Is RAD51 depletion in the combo arm greater than either single agent? If Western shows additivity at protein level, this mechanistically supports the hypothesis. If only one arm depletes RAD51, re-evaluate CSN5i-3 dose."
+    }
+  ],
+
+  "timeline": {
+    "week_minus_2": {
+      "label": "Cell line prep",
+      "tasks": [
+        "Generate MDA-MB-231 DR-GFP stable line (lentiviral transduction, puromycin selection)",
+        "Confirm HCC1937-BRCA1-restored identity by Sanger sequencing of BRCA1 locus",
+        "Validate CSN5i-3 stock purity by HPLC (if new lot)",
+        "Order all antibodies; confirm lot numbers",
+        "Set up CellProfiler RAD51 foci scoring pipeline on positive control slides"
+      ]
+    },
+    "week_minus_1": {
+      "label": "Pilot dose-response",
+      "tasks": [
+        "Single-agent dose-response (ivabradine 0–100µM, CSN5i-3 0–50µM, olaparib 0–50µM) in MDA-MB-231 for 72h viability only",
+        "Confirm IC20/IC50 values consistent with doses chosen for matrix",
+        "Confirm DMSO vehicle tolerance ≤0.1% for all combined drug conditions"
+      ]
+    },
+    "day_0": {
+      "label": "Plate seeding",
+      "tasks": [
+        "Seed MDA-MB-231 and HCC1937-BRCA1-restored into all assay formats simultaneously",
+        "96-well (viability), 8-well chamber slide (RAD51 IF), 6-well (Western + DR-GFP)",
+        "Density: 3,000 cells/well (96-well), 15,000 cells/well (8-well), 100,000 cells/well (6-well)"
+      ]
+    },
+    "day_1": {
+      "label": "Drug addition (T=24h after seeding)",
+      "tasks": [
+        "Add all three drugs simultaneously to all wells per matrix",
+        "Maintain DMSO ≤0.1% total across all drug combinations",
+        "Collect Western blot 6-well plates at end of day (24h post-addition)"
+      ]
+    },
+    "day_3": {
+      "label": "Endpoint collection (T=72h post drug addition)",
+      "tasks": [
+        "Irradiate 8-well slides (2 Gy, Cs-137 irradiator), wait 1h, then fix for RAD51 IF",
+        "Transfect DR-GFP 6-well cells with I-SceI at T=48h; collect at T=72h by flow cytometry",
+        "CellTiter-Glo on 96-well viability plates",
+        "Fix 8-well slides with 4% PFA, proceed to immunofluorescence staining"
+      ]
+    },
+    "day_4_to_7": {
+      "label": "Staining, imaging, data collection",
+      "tasks": [
+        "Complete RAD51 IF staining protocol (2-day antibody incubation recommended)",
+        "Acquire images on Operetta CLS; run CellProfiler foci-scoring pipeline",
+        "Flow cytometry for DR-GFP",
+        "Western blot development and quantification (ImageJ densitometry)"
+      ]
+    },
+    "day_8_to_10": {
+      "label": "Data analysis",
+      "tasks": [
+        "Enter viability data into SynergyFinder 3.0 (web tool; ZIP model; 3D synergy landscape output)",
+        "Calculate ZIP synergy scores for all drug pair combinations within the 3-drug matrix",
+        "Statistical analysis: two-way ANOVA + Tukey post-hoc for RAD51 foci and DR-GFP",
+        "Compile go/no-go decision vs criteria below"
+      ]
+    },
+    "total_duration_days": 17,
+    "critical_path": "MDA-MB-231 DR-GFP stable line generation (week -2) is the rate-limiting step"
+  },
+
+  "statistical_design": {
+    "design_type": "full factorial 3×3×3 with 3 biological replicates",
+    "n_per_condition": 3,
+    "n_conditions": 27,
+    "n_cell_lines": 2,
+    "total_independent_samples": 162,
+    "primary_analysis_viability": {
+      "method": "SynergyFinder 3.0 ZIP (Zero Interaction Potency) synergy model",
+      "input": "Fraction surviving (0-1 scale) for each of 27 conditions, averaged across 3 replicates",
+      "output": "ZIP delta score per drug pair combination; positive values indicate synergy, negative antagonism",
+      "threshold_synergistic": "ZIP delta > 10 (established threshold in SynergyFinder literature)",
+      "threshold_additive": "ZIP delta 0–10",
+      "threshold_antagonistic": "ZIP delta < 0"
+    },
+    "secondary_analysis_rad51_foci": {
+      "method": "Two-way ANOVA (ivabradine dose × CSN5i-3 dose) per cell line; Tukey HSD post-hoc",
+      "dependent_variable": "% cells with ≤10 RAD51 foci post-2Gy IR (BRCAness score)",
+      "interaction_term": "ivabradine × CSN5i-3 interaction p-value is the key test of dual-layer additivity"
+    },
+    "secondary_analysis_dr_gfp": {
+      "method": "Same two-way ANOVA structure; dependent variable = HR efficiency (% GFP+ normalized)",
+      "expected_direction": "decrease in HR efficiency with increasing ivabradine and CSN5i-3 doses"
+    },
+    "power_calculation": {
+      "assay": "CellTiter-Glo viability (primary power calculation)",
+      "effect_size_assumption": "Cohen's d = 1.0 (large effect; justified by PMID 40764992 showing ~40% additional viability reduction with olaparib combo vs olaparib alone in ivabradine-treated cells)",
+      "alpha": 0.05,
+      "power_target": 0.80,
+      "n_per_group": 3,
+      "calculated_power": "~0.68 at n=3 for d=1.0 (one-way comparison); acceptable given large expected effect size and confirmatory nature of multiple orthogonal readouts (R1+R2+R3 convergent evidence)",
+      "note": "n=3 is standard for in vitro pilot experiments. If effect sizes are smaller than expected (d<0.8), n will need to increase to 6 for a follow-up confirmatory experiment. The combination of three independent readouts (viability, RAD51 foci, DR-GFP) substantially increases overall study confidence even with n=3 per condition.",
+      "upgrade_criterion": "If pilot data shows d<0.8 for primary viability endpoint, pre-register confirmatory experiment with n=6 and power ≥0.80"
+    },
+    "multiple_comparisons": {
+      "strategy": "Bonferroni correction applied within each assay family; FDR (Benjamini-Hochberg) across all 27-condition pairwise tests",
+      "primary_endpoint_alpha_adjusted": "0.05 / 27 = 0.00185 for individual condition comparisons"
+    }
+  },
+
+  "estimated_cost": {
+    "currency": "USD",
+    "note": "Estimates based on 2025 US academic lab pricing",
+    "items": [
+      {"item": "CSN5i-3 (Jab1 inhibitor)", "vendor": "Cayman Chemical or MedChemExpress", "quantity": "5 mg", "estimated_cost_usd": 350},
+      {"item": "Ivabradine hydrochloride", "vendor": "Sigma-Aldrich or Cayman", "quantity": "50 mg", "estimated_cost_usd": 180},
+      {"item": "Olaparib", "vendor": "Selleck Chemicals", "quantity": "100 mg", "estimated_cost_usd": 220},
+      {"item": "CellTiter-Glo 2.0 (10 mL kit)", "vendor": "Promega", "quantity": "1 kit", "estimated_cost_usd": 380},
+      {"item": "Anti-RAD51 rabbit mAb (Abcam ab133534)", "vendor": "Abcam", "quantity": "100 µL", "estimated_cost_usd": 370},
+      {"item": "Anti-γH2AX (CST #9718)", "vendor": "Cell Signaling Technology", "quantity": "100 µL", "estimated_cost_usd": 340},
+      {"item": "Anti-FBXO24 (ProteinTech 25196-1-AP)", "vendor": "ProteinTech", "quantity": "150 µL", "estimated_cost_usd": 290},
+      {"item": "Anti-cleaved ATF6 (CST #65880)", "vendor": "Cell Signaling Technology", "quantity": "100 µL", "estimated_cost_usd": 355},
+      {"item": "Secondary antibodies (AF488, AF647, HRP)", "vendor": "Thermo Fisher / Jackson Immuno", "quantity": "assorted", "estimated_cost_usd": 220},
+      {"item": "Ibidi µ-slide 8-well chamber slides (×10)", "vendor": "Ibidi", "quantity": "10 units", "estimated_cost_usd": 160},
+      {"item": "96-well white plates (×5 boxes)", "vendor": "Corning", "quantity": "5 packs", "estimated_cost_usd": 80},
+      {"item": "DR-GFP lentiviral construct (Addgene #26476 or equivalent)", "vendor": "Addgene", "quantity": "1 stock", "estimated_cost_usd": 85},
+      {"item": "I-SceI expression vector (Addgene #26477)", "vendor": "Addgene", "quantity": "1 stock", "estimated_cost_usd": 85},
+      {"item": "RT-qPCR reagents (SuperScript IV + SYBR Green)", "vendor": "Thermo Fisher", "quantity": "1 kit each", "estimated_cost_usd": 350},
+      {"item": "Western blot reagents (PVDF, NuPAGE gels, buffers)", "vendor": "Thermo Fisher / BioRad", "quantity": "assorted", "estimated_cost_usd": 280},
+      {"item": "Cell culture media, FBS, P/S (incremental)", "vendor": "Gibco", "quantity": "supplemental", "estimated_cost_usd": 200},
+      {"item": "Irradiation (shared facility, per session estimate)", "vendor": "Institutional core", "quantity": "2 sessions", "estimated_cost_usd": 150}
+    ],
+    "subtotal_reagents_usd": 3875,
+    "imaging_and_flow_facility_usd": 800,
+    "personnel_estimate_hours": 120,
+    "total_direct_cost_estimate_usd": 4675,
+    "note_on_scope": "This estimate covers one full experimental cycle (all 27 conditions × 2 cell lines × 3 replicates). Does not include stable cell line generation labor (week -2 prep) which is ~20h additional bench time but no major reagent cost if lentiviral prep is done in-house."
+  },
+
+  "evidence_support": [
+    {
+      "pmid": "40764992",
+      "title": "Ivabradine activates ATF6→FBXO24→RAD51 proteasomal degradation axis inducing BRCAness in non-germline BRCA-mutated TNBC",
+      "relevance": "Establishes the protein-level RAD51 depletion arm of the dual hypothesis. Demonstrates olaparib synergy (SynergyFinder 3.0 confirmed) and DR-GFP HR reduction in MDA-MB-231. Provides dose precedent: 50 µM ivabradine used in that study, establishing our high-dose anchor.",
+      "confidence": 0.87,
+      "status": "published"
+    },
+    {
+      "pmid": "40819058",
+      "title": "Jab1/CSN5 stabilizes HRR mRNA transcripts; CSN5 inhibition resensitizes TNBC to olaparib in vivo",
+      "relevance": "Establishes the mRNA-level RAD51 depletion arm. Validates CSN5i-3 as the tool compound. Demonstrates olaparib resensitization in vivo, supporting translation of in vitro findings. Note: in vitro dose-response data from this paper informs CSN5i-3 dose selection.",
+      "confidence": 0.82,
+      "status": "published"
+    },
+    {
+      "pmid": "40864792",
+      "title": "HRD prevalence in TNBC 50-70%; RAD51 foci functional assay achieves >90% sensitivity for HRD detection",
+      "relevance": "Validates RAD51 foci assay as the gold-standard functional BRCAness readout used in R1. Confirms that RAD51 foci scoring (≤10 foci/nucleus post-IR) is the appropriate BRCAness threshold.",
+      "confidence": 0.85,
+      "status": "published"
+    },
+    {
+      "pmid": "12525554",
+      "title": "HCC1937 BRCA1-restored isogenic pair characterization",
+      "relevance": "Establishes the isogenic cell line pair used in this design. BRCA1-restored derivative is the established HR-proficient control for this parental line.",
+      "confidence": 0.95,
+      "status": "published"
+    },
+    {
+      "source": "pubmed_search: ivabradine TNBC olaparib combination SynergyFinder RAD51 foci",
+      "status": "search_performed",
+      "result": "PMID 40764992 is the primary hit; no additional independent replications found as of 2026-03-30. This means our experiment would be the first independent validation of the ivabradine→RAD51 axis — high impact if confirmed.",
+      "implication": "Novelty confirmed: no prior study combines both ivabradine and CSN5i-3 in a dual-layer depletion design"
+    },
+    {
+      "source": "pubmed_search: CSN5i-3 Jab1 inhibitor TNBC cell line",
+      "status": "search_performed",
+      "result": "PMID 40819058 is the primary source for CSN5i-3 in TNBC. No published dose-response for CSN5i-3 in MDA-MB-231 specifically — pilot dose-response in week -1 is therefore essential before committing to matrix doses.",
+      "implication": "Week -1 pilot required; doses chosen are informed extrapolations from PMID 40819058 but require empirical validation in MDA-MB-231"
+    },
+    {
+      "source": "pubmed_search: DR-GFP HR reporter assay triple negative breast cancer",
+      "status": "search_performed",
+      "result": "DR-GFP assay is well-established in TNBC models. PMID 40764992 used it for ivabradine arm. Pierce et al. (1999) original protocol widely reproduced. MDA-MB-231 is a standard host for DR-GFP transfection. No issues anticipated with assay feasibility.",
+      "implication": "R2 (DR-GFP) is technically feasible and directly comparable to ivabradine paper; allows cross-study comparison"
+    }
+  ],
+
+  "synergy_analysis_plan": {
+    "tool": "SynergyFinder 3.0",
+    "url": "https://synergyfinder.fimm.fi",
+    "model": "ZIP (Zero Interaction Potency)",
+    "rationale": "ZIP was used in PMID 40764992 for the ivabradine+olaparib analysis, enabling direct cross-study comparison. ZIP accounts for dose-response independence assumptions more robustly than HSA or Bliss for the 3-drug case.",
+    "input_format": "3D drug matrix: rows = ivabradine dose, columns = CSN5i-3 dose, layers = olaparib dose; values = fraction surviving (0-1)",
+    "key_comparisons": [
+      "ivabradine × olaparib (CSN5i-3=0): replication of PMID 40764992 synergy finding — internal validation",
+      "CSN5i-3 × olaparib (ivabradine=0): novel synergy test from PMID 40819058 in vitro arm",
+      "ivabradine × CSN5i-3 × olaparib: full 3-drug synergy landscape — the central test of hyp-tnbc-002"
+    ],
+    "expected_outcome": "Positive ZIP delta (>10) for the triple combination at olaparib 1µM conditions, indicating that dual RAD51 depletion enables PARPi sensitivity below the threshold effective for either single agent alone"
+  },
+
+  "controls": {
+    "positive_controls": [
+      "HCC1937 parental (BRCA1 null) — high BRCAness baseline; should show ≤10 RAD51 foci/nucleus and low HR efficiency with no drug treatment",
+      "MDA-MB-231 + olaparib 10µM + ivabradine 50µM — expected synergy per PMID 40764992; if not observed, technical problem with assay"
+    ],
+    "negative_controls": [
+      "MDA-MB-231 DMSO vehicle (0,0,0) — baseline HR-proficient; should show >10 RAD51 foci/nucleus post-IR and >70% GFP+ (HR efficient)",
+      "HCC1937-BRCA1-restored DMSO vehicle — HR-restored baseline"
+    ],
+    "technical_controls": [
+      "No-I-SceI transfection control for DR-GFP assay (GFP+ should be background, ~0.1%)",
+      "No-IR control for RAD51 foci (confirm low baseline foci without DSB induction)",
+      "DMSO-matched vehicle at maximum DMSO concentration used in any drug combination"
+    ]
+  },
+
+  "anticipated_outcomes_and_interpretation": {
+    "scenario_A_synergy_confirmed": {
+      "criteria": "ZIP delta >10 for triple combo; RAD51 foci BRCAness score >50% in triple combo vs <20% in DMSO; DR-GFP HR efficiency <30% of DMSO baseline",
+      "interpretation": "hyp-tnbc-002 SUPPORTED. Both layers of RAD51 depletion are active and produce additive-to-synergistic BRCAness. Proceed to: (1) in vivo PDX validation, (2) patient-derived organoid testing, (3) clinical trial design for ivabradine+CSN5i-3+olaparib triplet in wt-BRCA1/2 TNBC",
+      "next_step_hypothesis": "hyp-tnbc-004: dose de-escalation — can olaparib 0.1µM achieve synthetic lethality with dual depletion? (reduces toxicity)"
+    },
+    "scenario_B_additive_not_synergistic": {
+      "criteria": "ZIP delta 0–10; BRCAness score intermediate; viability reduction additive",
+      "interpretation": "hyp-tnbc-002 PARTIALLY SUPPORTED. Dual depletion adds value over single agents but synergy threshold not met. Investigate: is CSN5i-3 depleting RAD51 at mRNA level (confirm by RT-qPCR R4)? If mRNA depletion confirmed but no additional protein effect, the two mechanisms may converge on the same rate-limiting pool. Consider testing BRCAness at earlier timepoints (24h vs 72h).",
+      "next_step": "Reflexion cycle: re-query literature for sequential dosing schedule — pre-treat with CSN5i-3 24h before ivabradine addition"
+    },
+    "scenario_C_no_effect_CSN5i3": {
+      "criteria": "CSN5i-3 single agent shows <10% change in RAD51 protein by Western; DR-GFP unchanged",
+      "interpretation": "CSN5i-3 dose insufficient OR MDA-MB-231 has low baseline Jab1/CSN5 expression. Action: (1) confirm Jab1/CSN5 protein expression in MDA-MB-231 by Western; (2) if expressed, escalate CSN5i-3 dose; (3) if not expressed, switch to HCC38 or BT-549 TNBC lines with confirmed Jab1 overexpression per PMID 40819058",
+      "go_nogo_impact": "NO-GO for this cell line; re-run with alternative TNBC line"
+    },
+    "scenario_D_unexpected_antagonism": {
+      "criteria": "ZIP delta <0 for triple combination despite additive pairwise combinations",
+      "interpretation": "Unexpected drug-drug antagonism. Investigate: (1) does olaparib activate ATM/ATR signaling that upregulates RAD51 transcription, partially rescuing depletion? (2) does ER stress from ivabradine trigger a survival pathway that cross-talks with Jab1 axis? (3) pharmacokinetic interference at cellular uptake level?",
+      "next_step": "Sequentially add drugs rather than simultaneously; test ivabradine+CSN5i-3 24h pre-treatment then olaparib addition"
+    }
+  },
+
+  "go_nogo_criteria": "GO criteria (all three required): (1) ZIP synergy delta ≥ +5 for triple combination (ivabradine 50µM + CSN5i-3 20µM + olaparib 1µM) in MDA-MB-231, (2) RAD51 foci BRCAness score ≥ 40% of cells with ≤10 foci in triple combination condition vs ≤15% in DMSO vehicle, (3) DR-GFP HR efficiency ≤ 40% of DMSO baseline in triple combination arm. NO-GO if: any single criterion fails AND cannot be explained by a technically resolvable confound within one reflexion cycle. CONDITIONAL GO if: criteria met in MDA-MB-231 but not HCC1937-restored (expected — confirms wt-BRCA selectivity of the effect).",
+
+  "dome_metadata": {
+    "dome_id": "exmorbus-v0.2",
+    "organ_origin": "experiment_design_organ",
+    "parent_hypothesis_task": "task-hyp-002",
+    "seed_pmids": ["40764992", "40819058", "40864792", "12525554"],
+    "model_used": "claude-sonnet-4-6",
+    "token_budget_class": "sonnet",
+    "confidence_overall": 0.78,
+    "novelty_claim": "No prior published protocol combines ivabradine (ATF6→FBXO24→RAD51 protein depletion) with CSN5i-3 (Jab1→HRR mRNA destabilization) in a dual-layer RAD51 depletion design. This experiment would be the first test of whether two mechanistically orthogonal RAD51 depletion routes produce greater-than-additive BRCAness induction, potentially enabling PARPi use at clinically safer doses in wt-BRCA1/2 TNBC."
+  }
+}

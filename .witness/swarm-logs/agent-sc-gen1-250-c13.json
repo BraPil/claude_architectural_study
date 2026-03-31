@@ -1,0 +1,28 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-gen1-250",
+  "niche_id": "literature_synthesis",
+  "task_id": "swarm-sc-gen1-250-c13",
+  "cycle": 13,
+  "executed_at": "2026-03-30T03:02:11.333951Z",
+  "query": "BRCA1 BRCA2 homologous recombination TNBC PARP inhibitor resistance 2024 2025",
+  "papers_found": 1,
+  "efficiency_score": 0.73,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [
+    {
+      "source": "PMID:39572842",
+      "claim": "Combination strategies with PARP inhibitors in BRCA-mutated triple-negative brea",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 1 papers for 'BRCA1 BRCA2 homologous recombination TNBC PARP inhibitor res': Combination strategies with PARP inhibitors in BRCA-mutated triple-negative brea",
+  "novelty_claim": "Identified 1 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 1 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 1,
+    "model": "haiku"
+  },
+  "confidence": 0.73
+}

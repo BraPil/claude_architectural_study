@@ -1,0 +1,317 @@
+{
+  "bfts_id": "bfts-ilc-esr1-001",
+  "hypothesis_id": "hyp-ilc-005",
+  "agent_id": "experiment-design-ilc-005",
+  "dome_id": "exmorbus-v0.2",
+  "created_at": "2026-03-30T00:00:00Z",
+  "hypothesis_summary": "CDH1 loss in ILC derepresses YAP via Hippo suppression; nuclear YAP drives TEAD-mediated chromatin opening at the ESR1 locus, elevating ESR1 LBD mutation rate (Y537S, D538G) under aromatase inhibitor selection. ESR1 ctDNA monitoring is higher-yield in ILC than IDC.",
+  "eig_formula": "novelty * clinical_impact / compute_cost",
+  "tree": {
+    "n0-root": {
+      "node_id": "n0-root",
+      "label": "Retrospective ILC vs IDC ESR1 ctDNA cohort (AURORA / SoFEA biobank)",
+      "type": "clinical_cohort",
+      "status": "EXECUTED",
+      "priority_rank": 1,
+      "EIG_prior": 7.2,
+      "question": "Is the rate of ESR1 ctDNA mutation acquisition under AI therapy higher in ILC vs IDC in prospective biobank cohorts?",
+      "execution": {
+        "method": "WebSearch + domain knowledge synthesis",
+        "sources_queried": [
+          "WebSearch: AURORA trial SoFEA ESR1 ctDNA lobular breast cancer",
+          "PubMed PMC10649433 (ESR1 liquid biopsy review 2023)",
+          "ASCO 2025 abstract: serial ctDNA in early-stage HR+/HER2- ILC (JCO 2025 43:16_suppl:581)",
+          "PMC9637866: ctDNA characterisation of ILC in metastatic breast cancer"
+        ],
+        "findings": [
+          "SoFEA trial (n=variation across analyses): ESR1 mutations detected in 25-39% of ER+ MBC plasma samples at progression; SoFEA was not stratified by histology (ILC vs IDC) in published analyses — represents a direct data gap.",
+          "AURORA (BRCAAWAY program, BIG): pan-genomic metastatic BC biobank; ILC-specific ESR1 ctDNA rate not published as a primary endpoint — gap confirmed.",
+          "ASCO 2025 JCO abstract (JCO 2025.43.16_suppl.581): first dedicated serial ctDNA monitoring study in early-stage HR+/HER2- ILC; reports actionable ESR1 mutations among targetable alterations; CDH1 co-mutation with ESR1 confirmed in ~7000 metastatic BC patients.",
+          "ESMO Open 2024: IDC had numerically higher ESR1m proportion vs ILC (21.2% vs 13.8%, P=0.052) in metastatic cohort — COUNTER-evidence to hyp-ilc-005 rate claim; however this is point-prevalence at progression, not acquisition rate under AI.",
+          "Key interpretive distinction: point-prevalence ESR1m at metastasis ≠ acquisition rate under AI. ILC patients may acquire mutations earlier/faster under AI but present for biopsy less often (discohesive tumour, lower ctDNA shedding baseline — known ILC ctDNA detection challenge)."
+        ],
+        "verdict": "PARTIAL_SUPPORT",
+        "confidence": 0.52,
+        "gap_confirmed": true,
+        "gap_description": "No published trial directly measures ESR1 mutation acquisition RATE (time-to-ESR1m emergence) under AI stratified by ILC vs IDC histology. AURORA and SoFEA biobanks exist but this sub-analysis is unpublished.",
+        "notes": "The ESMO Open 2024 counter-finding (IDC > ILC point-prevalence) may reflect lower ctDNA shedding in ILC rather than lower mutation rate. Acquisition rate analysis requires serial sampling, which the 2025 ASCO ILC ctDNA study appears to provide — full data needed.",
+        "action_required": "Request full data from ASCO 2025 JCO abstract; query AURORA consortium for ILC-stratified ESR1m emergence timing."
+      }
+    },
+    "n1-tcga": {
+      "node_id": "n1-tcga",
+      "label": "TCGA-BRCA ESR1 mutation frequency by histology in AI-treated patients",
+      "type": "genomic_database_query",
+      "status": "EXECUTED",
+      "priority_rank": 2,
+      "EIG_prior": 6.8,
+      "question": "Does TCGA-BRCA show enrichment of ESR1 LBD mutations (Y537S, D538G) in ILC vs IDC among patients with prior AI exposure?",
+      "execution": {
+        "method": "WebSearch + ESMO Open 2024 synthesis",
+        "sources_queried": [
+          "WebSearch: ESR1 mutation frequency ILC vs IDC TCGA aromatase inhibitor",
+          "ESMO Open 2024: Genomic/clinical landscape of metastatic HR+ BC with ESR1 alterations",
+          "npj Breast Cancer 2019: ESR1 mutations in metastatic lobular BC",
+          "PMC6788940: ESR1 Mutations in Breast Cancer review"
+        ],
+        "findings": [
+          "TCGA primary (non-metastatic) tumours: ESR1 hotspot mutations (Y537S, D538G) are extremely rare (<1%) in primary breast cancer regardless of histology — TCGA is not the right dataset for AI-selected ESR1 mutations (TCGA is primarily treatment-naive).",
+          "ESMO Open 2024 (metastatic cohort, n=not specified): IDC 21.2% ESR1m vs ILC 13.8% ESR1m at progression (P=0.052); numerically favours IDC, not ILC.",
+          "npj Breast Cancer 2019: ESR1 mutations in metastatic ILC patients — prevalence comparable to IDC; distribution of specific LBD mutations not significantly different.",
+          "Key limitation of existing data: most ESR1m studies do not report time-to-acquisition or AI treatment duration as a covariate. The hypothesis is about ACQUISITION RATE under selective pressure, not steady-state prevalence at progression.",
+          "TCGA-BRCA recommendation: use cBioPortal metastatic BC dataset (MSK-MET) or GENIE BPC rather than TCGA primary for AI-treated cohort analysis."
+        ],
+        "verdict": "COUNTER_EVIDENCE_BUT_INCOMPLETE",
+        "confidence": 0.41,
+        "gap_confirmed": true,
+        "gap_description": "No dataset directly measures ESR1m acquisition rate as a function of AI exposure duration stratified by ILC/IDC. TCGA primary tumours are the wrong dataset. MSK-MET or GENIE BPC with treatment history metadata would be required.",
+        "notes": "The hyp-ilc-005 mechanistic claim (YAP-driven chromatin opening → higher ESR1 mutation rate) should manifest as faster emergence under AI, not necessarily higher point-prevalence at an arbitrary disease stage. The existing counter-evidence does not test the right endpoint.",
+        "action_required": "Query cBioPortal MSK-MET ILC cohort for ESR1m in patients with documented prior AI therapy and time-to-ESR1m metadata. Filter for CDH1-mutant/null samples."
+      }
+    },
+    "n2-hippo": {
+      "node_id": "n2-hippo",
+      "label": "Published LATS1/2 activity in CDH1-null vs CDH1-WT breast cancer cells",
+      "type": "pathway_literature",
+      "status": "EXECUTED",
+      "priority_rank": 3,
+      "EIG_prior": 6.5,
+      "question": "Is LATS1/2 kinase activity suppressed and YAP nuclear in CDH1-null (ILC) vs CDH1-WT (IDC) breast cancer cells?",
+      "execution": {
+        "method": "WebSearch + mechanistic domain knowledge",
+        "sources_queried": [
+          "WebSearch: YAP CDH1 loss Hippo pathway breast cancer lobular LATS1 LATS2 2024",
+          "PMC12318565: CDH1 gene in pathogenesis and progression of lobular breast cancer (2025)",
+          "npj Precision Oncology 2024: Genomic/epigenomic basis of ILC lacking CDH1 genetic alterations",
+          "Nature CDD 2017 / PMC5563998: LATS1/LATS2 beyond the Hippo pathway",
+          "PMC10491881: Hippo-YAP/TAZ signaling in breast cancer"
+        ],
+        "findings": [
+          "E-cadherin (CDH1) activates the Hippo pathway via cell-cell contact: E-cadherin → alpha-catenin → NF2/Merlin → MST1/2 → LATS1/2 → YAP/TAZ phosphorylation → cytoplasmic sequestration. This canonical mechanism is well established.",
+          "CDH1 loss in ILC disrupts this cascade: loss of E-cadherin → reduced alpha-catenin scaffolding → reduced NF2/MST1/2 activation → reduced LATS1/2 activity → YAP/TAZ nuclear accumulation. Mechanistically sound.",
+          "PMC12318565 (2025): CDH1 biallelic inactivation confirmed as hallmark of ILC; functional consequences on cell polarity, Rho GTPase signaling, and downstream effectors reviewed; YAP nuclear localisation in ILC context supported.",
+          "npj Precision Oncology 2024: Subset of ILCs lacking CDH1 genetic alterations (promoter methylation, other mechanisms) — suggests CDH1 functional loss, not just genetic loss, drives ILC phenotype.",
+          "Direct LATS1/2 activity assay (phospho-LATS1/2 T1079/S909) in isogenic CDH1-KO vs WT breast cancer cell lines: NOT found as a published stand-alone study. Inferred from composite Hippo pathway data.",
+          "YAP nuclear localisation in ILC cell lines (MDA-MB-134, SUM44PE, UACC-893): supported by Hippo pathway logic but direct quantitative phospho-YAP comparison vs IDC cell lines (MCF-7, T-47D) in a single study not identified."
+        ],
+        "verdict": "MECHANISTICALLY_SUPPORTED_DIRECT_DATA_GAP",
+        "confidence": 0.70,
+        "gap_confirmed": true,
+        "gap_description": "The CDH1 → Hippo → YAP axis is mechanistically solid. A direct head-to-head LATS1/2 kinase activity comparison in isogenic CDH1-KO vs WT breast cancer cells (or ILC vs IDC cell line panel) is not published. This is an executable wet-lab gap.",
+        "notes": "This is the highest-novelty wet-lab node. An isogenic CDH1-CRISPR-KO experiment in MCF-7 cells measuring pLATS1 (T1079), pYAP (S127), and nuclear YAP by IF would directly test the mechanistic arm of hyp-ilc-005. Cost: ~$8K-12K wet lab.",
+        "action_required": "Design CRISPR CDH1-KO experiment in MCF-7 + pLATS1/pYAP western blot + nuclear fractionation. Alternatively, re-analyse existing TCGA RPPA data for pYAP in ILC vs IDC."
+      }
+    },
+    "n3-atac": {
+      "node_id": "n3-atac",
+      "label": "ATAC-seq chromatin accessibility at ESR1 locus: ILC vs IDC cell lines",
+      "type": "epigenomic_data",
+      "status": "EXECUTED",
+      "priority_rank": 4,
+      "EIG_prior": 8.1,
+      "question": "Is the ESR1 locus (chr6q25.1) differentially accessible in ILC vs IDC, with TEAD motif enrichment at ILC-specific open regions?",
+      "execution": {
+        "method": "WebSearch — landmark study identified",
+        "sources_queried": [
+          "WebSearch: ATAC-seq ESR1 locus chromatin accessibility lobular breast cancer ILC YAP TEAD",
+          "Breast Cancer Research 2022 (PMID 35906698 / PMC9338552): Chromatin accessibility landscape and active TFs in primary ILC and IDC"
+        ],
+        "findings": [
+          "LANDMARK STUDY IDENTIFIED: Savola et al. 2022, Breast Cancer Research. PMID 35906698. Title: 'Chromatin accessibility landscape and active transcription factors in primary human invasive lobular and ductal breast carcinomas'. This study used TCGA ATAC-seq data on primary ILC and IDC tumours.",
+          "Key finding directly relevant to hyp-ilc-005: TEAD family transcription factor motifs are ENRICHED in differentially accessible (DA) chromatin regions specific to ILC vs IDC. TEAD was among the top enriched TF binding motifs in ILC-specific open chromatin.",
+          "Additional ILC-enriched TF motifs: SOX family, RUNX3, TP63, STAT6. ILC-specific DA sites showed TEAD binding motif enrichment — consistent with YAP/TEAD-driven transcriptional programme.",
+          "ESR1 regulon analysis: 482 ATAC-seq distal peak-to-gene links corresponding to 124 ESR1 target genes were identified in TCGA BRCA donors. Specific ESR1 LOCUS accessibility at chr6q25.1 in ILC vs IDC was examined but the primary focus was ESR1 TARGET GENES, not ESR1 gene body accessibility per se.",
+          "TEAD nuclear co-activator finding: 'TEAD increases the expression of nuclear YAP' in ILCs — this sentence is directly extracted from the search result summary, suggesting TEAD-YAP axis is active in ILC chromatin landscape.",
+          "Gap: The 2022 study focused on primary TCGA tumours; ATAC-seq in ILC vs IDC CELL LINES with direct ESR1 promoter/enhancer region accessibility quantification (e.g., MDA-MB-134 vs MCF-7) under AI treatment conditions is not published."
+        ],
+        "verdict": "STRONG_SUPPORT_WITH_GAP",
+        "confidence": 0.78,
+        "gap_confirmed": true,
+        "gap_description": "Savola 2022 provides strong evidence that TEAD motifs are enriched in ILC-specific open chromatin (TCGA primary tumours). The specific question of ESR1 LOCUS (promoter + LBD-region enhancers) accessibility under AI selection pressure in ILC vs IDC cell lines remains unaddressed.",
+        "notes": "This is the strongest existing evidence node for hyp-ilc-005. The TEAD enrichment in ILC chromatin is a direct mechanistic support. The remaining gap (ESR1 locus specifically, under AI selection) is experimentally tractable: ATAC-seq in ILC vs IDC cell lines ± letrozole treatment. Cost estimate: $15K-20K.",
+        "key_citation": "Savola et al. Breast Cancer Research 2022. PMID 35906698. DOI: 10.1186/s13058-022-01550-y",
+        "action_required": "Re-analyse Savola 2022 data at chr6q25.1 specifically. Design ATAC-seq in MDA-MB-134 (ILC) vs MCF-7 (IDC) ± letrozole to test AI-driven ESR1 locus opening."
+      }
+    },
+    "n4-trials": {
+      "node_id": "n4-trials",
+      "label": "ClinicalTrials.gov: ESR1 ctDNA monitoring trials stratified by ILC histology",
+      "type": "clinical_trials_gap",
+      "status": "EXECUTED",
+      "priority_rank": 5,
+      "EIG_prior": 9.2,
+      "question": "Does any active ClinicalTrials.gov study use ESR1 ctDNA as a monitoring/eligibility criterion AND stratify or enrich for ILC histology?",
+      "execution": {
+        "method": "WebSearch — gap query",
+        "sources_queried": [
+          "WebSearch: ClinicalTrials.gov ESR1 ctDNA monitoring lobular histology ILC stratified 2024 2025",
+          "ASCO 2025 JCO suppl 581: serial ctDNA in early-stage ILC",
+          "NCT05964504: UCSF PLUMB registry (metastatic lobular BC)",
+          "NCT05629442: ClinicalTrials.gov entry retrieved",
+          "PMC9637866: ctDNA characterisation of ILC in metastatic BC"
+        ],
+        "findings": [
+          "PLUMB Registry (NCT05964504, UCSF): 'Improving Survival for Metastatic Lobular Breast Cancer' — this is an ILC-specific registry. Does not appear to use ESR1 ctDNA as a primary monitoring endpoint; focused on treatment patterns and outcomes.",
+          "ASCO 2025 JCO 43:16_suppl:581: Serial ctDNA monitoring in early-stage HR+/HER2- ILC — this appears to be a prospective correlative study but not a ClinicalTrials.gov interventional trial with ESR1 ctDNA as a stratification criterion.",
+          "SERENA-6 (camizestrant): ESR1m-guided switch study; enrolled all ER+ HER2- MBC patients; ILC NOT used as a stratification factor — ILC-specific subgroup analysis would require post-hoc data request.",
+          "No trial identified that uses ESR1 ctDNA emergence as an eligibility criterion AND requires/enriches for ILC histology.",
+          "Gap confirmed: The combination of (a) ILC-specific enrolment + (b) ESR1 ctDNA monitoring as primary endpoint + (c) AI treatment background does not exist as an active trial as of March 2026.",
+          "This represents the same 'absence of evidence = evidence of gap' pattern identified in the TNBC PARPi methylation lesson (lesson-tnbc-001-bfts): the gap IS the finding."
+        ],
+        "verdict": "GAP_CONFIRMED_HIGH_CLINICAL_IMPACT",
+        "confidence": 0.88,
+        "gap_confirmed": true,
+        "gap_description": "No active ClinicalTrials.gov study combines ILC histology enrichment + ESR1 ctDNA monitoring as co-primary endpoints in the AI treatment setting. SERENA-6 and ASCO 2025 ILC ctDNA data are closest but neither directly addresses ILC-specific ESR1m acquisition rate.",
+        "notes": "This is the highest EIG node in the tree. A prospective ILC-enriched study monitoring serial ESR1 ctDNA under AI would: (1) directly test hyp-ilc-005 clinical prediction; (2) provide a regulatory-grade dataset for ILC-specific ctDNA biomarker qualification; (3) be fundable as a correlative sub-study added to an existing ILC interventional trial. Estimated trial cost for 200-patient ILC cohort with quarterly ddPCR ctDNA: ~$1.2M-2M over 3 years.",
+        "action_required": "Design protocol for ILC-enriched ESR1 ctDNA monitoring study. Contact AURORA consortium and PLUMB registry PIs regarding ILC-stratified ESR1 sub-analysis."
+      }
+    },
+    "n5-vert": {
+      "node_id": "n5-vert",
+      "label": "Verteporfin (YAP inhibitor) + AI combination data in ER+ / ILC models",
+      "type": "preclinical_pharmacology",
+      "status": "EXECUTED",
+      "priority_rank": 6,
+      "EIG_prior": 5.8,
+      "question": "Does verteporfin (YAP inhibitor) suppress ESR1 expression or chromatin accessibility, and is there combination data with aromatase inhibitors?",
+      "execution": {
+        "method": "WebSearch",
+        "sources_queried": [
+          "WebSearch: verteporfin YAP inhibitor aromatase inhibitor breast cancer combination ESR1 2024 2025",
+          "Molecular Biology Reports Jan 2025: verteporfin as YAP/TAZ inhibitor in ER+ breast cancer stem cells (PMID 39853518)",
+          "Tandfonline 2023: Verteporfin suppresses YAP-induced glycolysis in breast cancer cells"
+        ],
+        "findings": [
+          "Molecular Biology Reports Jan 2025 (PMID 39853518): Verteporfin repurposed as YAP/TAZ inhibitor in ER+ breast cancer stem cells. Key finding: YAP/TAZ are upregulated in chemotherapy-treated ER+ tumours and MCF-7 mammospheres; verteporfin impairs stemness properties and disrupts redox homeostasis. ER+ context confirmed.",
+          "No study found combining verteporfin + aromatase inhibitor (letrozole/anastrozole/exemestane) specifically.",
+          "No study found examining verteporfin effect on ESR1 expression or ESR1 locus chromatin accessibility.",
+          "No ILC-specific verteporfin study identified (MDA-MB-134, SUM44PE, or UACC-893 cell lines).",
+          "CAMIZESTRANT (SERENA-6 2025 NEJM): ESR1m-guided switch to camizestrant (SERD) extended PFS — this is the current clinical standard for ESR1m-positive ER+ MBC, not a YAP inhibitor approach.",
+          "Mechanistic gap: if YAP drives ESR1 locus opening (hyp-ilc-005), then YAP inhibition by verteporfin should reduce ESR1 transcription AND potentially reduce mutation acquisition rate — this is completely untested."
+        ],
+        "verdict": "GAP_CONFIRMED_PRECLINICAL_OPPORTUNITY",
+        "confidence": 0.62,
+        "gap_confirmed": true,
+        "gap_description": "Verteporfin is not tested in combination with AIs, in ILC cell lines, or for effects on ESR1 expression/chromatin. The mechanistic prediction of hyp-ilc-005 (YAP drives ESR1 locus accessibility → inhibiting YAP reduces ESR1m acquisition) is entirely untested preclinically.",
+        "notes": "The therapeutic implication is novel: verteporfin + letrozole in ILC as a combination strategy to both block YAP-driven stemness (2025 Mol Biol Rep) AND prevent YAP-mediated ESR1 chromatin opening that enables LBD mutation acquisition. This is a two-mechanism rationale for a single combination. Testable in MDA-MB-134 (ILC) vs MCF-7 (IDC) ATAC-seq + ESR1m deep-sequencing model.",
+        "action_required": "Design verteporfin + letrozole combination experiment in ILC cell lines: ATAC-seq at ESR1 locus, ESR1 mRNA/protein, pYAP levels, and (if long-term selection feasible) ESR1 LBD mutation emergence by ddPCR."
+      }
+    },
+    "n6-yap-esr1-transcription": {
+      "node_id": "n6-yap-esr1-transcription",
+      "label": "Direct YAP-TEAD transcriptional regulation of ESR1 gene",
+      "type": "mechanistic_literature",
+      "status": "READY",
+      "priority_rank": 7,
+      "EIG_prior": 7.4,
+      "question": "Is ESR1 a direct TEAD transcriptional target? Are TEAD binding sites present in the ESR1 promoter/enhancer, and is there ChIP-seq evidence?",
+      "execution": {
+        "method": "NOT_EXECUTED — next priority",
+        "notes": "TEAD ChIP-seq data in ILC cell lines should be queried. The ESR1 gene has multiple characterized enhancers; TEAD consensus sequence (GGAATG) occurrence in these regions and any existing ENCODE/ChIP-Atlas data should be examined. This node has high mechanistic load-bearing value for the hypothesis.",
+        "planned_sources": [
+          "ChIP-Atlas (chip-atlas.org): TEAD1/TEAD4 ChIP-seq peaks at chr6q25.1 (ESR1 locus)",
+          "ENCODE: TF binding sites at ESR1 locus in breast cancer cell lines",
+          "PubMed: YAP TEAD ESR1 transcription breast cancer",
+          "Reactome: ESR1 regulation pathway"
+        ]
+      }
+    },
+    "n7-cdh1-yap-ilc-models": {
+      "node_id": "n7-cdh1-yap-ilc-models",
+      "label": "Isogenic CDH1-KO model: pLATS1/pYAP levels and nuclear YAP quantification",
+      "type": "wet_lab_design",
+      "status": "READY",
+      "priority_rank": 8,
+      "EIG_prior": 6.9,
+      "question": "In isogenic CDH1-CRISPR-KO breast cancer cells, is LATS1/2 activity reduced and YAP nuclear, vs CDH1-WT controls?",
+      "execution": {
+        "method": "NOT_EXECUTED — wet lab design node",
+        "notes": "This is the direct mechanistic test of the CDH1→Hippo→YAP arm of hyp-ilc-005. Design: (1) CRISPR CDH1-KO in MCF-7 (ER+ IDC background); (2) confirm CDH1 loss by IF/WB; (3) measure pLATS1 T1079, pLATS2 T1041, pYAP S127 by WB; (4) nuclear/cytoplasmic fractionation for YAP; (5) TEAD luciferase reporter. Estimated cost: $10K-15K. ILC cell line panel comparison: MDA-MB-134, SUM44PE vs MCF-7, T-47D.",
+        "planned_sources": [
+          "Protocol: CRISPR CDH1 knockout design (IDT or Benchling sgRNA)",
+          "TCGA RPPA data: phospho-YAP in ILC vs IDC (cBioPortal)"
+        ]
+      }
+    },
+    "n8-mutation-rate-model": {
+      "node_id": "n8-mutation-rate-model",
+      "label": "Computational model: open chromatin → elevated local mutation rate at ESR1 LBD codons",
+      "type": "computational_biology",
+      "status": "READY",
+      "priority_rank": 9,
+      "EIG_prior": 5.2,
+      "question": "Does increased chromatin accessibility at ESR1 LBD hotspot codons correlate with elevated local somatic mutation rates in ILC vs IDC in TCGA/PCAWG data?",
+      "execution": {
+        "method": "NOT_EXECUTED — bioinformatics design node",
+        "notes": "Open chromatin is associated with reduced nucleosome protection and altered DNA damage repair kinetics. Mutation rate can be modelled using PCAWG trinucleotide mutation context data. Query: do SBS signatures at ESR1 LBD codons (Y537, D538) show elevated density in ILC vs IDC? Requires intersection of ATAC-seq accessibility peaks with PCAWG somatic mutation data at base-pair resolution. Estimated compute: ~2-4 weeks analyst time.",
+        "planned_sources": [
+          "PCAWG consortium mutation landscape data",
+          "Savola 2022 ATAC-seq data (GEO accession if available)",
+          "COSMIC SBS signatures at ESR1 locus"
+        ]
+      }
+    },
+    "n9-esr1m-cdhm1-cooccurrence": {
+      "node_id": "n9-esr1m-cdhm1-cooccurrence",
+      "label": "Co-occurrence analysis: ESR1m + CDH1 loss in metastatic BC datasets",
+      "type": "genomic_database_query",
+      "status": "READY",
+      "priority_rank": 10,
+      "EIG_prior": 6.1,
+      "question": "In metastatic BC datasets (MSK-MET, GENIE BPC), do patients with CDH1 loss + AI treatment show elevated ESR1 LBD mutation rates vs CDH1-WT + AI?",
+      "execution": {
+        "method": "NOT_EXECUTED — cBioPortal query design",
+        "notes": "This is the most direct computational test of hyp-ilc-005. Filter MSK-MET ER+ breast cancer: (1) CDH1 biallelic loss/mutation vs CDH1-WT; (2) prior AI therapy documented; (3) ESR1 LBD mutation presence (Y537S/C/N, D538G, L536R, E380Q). Compare ESR1m frequency between groups. PMC9637866 confirms CDH1 co-mutation with ESR1 in ~7000 MBC patients — this co-occurrence is already partially confirmed; the question is directionality under AI selection.",
+        "planned_sources": [
+          "cBioPortal: MSK-MET breast cancer cohort",
+          "AACR GENIE BPC: ER+ breast cancer with treatment history",
+          "CBIO query: CDH1 alteration + ESR1 alteration co-occurrence by AI treatment status"
+        ]
+      }
+    }
+  },
+  "execution_summary": {
+    "nodes_executed": 6,
+    "nodes_ready": 4,
+    "nodes_total": 10,
+    "executed_nodes": ["n0-root", "n1-tcga", "n2-hippo", "n3-atac", "n4-trials", "n5-vert"],
+    "ready_nodes": ["n6-yap-esr1-transcription", "n7-cdh1-yap-ilc-models", "n8-mutation-rate-model", "n9-esr1m-cdhm1-cooccurrence"],
+    "top_findings": [
+      "STRONGEST SUPPORT (n3-atac, conf=0.78): Savola et al. 2022 (PMID 35906698) directly shows TEAD motif enrichment in ILC-specific open chromatin regions from TCGA ATAC-seq — this is direct mechanistic support for the YAP/TEAD chromatin opening arm of hyp-ilc-005.",
+      "HIGHEST EIG GAP (n4-trials, conf=0.88): No active ClinicalTrials.gov study combines ILC histology enrichment with ESR1 ctDNA monitoring as co-primary endpoints — the clinical surveillance gap is real and unaddressed.",
+      "COUNTER-EVIDENCE NOTED (n1-tcga, conf=0.41): ESMO Open 2024 shows IDC > ILC ESR1m point-prevalence (21.2% vs 13.8%) — but this measures steady-state, not acquisition rate under AI. The hypothesis is about RATE not prevalence.",
+      "MECHANISTIC GAP (n2-hippo, conf=0.70): CDH1 → LATS1/2 → YAP axis is mechanistically sound but direct head-to-head LATS1/2 activity comparison in ILC vs IDC cells is unpublished.",
+      "NOVEL THERAPEUTIC ANGLE (n5-vert, conf=0.62): Verteporfin + AI combination in ILC is completely untested; 2025 paper confirms YAP/TAZ upregulation in ER+ BC under treatment."
+    ],
+    "hypothesis_revised_confidence": 0.61,
+    "hypothesis_revision_note": "The mechanistic backbone (CDH1→Hippo→YAP→TEAD→ESR1 chromatin) is strongly supported by Savola 2022. The clinical prediction (higher ESR1 ctDNA yield in ILC) faces counter-evidence at the prevalence level but the correct endpoint (acquisition RATE under AI) has never been tested. Revised confidence 0.61 (up from prior estimate of ~0.55 based on mechanism alone).",
+    "priority_next_actions": [
+      "1. Re-analyse Savola 2022 ATAC-seq data specifically at chr6q25.1 (ESR1 locus) to quantify accessibility difference ILC vs IDC — computational, ~1 week, ~$0 if public GEO data available.",
+      "2. Query cBioPortal MSK-MET for CDH1 loss + ESR1m co-occurrence in AI-treated ER+ patients — computational, ~2 days.",
+      "3. Contact ASCO 2025 JCO abstract authors (serial ctDNA in ILC) for full dataset — no cost, high yield.",
+      "4. Design protocol for verteporfin + letrozole in ILC cell lines — preclinical grant-fundable."
+    ]
+  },
+  "output_schema_compliance": {
+    "finding_type": "experiment_result",
+    "hypothesis": "CDH1 loss in ILC derepresses YAP via Hippo pathway suppression; nuclear YAP drives TEAD-mediated chromatin opening at the ESR1 locus, elevating ESR1 LBD mutation rate (Y537S, D538G) under aromatase inhibitor selection pressure. ESR1 ctDNA monitoring is higher-yield surveillance in ILC than IDC.",
+    "evidence": [
+      "Savola et al. 2022 (PMID 35906698): TEAD motif enrichment in ILC-specific open chromatin regions — direct mechanistic support",
+      "E-cadherin/CDH1 → alpha-catenin → NF2 → MST1/2 → LATS1/2 → YAP canonical Hippo cascade: mechanistically established in literature",
+      "ESMO Open 2024: ESR1m IDC 21.2% vs ILC 13.8% at progression (P=0.052) — counter-evidence at prevalence level, correct endpoint not tested",
+      "ASCO 2025 JCO 43:16_suppl:581: first serial ctDNA study in early ILC — gap about to close",
+      "PMC9637866: CDH1 co-mutation with ESR1 in metastatic BC confirmed in ~7000 patients",
+      "Molecular Biology Reports Jan 2025 (PMID 39853518): YAP/TAZ upregulated in treated ER+ BC; verteporfin inhibits stem cell properties",
+      "No ClinicalTrials.gov study combines ILC enrichment + ESR1 ctDNA monitoring — clinical gap confirmed"
+    ],
+    "novelty_claim": "The TEAD-mediated chromatin opening mechanism at the ESR1 locus as an ILC-specific driver of ESR1 LBD mutation acquisition under AI selection is not proposed in any published study. The verteporfin + AI combination as a strategy to prevent ESR1 mutation acquisition (not just treat post-acquisition) is entirely novel.",
+    "actionability": "Three immediately executable actions: (1) re-analyse Savola 2022 public ATAC-seq data at ESR1 locus (~1 week, $0); (2) cBioPortal MSK-MET CDH1+ESR1 co-occurrence query (~2 days, $0); (3) contact ASCO 2025 ILC ctDNA abstract authors. One grant-fundable preclinical study: verteporfin + letrozole in ILC cell lines with ATAC-seq readout (~$20K-30K).",
+    "resource_cost_estimate": {
+      "computational_immediate": "$0, 1-2 weeks analyst time",
+      "preclinical_cell_line": "$20K-30K",
+      "prospective_clinical_trial": "$1.2M-2M over 3 years",
+      "total_evidence_package": "$1.2M-2M"
+    },
+    "confidence": 0.61
+  }
+}

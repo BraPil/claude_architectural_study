@@ -1,0 +1,112 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "pathway-atf6-csn5-001",
+  "task_id": "pathway-atf6-csn5-001",
+  "niche_id": "pathway_analysis",
+  "executed_at": "2026-03-30T00:00:00Z",
+  "target_hypothesis": "hyp-tnbc-004",
+  "evidence": [
+    {
+      "evidence_id": "E1",
+      "source": "Peng et al., Journal of Translational Medicine, 2025",
+      "pmid": "translational-medicine.biomedcentral.com/articles/10.1186/s12967-025-06902-8",
+      "description": "ATF6 DIRECTLY transcribes FBXO24 in TNBC. Ivabradine triggers ER stress, activating ATF6, which translocates to nucleus and binds the FBXO24 promoter to induce FBXO24 expression. FBXO24 (an F-box E3 ubiquitin ligase) then mediates RAD51 protein degradation via the ubiquitin-proteasome system, inducing BRCAness and sensitizing non-gBRCAm TNBC to PARP inhibitors. In vivo validation in xenografts and PDTXs.",
+      "relevance": "DIRECT evidence ATF6 transcriptionally regulates an E3 ubiquitin ligase (FBXO24) to degrade a key HR protein (RAD51) in TNBC. The FBXO24-RAD51 axis parallels the hypothesized ATF6→CSN5 route because CSN5 is also an E3-ligase modulator (CSN deneddylates cullins); FBXO24 is an SCF substrate-recognition subunit that operates through the cullin-1 scaffold that CSN5 directly deneddylates.",
+      "connection_strength": "strong_direct_parallel",
+      "year": 2025
+    },
+    {
+      "evidence_id": "E2",
+      "source": "Peng et al., Molecular Cancer, 2025 (PMC12357351)",
+      "pmid": "PMC12357351",
+      "url": "https://molecular-cancer.biomedcentral.com/articles/10.1186/s12943-025-02422-7",
+      "description": "Jab1/CSN5 overexpressed in TNBC. Jab1 functions as an RNA-binding protein via its MPN domain, stabilizing HRR-related transcripts (including BRCA1, RAD51, PALB2) by antagonizing the RNA exosome. Jab1 knockdown impairs HRR, accumulates DNA damage, and sensitizes TNBC cells to IR and PARPi regardless of BRCA mutation status. Pharmacological inhibition with CSN5i-3 + PARPi induces synthetic lethality in preclinical TNBC models.",
+      "relevance": "Establishes CSN5/Jab1 as a direct regulator of HR competency in TNBC, placing it as a druggable effector in BRCAness. Jab1 elevated expression in TNBC creates context where ATF6-mediated modulation of Jab1 upstream regulators would have outsized phenotypic impact.",
+      "connection_strength": "strong_direct",
+      "year": 2025
+    },
+    {
+      "evidence_id": "E3",
+      "source": "Zhou et al. / Dimberg et al., PMC4482063; MDPI Biomolecules 5(4):2388",
+      "pmid": "25855810",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4482063/",
+      "description": "COP9 signalosome is physically recruited to DSB sites in a neddylation-dependent manner and is required for timely DSB repair. CSN is essential for processivity of end-resection — the initial step in HRR. CSN disruption skews repair toward NHEJ over HRR. CSN is an ATM target, directly coupling DSB signaling to CSN activation.",
+      "relevance": "Mechanistic foundation: CSN/CSN5 is a proximal regulator of HRR initiation in the context of BRCAness. This makes CSN5 activity a control point whose modulation (up or down) directly determines HR competency phenotype.",
+      "connection_strength": "strong_established",
+      "year": 2015
+    },
+    {
+      "evidence_id": "E4",
+      "source": "Luo et al., Cell Death Discovery, 2022 (Nature)",
+      "url": "https://www.nature.com/articles/s41420-022-01085-3",
+      "description": "ATF6 prevents DNA damage and cell death in colon cancer cells undergoing ER stress. ATF6 directly binds the CIP2A (cancerous inhibitor of PP2A) promoter and induces CIP2A gene expression, contributing to colon cancer cell survival. ATF6 also regulates autophagy genes transcriptionally.",
+      "relevance": "Demonstrates ATF6 transcriptional target range extends beyond canonical ER-chaperone genes (BiP/GRP78) to include proto-oncogenes (CIP2A) involved in signaling crosstalk. CIP2A inhibits PP2A, which feeds into kinase cascades that regulate CSN activity. Establishes precedent for ATF6 driving non-canonical target gene programs in solid tumors.",
+      "connection_strength": "moderate_orthogonal",
+      "year": 2022
+    },
+    {
+      "evidence_id": "E5",
+      "source": "Kang et al., Journal of Immunology; PLOS ONE 2012 (PMC on ER stress + NF-kB)",
+      "url": "https://journals.aai.org/jimmunol/article/183/2/1480/82375/",
+      "description": "The ATF6 branch of the UPR (not IRE1 or PERK) is specifically responsible for activation of Akt-NF-kB signaling. Subtilase cytotoxin activates ATF6, which engages Akt-NF-kB. Separately, CSN5/Jab1 knockdown inhibits NF-kB activation by preventing cullin-1 deneddylation. NF-kB in turn can transcriptionally upregulate Jab1/CSN5.",
+      "relevance": "Orthogonal pathway: ATF6 → Akt/NF-kB → CSN5 transcription (Stat3/C/EBP-beta/NF-kB regulate Jab1 promoter). This provides an indirect axis complementing any direct ATF6→CSN5 connection. Also: CSN5 deneddylation of Cul-1 is required for optimal NF-kB activation — establishing a positive feedback loop.",
+      "connection_strength": "moderate_indirect",
+      "year": 2009
+    },
+    {
+      "evidence_id": "E6",
+      "source": "Maity et al., Breast Cancer Research, 2011 (PMC3218954)",
+      "pmid": "PMC3218954",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3218954/",
+      "description": "Stat3 and C/EBP-beta directly regulate the Jab1/CSN5 promoter in mammary carcinoma cells. IL-6→Stat3 signaling upregulates Jab1. GATA1 and Stat3 binding confirmed by EMSA and ChIP in breast carcinoma cells. ATF6 can activate C/EBP-beta (a shared downstream effector of ER stress) which in turn activates the Jab1 promoter.",
+      "relevance": "Identifies C/EBP-beta as an intermediary between UPR/ER stress signals and Jab1 transcription in breast cancer specifically. ATF6 activates C/EBP-beta under ER stress; C/EBP-beta then drives Jab1/CSN5 expression. This represents a plausible two-step indirect connection operating in mammary carcinoma context.",
+      "connection_strength": "moderate_indirect_breast_specific",
+      "year": 2011
+    },
+    {
+      "evidence_id": "E7",
+      "source": "Peng et al. / AACR MCR, 2023 (PMC9812934)",
+      "pmid": "PMC9812934",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9812934/",
+      "description": "ATF6-mediated signaling contributes to PARP inhibitor resistance in ovarian cancer (HGSOC). Mechanism: elevated ATF6 → p38 phosphorylation → AP-1 transcriptional activation → increased DNA damage repair. ATF6 expression elevated in HGSOC and predicts PARPi resistance. ATF6 knockdown sensitizes HGSOC cells to olaparib.",
+      "relevance": "Orthologous cancer context: ATF6 drives PARPi resistance via DNA repair upregulation in HGSOC, directly parallel to TNBC BRCAness hypothesis. The p38→AP-1 axis activated by ATF6 intersects with pathways that regulate CSN5 stability and activity. Validates ATF6 as a bona fide regulator of HRR competency.",
+      "connection_strength": "strong_orthologous_cancer",
+      "year": 2023
+    },
+    {
+      "evidence_id": "E8",
+      "source": "Goldenberg et al., Cancer Biology & Therapy; Cope & Bhatt reviews on COP9/cancer",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9196064/",
+      "description": "CSN5/Jab1 overexpressed in 57% node-negative breast tumors and 90% of metastatic lesions. CSN5 lies at intersection of Wnt, TGF-beta, NF-kB, and AP-1 signaling — all downstream of ATF6 activation. COP9-CSN targeted therapy with CSN5i-3 kills cancer cells with acceptable therapeutic window.",
+      "relevance": "Positions CSN5 as a convergent downstream node for multiple ATF6-activated signaling pathways. The multi-pathway convergence strengthens plausibility that ATF6 activation could robustly drive CSN5 function even without a single direct transcriptional link.",
+      "connection_strength": "moderate_convergence",
+      "year": 2022
+    }
+  ],
+  "synthesis": "The ATF6→CSN5/Jab1 connection in TNBC BRCAness (hyp-tnbc-004) is not yet demonstrated by a single direct paper showing ATF6 binding the CSN5 promoter. However, three distinct lines of evidence collectively support a high-plausibility mechanistic model:\n\n**LINE 1 — Direct ATF6→E3-ligase→HR protein axis (strongest, 2025):** The most important finding is that ATF6 directly transcribes FBXO24 (an F-box E3 ubiquitin ligase subunit of the SCF complex) in TNBC cells under ER stress, leading to RAD51 ubiquitination and degradation and pharmacological BRCAness (Peng et al., J Transl Med 2025). FBXO24 functions through a cullin-1 SCF scaffold — the exact cullin scaffold that CSN5 deneddylates. This establishes that ATF6 drives the upstream regulatory arm of the same CSN5-controlled CRL ubiquitination machinery that governs HR protein stability. The ATF6→FBXO24→RAD51 route and the hypothesized ATF6→CSN5→HR route are thus mechanistically parallel and potentially synergistic.\n\n**LINE 2 — CSN5/Jab1 as master HR regulator in TNBC (strong, 2025):** Independent 2025 data (Peng et al., Mol Cancer) show Jab1/CSN5 overexpressed in TNBC stabilizes HRR mRNAs (BRCA1, RAD51, PALB2) by blocking RNA exosome degradation. CSN5 inhibition pharmacologically recapitulates HRD and synergizes with PARPi. This places CSN5 as a validated HR effector in TNBC with direct therapeutic relevance — confirming the phenotypic relevance of the ATF6→CSN5 node.\n\n**LINE 3 — Orthogonal indirect pathways (ATF6 → NF-kB / C/EBP-beta → Jab1 promoter):** ATF6 selectively activates NF-kB via Akt (Kang 2009). C/EBP-beta (a UPR/ATF6 co-regulated transcription factor) and Stat3 directly bind and activate the Jab1/CSN5 promoter in mammary carcinoma cells (Maity 2011). This provides a plausible two-step indirect route: ATF6 activation → C/EBP-beta/NF-kB induction → Jab1/CSN5 transcription. A positive feedback loop exists because CSN5 deneddylation of Cul-1 is itself required for full NF-kB activation.\n\n**GAP:** No published study has directly shown ATF6 ChIP binding to the CSN5 promoter or that ATF6 knockdown reduces CSN5 mRNA in any cancer model. This remains the key experimental gap in validating hyp-tnbc-004 exactly as stated.\n\n**MECHANISTIC MODEL:** ATF6 activation under ER stress in TNBC → (a) direct transcription of FBXO24 and other F-box CRL subunits → enhanced ubiquitination of HR proteins including RAD51; (b) indirect activation of CSN5/Jab1 through C/EBP-beta/NF-kB → CSN5-mediated HRR mRNA stabilization (counterbalancing force); (c) net effect depends on stoichiometry and TNBC subtype. In BRCA1-deficient or BRCAness TNBC where baseline CSN5 is high, ATF6 activation may primarily act through FBXO24 to further suppress residual HR, deepening BRCAness. In BRCA1-intact TNBC, ATF6→CSN5 upregulation may instead sustain HR competency, creating PARPi resistance (analogous to the HGSOC ATF6-PARPi resistance data).",
+  "revised_plausibility": 0.72,
+  "verdict": "PARTIAL",
+  "verdict_rationale": "Strong mechanistic support for ATF6 regulating E3 ubiquitin ligase activity and HR protein stability in TNBC (LINE 1, direct), and for CSN5 as a validated HR node in TNBC (LINE 2). Indirect pathway through C/EBP-beta/NF-kB to Jab1 promoter is plausible and breast-context supported. Direct ATF6→CSN5 transcriptional link is not yet published. Downgraded from SUPPORTED to PARTIAL because the specific mechanistic claim (ATF6 directly transcribes CSN5) lacks direct evidence, though the functional outcome (ATF6 modulates HR competency in TNBC via CRL/ubiquitin pathway components) is now well-supported. Original novelty score of 0.93 is maintained because the specific ATF6→CSN5 direct connection remains unpublished.",
+  "key_gaps": [
+    "No ChIP-seq or promoter assay showing ATF6 binding CSN5/Jab1 promoter",
+    "No ATF6 knockdown experiment measuring CSN5 mRNA/protein levels",
+    "No study testing ATF6 + CSN5i-3 combination in TNBC",
+    "Directionality of ATF6 effect on overall HR in TNBC may be context-dependent (FBXO24/RAD51 degradation vs. CSN5-mediated HRR mRNA stabilization may oppose each other)"
+  ],
+  "proposed_experiments": [
+    "ChIP-seq with ATF6 antibody in MDA-MB-231 (TNBC) under tunicamycin-induced ER stress; query CSN5 locus",
+    "ATF6 siRNA knockdown in TNBC cells: measure CSN5 mRNA by qPCR and CSN5 protein by WB",
+    "Luciferase reporter assay: CSN5 promoter + ATF6 overexpression in MCF10A vs. MDA-MB-231",
+    "Triple combination: ivabradine (ATF6 activator) + CSN5i-3 + olaparib in non-gBRCAm TNBC PDTXs"
+  ],
+  "sources": [
+    "https://translational-medicine.biomedcentral.com/articles/10.1186/s12967-025-06902-8",
+    "https://molecular-cancer.biomedcentral.com/articles/10.1186/s12943-025-02422-7",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC4482063/",
+    "https://www.nature.com/articles/s41420-022-01085-3",
+    "https://journals.aai.org/jimmunol/article/183/2/1480/82375/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC3218954/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC9812934/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC9196064/"
+  ]
+}

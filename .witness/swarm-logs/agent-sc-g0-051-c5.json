@@ -4,25 +4,35 @@
   "niche_id": "literature_synthesis",
   "task_id": "swarm-sc-g0-051-c5",
   "cycle": 5,
-  "executed_at": "2026-03-30T01:30:06.689993Z",
-  "query": "spatial transcriptomics tumor microenvironment breast cancer immune cold hot",
-  "papers_found": 1,
-  "efficiency_score": 0.67,
+  "executed_at": "2026-03-30T01:43:28.447725Z",
+  "query": "HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast biomarker 2024",
+  "papers_found": 3,
+  "efficiency_score": 0.75,
   "verdict": "ACCEPT_WEAK",
   "evidence": [
     {
-      "source": "PMID:41766877",
-      "claim": "Reprogramming the immunosuppressive breast cancer microenvironment: integrating ",
+      "source": "PMID:40976668",
+      "claim": "Canadian real-world hybrid longitudinal cohort study of treatment discontinuatio",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:40634519",
+      "claim": "Concordance of HER2-low scoring in breast carcinomas among pathologists.",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:39724961",
+      "claim": "Independent Validation of a HER2-Low Focused Immunohistochemistry Scoring System",
       "confidence": "medium"
     }
   ],
-  "hypothesis": "Based on 1 papers for 'spatial transcriptomics tumor microenvironment breast cancer': Reprogramming the immunosuppressive breast cancer microenvironment: integrating ",
-  "novelty_claim": "Identified 1 relevant papers; novel synthesis from recent literature",
-  "actionability": "Next: fetch abstracts for top 1 PMIDs and run /evaluate",
+  "hypothesis": "Based on 3 papers for 'HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast': Canadian real-world hybrid longitudinal cohort study of treatment discontinuatio",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
   "resource_cost_estimate": {
     "pubmed_queries": 1,
-    "results": 1,
+    "results": 3,
     "model": "haiku"
   },
-  "confidence": 0.67
+  "confidence": 0.75
 }

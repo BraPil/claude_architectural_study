@@ -1,0 +1,15 @@
+{
+  "agent_id": "sc-p1-002",
+  "niche": "hypothesis_generation",
+  "skill_tier": "differentiated",
+  "skill_data": {
+    "action": "reflexion_queued",
+    "target": "hyp-ilc-006",
+    "score": 0.747,
+    "ts": "2026-03-31T00:50:17.204616Z"
+  },
+  "efficiency_score": 0.75,
+  "verdict": "ACCEPT_MEDIUM",
+  "cycle": 2,
+  "executed_at": "2026-03-31T00:50:17.247131Z"
+}

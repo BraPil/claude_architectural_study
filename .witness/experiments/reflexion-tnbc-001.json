@@ -1,0 +1,142 @@
+{
+  "finding_type": "reflexion",
+  "agent_id": "reflexion-tnbc-001",
+  "task_id": "reflexion-tnbc-001",
+  "target_hyp_id": "hyp-tnbc-001",
+  "prior_composite": 0.835,
+  "reflexion_queries": [
+    {
+      "query_id": "q1",
+      "query": "constitutional BRCA1 promoter methylation TNBC prevalence independent cohort replication",
+      "intent": "Find non-Institut Curie cohorts with prevalence estimates"
+    },
+    {
+      "query_id": "q2",
+      "query": "germline epimutation BRCA1 methylation prevalence triple negative breast cancer",
+      "intent": "Broader framing for independent prevalence data"
+    },
+    {
+      "query_id": "q3",
+      "query": "BRCA1 methylation HRD functional assay RAD51 foci HR repair",
+      "intent": "Direct functional evidence for HRD equivalence in methylated tumors"
+    },
+    {
+      "query_id": "q4",
+      "query": "constitutional epimutation BRCA1 breast cancer RAD51 homologous recombination functional equivalence",
+      "intent": "Mechanism-level evidence linking epimutation to HR suppression"
+    },
+    {
+      "query_id": "q5",
+      "query": "BRCA1 promoter methylation blood normal tissue constitutional epimutation breast cancer distinction somatic",
+      "intent": "Constitutional vs somatic distinction; multi-tissue concordance"
+    }
+  ],
+  "evidence_found": [
+    {
+      "evidence_id": "e1",
+      "gap_addressed": "independent_replication",
+      "source": "JAMA Oncology 2022 (PMID 36074460)",
+      "cohort": "Women's Health Initiative (WHI) — US population-based nested case-control",
+      "institution": "Independent of Institut Curie",
+      "finding": "Constitutional BRCA1 methylation detected in 12.4% of incident TNBC cases (HR 2.35, 95% CI 1.70–3.23, P<0.001) in a prospective cohort. Provides independent prevalence data in a non-French, non-clinical-selected population.",
+      "notes": "WHI is the largest independent replication cohort to date. Prevalence 12.4% is lower than Institut Curie 20.6% — possibly attributable to WHI's mixed-ancestry population and longer-interval blood collection before diagnosis (dilution/epigenetic drift artifact not excluded).",
+      "confidence": 0.88
+    },
+    {
+      "evidence_id": "e2",
+      "gap_addressed": "independent_replication",
+      "source": "Clinical Epigenetics 2025 (clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-025-01885-1)",
+      "cohort": "112 early-onset (≤30 yr) TNBC patients with no pathogenic germline variant",
+      "institution": "Not Institut Curie (institution not confirmed from abstract; independent study)",
+      "finding": "BRCA1 epimutation prevalence 33.9% (38/112) in early-onset TNBC patients without germline pathogenic variants. Substantially higher than Institut Curie 20.6% overall TNBC figure — consistent with enrichment in early-onset subgroup.",
+      "notes": "Age-selection bias inflates prevalence vs unselected TNBC. Nonetheless confirms the phenomenon replicates in an independent cohort and that Institut Curie's 20.6% is likely a conservative estimate for relevant clinical subpopulations.",
+      "confidence": 0.80
+    },
+    {
+      "evidence_id": "e3",
+      "gap_addressed": "independent_replication",
+      "source": "Genome Medicine 2023 (PMID from Springer link: s13073-023-01262-8)",
+      "cohort": "Population-based; newborn screening and TNBC analysis",
+      "institution": "Independent international group",
+      "finding": "Prenatal BRCA1 epimutations account for ~20% of TNBC overall; ~9% of newborn females carry BRCA1 methylation in blood. Establishes population-level baseline independent of clinical series.",
+      "notes": "Mechanistic framing (prenatal origin) strengthens constitutional vs somatic distinction. The ~20% TNBC attribution aligns with Institut Curie's 20.6% prevalence, providing orthogonal convergent evidence.",
+      "confidence": 0.82
+    },
+    {
+      "evidence_id": "e4",
+      "gap_addressed": "independent_replication",
+      "source": "MDPI IJMS 2024 — Saudi Arabian cohort",
+      "cohort": "Saudi women with TNBC and HGSOC",
+      "institution": "Independent of Institut Curie; Middle Eastern population",
+      "finding": "Constitutional BRCA1 and MGMT methylation confirmed as significant risk factors for TNBC in a geographically and ethnically distinct population.",
+      "notes": "Replication across ancestries (European WHI, Middle Eastern Saudi cohort, French Institut Curie) substantially weakens population-specificity confound. Prevalence figures not extracted from abstract alone.",
+      "confidence": 0.72
+    },
+    {
+      "evidence_id": "e5",
+      "gap_addressed": "functional_hr_equivalence",
+      "source": "Frontiers in Oncology 2023 (doi: 10.3389/fonc.2023.1125021)",
+      "cohort": "TNBC patients with BRCA1 promoter methylation who received neoadjuvant chemotherapy",
+      "institution": "Independent functional study",
+      "finding": "BRCA1-methylated TNBC tumors that were previously exposed to neoadjuvant chemotherapy form RAD51 foci and respond poorly to olaparib — indicating HR restoration is possible in methylated tumors via epigenetic reversion, unlike stable BRCA1 mutations. This is functionally DISTINCT from germline BRCA1 mutation behavior.",
+      "notes": "CRITICAL NUANCE: This evidence cuts AGAINST simple HRD equivalence. RAD51 foci formation in methylated TNBC after chemotherapy exposure demonstrates that the HRD state in BRCA1-methylated tumors is reversible (dynamic), whereas BRCA1 germline mutation-driven HRD is stable. This is a PARTIAL gap status: functional HR suppression is demonstrated pre-treatment, but full equivalence to germline BRCA1 is undermined by reversibility data.",
+      "confidence": 0.85
+    },
+    {
+      "evidence_id": "e6",
+      "gap_addressed": "functional_hr_equivalence",
+      "source": "Nature Communications 2020 (s41467-020-17537-2) — Comprehensive molecular comparison BRCA1-hypermethylated vs BRCA1-mutated TNBC",
+      "cohort": "TNBC molecular subtypes comparison",
+      "institution": "Independent multi-center",
+      "finding": "Comprehensive molecular comparison confirms BRCA1-hypermethylated TNBC has overlapping HRD scar signatures (LOH, TAI, LST) with BRCA1-mutated TNBC, supporting HRD equivalence at the genomic scar level.",
+      "notes": "This directly addresses the evaluator's concern about scar-based (not direct assay) equivalence inference. The molecular overlap is established, but RAD51 foci direct assay in the CONSTITUTIONAL methylation subgroup (not somatic tumor methylation) remains absent from published literature.",
+      "confidence": 0.80
+    },
+    {
+      "evidence_id": "e7",
+      "gap_addressed": "functional_hr_equivalence",
+      "source": "ESMO Open 2024 (S2059-7029(24)01398-X) — Functional HRD by RAD51 identifies BRCA1 VUS",
+      "cohort": "BRCA1 VUS carriers and TNBC functional testing",
+      "institution": "Independent",
+      "finding": "RAD51 functional assay validates loss of HR function in BRCA1-impaired cells. BRCA1 promoter methylation (somatic) contributes 19% of HRD cases in combined methylation+mutation analysis. RAD51 assay is feasible in TNBC tumor tissue.",
+      "notes": "Confirms RAD51 foci assay is technically feasible in TNBC tissue and that BRCA1 methylation (somatic) drives functional HRD in ~19% of cases. However, no published study has applied RAD51 foci assay specifically to CONSTITUTIONAL (blood-detected) methylation carriers' tumors — this remains the precise unresolved gap.",
+      "confidence": 0.75
+    },
+    {
+      "evidence_id": "e8",
+      "gap_addressed": "functional_hr_equivalence",
+      "source": "Tandem: RECAP assay (Nature Oncogene 2022) + RAD51 IF test feasibility (ESMO news, TNBC)",
+      "cohort": "Multiple TNBC cohorts",
+      "institution": "Independent",
+      "finding": "The RECAP and RAD51-IF functional assays identify HRD in tumors where DNA-based tests (LOH/TAI/LST scars) miss it — and conversely, some methylated tumors are HR-proficient by functional assay despite scar positivity. This validates the evaluator's concern that scar-inferred equivalence is insufficient as a final proof.",
+      "notes": "Taken together: scar-based HRD equivalence is confirmed; direct RAD51 foci assay in constitutional methylation-positive tumor tissue is NOT yet published. This is a known experimental gap in the field, not just in hyp-tnbc-001.",
+      "confidence": 0.82
+    }
+  ],
+  "gap_status": {
+    "independent_replication": "PARTIAL",
+    "independent_replication_rationale": "Three independent cohorts now partially replicate the Institut Curie finding: (1) WHI prospective cohort (US, 12.4% TNBC prevalence, JAMA Oncol 2022), (2) Clinical Epigenetics 2025 early-onset TNBC cohort (33.9% in ≤30yr selected group), (3) Genome Medicine 2023 population-based prenatal analysis (~20% TNBC attribution). Saudi cohort provides fourth population-level replication. STATUS IS PARTIAL not FOUND because: no independent cohort matches the exact Institut Curie design (unselected TNBC, blood-based pyrosequencing, n~136), prevalence range is wide (12.4%–33.9%) depending on age selection, and no single study is a direct methodological replicate.",
+    "functional_hr_equivalence": "PARTIAL",
+    "functional_hr_equivalence_rationale": "Genomic scar equivalence (LOH/TAI/LST) between methylated and mutated BRCA1 TNBC is now well established (Nat Commun 2020). However: (1) RAD51 foci assay has NOT been applied specifically to tumors from patients with CONSTITUTIONAL (blood-detected) methylation vs somatic-only methylation. (2) Frontiers 2023 data explicitly demonstrates that BRCA1-methylated TNBC can RESTORE RAD51 foci after chemotherapy exposure, unlike stable BRCA1 mutations. This HR reversibility finding partially undermines full functional equivalence. Status is PARTIAL: HRD is confirmed at scar level, but direct RAD51 assay in constitutional subgroup and the reversibility concern are unresolved."
+  },
+  "revised_composite_estimate": 0.81,
+  "revision_rationale": "Independent replication is now PARTIAL (not zero) — three cohorts across different populations confirm the phenomenon, removing the single-source concern for existence but not precise prevalence. The functional equivalence gap is narrowed by scar-level data but partially deepened by RAD51 reversibility in methylated tumors post-chemotherapy. Net adjustment: -0.025 from prevalence uncertainty (wide 12.4%–33.9% range across cohorts vs single 20.6% figure), no change from functional gap (reversibility concern was already implicit in scar-only inference). Prior 0.835 → revised 0.810.",
+  "recommendation": "ACCEPT_WITH_CAVEAT",
+  "caveats": [
+    "Prevalence caveat: Quote 12.4%–20.6% range (not single 20.6%) in hypothesis statement, citing WHI and Institut Curie as bracketing cohorts. Early-onset subgroup may exceed 30%.",
+    "Functional caveat: Add explicit statement that HRD equivalence is established by genomic scar signature and is likely functional pre-treatment, but HR reversibility via epigenetic derepression post-chemotherapy makes BRCA1-methylated TNBC potentially olaparib-resistant in the recurrent/pre-treated setting — this is a therapeutic scope boundary, not a validity threat to the hypothesis.",
+    "Experimental priority: RAD51 foci assay in constitutional (blood-confirmed) methylation-positive TNBC biopsies at diagnosis (pre-treatment) should be listed as a validation endpoint in any future experimental design for hyp-tnbc-001."
+  ],
+  "sources": [
+    {"pmid": "36074460", "citation": "JAMA Oncol 2022 — WHI nested case-control, constitutional BRCA1 methylation and TNBC risk"},
+    {"url": "https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-025-01885-1", "citation": "Clinical Epigenetics 2025 — 33.9% epimutation prevalence in early-onset TNBC"},
+    {"url": "https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-023-01262-8", "citation": "Genome Medicine 2023 — prenatal epimutations ~20% TNBC"},
+    {"url": "https://www.mdpi.com/1422-0067/25/6/3108", "citation": "IJMS 2024 — Saudi cohort constitutional BRCA1 methylation TNBC risk"},
+    {"url": "https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2023.1125021/full", "citation": "Frontiers Oncology 2023 — BRCA1-methylated TNBC forms RAD51 foci post-chemotherapy, olaparib resistance"},
+    {"url": "https://www.nature.com/articles/s41467-020-17537-2", "citation": "Nat Commun 2020 — comprehensive molecular comparison BRCA1-hypermethylated vs BRCA1-mutated TNBC"},
+    {"url": "https://www.esmoopen.com/article/S2059-7029(24)01398-X/fulltext", "citation": "ESMO Open 2024 — RAD51 functional HRD assay for BRCA1 VUS"},
+    {"url": "https://www.nature.com/articles/s41388-022-02363-1", "citation": "Oncogene 2022 — RECAP functional assay identifies HRD beyond scar-based tests"}
+  ],
+  "ts": "2026-03-30T14:00:00Z",
+  "lineage_id": "exmorbus-oncology-v2"
+}

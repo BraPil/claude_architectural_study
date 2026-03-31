@@ -1,0 +1,170 @@
+{
+  "agent_role": "experiment_design",
+  "hypothesis_input": "hyp-her2-001-v2: T-DXd co-activates ferroptosis via DXd payload (topo-I inhibitor class). Mechanistic chain: DXd → TOP1mt poison → mtDNA breaks → mitochondrial dysfunction → ROS/lipid peroxidation → ferroptosis sensitization; concurrent HER2 internalization → PI3K-NRF2-SLC7A11 transcriptional suppression. SLC7A11-high HER2+ tumors escape. Composite 0.813, evidential quality 0.72. Key gap: DXd-specific ferroptosis data absent — evidence is CPT/SN-38 class analogy (PMID 37735740, 31723605).",
+  "sub_questions": [
+    {
+      "id": "SQ-1",
+      "question": "Is there any published preclinical or clinical data directly linking T-DXd or its payload (DXd/exatecan) to ferroptosis, lipid peroxidation, or GPX4/SLC7A11 modulation in HER2+ breast cancer?",
+      "rationale": "The entire mechanistic chain is extrapolated from CPT-class analogy. A single paper showing DXd directly induces lipid peroxidation or GPX4/SLC7A11 changes would elevate evidential quality from 0.72 to ≥0.85. Conversely, confirming the gap validates the novelty claim.",
+      "expected_information_gain": 0.88,
+      "compute_cost_normalized": 0.004,
+      "bfts_priority_score": 220.0,
+      "prerequisite_for": ["SQ-2", "SQ-3", "SQ-4"]
+    },
+    {
+      "id": "SQ-2",
+      "question": "In DESTINY-Breast clinical trials (DB-01/02/03/04), are there reported adverse events or biomarker patterns consistent with ferroptosis (iron dyshomeostasis, lipid peroxidation, anemia pattern) in T-DXd responders vs non-responders?",
+      "rationale": "Ferroptosis in vivo would manifest as: hemolytic-type anemia, ferritin elevation, liver transaminase changes from lipid peroxidation. DESTINY-Breast safety data may contain indirect signatures. Also: is SLC7A11 measured in any DESTINY-Breast translational sub-study?",
+      "expected_information_gain": 0.74,
+      "compute_cost_normalized": 0.006,
+      "bfts_priority_score": 123.3,
+      "prerequisite_for": ["SQ-4"]
+    },
+    {
+      "id": "SQ-3",
+      "question": "What is the detailed NRF2-SLC7A11 transcriptional regulation mechanism downstream of PI3K inhibition by HER2 antibody engagement, and does trastuzumab alone reduce SLC7A11 expression in HER2+ cell lines?",
+      "rationale": "The PI3K→NRF2→SLC7A11 transcriptional axis is the second arm of the hypothesis. NRF2 is regulated transcriptionally and post-translationally by KEAP1. PI3K inhibition reduces AKT→GSK3β→NRF2 stabilization. Need to confirm: (a) trastuzumab component reduces PI3K-NRF2-SLC7A11 axis, (b) this is additive with DXd ferroptosis sensitization.",
+      "expected_information_gain": 0.78,
+      "compute_cost_normalized": 0.010,
+      "bfts_priority_score": 78.0,
+      "prerequisite_for": ["SQ-4"]
+    },
+    {
+      "id": "SQ-4",
+      "question": "What is the optimal preclinical experimental protocol to confirm the DXd → mitochondrial ROS → ferroptosis → SLC7A11-stratified response axis, and what are the required controls to rule out alternative cell death mechanisms (apoptosis, necroptosis)?",
+      "rationale": "This is the definitive experiment design. Requires: (1) BT-474 and SK-BR-3 HER2+ cell lines; (2) DXd or exatecan treatment; (3) ferroptosis readouts: 4-HNE IHC, C11-BODIPY lipid peroxidation, ferrostatin-1 rescue; (4) SLC7A11 high/low isogenic lines or SLC7A11-overexpressing controls; (5) apoptosis controls: Z-VAD-FMK; (6) necroptosis controls: necrostatin-1. Full power analysis for in vivo PDX model as confirmatory.",
+      "expected_information_gain": 0.90,
+      "compute_cost_normalized": 0.015,
+      "bfts_priority_score": 60.0,
+      "prerequisite_for": []
+    }
+  ],
+  "experiment_nodes": [
+    {
+      "node_id": "HER2-EXP-001",
+      "hypothesis_id": "hyp-her2-001-v2",
+      "experiment_type": "literature_gap_analysis",
+      "sub_question": "SQ-1: Any published T-DXd or DXd/exatecan + ferroptosis data?",
+      "protocol": {
+        "data_source": "pubmed",
+        "query_strategy": "Phase 1: 'T-DXd ferroptosis' → Phase 1b: 'trastuzumab deruxtecan lipid peroxidation' → Phase 1c: 'deruxtecan GPX4 SLC7A11' → Phase 2: 'exatecan ferroptosis' → Phase 2b: 'topoisomerase I inhibitor ferroptosis HER2'",
+        "analysis_method": "For any hit: extract if DXd/T-DXd is explicitly studied (not just CPT/SN-38 class), what ferroptosis readout was used, and whether SLC7A11 was measured. Confirm gap if zero results.",
+        "success_metric": "Find at least one study using T-DXd or DXd and measuring ferroptosis markers — would confirm the mechanistic link directly.",
+        "failure_criterion": "Zero results = GAP_CONFIRMED, which supports novelty. Not a failure for the hypothesis."
+      },
+      "resource_budget": {"model": "claude-haiku-4-5-20251001", "max_tokens": 4000, "max_api_calls": 6},
+      "bfts_priority_score": 220.0,
+      "expected_information_gain": 0.88,
+      "parent_node_id": "n0-root",
+      "status": "queued"
+    },
+    {
+      "node_id": "HER2-EXP-002",
+      "hypothesis_id": "hyp-her2-001-v2",
+      "experiment_type": "literature_gap_analysis",
+      "sub_question": "SQ-2: DESTINY-Breast ferroptosis-consistent AEs + SLC7A11 translational sub-studies",
+      "protocol": {
+        "data_source": "pubmed + clinicaltrials",
+        "query_strategy": "Phase 1: 'DESTINY-Breast SLC7A11' → Phase 1b: 'T-DXd anemia iron' → Phase 1c: 'trastuzumab deruxtecan biomarker translational' → ClinicalTrials.gov: search NCT03248492 (DB-01), NCT04494425 (DB-04) sub-studies",
+        "analysis_method": "Extract safety AE tables from DESTINY-Breast publications for iron-metabolism, liver, or lipid-related toxicities. Check if any translational sub-study measured SLC7A11, NRF2, or oxidative stress markers.",
+        "success_metric": "Find SLC7A11 measurement in any DESTINY-Breast sub-study OR find iron/lipid peroxidation AE pattern.",
+        "failure_criterion": "No SLC7A11 data and no ferroptosis-consistent AE pattern in clinical data — pure mechanistic gap requiring preclinical work."
+      },
+      "resource_budget": {"model": "claude-haiku-4-5-20251001", "max_tokens": 4000, "max_api_calls": 5},
+      "bfts_priority_score": 123.3,
+      "expected_information_gain": 0.74,
+      "parent_node_id": "HER2-EXP-001",
+      "status": "queued"
+    },
+    {
+      "node_id": "HER2-EXP-003",
+      "hypothesis_id": "hyp-her2-001-v2",
+      "experiment_type": "pathway_analysis",
+      "sub_question": "SQ-3: PI3K→NRF2→SLC7A11 axis under trastuzumab/HER2 internalization",
+      "protocol": {
+        "data_source": "pubmed + reactome",
+        "query_strategy": "Phase 1: 'NRF2 SLC7A11 PI3K trastuzumab' → Phase 1b: 'HER2 PI3K AKT NRF2 KEAP1' → Phase 1c: 'trastuzumab SLC7A11 expression breast cancer' → Reactome: pathway R-HSA-5669034 (NRF2 target gene regulation)",
+        "analysis_method": "Map trastuzumab → HER2 downregulation → PI3K-AKT reduction → GSK3β activation → NRF2 destabilization (KEAP1-mediated) → SLC7A11 transcription drop. Confirm each arrow has published evidence. Check for published trastuzumab + SLC7A11 data in BT-474 or SK-BR-3.",
+        "success_metric": "Complete mechanistic chain with at least 2 published steps directly evidenced in HER2+ context.",
+        "failure_criterion": "NRF2-SLC7A11 arm is not modulated by trastuzumab alone — would require that DXd alone drives all ferroptosis sensitivity."
+      },
+      "resource_budget": {"model": "claude-sonnet-4-6", "max_tokens": 6000, "max_api_calls": 5},
+      "bfts_priority_score": 78.0,
+      "expected_information_gain": 0.78,
+      "parent_node_id": "HER2-EXP-001",
+      "status": "queued"
+    },
+    {
+      "node_id": "HER2-EXP-004",
+      "hypothesis_id": "hyp-her2-001-v2",
+      "experiment_type": "preclinical_protocol_design",
+      "sub_question": "SQ-4: Definitive preclinical protocol — DXd ferroptosis + SLC7A11 stratification",
+      "protocol": {
+        "data_source": "internal_synthesis",
+        "experimental_design": {
+          "cell_lines": ["BT-474 (HER2+ luminal)", "SK-BR-3 (HER2+ non-luminal)", "MDA-MB-453 (HER2+ TNBC-like)"],
+          "test_agents": ["T-DXd 10nM-1μM dose range", "DXd/exatecan alone (to isolate payload effect)", "trastuzumab alone (to isolate antibody effect)"],
+          "ferroptosis_readouts": [
+            "C11-BODIPY lipid peroxidation (flow cytometry)",
+            "4-HNE immunofluorescence (lipid oxidation marker)",
+            "Intracellular iron (calcein-AM quenching assay)",
+            "GPX4 protein by western blot",
+            "SLC7A11 mRNA by qRT-PCR at 24h, 48h, 72h"
+          ],
+          "death_mechanism_controls": [
+            "Ferrostatin-1 (2μM) rescue — ferroptosis-specific",
+            "Z-VAD-FMK (50μM) rescue — apoptosis-specific",
+            "Necrostatin-1 (50μM) rescue — necroptosis-specific",
+            "Liproxstatin-1 (1μM) rescue — ferroptosis confirmatory"
+          ],
+          "slc7a11_stratification_arms": [
+            "SLC7A11 overexpression (lentiviral, pCMV-SLC7A11) — resistance model",
+            "SLC7A11 knockdown (siRNA) — sensitivity model",
+            "Erastin co-treatment (SLC7A11 inhibitor, positive ferroptosis control)"
+          ],
+          "in_vivo_extension": "BT-474 xenograft in NSG mice; T-DXd 10mg/kg Q3W × 3; tumor harvest at day 21; 4-HNE IHC + SLC7A11 H-score by IHC; split into SLC7A11-high vs low by median H-score",
+          "power_calculation": "n=6/arm in vivo, α=0.05, power=0.80 for 40% tumor volume difference (based on CPT-11 ferroptosis data PMID 37735740)"
+        },
+        "success_metric": "Ferrostatin-1 rescue ≥30% viability vs untreated (confirms ferroptosis as T-DXd death mechanism). SLC7A11-high resistance ≥2-fold IC50 increase vs SLC7A11-low.",
+        "failure_criterion": "Ferrostatin-1 rescue <10% — ferroptosis is not a major T-DXd mechanism; hypothesis requires revision to focus solely on NRF2-mediated sensitization without topo-I ferroptosis link."
+      },
+      "resource_budget": {"model": "claude-sonnet-4-6", "max_tokens": 8000, "max_api_calls": 0},
+      "bfts_priority_score": 60.0,
+      "expected_information_gain": 0.90,
+      "parent_node_id": "HER2-EXP-002",
+      "status": "queued"
+    }
+  ],
+  "bfts_tree_state": {
+    "root_hypothesis": "hyp-her2-001-v2",
+    "root_composite_score": 0.813,
+    "depth": 1,
+    "total_nodes": 4,
+    "queued_nodes": 4,
+    "completed_nodes": 0,
+    "best_path_so_far": ["n0-root → HER2-EXP-001 (highest EIG, must execute first to determine if DXd ferroptosis gap exists)"],
+    "estimated_remaining_compute": {
+      "haiku_tokens": 8000,
+      "sonnet_tokens": 14000,
+      "estimated_sessions": 3
+    }
+  },
+  "finding_type": "experiment_plan",
+  "hypothesis": "T-DXd co-activates ferroptosis via its DXd payload (topo-I class) in HER2+ breast cancer. Mechanism: DXd → TOP1mt poison → mitochondrial ROS → lipid peroxidation; HER2 internalization → PI3K-NRF2-SLC7A11 transcriptional suppression. SLC7A11-high tumors escape and may explain primary T-DXd resistance.",
+  "evidence": [
+    {"pmid": "37735740", "finding": "CPT-11 (same pharmacological class as DXd) induces ferroptosis via ALOX15/GPX4/SLC7A11", "role": "class_analogy_primary"},
+    {"pmid": "31723605", "finding": "SN-38 (CPT metabolite) causes TOP1mt poisoning and mitochondrial dysfunction", "role": "mechanistic_link"},
+    {"pmid": "40513923", "finding": "Topo-I inhibitors activate ferroptosis axis in colorectal cancer", "role": "class_analogy_support"},
+    {"pmid": "30867592", "finding": "NRF2 directly transcribes SLC7A11 — establishes the PI3K-NRF2-SLC7A11 axis", "role": "pathway_evidence"},
+    {"source": "TCGA_PanCan_HER2_enriched", "finding": "SLC7A11 CV=59.4% within HER2-enriched (n=78), Q1=104 vs Q3=276 RSEM", "role": "stratification_premise"}
+  ],
+  "novelty_claim": "No published study has directly tested DXd/T-DXd for ferroptosis induction in HER2+ breast cancer. SLC7A11 IHC as T-DXd response stratifier is entirely novel. The synergistic mechanism (payload ferroptosis + antibody NRF2 suppression) has not been proposed before.",
+  "actionability": "Next: run HER2-EXP-001 (literature gap) to confirm T-DXd ferroptosis gap, then chain to HER2-EXP-002 + HER2-EXP-003 in parallel, then HER2-EXP-004 (cell line protocol design).",
+  "resource_cost_estimate": {
+    "total_haiku_tokens": 8000,
+    "total_sonnet_tokens": 14000,
+    "total_opus_tokens": 0,
+    "estimated_sessions": 3,
+    "estimated_wall_time_minutes": 9
+  }
+}

@@ -4,10 +4,10 @@
   "niche_id": "pathway_analysis",
   "task_id": "swarm-sc-g0-012-c1",
   "cycle": 1,
-  "executed_at": "2026-03-30T01:29:42.551597Z",
+  "executed_at": "2026-03-30T01:43:06.533772Z",
   "query": "PI3K AKT mTOR activation ILC lobular breast cancer treatment response",
   "papers_found": 2,
-  "efficiency_score": 0.58,
+  "efficiency_score": 0.62,
   "verdict": "ACCEPT_WEAK",
   "evidence": [
     {
@@ -29,5 +29,5 @@
     "results": 2,
     "model": "haiku"
   },
-  "confidence": 0.58
+  "confidence": 0.62
 }

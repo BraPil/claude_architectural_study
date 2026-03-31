@@ -1,0 +1,171 @@
+{
+  "experiment_id": "bfts-tnbc-atf6-001",
+  "hypothesis_id": "hyp-tnbc-004",
+  "dome_id": "exmorbus-v0.2",
+  "agent_id": "reflexion-tnbc-004",
+  "ts": "2026-03-30T02:52:27.659046Z",
+  "status": "READY",
+  "trigger": "plausibility_upgrade: 0.58→0.72 (threshold crossing)",
+  "prior_experiment": "pathway-atf6-csn5-001",
+  "hypothesis_summary": "ATF6 is a convergent upstream master regulator of both FBXO24 (E3 ligase → RAD51 protein degradation) and Jab1/CSN5 (HRR mRNA stabilization) in TNBC BRCAness.",
+  "design_objective": "Resolve the ATF6→CSN5 direct connection gap — the primary remaining barrier to CANDIDATE_VALIDATED status. Confirm or refute ATF6 as a master regulator of both HR-modulating arms.",
+  "revised_plausibility": 0.72,
+  "remaining_gaps": [
+    "No direct ATF6→CSN5 ChIP-seq or promoter reporter data published",
+    "Context-dependent directionality unresolved: ATF6→FBXO24 (HR suppressor) vs. ATF6→CSN5 (HR maintainer) may oppose each other under same ER stress conditions"
+  ],
+  "tree": {
+    "root": {
+      "node_id": "n0-root",
+      "label": "Does ATF6 directly regulate CSN5 transcription in TNBC?",
+      "node_type": "question",
+      "EIG": null,
+      "children": ["n1-atf6-sirna-csn5", "n2-atf6-chip-csn5", "n3-er-stress-timecourse", "n4-triple-combo-vivo", "n5-directionality-rescue"]
+    },
+    "nodes": [
+      {
+        "node_id": "n1-atf6-sirna-csn5",
+        "label": "ATF6 siRNA knockdown + CSN5 mRNA qPCR in MDA-MB-231",
+        "node_type": "in_vitro_genetic",
+        "EIG": 0.91,
+        "priority": 1,
+        "rationale": "Highest EIG node: directly tests whether ATF6 loss reduces CSN5 transcript levels. Uses same cell line as Peng 2025 FBXO24 paper — enables direct comparison of effect magnitude across both arms. Cheap, fast (72h), unambiguous positive/negative readout.",
+        "model_system": "MDA-MB-231 (TNBC, BRCAness-inducible)",
+        "intervention": "ATF6 siRNA pool (4 SMARTpool constructs, 25nM); scramble siRNA control",
+        "readout": [
+          "CSN5/Jab1 mRNA by RT-qPCR (primary)",
+          "FBXO24 mRNA by RT-qPCR (positive control for knockdown efficacy)",
+          "ATF6 protein by Western blot (knockdown confirmation)",
+          "RAD51 protein by Western blot (downstream functional readout)"
+        ],
+        "timepoint": "72h post-transfection",
+        "replicates": "n=3 biological replicates",
+        "success_criterion": "CSN5 mRNA reduction ≥30% vs. scramble control (p<0.05) — sufficient to claim ATF6 maintains CSN5 expression",
+        "failure_criterion": "CSN5 mRNA unchanged or increased — rules out transcriptional dependency, routes to post-transcriptional mechanism search",
+        "status": "READY",
+        "estimated_duration_days": 5,
+        "cost_tier": "low"
+      },
+      {
+        "node_id": "n2-atf6-chip-csn5",
+        "label": "ATF6 ChIP-qPCR at CSN5 promoter in ER-stressed TNBC cells",
+        "node_type": "in_vitro_epigenomic",
+        "EIG": 0.87,
+        "priority": 2,
+        "rationale": "Direct mechanistic proof of ATF6 binding to CSN5 locus. Closes the 'no ChIP data' gap definitively. ATF6 binds ERSE elements (CCAAT-N9-CCACG); CSN5 promoter contains predicted ERSE at -412 to -389 bp (in silico, to be confirmed). ER stress induction by tunicamycin maximizes ATF6 nuclear translocation.",
+        "model_system": "MDA-MB-231 + MCF10A-TNBC-isogenic (BRCA1-WT control)",
+        "intervention": "Tunicamycin 2µg/mL, 6h (ATF6 activation); DMSO vehicle control",
+        "readout": [
+          "ATF6 ChIP-qPCR at CSN5 promoter ERSE region (primary)",
+          "ATF6 ChIP-qPCR at FBXO24 promoter (positive control — known ATF6 target per Peng 2025)",
+          "ATF6 ChIP-qPCR at negative control locus (GAPDH intron 3)",
+          "Input-normalized enrichment fold-change"
+        ],
+        "antibody": "Anti-ATF6 (Cell Signaling #65880 or equivalent; validate by IP before ChIP)",
+        "success_criterion": "≥3-fold ATF6 enrichment at CSN5 ERSE vs. IgG control; enrichment abolished by ATF6 siRNA pre-treatment",
+        "failure_criterion": "No enrichment at CSN5 locus — routes to indirect transcription factor relay search (NF-kB, C/EBP-beta)",
+        "status": "READY",
+        "estimated_duration_days": 10,
+        "cost_tier": "medium",
+        "dependency": "n1-atf6-sirna-csn5 should be run first to validate ATF6 knockdown reagents"
+      },
+      {
+        "node_id": "n3-er-stress-timecourse",
+        "label": "ER stress timecourse: ATF6/FBXO24/CSN5/RAD51 co-regulation kinetics",
+        "node_type": "in_vitro_mechanistic",
+        "EIG": 0.79,
+        "priority": 3,
+        "rationale": "Resolves context-dependent directionality gap. If ATF6 activates FBXO24 (RAD51 degradation) and ATF6 also activates CSN5 (HR mRNA stabilization), the net effect on HR depends on timing and magnitude. A timecourse reveals whether FBXO24 and CSN5 are co-induced (same phase) or sequentially induced (opposing phases) — determining whether ATF6 acts as an HR suppressor or HR activator under different ER stress intensities.",
+        "model_system": "MDA-MB-231",
+        "intervention": "Tunicamycin 2µg/mL (graded ER stress); thapsigargin 1µM (maximal ER stress); DMSO control",
+        "readout": [
+          "ATF6 cleavage (90→50kDa) by Western blot — activation marker",
+          "FBXO24 mRNA and protein at 2h, 6h, 12h, 24h, 48h",
+          "CSN5 mRNA and protein at same timepoints",
+          "RAD51 protein at same timepoints",
+          "DR-GFP HR activity at 24h and 48h (if stable line available)"
+        ],
+        "success_criterion": "Distinct kinetic profiles for FBXO24 vs CSN5 induction — enables mechanistic model of temporal HR regulation by ATF6",
+        "failure_criterion": "Identical timecourses — suggests shared regulatory mechanism, not divergent arms",
+        "status": "READY",
+        "estimated_duration_days": 7,
+        "cost_tier": "low-medium"
+      },
+      {
+        "node_id": "n4-triple-combo-vivo",
+        "label": "Ivabradine + CSN5i-3 + olaparib triple combination in TNBC PDTXs",
+        "node_type": "in_vivo_pharmacological",
+        "EIG": 0.83,
+        "priority": 4,
+        "rationale": "In vivo validation of the therapeutic convergence principle: ivabradine activates ATF6→FBXO24 axis (protein-level RAD51 depletion) + CSN5i-3 inhibits Jab1 (mRNA-level HRR suppression) + olaparib exploits induced BRCAness. PDTXs from non-gBRCAm TNBC patients represent the target clinical population. This node should run after n1 confirms ATF6→CSN5 dependency (or in parallel if resource permits).",
+        "model_system": "TNBC PDTX panels (non-gBRCAm; BRCAness-inducible; recommend HCI-002 or similar publicly available models)",
+        "intervention": {
+          "arm_A_control": "Vehicle",
+          "arm_B_olaparib_mono": "Olaparib 50mg/kg PO BID",
+          "arm_C_iva_ola": "Ivabradine 40mg/kg PO BID + Olaparib 50mg/kg PO BID",
+          "arm_D_csn5i_ola": "CSN5i-3 15mg/kg IP QD + Olaparib 50mg/kg PO BID",
+          "arm_E_triple": "Ivabradine 40mg/kg PO BID + CSN5i-3 15mg/kg IP QD + Olaparib 50mg/kg PO BID"
+        },
+        "readout": [
+          "Tumor volume by caliper (3x/week) — primary efficacy endpoint",
+          "RAD51 foci in tumor biopsies at day 7 (mechanistic endpoint)",
+          "CSN5 protein in tumor biopsies at day 7 (target engagement)",
+          "FBXO24 protein in tumor biopsies at day 7 (target engagement)",
+          "Body weight and toxicity monitoring (3x/week)"
+        ],
+        "success_criterion": "Arm E (triple) achieves ≥50% tumor growth inhibition vs. Arm A, with statistically superior response vs. Arm C and Arm D individually (p<0.05 by two-way ANOVA)",
+        "failure_criterion": "No benefit of triple vs. doublets — suggests one arm is redundant or antagonistic in vivo",
+        "status": "PENDING_IN_VITRO_VALIDATION",
+        "dependency": "n1-atf6-sirna-csn5 and prior in vitro dose optimization",
+        "estimated_duration_days": 42,
+        "cost_tier": "high",
+        "notes": "CSN5i-3 in vivo dose extrapolated from PMID 40819058 efficacy data. Ivabradine dose validated in PMID 40764992 PDTX model. Requires IACUC approval before initiation."
+      },
+      {
+        "node_id": "n5-directionality-rescue",
+        "label": "ATF6 overexpression rescue: does ATF6-OE restore CSN5 after CSN5i-3?",
+        "node_type": "in_vitro_genetic",
+        "EIG": 0.72,
+        "priority": 5,
+        "rationale": "Epistasis test: if ATF6 is upstream of CSN5, then ATF6 overexpression should partially rescue CSN5 transcript levels after CSN5i-3 (a protein inhibitor acting downstream). This distinguishes transcriptional regulation (rescuable by ATF6-OE) from post-translational inhibition (not rescuable). Also tests whether ATF6-OE phenocopies BRCAness via FBXO24 upregulation in a cell line that is HR-competent at baseline.",
+        "model_system": "MDA-MB-231 + SUM149PT (BRCA1-mutant TNBC, negative control for BRCAness induction)",
+        "intervention": "ATF6 constitutively active overexpression (lentiviral, ATF6-NΔTM50 construct) ± CSN5i-3 5µM 48h",
+        "readout": [
+          "CSN5 mRNA by RT-qPCR",
+          "FBXO24 mRNA by RT-qPCR",
+          "RAD51 protein by Western blot",
+          "RAD51 foci by immunofluorescence post-2Gy IR"
+        ],
+        "success_criterion": "ATF6-OE increases CSN5 mRNA ≥1.5-fold vs. empty vector, and CSN5i-3 effect on BRCAness is partially reversed by ATF6-OE (RAD51 foci restored ≥20%)",
+        "failure_criterion": "ATF6-OE does not change CSN5 mRNA — confirms FBXO24 as the dominant ATF6 effector arm, deprioritizes CSN5 transcription as ATF6 target",
+        "status": "READY",
+        "estimated_duration_days": 14,
+        "cost_tier": "medium",
+        "notes": "Lentiviral construction is rate-limiting step; can be initiated in parallel with n1 and n2."
+      }
+    ]
+  },
+  "execution_order": [
+    "n1-atf6-sirna-csn5 (week 1 — highest EIG, fastest result, guides all downstream decisions)",
+    "n3-er-stress-timecourse (week 1-2, parallel with n1)",
+    "n2-atf6-chip-csn5 (week 2-3, after n1 validates ATF6 knockdown reagents)",
+    "n5-directionality-rescue (week 2-4, lentiviral prep concurrent with n2)",
+    "n4-triple-combo-vivo (week 4-10, after in vitro arms establish mechanistic basis)"
+  ],
+  "critical_path": "n1-atf6-sirna-csn5 → n2-atf6-chip-csn5 → n4-triple-combo-vivo",
+  "decision_gate": {
+    "gate_id": "gate-atf6-csn5-connection",
+    "after_node": "n1-atf6-sirna-csn5",
+    "if_positive": "Proceed to n2-atf6-chip-csn5 and n4-triple-combo-vivo; upgrade hyp-tnbc-004 plausibility to 0.82",
+    "if_negative": "Re-route to indirect mechanism (NF-kB/C/EBP-beta relay); publish ATF6→FBXO24 arm as standalone finding; downgrade master regulator claim"
+  },
+  "expected_plausibility_trajectory": {
+    "n1_positive": 0.82,
+    "n1_positive_n2_positive": 0.90,
+    "n1_negative": 0.61,
+    "full_tree_positive": 0.93
+  },
+  "novelty_preservation": "Novelty remains 0.93 regardless of CSN5 connection outcome — no published study has tested ivabradine + CSN5i-3 combination, and ATF6 as master HR regulator in TNBC BRCAness is unpublished.",
+  "source_reflexion": "reflexion-tnbc-004",
+  "lineage_id": "exmorbus-oncology-v2"
+}

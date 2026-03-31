@@ -1,0 +1,38 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-gen1-266",
+  "niche_id": "literature_synthesis",
+  "task_id": "swarm-sc-gen1-266-c3",
+  "cycle": 3,
+  "executed_at": "2026-03-30T03:02:58.814972Z",
+  "query": "HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast biomarker 2024",
+  "papers_found": 3,
+  "efficiency_score": 0.43,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [
+    {
+      "source": "PMID:40976668",
+      "claim": "?",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:40634519",
+      "claim": "?",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:39724961",
+      "claim": "?",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 3 papers for 'HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast': ?",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 3,
+    "model": "haiku"
+  },
+  "confidence": 0.43
+}

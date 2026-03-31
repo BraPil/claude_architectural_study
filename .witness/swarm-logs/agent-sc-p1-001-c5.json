@@ -1,0 +1,38 @@
+{
+  "finding_type": "synthesis",
+  "agent_id": "sc-p1-001",
+  "niche_id": "literature_synthesis",
+  "task_id": "swarm-sc-p1-001-c5",
+  "cycle": 5,
+  "executed_at": "2026-03-30T22:47:19.426152Z",
+  "query": "spatial transcriptomics tumor microenvironment breast cancer immune cold hot",
+  "papers_found": 3,
+  "efficiency_score": 0.79,
+  "verdict": "ACCEPT_WEAK",
+  "evidence": [
+    {
+      "source": "PMID:41911577",
+      "claim": "Artificial soil (ArtSoil): Recreating soil conditions in synthetic plant growth ",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41911496",
+      "claim": "Spatial Robustness of Prostate Cancer Biomarkers Evaluated by Spatial Transcript",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41911219",
+      "claim": "Spatial Transcriptomics of Early Tooth Morphogenesis in Formalin-fixed Paraffin-",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 3 papers for 'spatial transcriptomics tumor microenvironment breast cancer': Artificial soil (ArtSoil): Recreating soil conditions in synthetic plant growth ",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
+  "resource_cost_estimate": {
+    "pubmed_queries": 1,
+    "results": 3,
+    "model": "haiku"
+  },
+  "confidence": 0.79
+}
