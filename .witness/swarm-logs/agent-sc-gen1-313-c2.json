@@ -1,14 +1,14 @@
 {
   "finding_type": "synthesis",
-  "agent_id": "sc-p1-008",
+  "agent_id": "sc-gen1-313",
   "niche_id": "breast_cancer_marker_analysis",
-  "task_id": "swarm-sc-p1-008-c5",
-  "cycle": 5,
-  "executed_at": "2026-03-30T22:47:24.673164Z",
-  "query": "ESR1 mutation monitoring liquid biopsy endocrine resistance ILC",
+  "task_id": "swarm-sc-gen1-313-c2",
+  "cycle": 2,
+  "executed_at": "2026-03-31T00:50:18.366302Z",
+  "query": "ESR1 mutation liquid biopsy endocrine resistance ILC YAP TEAD",
   "papers_found": 3,
-  "efficiency_score": 0.93,
-  "verdict": "ACCEPT_WEAK",
+  "efficiency_score": 0.72,
+  "verdict": "ACCEPT_MEDIUM",
   "evidence": [
     {
       "source": "PMID:41876547",
@@ -26,7 +26,7 @@
       "confidence": "medium"
     }
   ],
-  "hypothesis": "Based on 3 papers for 'ESR1 mutation monitoring liquid biopsy endocrine resistance ': Regulation of physical activity and energy expenditure through Phf6 in the media",
+  "hypothesis": "Based on 3 papers for 'ESR1 mutation liquid biopsy endocrine resistance ILC YAP TEA': Regulation of physical activity and energy expenditure through Phf6 in the media",
   "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
   "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
   "resource_cost_estimate": {
@@ -34,5 +34,5 @@
     "results": 3,
     "model": "haiku"
   },
-  "confidence": 0.93
+  "confidence": 0.72
 }

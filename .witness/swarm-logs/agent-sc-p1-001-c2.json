@@ -1,22 +1,16 @@
 {
-  "finding_type": "synthesis",
   "agent_id": "sc-p1-001",
-  "niche_id": "breast_cancer_marker_analysis",
-  "task_id": "swarm-sc-p1-001-c2",
-  "cycle": 2,
-  "executed_at": "2026-03-30T02:55:45.672092Z",
-  "query": "lobular breast cancer ctDNA Guardant360 early stage vs metastatic",
-  "papers_found": 0,
-  "efficiency_score": 0.5,
-  "verdict": "ACCEPT_WEAK",
-  "evidence": [],
-  "hypothesis": "Based on 0 papers for 'lobular breast cancer ctDNA Guardant360 early stage vs metas': No results \u2014 gap identified",
-  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
-  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
-  "resource_cost_estimate": {
-    "pubmed_queries": 1,
-    "results": 0,
-    "model": "haiku"
+  "niche": "literature_synthesis",
+  "skill_tier": "differentiated",
+  "skill_data": {
+    "action": "synthesis_targeted",
+    "target": "hyp-ilc-006",
+    "eq": 0.52,
+    "gap": "AKT->CDK2->RB1-independent G1/S bypass claim lacks any direct citation; PI3Ka is",
+    "ts": "2026-03-31T00:50:17.015366Z"
   },
-  "confidence": 0.5
+  "efficiency_score": 0.92,
+  "verdict": "ACCEPT_HIGH",
+  "cycle": 2,
+  "executed_at": "2026-03-31T00:50:17.059381Z"
 }

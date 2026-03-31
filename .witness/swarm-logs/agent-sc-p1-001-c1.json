@@ -1,22 +1,17 @@
 {
-  "finding_type": "synthesis",
   "agent_id": "sc-p1-001",
-  "niche_id": "hypothesis_generation",
-  "task_id": "swarm-sc-p1-001-c1",
-  "cycle": 1,
-  "executed_at": "2026-03-30T02:55:42.649277Z",
-  "query": "CDK4/6 inhibitor resistance ILC immune microenvironment escape mechanism",
-  "papers_found": 0,
-  "efficiency_score": 0.4,
-  "verdict": "ACCEPT_WEAK",
-  "evidence": [],
-  "hypothesis": "Based on 0 papers for 'CDK4/6 inhibitor resistance ILC immune microenvironment esca': No results \u2014 gap identified",
-  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
-  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
-  "resource_cost_estimate": {
-    "pubmed_queries": 1,
-    "results": 0,
-    "model": "haiku"
+  "niche": "pathway_analysis",
+  "skill_tier": "differentiated",
+  "skill_data": {
+    "action": "bfts_node_selected",
+    "target": "bfts-tnbc-brca1-001",
+    "hypothesis_id": "hyp-tnbc-001",
+    "priority_score": 50,
+    "sub_question": "pending experiment",
+    "ts": "2026-03-31T00:50:14.474862Z"
   },
-  "confidence": 0.4
+  "efficiency_score": 0.91,
+  "verdict": "ACCEPT_HIGH",
+  "cycle": 1,
+  "executed_at": "2026-03-31T00:50:14.534081Z"
 }

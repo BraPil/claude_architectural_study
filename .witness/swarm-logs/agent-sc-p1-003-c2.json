@@ -1,22 +1,17 @@
 {
-  "finding_type": "synthesis",
   "agent_id": "sc-p1-003",
-  "niche_id": "hypothesis_generation",
-  "task_id": "swarm-sc-p1-003-c2",
-  "cycle": 2,
-  "executed_at": "2026-03-30T02:55:46.642356Z",
-  "query": "SLC7A11 methylation cfDNA ILC subtype non-personalized screening panel",
-  "papers_found": 0,
-  "efficiency_score": 0.5,
-  "verdict": "ACCEPT_WEAK",
-  "evidence": [],
-  "hypothesis": "Based on 0 papers for 'SLC7A11 methylation cfDNA ILC subtype non-personalized scree': No results \u2014 gap identified",
-  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
-  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
-  "resource_cost_estimate": {
-    "pubmed_queries": 1,
-    "results": 0,
-    "model": "haiku"
+  "niche": "pathway_analysis",
+  "skill_tier": "differentiated",
+  "skill_data": {
+    "action": "bfts_node_selected",
+    "target": "bfts-tnbc-brca1-001",
+    "hypothesis_id": "hyp-tnbc-001",
+    "priority_score": 50,
+    "sub_question": "pending experiment",
+    "ts": "2026-03-31T00:50:17.385012Z"
   },
-  "confidence": 0.5
+  "efficiency_score": 0.9,
+  "verdict": "ACCEPT_HIGH",
+  "cycle": 2,
+  "executed_at": "2026-03-31T00:50:17.427706Z"
 }

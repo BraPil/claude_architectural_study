@@ -1,13 +1,13 @@
 {
   "finding_type": "synthesis",
-  "agent_id": "sc-p1-008",
+  "agent_id": "sc-gen1-305",
   "niche_id": "pathway_analysis",
-  "task_id": "swarm-sc-p1-008-c3",
+  "task_id": "swarm-sc-gen1-305-c3",
   "cycle": 3,
-  "executed_at": "2026-03-30T23:03:33.208179Z",
+  "executed_at": "2026-03-31T00:21:47.246910Z",
   "query": "ferroptosis SLC7A11 GPX4 ACSL4 breast cancer therapeutic target",
   "papers_found": 3,
-  "efficiency_score": 0.94,
+  "efficiency_score": 0.87,
   "verdict": "ACCEPT_HIGH",
   "evidence": [
     {
@@ -34,5 +34,5 @@
     "results": 3,
     "model": "haiku"
   },
-  "confidence": 0.94
+  "confidence": 0.87
 }

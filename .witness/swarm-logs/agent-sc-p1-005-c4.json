@@ -1,22 +1,38 @@
 {
   "finding_type": "synthesis",
   "agent_id": "sc-p1-005",
-  "niche_id": "breast_cancer_marker_analysis",
+  "niche_id": "hypothesis_generation",
   "task_id": "swarm-sc-p1-005-c4",
   "cycle": 4,
-  "executed_at": "2026-03-30T02:55:57.982537Z",
-  "query": "ESR1 mutation monitoring liquid biopsy endocrine resistance ILC",
-  "papers_found": 0,
-  "efficiency_score": 0.47,
+  "executed_at": "2026-03-30T22:47:12.525710Z",
+  "query": "TME spatial subtype immune infiltration CDK4/6 inhibitor prediction ILC",
+  "papers_found": 3,
+  "efficiency_score": 0.75,
   "verdict": "ACCEPT_WEAK",
-  "evidence": [],
-  "hypothesis": "Based on 0 papers for 'ESR1 mutation monitoring liquid biopsy endocrine resistance ': No results \u2014 gap identified",
-  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
-  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
+  "evidence": [
+    {
+      "source": "PMID:41908149",
+      "claim": "Adoptive cellular therapy prevents reconstitution of myeloid-derived suppressor ",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41905709",
+      "claim": "The Yin and Yang of Tertiary Lymphoid Structures in Primary Liver Cancer.",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41904165",
+      "claim": "The CD4(+) T cell population partners with Tpex CD8(+) T cells to mediate antitu",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 3 papers for 'TME spatial subtype immune infiltration CDK4/6 inhibitor pre': Adoptive cellular therapy prevents reconstitution of myeloid-derived suppressor ",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
   "resource_cost_estimate": {
     "pubmed_queries": 1,
-    "results": 0,
+    "results": 3,
     "model": "haiku"
   },
-  "confidence": 0.47
+  "confidence": 0.75
 }

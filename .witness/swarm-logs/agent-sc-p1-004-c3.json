@@ -1,33 +1,14 @@
 {
-  "finding_type": "synthesis",
   "agent_id": "sc-p1-004",
-  "niche_id": "pathway_analysis",
-  "task_id": "swarm-sc-p1-004-c3",
-  "cycle": 3,
-  "executed_at": "2026-03-30T02:55:51.060787Z",
-  "query": "PI3K AKT mTOR activation ILC lobular breast cancer treatment response",
-  "papers_found": 2,
-  "efficiency_score": 0.57,
-  "verdict": "ACCEPT_WEAK",
-  "evidence": [
-    {
-      "source": "PMID:41740233",
-      "claim": "Advances in the management of metastatic lobular breast cancer: Current evidence",
-      "confidence": "medium"
-    },
-    {
-      "source": "PMID:37642941",
-      "claim": "MYC is a clinically significant driver of mTOR inhibitor resistance in breast ca",
-      "confidence": "medium"
-    }
-  ],
-  "hypothesis": "Based on 2 papers for 'PI3K AKT mTOR activation ILC lobular breast cancer treatment': Advances in the management of metastatic lobular breast cancer: Current evidence",
-  "novelty_claim": "Identified 2 relevant papers; novel synthesis from recent literature",
-  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
-  "resource_cost_estimate": {
-    "pubmed_queries": 1,
-    "results": 2,
-    "model": "haiku"
+  "niche": "breast_cancer_marker_analysis",
+  "skill_tier": "differentiated",
+  "skill_data": {
+    "action": "bfts_node_selected",
+    "niche": "breast_cancer_marker_analysis",
+    "ts": "2026-03-31T00:43:11.067751Z"
   },
-  "confidence": 0.57
+  "efficiency_score": 0.81,
+  "verdict": "ACCEPT_HIGH",
+  "cycle": 3,
+  "executed_at": "2026-03-31T00:43:11.143709Z"
 }

@@ -4,19 +4,35 @@
   "niche_id": "literature_synthesis",
   "task_id": "swarm-sc-p1-010-c3",
   "cycle": 3,
-  "executed_at": "2026-03-30T02:55:54.237774Z",
+  "executed_at": "2026-03-30T23:03:34.950385Z",
   "query": "HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast biomarker 2024",
-  "papers_found": 0,
-  "efficiency_score": 0.55,
-  "verdict": "ACCEPT_WEAK",
-  "evidence": [],
-  "hypothesis": "Based on 0 papers for 'HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast': No results \u2014 gap identified",
-  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
-  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
+  "papers_found": 3,
+  "efficiency_score": 0.7,
+  "verdict": "ACCEPT_MEDIUM",
+  "evidence": [
+    {
+      "source": "PMID:41908795",
+      "claim": "Effectiveness, safety, and biomarker analysis of sacituzumab govitecan in Chines",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41908553",
+      "claim": "AI-enhanced clinical trial-in-a-dish platform for improved DILI risk classificat",
+      "confidence": "medium"
+    },
+    {
+      "source": "PMID:41907291",
+      "claim": "Enhancing the transduction efficiency of lentiviral vectors in CAR-T cell therap",
+      "confidence": "medium"
+    }
+  ],
+  "hypothesis": "Based on 3 papers for 'HER2 low breast cancer trastuzumab deruxtecan DESTINY-Breast': Effectiveness, safety, and biomarker analysis of sacituzumab govitecan in Chines",
+  "novelty_claim": "Identified 3 relevant papers; novel synthesis from recent literature",
+  "actionability": "Next: fetch abstracts for top 2 PMIDs and run /evaluate",
   "resource_cost_estimate": {
     "pubmed_queries": 1,
-    "results": 0,
+    "results": 3,
     "model": "haiku"
   },
-  "confidence": 0.55
+  "confidence": 0.7
 }

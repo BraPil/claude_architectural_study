@@ -1,22 +1,16 @@
 {
-  "finding_type": "synthesis",
   "agent_id": "sc-p1-001",
-  "niche_id": "breast_cancer_marker_analysis",
-  "task_id": "swarm-sc-p1-001-c3",
-  "cycle": 3,
-  "executed_at": "2026-03-30T02:55:49.601783Z",
-  "query": "ILC CDH1 FOXA1 ctDNA early stage detection feasibility",
-  "papers_found": 0,
-  "efficiency_score": 0.58,
-  "verdict": "ACCEPT_WEAK",
-  "evidence": [],
-  "hypothesis": "Based on 0 papers for 'ILC CDH1 FOXA1 ctDNA early stage detection feasibility': No results \u2014 gap identified",
-  "novelty_claim": "Identified 0 relevant papers; gap confirmed \u2014 no literature exists",
-  "actionability": "Next: fetch abstracts for top 0 PMIDs and run /evaluate",
-  "resource_cost_estimate": {
-    "pubmed_queries": 1,
-    "results": 0,
-    "model": "haiku"
+  "niche": "literature_synthesis",
+  "skill_tier": "differentiated",
+  "skill_data": {
+    "action": "synthesis_targeted",
+    "target": "hyp-ilc-006",
+    "eq": 0.52,
+    "gap": "AKT->CDK2->RB1-independent G1/S bypass claim lacks any direct citation; PI3Ka is",
+    "ts": "2026-03-31T00:43:10.430667Z"
   },
-  "confidence": 0.58
+  "efficiency_score": 0.74,
+  "verdict": "ACCEPT_MEDIUM",
+  "cycle": 3,
+  "executed_at": "2026-03-31T00:43:10.472888Z"
 }
