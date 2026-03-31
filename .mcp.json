@@ -14,7 +14,8 @@
       "command": "node",
       "args": ["tools/biomedical-fetch/server.js"],
       "env": {
-        "CLAUDE_PROJECT_DIR": "."
+        "CLAUDE_PROJECT_DIR": ".",
+        "HF_TOKEN": ""
       }
     }
   }
