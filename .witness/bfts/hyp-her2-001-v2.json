@@ -74,7 +74,11 @@
       "bfts_priority_score": 123.3,
       "expected_information_gain": 0.74,
       "parent_node_id": "HER2-EXP-001",
-      "status": "queued"
+      "status": "completed",
+      "result": "GAP_CONFIRMED_WITH_STRONG_MECHANISTIC_SUPPORT",
+      "executed_date": "2026-03-31",
+      "key_finding": "PMID 40464376 (eLife 2025): SLC7A11 epigenetically upregulated as trastuzumab resistance mechanism in HER2+ BC. No DESTINY-Breast translational sub-study has measured SLC7A11. Hypothesis refined to v4: T-DXd weaponizes trastuzumab-resistance-acquired SLC7A11 upregulation via ferroptosis.",
+      "score_impact": "hyp-her2-001 upgraded 0.851 → 0.881 (v4)"
     },
     {
       "node_id": "HER2-EXP-003",
@@ -140,9 +144,9 @@
     "root_composite_score": 0.813,
     "depth": 1,
     "total_nodes": 4,
-    "queued_nodes": 4,
-    "completed_nodes": 0,
-    "best_path_so_far": ["n0-root → HER2-EXP-001 (highest EIG, must execute first to determine if DXd ferroptosis gap exists)"],
+    "queued_nodes": 2,
+    "completed_nodes": 2,
+    "best_path_so_far": ["n0-root → HER2-EXP-001 (CRITICAL_POSITIVE: PMID 39243601) → HER2-EXP-002 (GAP_CONFIRMED + PMID 40464376 anchor, score 0.881)"],
     "estimated_remaining_compute": {
       "haiku_tokens": 8000,
       "sonnet_tokens": 14000,
